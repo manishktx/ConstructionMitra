@@ -1,4 +1,4 @@
-package com.example.constructionmitra.ui.home
+package com.constructionmitra.user.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.constructionmitra.R
-import com.example.constructionmitra.databinding.FragmentHomeBinding
+import com.constructionmitra.user.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 

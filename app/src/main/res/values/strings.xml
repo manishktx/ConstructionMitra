@@ -3,4 +3,67 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="login_fragment_label">Login Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- App -->
+    <!-- Login Module -->
+    <string name="login_title">&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
+    <string name="login_sub_heading">निर्माण स्थलों पर काम पाना हुआ अब आसान............</string>
+    <string name="labour_contractor">&lt;font color="#4883C1"> निर्माण श्रमिक, &lt;font/>  &lt;font color="#00B867">मित्रा&lt;font/></string>
+    <string name="get_together_here">दोनों मिलते है यहाँ</string>
+    <string name="labour_type">इंजीनियर / सुपरवाइजर निर्माण एजेंसी, पेट्टी कॉन्ट्रैक्टर, निर्माण श्रमिक</string>
+    <string name="contractor_type">निर्माण कर्ता</string>
+    <string name="need_work">मुझे काम चाहिए</string>
+    <string name="need_labour">मुझे कुशल निर्माण श्रमिक चाहिए</string>
+    <string name="change_language">भाषा बदलें</string>
+    <string name="login_button_text">मोबाइल से लॉगिन/ रजिस्टर करें</string>
+
+    <!-- Registration -->
+    <string name="enter_your_mobile">अपना मोबाइल नंबर और नाम बतायें</string>
+    <string name="mobile_number">मोबाइल नंबरं</string>
+    <string name="enter_10_digit_mobile">10 अंकों का मोबाइल नंबर डालें</string>
+    <string name="otp_will_be_sent">हम आपको इस नंबर पर OTP भेजेंगे</string>
+    <string name="name">नाम</string>
+    <string name="enter_otp">OTP टाइप करे</string>
+    <string name="type_otp">OTP टाइप करें</string>
+    <string name="enter_4_digit_otp">अपना 4 अंको का OTP डालें</string>
+    <string name="send_otp_again">OTP दोबारा भेजें</string>
+    <string name="next">आगे बढ़ें </string>
+    <string name="please_choose_one_option">किसी एक विकल्प को चुने</string>
+    <string name="congratulations_mobile_verified">कबधाई हो ! आपका मोबाइल नंबर वेरीफाई हो गया है</string>
+    <string name="labour">निर्माण श्रमिक</string>
+    <string name="patti_contractor">पेट्टी कांट्रेक्टर</string>
+    <string name="need_work_for">स्वयं के लिए काम ढूंढ रहे हो तो यह विकल्प</string>
+    <string name="choose_option_if_you_have_team">अगर आप के पास काम करने वालों की टीम है तो यहाँ विकल्प चुने</string>
+    <string name="specialized_agency">Specialised Agency</string>
+    <string name="specialized_in">वाटर प्रूफिंग, फायर फाइटिंग इत्यादि काम करते हो तो यह विकल्प चुनें</string>
+    <string name="engineer">Engineer/Supervisor</string>
+    <string name="engineer_in">इंजीनियर / कंस्ट्रक्शन साइट सुपरवाइजर करते हो तो यह विकल्प चुनें</string>
+    <string name="choose_work">अपने कौशल के अनुरूप काम का चुनाव करें।</string>
+    <string name="choose_three_works">अधिकतम 3 काम चुने</string>
+    <string-array name="work_options">
+        <item>चुनाई मिस्त्री / राज मिस्त्री</item>
+        <item>टाइल मिस्त्री</item>
+        <item>मार्बल ग्रेनाइट मिस्त्री</item>
+        <item>प्लास्टरिंग</item>
+        <item>लेबर सप्लायर</item>
+        <item>बार बाइंडर/सरिया मिस्त्री</item>
+        <item>शटरिंग</item>
+        <item>फर्नीचर</item>
+        <item>वेल्डिंग वर्क</item>
+        <item>इलेक्ट्रिक वर्क</item>
+        <item>P.O.P, वॉल पुट्टी</item>
+        <item>पेंटिंग</item>
+        <item></item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

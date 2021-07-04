@@ -1,4 +1,4 @@
-package com.example.constructionmitra.ui.notifications
+package com.constructionmitra.user.ui.notifications
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.constructionmitra.R
-import com.example.constructionmitra.databinding.FragmentNotificationsBinding
+import com.constructionmitra.user.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
 

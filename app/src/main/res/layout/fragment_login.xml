@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvChangeLang"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="wrap_content"
+        android:text="@string/change_language"
+        android:textColor="@color/green_200"
+        android:textSize="@dimen/_14ssp"
+        android:gravity="center"
+        android:background="@drawable/bg_border_grey_with_rounded_corner"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_title"
+        android:textSize="@dimen/_22ssp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeLang"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_sub_heading"
+        android:textSize="@dimen/_10ssp"
+        android:gravity="center"
+        android:textColor="@color/greyed_text"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvHeading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:gravity="center"
+        android:text="@string/labour_contractor"
+        android:textSize="@dimen/_22ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubHeading" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubHeading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_together_here"
+        android:textSize="@dimen/_10ssp"
+        android:gravity="center"
+        android:textColor="@color/greyed_text"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/labourCardView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_card_height"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/_2sdp"
+        android:clipToPadding="false"
+        app:cardBackgroundColor="@color/blue_100"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_3sdp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toStartOf="@+id/contractorCardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubHeading2"
+        tools:cardBackgroundColor="@color/blue_100">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labourDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:gravity="center"
+            android:textColor="@color/blue_200"
+            android:text="@string/labour_type"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeading2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/need_work"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textSize="@dimen/_10ssp"
+            android:gravity="center"
+            android:textColor="@color/greyed_text"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/contractorCardView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_card_height"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/pink_100"
+        tools:cardBackgroundColor="@color/pink_100"
+        android:clipToPadding="false"
+        app:cardUseCompatPadding="true"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintStart_toEndOf="@+id/labourCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubHeading2"
+        app:cardElevation="@dimen/_3sdp"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_2sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/contractorDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contractor_type"
+            android:layout_margin="@dimen/_10sdp"
+            android:textSize="@dimen/_12ssp"
+            android:gravity="center"
+            android:textColor="@color/red_200"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeading2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/need_labour"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textSize="@dimen/_10ssp"
+            android:gravity="center"
+            android:textColor="@color/greyed_text"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLogin"
+        style="@style/AppButton.Green"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login_button_text"
+        android:layout_margin="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
