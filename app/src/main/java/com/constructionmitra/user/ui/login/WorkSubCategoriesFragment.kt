@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.constructionmitra.user.data.dummyList
 import com.constructionmitra.user.data.dummyListSubCategories
 import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategoriesBinding
+import com.constructionmitra.user.ui.dialogs.AppAlertDialog
 import com.constructionmitra.user.ui.login.adapters.WorkCategoryAdapter
 
 class WorkSubCategoriesFragment : Fragment() {
@@ -33,9 +34,9 @@ class WorkSubCategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvSubCategories.adapter = WorkCategoryAdapter(dummyListSubCategories, isSubCategory = true) {
-            WorkCategoryFragmentDirections.toWorkSubCategories().apply {
-                findNavController().navigate(this)
-            }
+            AppAlertDialog.newInstance {
+
+            }.show(childFragmentManager, "alert_dialog")
         }
     }
 

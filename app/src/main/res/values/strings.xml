@@ -65,4 +65,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="dialog_content">आपको वही काम दिखेंगे जिसमे 5 लोगों तक की \nजरुरत हो\n\n\nक्या आप कांट्रेक्टर के रूप में काम करना चाहते है ?\n हाँ या ना का विकल्प चुनिए</string>
+    <string name="yes">हाँ</string>
+    <string name="no">ना</string>
 </resources>
