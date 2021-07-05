@@ -21,6 +21,37 @@
         android:name="com.constructionmitra.user.ui.login.RegistrationFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_registration">
+
+        <action
+            android:id="@+id/to_otpFragment"
+            app:destination="@id/otpFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.constructionmitra.user.ui.login.OtpFragment"
+        tools:layout="@layout/fragment_otp">
+
+        <action
+            android:id="@+id/to_workCategory"
+            app:destination="@id/workCategory" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/workCategory"
+        android:name="com.constructionmitra.user.ui.login.WorkCategoryFragment"
+        tools:layout="@layout/fragment_choose_work_category">
+        <action
+            android:id="@+id/to_workSubCategories"
+            app:destination="@id/workSubCategories" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/workSubCategories"
+        android:name="com.constructionmitra.user.ui.login.WorkSubCategoriesFragment"
+        tools:layout="@layout/fragment_choose_your_work_sub_categories">
     </fragment>
 
 </navigation>

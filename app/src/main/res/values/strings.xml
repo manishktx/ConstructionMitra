@@ -37,10 +37,10 @@
     <string name="send_otp_again">OTP दोबारा भेजें</string>
     <string name="next">आगे बढ़ें </string>
     <string name="please_choose_one_option">किसी एक विकल्प को चुने</string>
-    <string name="congratulations_mobile_verified">कबधाई हो ! आपका मोबाइल नंबर वेरीफाई हो गया है</string>
+    <string name="congratulations_mobile_verified">बधाई हो ! आपका मोबाइल नंबर वेरीफाई हो गया है</string>
     <string name="labour">निर्माण श्रमिक</string>
     <string name="patti_contractor">पेट्टी कांट्रेक्टर</string>
-    <string name="need_work_for">स्वयं के लिए काम ढूंढ रहे हो तो यह विकल्प</string>
+    <string name="need_work_for">स्वयं के लिए काम ढूंढ रहे हो तो यह विकल्प चुने</string>
     <string name="choose_option_if_you_have_team">अगर आप के पास काम करने वालों की टीम है तो यहाँ विकल्प चुने</string>
     <string name="specialized_agency">Specialised Agency</string>
     <string name="specialized_in">वाटर प्रूफिंग, फायर फाइटिंग इत्यादि काम करते हो तो यह विकल्प चुनें</string>
@@ -61,7 +61,6 @@
         <item>इलेक्ट्रिक वर्क</item>
         <item>P.O.P, वॉल पुट्टी</item>
         <item>पेंटिंग</item>
-        <item></item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

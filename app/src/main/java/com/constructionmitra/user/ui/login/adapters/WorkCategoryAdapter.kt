@@ -1,6 +1,8 @@
 package com.constructionmitra.user.ui.login.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.constructionmitra.user.data.WorkCategory
@@ -8,11 +10,10 @@ import com.constructionmitra.user.databinding.ItemWorkOptionBinding
 
 class WorkCategoryAdapter(
     private val list: List<WorkCategory>,
+    private val isSubCategory: Boolean = false,
     private val onItemClick: (workCategory: WorkCategory) -> Unit
 ) :
     RecyclerView.Adapter<WorkCategoryAdapter.ViewHolder>() {
-
-    private var selectedItem: Int = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: ItemWorkOptionBinding = ItemWorkOptionBinding.inflate(
@@ -38,7 +39,16 @@ class WorkCategoryAdapter(
             onItemClick: (workCategory: WorkCategory) -> Unit,
             workCategory: WorkCategory,
         ) {
+            binding.tvCategory.text = workCategory.name
+            binding.tvDesc.text = workCategory.desc
+            if(isSubCategory) {
+                binding.cardView.setCardBackgroundColor(Color.parseColor(workCategory.backgroundColor))
+                binding.tvDesc.visibility = View.GONE
+            }
 
+            binding.root.setOnClickListener{
+                onItemClick(workCategory)
+            }
         }
     }
 }

@@ -5,15 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.constructionmitra.user.databinding.FragmentChooseYourWorkOptionsBinding
+import androidx.navigation.fragment.findNavController
+import com.constructionmitra.user.data.dummyList
+import com.constructionmitra.user.databinding.FragmentChooseWorkCategoryBinding
+import com.constructionmitra.user.ui.login.adapters.WorkCategoryAdapter
 
-class ChooseYourWorkOptions : Fragment() {
+class WorkCategoryFragment : Fragment() {
 
-    private lateinit var binding: FragmentChooseYourWorkOptionsBinding
+    private lateinit var binding: FragmentChooseWorkCategoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+
         }
     }
 
@@ -22,20 +26,23 @@ class ChooseYourWorkOptions : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentChooseYourWorkOptionsBinding.inflate(inflater, container, false)
+        binding = FragmentChooseWorkCategoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.rvCategories.adapter = WorkCategoryAdapter(dummyList) {
+            WorkCategoryFragmentDirections.toWorkSubCategories().apply {
+                findNavController().navigate(this)
+            }
+        }
     }
-
     companion object {
 
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ChooseYourWorkOptions().apply {
+            WorkCategoryFragment().apply {
                 arguments = Bundle().apply {
 
                 }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.login.ChooseWorkOption">
+    tools:context=".ui.login.WorkCategoryFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivVerify"
@@ -64,6 +64,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategories"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
