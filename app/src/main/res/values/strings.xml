@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">ConstructionMitra</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">होम</string>
+    <string name="title_dashboard">नेटवर्क</string>
+    <string name="title_notifications">प्रोफ़ाइल</string>
     <string name="title_activity_login">LoginActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login Fragment</string>

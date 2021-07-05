@@ -40,13 +40,22 @@ class AppAlertDialog(val onClick:() -> Unit) : DialogFragment() {
 
         }
         context ?: return binding.root
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.ivYes.setOnClickListener {
+            dismiss()
+            onClick()
+        }
+        binding.ivNo.setOnClickListener {
+            dismiss()
+        }
     }
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        onClick()
     }
 
     companion object {
