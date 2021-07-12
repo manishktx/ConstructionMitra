@@ -7,6 +7,8 @@ buildscript {
         hilt_version = '2.35'
         kotlin_version = '1.5.10'
         dimens_version = '1.0.6'
+        timber_version = '4.7.1'
+        retrofit_version = '2.9.0'
 
         libraries = [
 
