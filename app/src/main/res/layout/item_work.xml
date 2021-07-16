@@ -20,7 +20,7 @@
             android:layout_margin="@dimen/_2sdp"
             android:clipToPadding="false"
             app:cardBackgroundColor="@color/white"
-            app:cardElevation="@dimen/_3sdp"
+            app:cardElevation="@dimen/_2sdp"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="@dimen/_5sdp"
             app:layout_constraintTop_toTopOf="parent"

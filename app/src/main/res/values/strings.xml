@@ -35,7 +35,7 @@
     <string name="type_otp">OTP टाइप करें</string>
     <string name="enter_4_digit_otp">अपना 4 अंको का OTP डालें</string>
     <string name="send_otp_again">OTP दोबारा भेजें</string>
-    <string name="next">आगे बढ़ें </string>
+    <string name="next">आगे बढ़ें/ Next</string>
     <string name="please_choose_one_option">किसी एक विकल्प को चुने</string>
     <string name="congratulations_mobile_verified">बधाई हो ! आपका मोबाइल नंबर वेरीफाई हो गया है</string>
     <string name="labour">निर्माण श्रमिक</string>
@@ -65,7 +65,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="dialog_content">आपको वही काम दिखेंगे जिसमे 5 लोगों तक की \nजरुरत हो\n\n\nक्या आप कांट्रेक्टर के रूप में काम करना चाहते है ?\n हाँ या ना का विकल्प चुनिए</string>
+    <string name="heading">आपको वही काम दिखेंगे जिसमे 5 लोगों तक की \nजरुरत हो</string>
+    <string name="sub_heading">क्या आप कांट्रेक्टर के रूप में काम करना चाहते है ?\n हाँ या ना का विकल्प चुनिए</string>
     <string name="yes">हाँ</string>
     <string name="no">ना</string>
 </resources>

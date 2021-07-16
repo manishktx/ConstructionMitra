@@ -63,7 +63,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNext"
-        style="@style/AppButton.Green"
+        style="@style/App.Button.Green"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/next"
