@@ -69,4 +69,21 @@
     <string name="sub_heading">क्या आप कांट्रेक्टर के रूप में काम करना चाहते है ?\n हाँ या ना का विकल्प चुनिए</string>
     <string name="yes">हाँ</string>
     <string name="no">ना</string>
+    <string name="hint_firm_name">अपनी फर्म का नाम बतायें</string>
+    <string name="people_in_your_team">आपके पास कितने लोगो की टीम है</string>
+    <string name="team_count">कितने लोग</string>
+    <string name="submit">Submit</string>
+
+    <!-- Profile -->
+    <string name="about_yourself">अपने बारे में बताओ</string>
+    <string name="other_mobile_num">आपका अन्य मोबाइल नंबर</string>
+    <string name="gender">लिंग</string>
+    <string name="male">पुरुष</string>
+    <string name="female">इस्त्री</string>
+    <string name="other">अन्य</string>
+    <string name="hint_your_age">अपनी आयु बताएँ</string>
+    <string name="where_is_your_home">आपका घर कहां है</string>
+    <string name="help_us_to_find_work_for_you">ये जानकारी हमें मदद करती है आपको आपके घर के पास काम दिलवाने में</string>
+    <string name="upload_your_pic">Please upload your photo</string>
+
 </resources>
