@@ -20,7 +20,44 @@
             app:layout_scrollFlags="scroll">
 
             <!-- Scrollable view comes here -->
-           <include layout="@layout/item_profile_card"/>
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <include
+                   android:id="@+id/profileView"
+                   layout="@layout/item_profile_card"/>
+
+               <androidx.viewpager.widget.ViewPager
+                   android:id="@+id/vpProfile"
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/_70sdp"
+                   app:layout_constraintTop_toBottomOf="@id/profileView"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   android:layout_marginStart="@dimen/_5sdp"
+                   android:layout_marginEnd="@dimen/_5sdp"
+                   android:visibility="visible"
+                   tools:layout_height="@dimen/_60sdp"
+                   tools:visibility="visible"/>
+
+               <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                   android:id="@+id/dots_indicator"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:dotsColor="@color/blue_200"
+                   app:dotsCornerRadius="5dp"
+                   app:dotsSize="@dimen/_6sdp"
+                   app:dotsSpacing="@dimen/_3sdp"
+                   app:dotsStrokeColor="@color/blue_200"
+                   app:dotsWidthFactor="2.5"
+                   app:progressMode="true"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintTop_toBottomOf="@id/vpProfile"
+                   />
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

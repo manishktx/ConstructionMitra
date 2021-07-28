@@ -10,8 +10,7 @@ import com.constructionmitra.user.databinding.ItemWorkBinding
 class HomeAdapter(
     private val list: List<Work>,
     private val onItemClick: (work: Work) -> Unit
-) :
-    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: ItemWorkBinding = ItemWorkBinding.inflate(

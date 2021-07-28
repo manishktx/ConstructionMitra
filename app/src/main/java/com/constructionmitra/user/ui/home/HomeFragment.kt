@@ -8,10 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.constructionmitra.user.adapters.HomeAdapter
-import com.constructionmitra.user.adapters.HomePagerAdapter
-import com.constructionmitra.user.adapters.MY_PAGE_INDEX
-import com.constructionmitra.user.adapters.PLANT_LIST_PAGE_INDEX
+import com.constructionmitra.user.adapters.*
 import com.constructionmitra.user.data.dummyWorkList
 import com.constructionmitra.user.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -49,7 +46,17 @@ class HomeFragment : Fragment() {
                 tab.text = getTabTitle(position)
             }.attach()
         }
+
+        // setUp profile banner
+        binding.vpProfile.adapter = ProfilePagerAdapter(
+            DUMMY_LIST,
+        ){
+            // onItemClickListener
+
+        }
+        binding.dotsIndicator.setViewPager(binding.vpProfile)
     }
+
 
     private fun getTabTitle(position: Int): String? {
         return when (position) {

@@ -85,5 +85,7 @@
     <string name="where_is_your_home">आपका घर कहां है</string>
     <string name="help_us_to_find_work_for_you">ये जानकारी हमें मदद करती है आपको आपके घर के पास काम दिलवाने में</string>
     <string name="upload_your_pic">Please upload your photo</string>
+    <string name="update_exp">जानकारी जोड़े</string>
+    <string name="share_your_exp">अपना अनुभव साझा करें</string>
 
 </resources>
