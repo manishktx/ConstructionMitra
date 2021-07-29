@@ -11,6 +11,7 @@
     <!-- App -->
     <color name="blue_200">#4883C1</color>
     <color name="blue_100">#D1F0FB</color>
+    <color name="blue_300">#0099F9</color>
     <color name="green_200">#00B867</color>
     <color name="grey_100">#ABACB0</color>
     <color name="grey_200">#797979</color>

@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.constructionmitra.user.R
+import com.constructionmitra.user.databinding.FragmentAboutBinding
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class BlankFragment : Fragment() {
+class AboutYourSelfFragment : Fragment() {
 
+    private lateinit var binding: FragmentAboutBinding
     private var param1: String? = null
     private var param2: String? = null
 
@@ -27,14 +29,15 @@ class BlankFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false)
+        binding = FragmentAboutBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     companion object {
 
         @JvmStatic
         fun newInstance() =
-            BlankFragment().apply {
+            AboutYourSelfFragment().apply {
                 arguments = Bundle().apply {
 
                 }

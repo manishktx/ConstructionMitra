@@ -8,7 +8,9 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -25,7 +27,7 @@
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/greyed_text"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 />
 
 
@@ -34,7 +36,7 @@
                 style="@style/App.Editable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_25sdp"
                 android:hint="@string/hint_firm_name"
                 android:maxLines="1"
                 android:inputType="none"
@@ -50,7 +52,7 @@
                 style="@style/App.Editable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:hint="@string/hint_firm_name"
                 android:maxLines="1"
                 android:inputType="none"
@@ -66,7 +68,7 @@
                 style="@style/App.Editable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:hint="@string/other_mobile_num"
                 android:maxLines="1"
                 android:inputType="none"
@@ -193,29 +195,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/upload_your_pic"
-                android:textSize="@dimen/text_medium"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/greyed_text"
-                android:layout_marginTop="@dimen/_10sdp"
-                />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="@dimen/_70sdp"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/ic_camera_alt"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:tint="@color/blue_200"
-                />
-
-
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/App.Button.Blue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="अपनी जानकारी सहेजें"
+        android:textSize="@dimen/text_medium"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_40sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_20sdp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
