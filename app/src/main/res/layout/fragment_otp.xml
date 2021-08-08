@@ -43,6 +43,8 @@
         android:background="@drawable/bg_border_grey_with_rounded_corner"
         android:hint="@string/enter_4_digit_otp"
         android:maxLines="1"
+        android:inputType="number"
+        android:maxLength="4"
         android:padding="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
@@ -72,5 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+    <include layout="@layout/progress_bar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

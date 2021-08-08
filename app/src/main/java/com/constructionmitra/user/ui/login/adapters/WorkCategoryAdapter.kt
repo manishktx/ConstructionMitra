@@ -5,18 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.constructionmitra.user.data.JobRole
 import com.constructionmitra.user.data.WorkCategory
 import com.constructionmitra.user.databinding.ItemWorkOptionBinding
+import com.constructionmitra.user.databinding.ItemWorkSubCategoryBinding
 
 class WorkCategoryAdapter(
-    private val list: List<WorkCategory>,
+    private val list: List<JobRole>,
     private val isSubCategory: Boolean = false,
-    private val onItemClick: (workCategory: WorkCategory) -> Unit
+    private val onItemClick: (jobRole: JobRole) -> Unit
 ) :
     RecyclerView.Adapter<WorkCategoryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding: ItemWorkOptionBinding = ItemWorkOptionBinding.inflate(
+        val binding: ItemWorkSubCategoryBinding = ItemWorkSubCategoryBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -33,21 +35,19 @@ class WorkCategoryAdapter(
     }
 
 
-    inner class ViewHolder(val binding: ItemWorkOptionBinding) :
+    inner class ViewHolder(val binding: ItemWorkSubCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindData(
-            onItemClick: (workCategory: WorkCategory) -> Unit,
-            workCategory: WorkCategory,
+            onItemClick: (jobRole: JobRole) -> Unit,
+            jobRole: JobRole,
         ) {
-            binding.tvCategory.text = workCategory.name
-            binding.tvDesc.text = workCategory.desc
+            binding.tvCategory.text = jobRole.jobRole
             if(isSubCategory) {
-                binding.cardView.setCardBackgroundColor(Color.parseColor(workCategory.backgroundColor))
-                binding.tvDesc.visibility = View.GONE
+                binding.cardView.setCardBackgroundColor(Color.parseColor("#FFBDC7"))
             }
 
             binding.root.setOnClickListener{
-                onItemClick(workCategory)
+                onItemClick(jobRole)
             }
         }
     }

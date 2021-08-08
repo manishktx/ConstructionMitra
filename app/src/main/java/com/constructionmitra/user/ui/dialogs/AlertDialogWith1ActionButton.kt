@@ -7,11 +7,10 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment
 import com.constructionmitra.user.databinding.DialogAppAlertBinding
-import com.constructionmitra.user.databinding.DialogGetFirmDetailsBinding
 
-class GetFirmDetailsDialog(val onClick:() -> Unit) : DialogFragment() {
+class AlertDialogWith1ActionButton(val onClick:() -> Unit) : DialogFragment() {
 
-    lateinit var binding: DialogGetFirmDetailsBinding
+    lateinit var binding: DialogAppAlertBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +36,8 @@ class GetFirmDetailsDialog(val onClick:() -> Unit) : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = DialogGetFirmDetailsBinding.inflate(inflater, container, false).apply {
-            tvSubmit.setOnClickListener {
-                dismiss()
-                onClick()
-            }
+        binding = DialogAppAlertBinding.inflate(inflater, container, false).apply {
+
         }
         context ?: return binding.root
         return binding.root
@@ -49,6 +45,13 @@ class GetFirmDetailsDialog(val onClick:() -> Unit) : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.ivYes.setOnClickListener {
+            dismiss()
+            onClick()
+        }
+        binding.ivNo.setOnClickListener {
+            dismiss()
+        }
     }
 
     override fun onDismiss(dialog: DialogInterface) {
@@ -59,7 +62,7 @@ class GetFirmDetailsDialog(val onClick:() -> Unit) : DialogFragment() {
 
         @JvmStatic
         fun newInstance(onClick:() -> Unit) =
-            GetFirmDetailsDialog(onClick).apply {
+            AlertDialogWith1ActionButton(onClick).apply {
                 arguments = Bundle().apply {
 
                 }

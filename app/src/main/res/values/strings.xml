@@ -4,6 +4,11 @@
     <string name="title_dashboard">नेटवर्क</string>
     <string name="title_notifications">प्रोफ़ाइल</string>
     <string name="title_activity_login">LoginActivity</string>
+
+    <!--Errors -->
+    <string name="enter_valid_details">Please Enter Valid Details</string>
+    <string name="enter_valid_otp">Please Enter Valid OTP</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -12,7 +17,9 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <!-- App -->
+    <!-- Buttons text -->
+
+
     <!-- Login Module -->
     <string name="login_title">&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
     <string name="login_sub_heading">निर्माण स्थलों पर काम पाना हुआ अब आसान............</string>
@@ -62,7 +69,7 @@
         <item>P.O.P, वॉल पुट्टी</item>
         <item>पेंटिंग</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="heading">आपको वही काम दिखेंगे जिसमे 5 लोगों तक की \nजरुरत हो</string>
@@ -87,5 +94,9 @@
     <string name="upload_your_pic">Please upload your photo</string>
     <string name="update_exp">जानकारी जोड़े</string>
     <string name="share_your_exp">अपना अनुभव साझा करें</string>
+
+    <!-- Apply work -->
+    <string name="request_for_work">अवेदन करे</string>
+    <string name="go_back_to_home">होम पर वापस जाए</string>
 
 </resources>
