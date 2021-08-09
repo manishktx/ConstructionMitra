@@ -4,12 +4,10 @@ import com.constructionmitra.user.api.CMitraService
 import com.constructionmitra.user.api.Failure
 import com.constructionmitra.user.api.Result
 import com.constructionmitra.user.api.Success
-import com.constructionmitra.user.data.BaseResponse
-import com.constructionmitra.user.data.JobRole
-import com.constructionmitra.user.data.LoginResponse
-import com.constructionmitra.user.data.VerifyOtpData
+import com.constructionmitra.user.data.*
 import com.constructionmitra.user.utilities.ServerConstants
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import timber.log.Timber
 import javax.inject.Inject
@@ -57,6 +55,38 @@ class CMitraRepository  @Inject constructor(
             }
             else
                 Failure(Exception(baseResponse.message))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun fetchProfile(userId: String, token: String): Result<BaseResponse<ProfileData>>{
+        return try {
+            Success(cMitraService.profileDetail(
+                userId = userId,
+                token = token
+            ))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun getAvailableWork(hashMap: HashMap<String, String>): Result<BaseResponse<ProfileData>>{
+        return try {
+            Success(cMitraService.availableWork(
+                hashMap
+            ))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun updateProfile(hashMap: HashMap<String, String>): Result<BaseResponse<Any>>{
+        return try {
+            Success(cMitraService.updateProfile(hashMap))
         }catch (exp: Exception){
             Timber.d("okhttp: ${exp.toString()}")
             Failure(exp)

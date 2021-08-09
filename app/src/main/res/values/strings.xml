@@ -94,9 +94,11 @@
     <string name="upload_your_pic">Please upload your photo</string>
     <string name="update_exp">जानकारी जोड़े</string>
     <string name="share_your_exp">अपना अनुभव साझा करें</string>
+    <string name="quality">कौशल: %s</string>
 
     <!-- Apply work -->
     <string name="request_for_work">अवेदन करे</string>
     <string name="go_back_to_home">होम पर वापस जाए</string>
+    <string name="no_work_available">No work available!</string>
 
 </resources>

@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 import javax.inject.Singleton
 
+// todo: make it abstracted
 @Singleton
 class AppPreferences @Inject constructor(
     private val sharedPreferences: SharedPreferences
@@ -17,8 +18,15 @@ class AppPreferences @Inject constructor(
             putString(USER_ID, userId)
             putString(USER_ROLE, userRole)
             putString(TOKEN, token)
-        }.commit()
+        }.apply()
     }
+
+    fun getToken() = sharedPreferences.getString(TOKEN, "")
+
+    fun getUserId() = sharedPreferences.getString(USER_ID, "")
+
+    fun getUserRole() = sharedPreferences.getString(USER_ROLE, "")
+
 
     companion object{
         const val USER_ID = "user_id"

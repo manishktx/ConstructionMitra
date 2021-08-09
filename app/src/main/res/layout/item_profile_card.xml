@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -26,26 +27,39 @@
             android:padding="@dimen/small"
             >
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAvatar"
+                app:srcCompat="@drawable/ic_person"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/bg_circle_green"
+                />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nitin khushal"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:textSize="@dimen/text_medium"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivAvatar"
                 android:textColor="@color/black"
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvAbout"
+                android:id="@+id/tvQualities"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="अपना मोबाइल नंबर और नाम बतायें"
+                tools:text="अपना मोबाइल नंबर और नाम बतायें"
                 android:textSize="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/medium"
                 app:layout_constraintTop_toBottomOf="@id/tvName"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivAvatar"
                 android:textColor="@color/greyed_text"
                 />
 

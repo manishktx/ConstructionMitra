@@ -9,14 +9,21 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.constructionmitra.user.adapters.*
+import com.constructionmitra.user.data.AppPreferences
+import com.constructionmitra.user.data.ProfileData
 import com.constructionmitra.user.data.dummyWorkList
 import com.constructionmitra.user.databinding.FragmentHomeBinding
+import com.constructionmitra.user.utilities.showSnackBarShort
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
+    @Inject lateinit var appPreferences: AppPreferences
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -55,6 +62,38 @@ class HomeFragment : Fragment() {
 
         }
         binding.dotsIndicator.setViewPager(binding.vpProfile)
+
+        // Update profileView
+        setUpProfile()
+    }
+
+    private fun setUpProfile() {
+        appPreferences.getUserId()?.let {
+            userId ->
+            // Calling api
+            homeViewModel.fetchProfileInfo(userId, appPreferences.getToken()!!)
+        }?: binding.root.showSnackBarShort("User not found!")
+
+        // Observe result
+        homeViewModel.profileData.observe(viewLifecycleOwner){
+            it?.let {
+                profileData ->
+                // Update UI
+                updateUi(profileData)
+            }
+        }
+    }
+
+    private fun updateUi(profileData: ProfileData) {
+        with(profileData){
+            binding.profileView.tvName.text = fullName
+            if(!profilePic.isNullOrEmpty()){
+                // set profile image
+            }
+            else{
+                binding.profileView.ivAvatar.visibility = View.GONE
+            }
+        }
     }
 
 
