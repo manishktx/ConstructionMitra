@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppButton.Green" parent="">
+
+    <style name="App.Button.Green" parent="">
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/_12ssp</item>
@@ -8,4 +9,43 @@
         <item name="android:background">@drawable/bg_button_green</item>
         <item name="android:elevation">@dimen/_3sdp</item>
     </style>
+
+    <style name="App.Button.Blue" parent="">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:padding">@dimen/_8sdp</item>
+        <item name="android:background">@drawable/bg_button_blue</item>
+        <item name="android:elevation">@dimen/_3sdp</item>
+    </style>
+
+
+    <style name="App.Editable" parent="">
+        <item name="android:textColor">@color/grey_500</item>
+        <item name="android:paddingStart">@dimen/_10sdp</item>
+        <item name="android:paddingTop">@dimen/_10sdp</item>
+        <item name="android:paddingEnd">@dimen/_30sdp</item>
+        <item name="android:paddingBottom">@dimen/_10sdp</item>
+        <item name="android:background">@drawable/bg_border_grey_with_rounded_corner</item>
+    </style>
+
+
+    <style name="Theme.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView.Colored" >
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/blue_200</item> <!-- Active color -->
+        <item name="colorSurface">@color/white</item> <!-- Background -->
+        <item name="colorOnSurface">@color/black</item> <!-- Inactive color -->
+        <item name="elevation">@dimen/_24sdp</item>
+    </style>
+
+    <style name="App.Text.Title" parent="">
+        <item name="android:textColor">@color/greyed_text</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

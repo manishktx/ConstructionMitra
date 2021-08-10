@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">ConstructionMitra</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">होम</string>
+    <string name="title_dashboard">नेटवर्क</string>
+    <string name="title_notifications">प्रोफ़ाइल</string>
     <string name="title_activity_login">LoginActivity</string>
+
+    <!--Errors -->
+    <string name="enter_valid_details">Please Enter Valid Details</string>
+    <string name="enter_valid_otp">Please Enter Valid OTP</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -12,7 +17,9 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <!-- App -->
+    <!-- Buttons text -->
+
+
     <!-- Login Module -->
     <string name="login_title">&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
     <string name="login_sub_heading">निर्माण स्थलों पर काम पाना हुआ अब आसान............</string>
@@ -35,12 +42,12 @@
     <string name="type_otp">OTP टाइप करें</string>
     <string name="enter_4_digit_otp">अपना 4 अंको का OTP डालें</string>
     <string name="send_otp_again">OTP दोबारा भेजें</string>
-    <string name="next">आगे बढ़ें </string>
+    <string name="next">आगे बढ़ें/ Next</string>
     <string name="please_choose_one_option">किसी एक विकल्प को चुने</string>
-    <string name="congratulations_mobile_verified">कबधाई हो ! आपका मोबाइल नंबर वेरीफाई हो गया है</string>
+    <string name="congratulations_mobile_verified">बधाई हो ! आपका मोबाइल नंबर वेरीफाई हो गया है</string>
     <string name="labour">निर्माण श्रमिक</string>
     <string name="patti_contractor">पेट्टी कांट्रेक्टर</string>
-    <string name="need_work_for">स्वयं के लिए काम ढूंढ रहे हो तो यह विकल्प</string>
+    <string name="need_work_for">स्वयं के लिए काम ढूंढ रहे हो तो यह विकल्प चुने</string>
     <string name="choose_option_if_you_have_team">अगर आप के पास काम करने वालों की टीम है तो यहाँ विकल्प चुने</string>
     <string name="specialized_agency">Specialised Agency</string>
     <string name="specialized_in">वाटर प्रूफिंग, फायर फाइटिंग इत्यादि काम करते हो तो यह विकल्प चुनें</string>
@@ -61,9 +68,50 @@
         <item>इलेक्ट्रिक वर्क</item>
         <item>P.O.P, वॉल पुट्टी</item>
         <item>पेंटिंग</item>
-        <item></item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="heading">आपको वही काम दिखेंगे जिसमे 5 लोगों तक की \nजरुरत हो</string>
+    <string name="sub_heading">क्या आप कांट्रेक्टर के रूप में काम करना चाहते है ?\n हाँ या ना का विकल्प चुनिए</string>
+    <string name="yes">हाँ</string>
+    <string name="no">ना</string>
+    <string name="hint_firm_name">अपनी फर्म का नाम बतायें</string>
+    <string name="people_in_your_team">आपके पास कितने लोगो की टीम है</string>
+    <string name="team_count">कितने लोग</string>
+    <string name="submit">Submit</string>
+
+    <!-- Profile -->
+    <string name="about_yourself">अपने बारे में बताओ</string>
+    <string name="profile">प्रोफ़ाइल</string>
+    <string name="profile_subheading">काम पाने के लिए अपनी जानकारी सही दे या प्रोफाइल को अपडेट रखें</string>
+    <string name="about_your_work_priority">अपने काम की प्रथमिकता बतायें</string>
+    <string name="other_mobile_num">आपका अन्य मोबाइल नंबर</string>
+    <string name="work">काम</string>
+    <string name="team_count_title">टीम की सांख्य</string>
+    <string name="change_your_work">अपना चयनित कार्य बदलें</string>
+    <string name="gender">लिंग</string>
+    <string name="male">पुरुष</string>
+    <string name="female">इस्त्री</string>
+    <string name="other">अन्य</string>
+    <string name="hint_your_age">अपनी आयु बताएँ</string>
+    <string name="where_is_your_home">आपका घर कहां है</string>
+    <string name="help_us_to_find_work_for_you">ये जानकारी हमें मदद करती है आपको आपके घर के पास काम दिलवाने में</string>
+    <string name="upload_your_pic">Please upload your photo</string>
+    <string name="update_exp">जानकारी जोड़े</string>
+    <string name="share_your_exp">अपना अनुभव साझा करें</string>
+    <string name="quality">कौशल: %s</string>
+    <string-array name="work_exp_options">
+        <item>कोई अनुभव नहीं है</item>
+        <item>0 &#8211; 3 वर्ष अनुभव है</item>
+        <item>3 &#8211; 7 वर्ष अनुभव है</item>
+        <item>7 &#8211; 12 वर्ष अनुभव है</item>
+        <item>12 वर्शो से अधिकै</item>
+    </string-array>
+
+    <!-- Apply work -->
+    <string name="request_for_work">अवेदन करे</string>
+    <string name="go_back_to_home">होम पर वापस जाए</string>
+    <string name="no_work_available">No work available!</string>
 
 </resources>

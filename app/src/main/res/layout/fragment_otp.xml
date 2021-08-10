@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/enter_otp"
-        android:textSize="@dimen/_10ssp"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
         android:textColor="@color/greyed_text"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,6 +43,8 @@
         android:background="@drawable/bg_border_grey_with_rounded_corner"
         android:hint="@string/enter_4_digit_otp"
         android:maxLines="1"
+        android:inputType="number"
+        android:maxLength="4"
         android:padding="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
@@ -62,7 +65,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNext"
-        style="@style/AppButton.Green"
+        style="@style/App.Button.Green"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/next"
@@ -71,5 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+    <include layout="@layout/progress_bar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

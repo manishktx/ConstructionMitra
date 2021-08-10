@@ -4,4 +4,20 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="login_card_height">@dimen/_120sdp</dimen>
+    <dimen name="work_category_card_height">@dimen/_100sdp</dimen>
+    <dimen name="text_medium">@dimen/_12sdp</dimen>
+    <dimen name="text_small">@dimen/_8sdp</dimen>
+    <dimen name="text_large">@dimen/_16sdp</dimen>
+    <dimen name="text_big">@dimen/_22sdp</dimen>
+
+    <!-- Padding/ Margins-->
+    <dimen name="medium">@dimen/_12sdp</dimen>
+    <dimen name="small">@dimen/_8sdp</dimen>
+    <dimen name="large">@dimen/_16sdp</dimen>
+    <dimen name="x_large">@dimen/_18sdp</dimen>
+    <dimen name="big">@dimen/_22sdp</dimen>
+
+    <!-- Sizes of views -->
+    <dimen name="location_icon_size">@dimen/_70sdp</dimen>
+    <dimen name="work_detail_icon">@dimen/_60sdp</dimen>
 </resources>

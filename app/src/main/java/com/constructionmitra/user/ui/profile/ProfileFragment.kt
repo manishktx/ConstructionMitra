@@ -1,15 +1,20 @@
-package com.constructionmitra.user.ui.login
+package com.constructionmitra.user.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.constructionmitra.user.databinding.FragmentChooseWorkOptionBinding
+import com.constructionmitra.user.databinding.FragmentProfileBinding
 
-class ChooseWorkOption : Fragment() {
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-    private lateinit var binding: FragmentChooseWorkOptionBinding
+class ProfileFragment : Fragment() {
+
+    private lateinit var binding: FragmentProfileBinding
+    private var param1: String? = null
+    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,15 +28,15 @@ class ChooseWorkOption : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentChooseWorkOptionBinding.inflate(inflater, container, false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     companion object {
 
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ChooseWorkOption().apply {
+        fun newInstance() =
+            ProfileFragment().apply {
                 arguments = Bundle().apply {
 
                 }
