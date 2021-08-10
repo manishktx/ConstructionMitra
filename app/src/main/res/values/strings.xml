@@ -83,8 +83,13 @@
 
     <!-- Profile -->
     <string name="about_yourself">अपने बारे में बताओ</string>
+    <string name="profile">प्रोफ़ाइल</string>
+    <string name="profile_subheading">काम पाने के लिए अपनी जानकारी सही दे या प्रोफाइल को अपडेट रखें</string>
     <string name="about_your_work_priority">अपने काम की प्रथमिकता बतायें</string>
     <string name="other_mobile_num">आपका अन्य मोबाइल नंबर</string>
+    <string name="work">काम</string>
+    <string name="team_count_title">टीम की सांख्य</string>
+    <string name="change_your_work">अपना चयनित कार्य बदलें</string>
     <string name="gender">लिंग</string>
     <string name="male">पुरुष</string>
     <string name="female">इस्त्री</string>

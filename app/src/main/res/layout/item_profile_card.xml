@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/profileCardContainer"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profileCardContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,55 +13,115 @@
         android:layout_margin="@dimen/_5sdp"
         android:clipToPadding="false"
         app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_5sdp"
         app:cardElevation="@dimen/_3sdp"
         app:cardUseCompatPadding="true"
-        app:cardCornerRadius="@dimen/_5sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:cardBackgroundColor="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/small"
-            >
+            android:padding="@dimen/small">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivAvatar"
-                app:srcCompat="@drawable/ic_person"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@drawable/bg_circle_green"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:background="@drawable/bg_circle_green"
-                />
+                app:srcCompat="@drawable/ic_person" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nitin khushal"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:textSize="@dimen/text_medium"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivAvatar"
+                android:text="Nitin khushal"
                 android:textColor="@color/black"
-                />
+                android:textSize="@dimen/text_medium"
+                app:layout_constraintStart_toEndOf="@+id/ivAvatar"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvQualities"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="अपना मोबाइल नंबर और नाम बतायें"
-                android:textSize="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/medium"
-                app:layout_constraintTop_toBottomOf="@id/tvName"
-                app:layout_constraintStart_toEndOf="@+id/ivAvatar"
                 android:textColor="@color/greyed_text"
-                />
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@+id/ivAvatar"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                tools:text="अपना मोबाइल नंबर और नाम बतायें" />
+
+            <!-- Job Role view -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/tvQualities">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/titles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="@string/work"
+                        android:textColor="@color/blue_300"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvTeam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/team_count_title"
+                        android:textColor="@color/blue_300"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvJobRoles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/titles"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_job_role" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/App.Button.Blue"
+                    android:layout_width="@dimen/_140sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/_3sdp"
+                    android:text="@string/change_your_work"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rvJobRoles" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
