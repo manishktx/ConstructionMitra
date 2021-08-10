@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.constructionmitra.user.databinding.FragmentRequestForWorkBinding
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class WorkDetailsFragment : Fragment() {
     private lateinit var binding: FragmentRequestForWorkBinding
 
