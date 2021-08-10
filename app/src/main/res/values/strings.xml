@@ -83,6 +83,7 @@
 
     <!-- Profile -->
     <string name="about_yourself">अपने बारे में बताओ</string>
+    <string name="about_your_work_priority">अपने काम की प्रथमिकता बतायें</string>
     <string name="other_mobile_num">आपका अन्य मोबाइल नंबर</string>
     <string name="gender">लिंग</string>
     <string name="male">पुरुष</string>
@@ -95,6 +96,13 @@
     <string name="update_exp">जानकारी जोड़े</string>
     <string name="share_your_exp">अपना अनुभव साझा करें</string>
     <string name="quality">कौशल: %s</string>
+    <string-array name="work_exp_options">
+        <item>कोई अनुभव नहीं है</item>
+        <item>0 &#8211; 3 वर्ष अनुभव है</item>
+        <item>3 &#8211; 7 वर्ष अनुभव है</item>
+        <item>7 &#8211; 12 वर्ष अनुभव है</item>
+        <item>12 वर्शो से अधिकै</item>
+    </string-array>
 
     <!-- Apply work -->
     <string name="request_for_work">अवेदन करे</string>

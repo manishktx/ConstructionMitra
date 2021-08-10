@@ -38,6 +38,9 @@ class HomeAdapter(
         ) {
             binding.data = work
             binding.executePendingBindings()
+            binding.tvRequestForWork.setOnClickListener {
+                onItemClick(work)
+            }
         }
     }
 }

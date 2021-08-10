@@ -12,7 +12,7 @@ import com.constructionmitra.user.databinding.FragmentUploadPhotoIdBinding
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class UploadProfileAndIdFragment : Fragment() {
+class UploadPhotoAndIdFragment : Fragment() {
 
     private lateinit var binding: FragmentUploadPhotoIdBinding
     private var param1: String? = null
@@ -38,7 +38,7 @@ class UploadProfileAndIdFragment : Fragment() {
 
         @JvmStatic
         fun newInstance() =
-            UploadProfileAndIdFragment().apply {
+            UploadPhotoAndIdFragment().apply {
                 arguments = Bundle().apply {
 
                 }

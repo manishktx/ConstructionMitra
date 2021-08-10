@@ -11,7 +11,7 @@ import com.constructionmitra.user.databinding.FragmentAboutBinding
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class AboutYourSelfFragment : Fragment() {
+class WorkLocationFragment : Fragment() {
 
     private lateinit var binding: FragmentAboutBinding
     private var param1: String? = null
@@ -37,7 +37,7 @@ class AboutYourSelfFragment : Fragment() {
 
         @JvmStatic
         fun newInstance() =
-            AboutYourSelfFragment().apply {
+            WorkLocationFragment().apply {
                 arguments = Bundle().apply {
 
                 }

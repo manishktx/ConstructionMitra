@@ -19,4 +19,5 @@
 
     <!-- Sizes of views -->
     <dimen name="location_icon_size">@dimen/_70sdp</dimen>
+    <dimen name="work_detail_icon">@dimen/_60sdp</dimen>
 </resources>

@@ -6,10 +6,14 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment
+import com.constructionmitra.user.R
 import com.constructionmitra.user.databinding.DialogAppAlertBinding
 import com.constructionmitra.user.databinding.DialogGetFirmDetailsBinding
+import com.constructionmitra.user.utilities.showToast
 
-class GetFirmDetailsDialog(val onClick:() -> Unit) : DialogFragment() {
+class GetFirmDetailsDialog(
+    val onClick:(firmName: String, numOfWorkers: String) -> Unit
+) : DialogFragment() {
 
     lateinit var binding: DialogGetFirmDetailsBinding
 
@@ -39,26 +43,27 @@ class GetFirmDetailsDialog(val onClick:() -> Unit) : DialogFragment() {
     ): View {
         binding = DialogGetFirmDetailsBinding.inflate(inflater, container, false).apply {
             tvSubmit.setOnClickListener {
-                dismiss()
-                onClick()
+                if(isDetailsAreValid()){
+                    dismiss()
+                    onClick(binding.etFirmName.text.toString(), binding.etTeamCount.text.toString())
+                }
+                else{
+                    binding.root.showToast(getString(R.string.enter_valid_details))
+                }
             }
         }
         context ?: return binding.root
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    override fun onDismiss(dialog: DialogInterface) {
-        super.onDismiss(dialog)
-    }
+    private fun isDetailsAreValid() =
+        binding.etFirmName.text.toString().trim().length > 3 &&
+                binding.etTeamCount.text.toString().trim().isNotEmpty()
 
     companion object {
 
         @JvmStatic
-        fun newInstance(onClick:() -> Unit) =
+        fun newInstance(onClick:(firmName: String, numOfWorkers: String) -> Unit) =
             GetFirmDetailsDialog(onClick).apply {
                 arguments = Bundle().apply {
 

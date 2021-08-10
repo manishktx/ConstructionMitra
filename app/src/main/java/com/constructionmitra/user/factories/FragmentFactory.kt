@@ -1,6 +1,7 @@
 package com.constructionmitra.user.factories
 
 import androidx.fragment.app.Fragment
+import com.constructionmitra.user.ui.profile.*
 import com.constructionmitra.user.ui.work.WorkDetailsFragment
 import java.lang.IllegalArgumentException
 import javax.inject.Inject
@@ -25,8 +26,24 @@ class FragmentFactory @Inject constructor() {
 
         fun create(className: String): Fragment{
             return  when(className) {
+                AboutFragment::class.java.name ->
+                    AboutFragment.newInstance()
+
+                WorkExpFragment::class.java.name ->
+                    WorkExpFragment.newInstance()
+
+                WorkPriorityFragment::class.java.name ->
+                    WorkPriorityFragment.newInstance()
+
+                WorkLocationFragment::class.java.name ->
+                    WorkLocationFragment.newInstance()
+
+                UploadPhotoAndIdFragment::class.java.name ->
+                    UploadPhotoAndIdFragment.newInstance()
+
                 WorkDetailsFragment::class.java.name ->
                     WorkDetailsFragment.newInstance()
+
                 else ->
                     throw IllegalArgumentException("Unknown Fragment class $className")
             }

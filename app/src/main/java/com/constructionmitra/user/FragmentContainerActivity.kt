@@ -1,17 +1,13 @@
-package com.constructionmitra.user.ui.base
+package com.constructionmitra.user
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import com.constructionmitra.user.R
 import com.constructionmitra.user.databinding.FragmentContainerActivityBinding
 import com.constructionmitra.user.factories.FragmentFactory
-import com.constructionmitra.user.ui.work.WorkDetailsFragment
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class DisplayFragmentActivity : AppCompatActivity() {
+class FragmentContainerActivity : AppCompatActivity() {
 
     @Inject
     lateinit var fragmentFactory: FragmentFactory
@@ -19,7 +15,7 @@ class DisplayFragmentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FragmentContainerActivityBinding.inflate(layoutInflater).also {
-            this@DisplayFragmentActivity.setContentView(it.root)
+            this@FragmentContainerActivity.setContentView(it.root)
 
             intent.getStringExtra(FRAGMENT_NAME)?.let {
                 supportFragmentManager.commit {

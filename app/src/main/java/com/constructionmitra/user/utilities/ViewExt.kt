@@ -9,6 +9,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.view.View
 import android.view.animation.Animation
+import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.snackbar.Snackbar
@@ -105,6 +106,10 @@ fun View.showSnackBarShort(message: String){
 
 fun View.showSnackBarLong(message: String){
     Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
+}
+
+fun View.showToast(message: String){
+    Toast.makeText(this.context, message, Toast.LENGTH_SHORT).show()
 }
 
 fun View.showSnackBarIndefinite(message: String){

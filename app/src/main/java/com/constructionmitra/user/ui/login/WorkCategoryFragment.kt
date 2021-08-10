@@ -11,7 +11,6 @@ import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.data.dummyList
 import com.constructionmitra.user.databinding.FragmentChooseWorkCategoryBinding
 import com.constructionmitra.user.ui.login.adapters.CategoryAdapter
-import com.constructionmitra.user.ui.login.adapters.WorkCategoryAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -45,7 +44,7 @@ class WorkCategoryFragment : Fragment() {
         binding.tvMobileNumb.text = "+91".plus(args.mobile)
 
         binding.rvCategories.adapter = CategoryAdapter(dummyList) {
-            WorkCategoryFragmentDirections.toWorkSubCategories().apply {
+            WorkCategoryFragmentDirections.toWorkSubCategories("2").apply {
                 findNavController().navigate(this)
             }
         }

@@ -1,18 +1,20 @@
 package com.constructionmitra.user.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.constructionmitra.user.FragmentContainerActivity
+import com.constructionmitra.user.R
 import com.constructionmitra.user.adapters.*
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.data.ProfileData
-import com.constructionmitra.user.data.dummyWorkList
 import com.constructionmitra.user.databinding.FragmentHomeBinding
+import com.constructionmitra.user.databinding.ItemProfileCardBinding
+import com.constructionmitra.user.ui.profile.*
 import com.constructionmitra.user.utilities.showSnackBarShort
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +23,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
+    private lateinit var profileViewBinding: ItemProfileCardBinding
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
     @Inject lateinit var appPreferences: AppPreferences
@@ -37,7 +40,9 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false).apply {
+            profileViewBinding = ItemProfileCardBinding.bind(topBar)
+        }
         return binding.root
     }
 
@@ -56,15 +61,37 @@ class HomeFragment : Fragment() {
 
         // setUp profile banner
         binding.vpProfile.adapter = ProfilePagerAdapter(
-            DUMMY_LIST,
+            PROFILE_CARDS,
         ){
             // onItemClickListener
-
+            when(it.profile){
+                Profile.ABOUT ->
+                    navigateTo(AboutFragment::class.java.name)
+                Profile.EXPERIENCE ->
+                    navigateTo(WorkExpFragment::class.java.name)
+                Profile.WORK_PRIORITY ->
+                    navigateTo(WorkPriorityFragment::class.java.name)
+                Profile.WORK_LOCATION ->
+                    navigateTo(WorkLocationFragment::class.java.name)
+                Profile.PHOTO_AND_ID_CARD ->
+                    navigateTo(UploadPhotoAndIdFragment::class.java.name)
+            }
         }
         binding.dotsIndicator.setViewPager(binding.vpProfile)
 
         // Update profileView
         setUpProfile()
+    }
+
+    private fun navigateTo(fragmentName: String){
+        Intent(requireContext(), FragmentContainerActivity::class.java).apply {
+            putExtra(FragmentContainerActivity.FRAGMENT_NAME, fragmentName)
+            startActivity(this)
+        }
+        requireActivity().overridePendingTransition(
+            R.anim.enter_anim_activity,
+            R.anim.exit_anim_activity
+        )
     }
 
     private fun setUpProfile() {
@@ -86,16 +113,15 @@ class HomeFragment : Fragment() {
 
     private fun updateUi(profileData: ProfileData) {
         with(profileData){
-            binding.profileView.tvName.text = fullName
+            profileViewBinding.tvName.text = fullName
             if(!profilePic.isNullOrEmpty()){
                 // set profile image
             }
             else{
-                binding.profileView.ivAvatar.visibility = View.GONE
+//                binding.profileView.ivAvatar.visibility = View.GONE
             }
         }
     }
-
 
     private fun getTabTitle(position: Int): String? {
         return when (position) {

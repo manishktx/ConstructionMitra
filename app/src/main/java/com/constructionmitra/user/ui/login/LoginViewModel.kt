@@ -30,6 +30,9 @@ class LoginViewModel @Inject constructor(
     private var _jobRoles  = MutableLiveData<List<JobRole>>()
     val jobRoles = _jobRoles
 
+    private var _updateFirmDetails  = MutableLiveData<BaseResponse<Any>>()
+    val updateFirmDetails = _updateFirmDetails
+
     fun requestOtp(mobile: String) {
         viewModelScope.launch {
             when (val result: Result<LoginResponse> = repository.requestOtp(mobile)){
@@ -62,11 +65,36 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun requestJobRoles() {
+    fun requestJobRoles(jobCategory: String) {
         viewModelScope.launch {
-            when (val result: Result<List<JobRole>> = repository.jobRoles()){
+            when (val result: Result<List<JobRole>> = repository.jobRoles(jobCategory)){
                 is Success -> {
                     jobRoles.postValue(result.data)
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
+    fun updateFirmDetails(userId: String, firmName: String, numOfWorkers: String, token: String){
+        viewModelScope.launch {
+            when (val result: Result<BaseResponse<Any>> = repository.updateProfile(
+                hashMapOf(
+                    "user_id" to userId,
+                    "firm_name" to firmName,
+                    "no_of_workers" to numOfWorkers,
+                    "token" to token,
+                )
+            )){
+                is Success -> {
+                    if(result.data.status.equals(ServerConstants.STATUS_SUCCESS, ignoreCase = true)){
+                        _updateFirmDetails.postValue(result.data)
+                    }
+                    else{
+                        onFailedResponse(Exception(result.data.message))
+                    }
                 }
                 is Failure -> {
                     onFailedResponse(result.error as Exception)

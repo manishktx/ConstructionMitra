@@ -10,22 +10,38 @@ import com.constructionmitra.user.R
 import com.constructionmitra.user.data.ProfileItem
 import com.constructionmitra.user.databinding.ItemProfileBinding
 
-val  DUMMY_LIST = listOf<ProfileItem>(
+enum class Profile{
+    ABOUT, EXPERIENCE, WORK_LOCATION, WORK_PRIORITY, PHOTO_AND_ID_CARD
+}
+
+val  PROFILE_CARDS = listOf<ProfileItem>(
+    ProfileItem(R.drawable.ic_bag,
+        "अपने बारे में बताओ",
+        "जानकारी जोड़े",
+        Profile.ABOUT),
     ProfileItem(R.drawable.ic_bag,
     "अपना अनुभव साझा करें",
-    "जानकारी जोड़े"),
+    "जानकारी जोड़े" ,
+        Profile.EXPERIENCE,
+    ),
 
     ProfileItem(R.drawable.ic_bag,
         "अपने काम करने की जगों",
-        "जानकारी जोड़े"),
+        "जानकारी जोड़े",
+        Profile.WORK_LOCATION,
+    ),
 
     ProfileItem(R.drawable.ic_bag,
         "अपने काम की प्रथमिकता",
-        "जानकारी जोड़े"),
+        "जानकारी जोड़े",
+        Profile.WORK_PRIORITY,
+    ),
 
     ProfileItem(R.drawable.ic_bag,
         "फोटो और आईडी",
-        "जानकारी जोड़े"),
+        "जानकारी जोड़े",
+        Profile.PHOTO_AND_ID_CARD
+    ),
 )
 
 class ProfilePagerAdapter(
@@ -49,7 +65,8 @@ class ProfilePagerAdapter(
         binding.root.apply {
             // set data
             container.addView(this)
-            setOnClickListener {
+            binding.tvCta.setOnClickListener {
+                onClick(items[position])
             }
         }
         binding.data = items[position]

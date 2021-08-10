@@ -31,15 +31,17 @@ interface CMitraService {
         @Field("token") token: String,
     ): BaseResponse<ProfileData>
 
-    @Multipart
+    @FormUrlEncoded
     @POST("api/v1/user/update_profile")
     suspend fun updateProfile(
-        @PartMap map: HashMap<String, String>
+        @FieldMap map: HashMap<String, String>
     ): BaseResponse<Any>
 
     // Work
-    @GET("api/v1/common/job_roles/1")
-    suspend fun getJobRoles(): BaseResponse<List<JobRole>>
+    @GET("api/v1/common/job_roles/{jobCategory}")
+    suspend fun getJobRoles(
+        @Path("jobCategory") jobCategory: String
+    ): BaseResponse<List<JobRole>>
 
     @Multipart
     @POST("api/v1/common/job_post_list/available")

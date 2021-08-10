@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.constructionmitra.user.R
 import com.constructionmitra.user.databinding.FragmentAboutBinding
+import com.constructionmitra.user.databinding.FragmentAboutWorkExpBinding
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class AboutYourWorkPlaceFragment : Fragment() {
+class WorkPriorityFragment : Fragment() {
 
-    private lateinit var binding: FragmentAboutBinding
+    private lateinit var binding: FragmentAboutWorkExpBinding
     private var param1: String? = null
     private var param2: String? = null
 
@@ -29,7 +30,7 @@ class AboutYourWorkPlaceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAboutBinding.inflate(inflater, container, false)
+        binding = FragmentAboutWorkExpBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -37,7 +38,7 @@ class AboutYourWorkPlaceFragment : Fragment() {
 
         @JvmStatic
         fun newInstance() =
-            AboutYourWorkPlaceFragment().apply {
+            WorkPriorityFragment().apply {
                 arguments = Bundle().apply {
 
                 }

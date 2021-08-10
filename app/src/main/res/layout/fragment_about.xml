@@ -22,12 +22,11 @@
                 android:id="@+id/tvHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/about_yourself"
-                android:textSize="@dimen/x_large"
-                android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/greyed_text"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/about_yourself"
+                android:textColor="@color/greyed_text"
+                android:textSize="@dimen/x_large"
                 />
 
 
@@ -37,15 +36,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_25sdp"
-                android:hint="@string/hint_firm_name"
-                android:maxLines="1"
-                android:inputType="none"
-                android:gravity="center_horizontal"
-                android:text="Manish"
                 android:drawableStart="@drawable/ic_person"
                 android:drawablePadding="@dimen/_5sdp"
                 android:drawableTint="@color/blue_200"
-                />
+                android:gravity="center_horizontal"
+                android:hint="@string/hint_firm_name"
+                android:inputType="none"
+                android:maxLines="1"
+                android:text="Manish" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etPhoneNum"
@@ -53,15 +51,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:hint="@string/hint_firm_name"
-                android:maxLines="1"
-                android:inputType="none"
-                android:text="+91 8860456765"
-                android:gravity="center_horizontal"
                 android:drawableStart="@drawable/ic_phone"
                 android:drawablePadding="@dimen/_5sdp"
                 android:drawableTint="@color/blue_200"
-                />
+                android:gravity="center_horizontal"
+                android:hint="@string/hint_firm_name"
+                android:inputType="none"
+                android:maxLines="1"
+                android:text="+91 8860456765" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etOtherPhoneNum"
@@ -69,14 +66,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:hint="@string/other_mobile_num"
-                android:maxLines="1"
-                android:inputType="none"
-                android:gravity="center_horizontal"
                 android:drawableStart="@drawable/ic_phone"
                 android:drawablePadding="@dimen/_5sdp"
                 android:drawableTint="@color/blue_200"
-                />
+                android:gravity="center_horizontal"
+                android:hint="@string/other_mobile_num"
+                android:inputType="none"
+                android:maxLines="1" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -87,50 +83,50 @@
                     android:id="@+id/tvGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gender"
-                    android:textSize="@dimen/medium"
-                    android:textColor="@color/greyed_text"
                     android:layout_marginStart="@dimen/_5sdp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/gender"
+                    android:textColor="@color/greyed_text"
+                    android:textSize="@dimen/medium"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
                 <RadioGroup
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toEndOf="@+id/tvGender"
                     android:layout_marginStart="@dimen/_20sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvGender"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <RadioButton
                         android:id="@+id/radio_button_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textSize="@dimen/medium"
+                        android:text="@string/male"
                         android:textColor="@color/greyed_text"
-                        android:text="@string/male"/>
+                        android:textSize="@dimen/medium" />
 
                     <RadioButton
                         android:id="@+id/radio_button_2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:textSize="@dimen/medium"
+                        android:text="@string/female"
                         android:textColor="@color/greyed_text"
-                        android:text="@string/female"/>
+                        android:textSize="@dimen/medium" />
 
                     <RadioButton
                         android:id="@+id/radio_button_3"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textSize="@dimen/medium"
-                        android:textColor="@color/greyed_text"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:text="@string/other"/>
+                        android:text="@string/other"
+                        android:textColor="@color/greyed_text"
+                        android:textSize="@dimen/medium" />
 
                 </RadioGroup>
 
@@ -142,14 +138,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:hint="@string/hint_your_age"
-                android:maxLines="1"
-                android:inputType="number"
-                android:gravity="center_horizontal"
                 android:drawableStart="@drawable/ic_calender"
                 android:drawablePadding="@dimen/_5sdp"
                 android:drawableTint="@color/blue_200"
-                />
+                android:gravity="center_horizontal"
+                android:hint="@string/hint_your_age"
+                android:inputType="number"
+                android:maxLines="1" />
 
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -158,14 +153,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:hint="@string/where_is_your_home"
-                android:maxLines="1"
-                android:inputType="number"
-                android:gravity="center_horizontal"
                 android:drawableStart="@drawable/ic_location"
                 android:drawablePadding="@dimen/_5sdp"
                 android:drawableTint="@color/blue_200"
-                />
+                android:gravity="center_horizontal"
+                android:hint="@string/where_is_your_home"
+                android:inputType="number"
+                android:maxLines="1" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etCurrentLocation"
@@ -173,27 +167,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:hint="@string/where_is_your_home"
-                android:maxLines="1"
-                android:inputType="number"
-                android:gravity="center_horizontal"
                 android:drawableStart="@drawable/ic_location"
                 android:drawablePadding="@dimen/_5sdp"
                 android:drawableTint="@color/blue_200"
-                />
+                android:gravity="center_horizontal"
+                android:hint="@string/where_is_your_home"
+                android:inputType="number"
+                android:maxLines="1" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/hintMobileNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/help_us_to_find_work_for_you"
-                android:textSize="@dimen/_10ssp"
-                android:textColor="@color/greyed_text"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_gravity="center_horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/etOtp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/help_us_to_find_work_for_you"
+                android:textColor="@color/greyed_text"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/etOtp" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

@@ -22,7 +22,7 @@ class CMitraRepository  @Inject constructor(
         return try {
             Success(cMitraService.requestOtp(
                 hashMapOf(
-                    "user_role" to "4".toRequestBody("text/plain".toMediaTypeOrNull()),
+                    "user_role" to "3".toRequestBody("text/plain".toMediaTypeOrNull()),
                     "fcm_id" to  "ANDROIDKT".toRequestBody("text/plain".toMediaTypeOrNull()),
                     "phone_number" to mobile.toRequestBody("text/plain".toMediaTypeOrNull()),
                     "full_name" to "Manish".toRequestBody("text/plain".toMediaTypeOrNull())
@@ -46,9 +46,9 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
-    suspend fun jobRoles(): Result<List<JobRole>>{
+    suspend fun jobRoles(jobCategory: String): Result<List<JobRole>>{
         return try {
-           val baseResponse = cMitraService.getJobRoles()
+           val baseResponse = cMitraService.getJobRoles(jobCategory)
             Timber.d("jobRoles: $baseResponse")
             if(baseResponse.status.equals(ServerConstants.STATUS_SUCCESS, ignoreCase = true)){
                 Success(baseResponse.data!!)

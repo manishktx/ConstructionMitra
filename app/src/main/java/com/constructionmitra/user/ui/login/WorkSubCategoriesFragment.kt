@@ -7,15 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.constructionmitra.user.MainActivity
 import com.constructionmitra.user.R
-import com.constructionmitra.user.data.dummyListSubCategories
+import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategoriesBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
-import com.constructionmitra.user.ui.dialogs.AppAlertDialog
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
-import com.constructionmitra.user.ui.login.adapters.WorkCategoryAdapter
+import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
+import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class WorkSubCategoriesFragment : Fragment() {
@@ -24,6 +26,10 @@ class WorkSubCategoriesFragment : Fragment() {
     private lateinit var progressBarBinding: ProgressBarBinding
 
     private val viewModel: LoginViewModel by viewModels()
+
+    private val args: WorkSubCategoriesFragmentArgs by navArgs()
+    @Inject
+    lateinit var appPreferences: AppPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +51,7 @@ class WorkSubCategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showProgress(true)
-        viewModel.requestJobRoles()
+        viewModel.requestJobRoles(args.jobCategory)
 //        binding.rvSubCategories.adapter = WorkCategoryAdapter(dummyListSubCategories, isSubCategory = true) {
 //            AppAlertDialog.newInstance {
 //                navigateToHome()
@@ -60,11 +66,30 @@ class WorkSubCategoriesFragment : Fragment() {
             showProgress(false)
             it?.let {
                 binding.rvSubCategories.adapter =
-                    WorkCategoryAdapter(it, isSubCategory = true) {
+                    WorkSubCategoryAdapter(it, isSubCategory = true) {
+                        // ask for firm details
                         GetFirmDetailsDialog.newInstance {
-                            navigateToHome()
+                            firmName, numOfWorkers ->
+                            // Update firm details
+                            showProgress(true)
+                            viewModel.updateFirmDetails(
+                                appPreferences.getUserId()!!, firmName, numOfWorkers, "TnNEOEQ1OXFvYXJRdkZyUWx6SWVlZz09"
+                            )
+//                            navigateToHome()
                         }.show(childFragmentManager, "alert_dialog")
                     }
+            }
+        }
+
+        viewModel.updateFirmDetails.observe(viewLifecycleOwner){
+            showProgress(false)
+            navigateToHome()
+        }
+
+        viewModel.errorMsg.observe(viewLifecycleOwner){
+            showProgress(false)
+            it?.let {
+                binding.root.showToast(it)
             }
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/profileCardContainer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -43,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nitin khushal"
-                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:textSize="@dimen/text_medium"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivAvatar"
@@ -56,7 +57,7 @@
                 android:layout_height="wrap_content"
                 tools:text="अपना मोबाइल नंबर और नाम बतायें"
                 android:textSize="@dimen/_10sdp"
-                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/medium"
                 app:layout_constraintTop_toBottomOf="@id/tvName"
                 app:layout_constraintStart_toEndOf="@+id/ivAvatar"

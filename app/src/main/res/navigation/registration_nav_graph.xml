@@ -71,6 +71,10 @@
         android:id="@+id/workSubCategories"
         android:name="com.constructionmitra.user.ui.login.WorkSubCategoriesFragment"
         tools:layout="@layout/fragment_choose_your_work_sub_categories">
+
+        <argument
+            android:name="jobCategory"
+            app:argType="string"/>
     </fragment>
 
 </navigation>
