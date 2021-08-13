@@ -65,19 +65,13 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/viewDuration" />
 
-            <include
-                android:id="@+id/viewWorkDesc"
-                layout="@layout/item_work_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/viewProjectDetails" />
 
             <include
                 android:id="@+id/companyName"
                 layout="@layout/item_work_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/viewWorkDesc" />
+                app:layout_constraintTop_toBottomOf="@+id/viewProjectDetails" />
 
             <include
                 android:id="@+id/workLocation"
@@ -94,8 +88,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/workLocation" />
 
             <include
-                android:id="@+id/phoneNumber"
-                layout="@layout/item_work_detail"
+                android:id="@+id/contactDetails"
+                layout="@layout/item_wd_contact_detail_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/contractorDetails" />
@@ -105,7 +99,7 @@
                 layout="@layout/item_work_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/contactDetails" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -135,8 +129,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="@dimen/_60sdp"
         android:layout_marginEnd="@dimen/_60sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/tvReqForContact"
+        android:layout_marginBottom="@dimen/_5sdp"
         />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvReqForContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_otp"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/greyed_text"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_15sdp"
+        />
+
+    <include layout="@layout/progress_bar"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

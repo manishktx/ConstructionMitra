@@ -37,17 +37,38 @@ interface CMitraService {
         @FieldMap map: HashMap<String, String>
     ): BaseResponse<Any>
 
+    @FormUrlEncoded
+    @POST("api/v1/user/update_profile")
+    suspend fun updateJobRoles(
+        @FieldMap map: HashMap<String, String>
+    ): BaseResponse<Any>
+
+    @GET("api/v1/common/active_locations")
+    suspend fun activeLocations(
+    ): BaseResponse<List<Location>>
+
+    @GET("api/v1/common/experience")
+    suspend fun workExpOptions(
+    ): BaseResponse<List<WorkExperience>>
+
     // Work
     @GET("api/v1/common/job_roles/{jobCategory}")
     suspend fun getJobRoles(
         @Path("jobCategory") jobCategory: String
     ): BaseResponse<List<JobRole>>
 
-    @Multipart
+    @FormUrlEncoded
     @POST("api/v1/common/job_post_list/available")
-    suspend fun availableWork(
-        @PartMap map: HashMap<String, String>
-    ): BaseResponse<ProfileData>
+    suspend fun getAvailableJobs(
+        @FieldMap map: HashMap<String, Any>
+    ): BaseResponse<List<Job>>
+
+    @FormUrlEncoded
+    @POST("api/v1/common/job_mapping")
+    suspend fun mapJob(
+        @Field("user_id") userId: String,
+        @Field("job_post_id") jobPostId: String,
+    ): BaseResponse<Any>
 
     companion object {
         private const val BASE_URL = "http://creativemint.in/cmitra/"

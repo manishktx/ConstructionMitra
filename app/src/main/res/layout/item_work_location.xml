@@ -25,19 +25,31 @@
             android:id="@+id/icon"
             android:layout_width="@dimen/location_icon_size"
             android:layout_height="@dimen/location_icon_size"
-            app:srcCompat="@drawable/ic_location"
-            app:tint="@color/red_200"
+            app:srcCompat="@drawable/ic_city"
+            app:tint="@color/grey_200"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvPlaceName"
-            android:textSize="@dimen/large"
+            android:textSize="@dimen/text_medium"
             android:textColor="@color/greyed_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="DELHI"
             />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivTick"
+            android:layout_width="@dimen/ic_done_size"
+            android:layout_height="@dimen/ic_done_size"
+            app:srcCompat="@drawable/ic_round_done"
+            android:tint="@color/blue_300"
+            android:layout_gravity="center_vertical|end"
+            android:layout_margin="@dimen/_10sdp"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
     </androidx.cardview.widget.CardView>
 

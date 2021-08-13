@@ -6,15 +6,20 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment
+import com.constructionmitra.user.databinding.DialogAlertWithOneActionButtonBinding
 import com.constructionmitra.user.databinding.DialogAppAlertBinding
 
 class AlertDialogWith1ActionButton(val onClick:() -> Unit) : DialogFragment() {
 
-    lateinit var binding: DialogAppAlertBinding
+    private var message: String? = null
+    private var actionButtonText: String? = null
+    lateinit var binding: DialogAlertWithOneActionButtonBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+            actionButtonText = it.getString(KEY_ACTION_BUTTON_TEXT)
+            message = it.getString(KEY_MSG)
         }
     }
 
@@ -36,22 +41,16 @@ class AlertDialogWith1ActionButton(val onClick:() -> Unit) : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = DialogAppAlertBinding.inflate(inflater, container, false).apply {
-
-        }
         context ?: return binding.root
+        binding = DialogAlertWithOneActionButtonBinding.inflate(inflater, container, false).apply {
+            tvActionButton.text = actionButtonText ?: "ok"
+            tvMessage.text = message ?: "Success!"
+            tvActionButton.setOnClickListener {
+                dismiss()
+                onClick()
+            }
+        }
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.ivYes.setOnClickListener {
-            dismiss()
-            onClick()
-        }
-        binding.ivNo.setOnClickListener {
-            dismiss()
-        }
     }
 
     override fun onDismiss(dialog: DialogInterface) {
@@ -59,12 +58,17 @@ class AlertDialogWith1ActionButton(val onClick:() -> Unit) : DialogFragment() {
     }
 
     companion object {
-
+        private const val KEY_MSG = "key_msg"
+        private const val KEY_ACTION_BUTTON_TEXT = "key_action_button"
         @JvmStatic
-        fun newInstance(onClick:() -> Unit) =
+        fun newInstance(
+            message: String,
+            actionButtonText: String,
+            onClick:() -> Unit) =
             AlertDialogWith1ActionButton(onClick).apply {
                 arguments = Bundle().apply {
-
+                    putString(KEY_MSG, message)
+                    putString(KEY_ACTION_BUTTON_TEXT, actionButtonText)
                 }
             }
     }

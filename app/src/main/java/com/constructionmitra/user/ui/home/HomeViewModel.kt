@@ -64,22 +64,4 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
-
-    fun getAvailableWork(hashMap: HashMap<String, String>){
-        viewModelScope.launch {
-            when(val result = repository.getAvailableWork(hashMap)){
-                is Success -> {
-                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
-
-                    }
-                    else{
-                        onFailedResponse(Exception(result.data.message))
-                    }
-                }
-                is Failure -> {
-
-                }
-            }
-        }
-    }
 }

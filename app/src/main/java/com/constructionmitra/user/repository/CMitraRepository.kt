@@ -1,5 +1,6 @@
 package com.constructionmitra.user.repository
 
+import android.print.PrintJobId
 import com.constructionmitra.user.api.CMitraService
 import com.constructionmitra.user.api.Failure
 import com.constructionmitra.user.api.Result
@@ -73,10 +74,54 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
-    suspend fun getAvailableWork(hashMap: HashMap<String, String>): Result<BaseResponse<ProfileData>>{
+    suspend fun updateProfile(hashMap: HashMap<String, String>): Result<BaseResponse<Any>>{
         return try {
-            Success(cMitraService.availableWork(
-                hashMap
+            Success(cMitraService.updateProfile(hashMap))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun getAvailableJobs(
+        userId: String,
+        limit: Int,
+        offset: Int,
+        locationId: String
+    ): Result<BaseResponse<List<Job>>>{
+        val mapReq = hashMapOf<String, Any>(
+            "user_id" to userId,
+            "limit" to limit,
+            "offset" to offset,
+            "location_id" to locationId,
+        )
+        return try {
+            Success(cMitraService.getAvailableJobs(mapReq))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun updateJobRoles(userId: String, token: String, jobRoleIds: String): Result<BaseResponse<Any>>{
+        return try {
+            val mapReq = hashMapOf<String, String>(
+                "user_id" to userId,
+                "token" to token,
+                "job_role_ids" to jobRoleIds,
+            )
+            Success(cMitraService.updateJobRoles(mapReq))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun mapJob(userId: String, jobId: String): Result<BaseResponse<Any>>{
+        return try {
+            Success(cMitraService.mapJob(
+                userId = userId,
+                jobPostId =  jobId
             ))
         }catch (exp: Exception){
             Timber.d("okhttp: ${exp.toString()}")
@@ -84,9 +129,18 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
-    suspend fun updateProfile(hashMap: HashMap<String, String>): Result<BaseResponse<Any>>{
+    suspend fun activeLocations(): Result<BaseResponse<List<Location>>>{
         return try {
-            Success(cMitraService.updateProfile(hashMap))
+            Success(cMitraService.activeLocations())
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun workExpOptions(): Result<BaseResponse<List<WorkExperience>>>{
+        return try {
+            Success(cMitraService.workExpOptions())
         }catch (exp: Exception){
             Timber.d("okhttp: ${exp.toString()}")
             Failure(exp)

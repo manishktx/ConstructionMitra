@@ -8,4 +8,7 @@ data class JobRole(
     @SerializedName("job_role_hn") val jobRoleHn: String,
     @SerializedName("job_role_image") val jobRoleImage: String,
     @SerializedName("role_id") val roleId: String
-)
+){
+
+    var isChecked = false
+}

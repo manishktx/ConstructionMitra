@@ -114,12 +114,12 @@ class HomeFragment : Fragment() {
     private fun updateUi(profileData: ProfileData) {
         with(profileData){
             profileViewBinding.tvName.text = fullName
-            if(!profilePic.isNullOrEmpty()){
-                // set profile image
+            if(profileData.jobRoles.isNotEmpty()) {
+                profileViewBinding.rvJobRoles.adapter =
+                    JobRoleAdapter(profileData.jobRoles, noOfWorker) {}
+                return
             }
-            else{
-//                binding.profileView.ivAvatar.visibility = View.GONE
-            }
+            profileViewBinding.viewRoles.visibility = View.GONE
         }
     }
 

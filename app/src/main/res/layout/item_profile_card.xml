@@ -41,14 +41,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:text="Nitin khushal"
+                tools:text="Nitin khushal"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_medium"
                 app:layout_constraintStart_toEndOf="@+id/ivAvatar"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvQualities"
+                android:id="@+id/tvPhoneNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
@@ -61,10 +61,11 @@
 
             <!-- Job Role view -->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewRoles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                app:layout_constraintTop_toBottomOf="@+id/tvQualities">
+                app:layout_constraintTop_toBottomOf="@+id/tvPhoneNum">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/titles"

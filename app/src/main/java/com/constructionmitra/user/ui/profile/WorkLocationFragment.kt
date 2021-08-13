@@ -5,18 +5,36 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.constructionmitra.user.R
+import com.constructionmitra.user.adapters.LocationAdapter
+import com.constructionmitra.user.api.ProfileRequests
+import com.constructionmitra.user.data.AppPreferences
+import com.constructionmitra.user.data.Location
 import com.constructionmitra.user.databinding.FragmentAboutBinding
+import com.constructionmitra.user.databinding.FragmentAboutYourWorkLocationBinding
+import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.utilities.StringUtils
+import com.constructionmitra.user.utilities.showToast
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+@AndroidEntryPoint
 class WorkLocationFragment : Fragment() {
 
-    private lateinit var binding: FragmentAboutBinding
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentAboutYourWorkLocationBinding
+    private lateinit var progressBarBinding: ProgressBarBinding
 
+    @Inject
+    lateinit var appPreferences: AppPreferences
+
+    @Inject
+    lateinit var profileRequests: ProfileRequests
+
+    private val viewModel: ProfileViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -29,8 +47,56 @@ class WorkLocationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAboutBinding.inflate(inflater, container, false)
+        binding = FragmentAboutYourWorkLocationBinding.inflate(inflater, container, false).apply {
+            progressBarBinding = ProgressBarBinding.bind(root)
+        }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showProgress(true)
+
+        // Get and observe all active work locations
+        viewModel.getActiveLocations()
+        viewModel.activeLocations.observe(viewLifecycleOwner){
+            showProgress(false)
+            it?.let {
+                binding.tvSave.visibility = View.VISIBLE
+                binding.rvWorkLocations.adapter = LocationAdapter(it){
+
+                }
+                return@observe
+            }
+        }
+
+        binding.tvSave.setOnClickListener {
+            viewModel.activeLocations.value?.let {
+                _locations ->
+                val locationIds = StringUtils.stringPresentationOfLocations(_locations)
+                showProgress(true)
+                viewModel.updateProfile(profileRequests.updateLocation(
+                    appPreferences.getUserId()!!,
+                    appPreferences.getToken()!!,
+                    locationIds
+                ))
+            }
+        }
+
+        registerObserver()
+
+    }
+
+    private fun registerObserver(){
+        viewModel.profileUpdated.observe(viewLifecycleOwner){
+            if(it){
+                binding.root.showToast("Your work preferences updated!")
+            }
+        }
+    }
+
+    private fun showProgress(show: Boolean) {
+        progressBarBinding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     companion object {

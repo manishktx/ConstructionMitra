@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="com.constructionmitra.user.data.Work" />
+            type="com.constructionmitra.user.data.Job" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:text="@{data.name}"
+                    android:text="@{data.jobRole}"
                     android:textSize="@dimen/_14ssp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@color/greyed_text"
-                    android:text="@{data.location}"
+                    android:text="@{data.projectLocation}"
                     android:textSize="@dimen/_10ssp"
                     android:layout_marginTop="@dimen/_2sdp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textColor="@color/greyed_text"
-                        android:text="@{data.nos}"
+                        android:text="@{data.designation}"
                         android:textSize="@dimen/_10ssp"
                         android:layout_marginTop="@dimen/_2sdp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textColor="@color/greyed_text"
-                        android:text="@{data.duration}"
+                        android:text="@{@string/with_in_days(data.requiredDays)}"
                         android:textSize="@dimen/_10ssp"
                         android:layout_marginTop="@dimen/_2sdp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +144,7 @@
                     android:gravity="start"
                     android:textColor="@color/greyed_text"
                     android:textStyle="bold"
-                    android:text="@{data.desc}"
+                    android:text="@{data.workDescription}"
                     android:textSize="@dimen/_10ssp"
                     android:layout_marginTop="@dimen/_7sdp"
                     app:layout_constraintStart_toStartOf="parent"

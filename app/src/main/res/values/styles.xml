@@ -21,11 +21,12 @@
 
 
     <style name="App.Editable" parent="">
-        <item name="android:textColor">@color/grey_500</item>
         <item name="android:paddingStart">@dimen/_10sdp</item>
         <item name="android:paddingTop">@dimen/_10sdp</item>
         <item name="android:paddingEnd">@dimen/_30sdp</item>
+        <item name="android:textColor">@color/grey_500</item>
         <item name="android:paddingBottom">@dimen/_10sdp</item>
+        <item name="drawableTint">@color/blue_300</item>
         <item name="android:background">@drawable/bg_border_grey_with_rounded_corner</item>
     </style>
 
@@ -46,6 +47,15 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_large</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Widget.App.RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="enforceMaterialTheme">true</item>
+        <item name="colorOnSurface">@color/grey_500</item>
+        <item name="colorSecondary">@color/blue_300</item>
+        <item name="useMaterialThemeColors">true</item>
+        <item name="android:minWidth">?attr/minTouchTargetSize</item>
+        <item name="android:minHeight">?attr/minTouchTargetSize</item>
     </style>
 
 </resources>

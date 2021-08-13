@@ -47,6 +47,7 @@ class OtpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.etOtp.setText(args.otp)
         binding.tvNext.setOnClickListener {
             if(validateOtp()){
                 showProgress(true)

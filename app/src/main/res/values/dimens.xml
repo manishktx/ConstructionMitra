@@ -18,6 +18,8 @@
     <dimen name="big">@dimen/_22sdp</dimen>
 
     <!-- Sizes of views -->
-    <dimen name="location_icon_size">@dimen/_70sdp</dimen>
+    <dimen name="location_icon_size">@dimen/_60sdp</dimen>
     <dimen name="work_detail_icon">@dimen/_60sdp</dimen>
+    <dimen name="ic_done_size">@dimen/_22sdp</dimen>
+
 </resources>

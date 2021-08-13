@@ -1,211 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.core.widget.NestedScrollView
+    <data>
+        <variable
+            name="profileData"
+            type="com.constructionmitra.user.data.ProfileData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/_10sdp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvHeading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:text="@string/about_yourself"
-                android:textColor="@color/greyed_text"
-                android:textSize="@dimen/x_large"
-                />
-
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etName"
-                style="@style/App.Editable"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_25sdp"
-                android:drawableStart="@drawable/ic_person"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableTint="@color/blue_200"
-                android:gravity="center_horizontal"
-                android:hint="@string/hint_firm_name"
-                android:inputType="none"
-                android:maxLines="1"
-                android:text="Manish" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etPhoneNum"
-                style="@style/App.Editable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:drawableStart="@drawable/ic_phone"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableTint="@color/blue_200"
-                android:gravity="center_horizontal"
-                android:hint="@string/hint_firm_name"
-                android:inputType="none"
-                android:maxLines="1"
-                android:text="+91 8860456765" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etOtherPhoneNum"
-                style="@style/App.Editable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:drawableStart="@drawable/ic_phone"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableTint="@color/blue_200"
-                android:gravity="center_horizontal"
-                android:hint="@string/other_mobile_num"
-                android:inputType="none"
-                android:maxLines="1" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvGender"
+                    android:id="@+id/tvHeading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:text="@string/gender"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/about_yourself"
                     android:textColor="@color/greyed_text"
-                    android:textSize="@dimen/medium"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textSize="@dimen/x_large" />
 
 
-                <RadioGroup
-                    android:layout_width="0dp"
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etName"
+                    style="@style/App.Editable"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvGender"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/your_name"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:text="@{profileData.fullName}"
+                    tools:text="Manish" />
 
-                    <RadioButton
-                        android:id="@+id/radio_button_1"
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etPhoneNum"
+                    style="@style/App.Editable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/your_phone_number"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:text="@{profileData.phoneNumber}"
+                    tools:text="+91 8860456765" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etOtherPhoneNum"
+                    style="@style/App.Editable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/other_mobile_num"
+                    android:inputType="none"
+                    android:maxLines="1" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvGender"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/male"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="@string/gender"
                         android:textColor="@color/greyed_text"
-                        android:textSize="@dimen/medium" />
+                        android:textSize="@dimen/medium"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <RadioButton
-                        android:id="@+id/radio_button_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+
+                    <RadioGroup
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:text="@string/female"
-                        android:textColor="@color/greyed_text"
-                        android:textSize="@dimen/medium" />
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tvGender"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <RadioButton
-                        android:id="@+id/radio_button_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_20sdp"
-                        android:text="@string/other"
-                        android:textColor="@color/greyed_text"
-                        android:textSize="@dimen/medium" />
+                        <RadioButton
+                            android:id="@+id/radio_button_1"
+                            android:buttonTint="@color/button_tint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/male"
+                            android:textColor="@color/greyed_text"
+                            android:textSize="@dimen/medium" />
 
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/radio_button_2"
+                            android:buttonTint="@color/button_tint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:text="@string/female"
+                            android:textColor="@color/greyed_text"
+                            android:textSize="@dimen/medium" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        <RadioButton
+                            android:id="@+id/radio_button_3"
+                            android:buttonTint="@color/button_tint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:text="@string/other"
+                            android:textColor="@color/greyed_text"
+                            android:textSize="@dimen/medium" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etAge"
-                style="@style/App.Editable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:drawableStart="@drawable/ic_calender"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableTint="@color/blue_200"
-                android:gravity="center_horizontal"
-                android:hint="@string/hint_your_age"
-                android:inputType="number"
-                android:maxLines="1" />
+                    </RadioGroup>
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etHome"
-                style="@style/App.Editable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:drawableStart="@drawable/ic_location"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableTint="@color/blue_200"
-                android:gravity="center_horizontal"
-                android:hint="@string/where_is_your_home"
-                android:inputType="number"
-                android:maxLines="1" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etCurrentLocation"
-                style="@style/App.Editable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:drawableStart="@drawable/ic_location"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableTint="@color/blue_200"
-                android:gravity="center_horizontal"
-                android:hint="@string/where_is_your_home"
-                android:inputType="number"
-                android:maxLines="1" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/hintMobileNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/help_us_to_find_work_for_you"
-                android:textColor="@color/greyed_text"
-                android:textSize="@dimen/_10ssp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etOtp" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etAge"
+                    style="@style/App.Editable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:drawableStart="@drawable/ic_calender"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:drawableTint="@color/blue_200"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/hint_your_age"
+                    android:inputType="number"
+                    android:maxLines="1" />
 
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etAddress"
+                    style="@style/App.Editable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:drawableTint="@color/blue_200"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/where_is_your_home"
+                    android:inputType="textPostalAddress"
+                    android:maxLines="1" />
 
-    </androidx.core.widget.NestedScrollView>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etCurrentLocation"
+                    style="@style/App.Editable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/where_is_your_home"
+                    android:inputType="textPostalAddress"
+                    android:maxLines="1" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        style="@style/App.Button.Blue"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="अपनी जानकारी सहेजें"
-        android:textSize="@dimen/text_medium"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="@dimen/_40sdp"
-        android:layout_marginEnd="@dimen/_40sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/_20sdp"
-        />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/hintMobileNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/help_us_to_find_work_for_you"
+                    android:textColor="@color/greyed_text"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etOtp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/App.Button.Blue"
+            android:id="@+id/tvSaveDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="अपनी जानकारी सहेजें"
+            android:textSize="@dimen/text_medium"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_20sdp" />
+
+        <include layout="@layout/progress_bar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

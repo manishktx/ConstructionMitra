@@ -33,6 +33,9 @@ class LoginViewModel @Inject constructor(
     private var _updateFirmDetails  = MutableLiveData<BaseResponse<Any>>()
     val updateFirmDetails = _updateFirmDetails
 
+    private var _updateJobRoles  = MutableLiveData<BaseResponse<Any>>()
+    val updateJobRoles = _updateJobRoles
+
     fun requestOtp(mobile: String) {
         viewModelScope.launch {
             when (val result: Result<LoginResponse> = repository.requestOtp(mobile)){
@@ -63,6 +66,14 @@ class LoginViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun getCheckedItemsIds(jobRoles: List<JobRole>): String{
+        var ids = ""
+        for (jobRole in jobRoles){
+            ids = ids.plus(jobRole.roleId).plus(",")
+        }
+        return ids.subSequence(0, ids.length - 2).toString()
     }
 
     fun requestJobRoles(jobCategory: String) {
@@ -96,6 +107,23 @@ class LoginViewModel @Inject constructor(
                         onFailedResponse(Exception(result.data.message))
                     }
                 }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
+    fun updateJobRoles(userId: String, token: String, jobRoleIds: String){
+        viewModelScope.launch {
+            when(val result = repository.updateJobRoles(userId, token, jobRoleIds)){
+                is Success ->
+                    if(result.data.status.equals(ServerConstants.STATUS_SUCCESS, ignoreCase = true)){
+                        _updateJobRoles.postValue(result.data)
+                    }
+                    else{
+                        onFailedResponse(Exception(result.data.message))
+                    }
                 is Failure -> {
                     onFailedResponse(result.error as Exception)
                 }

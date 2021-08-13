@@ -40,8 +40,8 @@
         />
 
     <include
+        android:id="@+id/viewPreferredWorkLocation"
         layout="@layout/item_profile_section_card"
-        android:id="@+id/viewSelectYourWork"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@+id/viewProfileCard"
@@ -52,7 +52,9 @@
         android:id="@+id/viewWorkPriority"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewSelectYourWork"
+        app:layout_constraintTop_toBottomOf="@+id/viewPreferredWorkLocation"
         />
+
+    <include layout="@layout/progress_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

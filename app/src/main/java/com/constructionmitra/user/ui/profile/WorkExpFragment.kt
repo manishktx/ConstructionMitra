@@ -1,24 +1,32 @@
 package com.constructionmitra.user.ui.profile
 
-import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.constructionmitra.user.R
-import com.constructionmitra.user.data.WorkCategory
-import com.constructionmitra.user.databinding.FragmentAboutBinding
+import com.constructionmitra.user.api.ProfileRequests
+import com.constructionmitra.user.data.AppPreferences
+import com.constructionmitra.user.data.WorkExperience
 import com.constructionmitra.user.databinding.FragmentAboutWorkExpBinding
 import com.constructionmitra.user.databinding.ItemWorkExpBinding
-import com.constructionmitra.user.databinding.ItemWorkOptionBinding
-import com.constructionmitra.user.ui.login.adapters.CategoryAdapter
-import kotlinx.android.synthetic.main.fragment_available_work_list.*
+import com.constructionmitra.user.databinding.ProgressBarBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class WorkExpFragment : Fragment() {
 
+    private var adapter: WorkExpAdapter? = null
     private lateinit var binding: FragmentAboutWorkExpBinding
+    private lateinit var progressBarBinding: ProgressBarBinding
+
+    private val viewModel: ProfileViewModel by viewModels()
+
+    @Inject lateinit var appPreferences: AppPreferences
+    @Inject lateinit var profileRequests: ProfileRequests
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +41,40 @@ class WorkExpFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentAboutWorkExpBinding.inflate(inflater, container, false).apply {
-            rvWorkLocations.adapter = WorkExpAdapter(resources.getStringArray(R.array.work_exp_options).toList()){
-
+            progressBarBinding = ProgressBarBinding.bind(root)
+            tvSave.setOnClickListener {
+                adapter?.let {
+                    if(it.currentSelection >= 0){
+                        // Update work exp
+                        showProgress(true)
+                        viewModel.updateProfile(profileRequests.updateExp(
+                            appPreferences.getUserId()!!,
+                            appPreferences.getToken()!!,
+                            viewModel.workExpOptions.value?.get(it.currentSelection)!!
+                        ))
+                    }
+                }
             }
         }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showProgress(true)
+        viewModel.getWorkExpOptions()
+        viewModel.workExpOptions.observe(viewLifecycleOwner){
+            showProgress(false)
+            binding.rvWorkExp.adapter = WorkExpAdapter(it){
+
+            }.apply {
+                adapter = this
+            }
+        }
+    }
+
+    private fun showProgress(show: Boolean) {
+        progressBarBinding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     companion object {
@@ -53,9 +90,12 @@ class WorkExpFragment : Fragment() {
 }
 
 class WorkExpAdapter(
-    val list: List<String>,
-    private val onItemClick: (exp: String) -> Unit
+    val list: List<WorkExperience>,
+    private val onItemClick: (exp: WorkExperience) -> Unit
 ): RecyclerView.Adapter<WorkExpAdapter.WorkExpViewHolder>() {
+    private var _currentSelection = -1
+    val currentSelection
+    get() = _currentSelection
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkExpAdapter.WorkExpViewHolder {
         val binding:ItemWorkExpBinding = ItemWorkExpBinding.inflate(
@@ -75,12 +115,16 @@ class WorkExpAdapter(
     inner class WorkExpViewHolder(val binding: ItemWorkExpBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindData(
-            onItemClick: (exp: String) -> Unit,
-            exp: String,
+            onItemClick: (exp: WorkExperience) -> Unit,
+            exp: WorkExperience,
         ) {
             binding.exp = exp
+            binding.ivTick.visibility =
+                if( adapterPosition == _currentSelection) View.VISIBLE else View.GONE
+
             binding.root.setOnClickListener{
-                onItemClick(exp)
+                _currentSelection = adapterPosition
+                notifyDataSetChanged()
             }
         }
     }

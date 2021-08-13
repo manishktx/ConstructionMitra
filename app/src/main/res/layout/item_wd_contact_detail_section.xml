@@ -14,7 +14,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
-        android:text="@string/name"
+        android:text="@string/phone_number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="start"
@@ -29,9 +29,24 @@
         android:text="@string/choose_work"
         app:layout_constraintStart_toEndOf="@+id/tvTitle"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvShowPhoneNum"
         android:textSize="@dimen/text_medium"
         android:gravity="start"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvShowPhoneNum"
+        style="@style/App.Button.Green"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="wrap_content"
+        android:text="@string/do_contact"
+        android:padding="@dimen/_3sdp"
+        android:background="@drawable/bg_button_green_disabled"
+        app:layout_constraintStart_toEndOf="@id/tvDesc"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/text_small"
+        android:gravity="center_horizontal"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

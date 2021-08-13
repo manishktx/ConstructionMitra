@@ -15,8 +15,10 @@ import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategorie
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
 import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
+import com.constructionmitra.user.utilities.showSnackBarShort
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -52,12 +54,25 @@ class WorkSubCategoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         showProgress(true)
         viewModel.requestJobRoles(args.jobCategory)
-//        binding.rvSubCategories.adapter = WorkCategoryAdapter(dummyListSubCategories, isSubCategory = true) {
-//            AppAlertDialog.newInstance {
-//                navigateToHome()
-//            }.show(childFragmentManager, "alert_dialog")
-//        }
+        // set listener on next button
+        binding.tvNext.setOnClickListener {
+            viewModel.jobRoles.value?.filter {
+                it.isChecked
+            }?.takeIf {
+                !it.isNullOrEmpty()
+            }?.let {
+                Timber.d("checked ids are = ${viewModel.getCheckedItemsIds(it)}")
 
+                showProgress(true)
+                viewModel.updateJobRoles(
+                    appPreferences.getUserId()!!,
+                    appPreferences.getToken()!!,
+                    viewModel.getCheckedItemsIds(it)
+                )
+            } ?: run {
+                binding.root.showToast("Please Choose AtLeast 1 Job Role")
+            }
+        }
         registerObservers()
     }
 
@@ -67,18 +82,14 @@ class WorkSubCategoriesFragment : Fragment() {
             it?.let {
                 binding.rvSubCategories.adapter =
                     WorkSubCategoryAdapter(it, isSubCategory = true) {
-                        // ask for firm details
-                        GetFirmDetailsDialog.newInstance {
-                            firmName, numOfWorkers ->
-                            // Update firm details
-                            showProgress(true)
-                            viewModel.updateFirmDetails(
-                                appPreferences.getUserId()!!, firmName, numOfWorkers, "TnNEOEQ1OXFvYXJRdkZyUWx6SWVlZz09"
-                            )
-//                            navigateToHome()
-                        }.show(childFragmentManager, "alert_dialog")
+
                     }
             }
+        }
+
+        viewModel.updateJobRoles.observe(viewLifecycleOwner){
+            showProgress(false)
+            showGetFirmDetailsDialog()
         }
 
         viewModel.updateFirmDetails.observe(viewLifecycleOwner){
@@ -99,6 +110,18 @@ class WorkSubCategoriesFragment : Fragment() {
             requireContext().startActivity(this)
         }
         requireActivity().overridePendingTransition(R.anim.enter_anim_activity, R.anim.exit_anim_activity)
+    }
+
+    private fun showGetFirmDetailsDialog(){
+        GetFirmDetailsDialog.newInstance {
+                firmName, numOfWorkers ->
+            // Update firm details
+            showProgress(true)
+            viewModel.updateFirmDetails(
+                appPreferences.getUserId()!!, firmName, numOfWorkers, "TnNEOEQ1OXFvYXJRdkZyUWx6SWVlZz09"
+            )
+//                            navigateToHome()
+        }.show(childFragmentManager, "alert_dialog")
     }
 
     private fun showProgress(show: Boolean) {
