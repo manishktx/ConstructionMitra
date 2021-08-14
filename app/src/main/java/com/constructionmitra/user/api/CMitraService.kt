@@ -64,6 +64,12 @@ interface CMitraService {
     ): BaseResponse<List<Job>>
 
     @FormUrlEncoded
+    @POST("api/v1/common/job_post_list/applied")
+    suspend fun getAppliedJobs(
+        @FieldMap map: HashMap<String, Any>
+    ): BaseResponse<List<Job>>
+
+    @FormUrlEncoded
     @POST("api/v1/common/job_mapping")
     suspend fun mapJob(
         @Field("user_id") userId: String,

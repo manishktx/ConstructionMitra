@@ -45,7 +45,7 @@ class ProfileRequestsImpl @Inject constructor() : ProfileRequests{
             put(ProfileRequests.TOKEN, token)
         }
         exp?.let {
-            hashMap.put(ProfileRequests.EXPERIENCE, exp)
+            hashMap.put(ProfileRequests.EXPERIENCE, exp.experience)
         }
         return hashMap
     }

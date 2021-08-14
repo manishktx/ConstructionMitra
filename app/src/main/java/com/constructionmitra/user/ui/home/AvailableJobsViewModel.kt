@@ -5,10 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.constructionmitra.user.api.Failure
 import com.constructionmitra.user.api.Success
 import com.constructionmitra.user.data.Job
-import com.constructionmitra.user.data.LoginResponse
 import com.constructionmitra.user.repository.CMitraRepository
 import com.constructionmitra.user.ui.base.BaseViewModel
-import com.constructionmitra.user.utilities.ServerConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -27,14 +25,18 @@ class AvailableJobsViewModel @Inject constructor(
         userId: String,
         limit: Int,
         offset: Int,
-        locationId: String
+        locationId: String,
+        isGetAvailableJobs: Boolean
     ){
         viewModelScope.launch {
             when(val result = repository.getAvailableJobs(
-                userId, limit, offset, locationId
+                userId, limit, offset, locationId, isGetAvailableJobs
             )){
                 is Success -> {
-                    availableJobs.postValue(result.data.data)
+                    if(isGetAvailableJobs)
+                        _availableJobs.postValue(result.data.data!!)
+                    else
+                        _appliedJobs.postValue(result.data.data!!)
                 }
                 is Failure -> {
                     onFailedResponse(Exception(result.error))

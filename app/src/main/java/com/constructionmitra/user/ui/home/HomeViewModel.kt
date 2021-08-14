@@ -2,11 +2,9 @@ package com.constructionmitra.user.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.constructionmitra.user.api.Failure
 import com.constructionmitra.user.api.Success
-import com.constructionmitra.user.data.LoginResponse
 import com.constructionmitra.user.data.ProfileData
 import com.constructionmitra.user.repository.CMitraRepository
 import com.constructionmitra.user.ui.base.BaseViewModel

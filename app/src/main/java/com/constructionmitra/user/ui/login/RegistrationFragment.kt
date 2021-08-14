@@ -14,7 +14,6 @@ import com.constructionmitra.user.utilities.ServerConstants
 import com.constructionmitra.user.utilities.showSnackBarShort
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_registration.*
-import kotlinx.android.synthetic.main.progress_bar.*
 
 @AndroidEntryPoint
 class RegistrationFragment : Fragment() {

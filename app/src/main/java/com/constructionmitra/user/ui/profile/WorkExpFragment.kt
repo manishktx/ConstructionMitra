@@ -13,6 +13,7 @@ import com.constructionmitra.user.data.WorkExperience
 import com.constructionmitra.user.databinding.FragmentAboutWorkExpBinding
 import com.constructionmitra.user.databinding.ItemWorkExpBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -48,9 +49,9 @@ class WorkExpFragment : Fragment() {
                         // Update work exp
                         showProgress(true)
                         viewModel.updateProfile(profileRequests.updateExp(
-                            appPreferences.getUserId()!!,
-                            appPreferences.getToken()!!,
-                            viewModel.workExpOptions.value?.get(it.currentSelection)!!
+                            userId = appPreferences.getUserId()!!,
+                            token = appPreferences.getToken()!!,
+                            exp = viewModel.workExpOptions.value?.get(it.currentSelection)!!
                         ))
                     }
                 }
@@ -69,6 +70,16 @@ class WorkExpFragment : Fragment() {
 
             }.apply {
                 adapter = this
+            }
+        }
+        registerObserver()
+    }
+
+    private fun registerObserver(){
+        viewModel.profileUpdated.observe(viewLifecycleOwner){
+            showProgress(false)
+            if(it){
+                binding.root.showToast("Your Work Exp Updated!")
             }
         }
     }

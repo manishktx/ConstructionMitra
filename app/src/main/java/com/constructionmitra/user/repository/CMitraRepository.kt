@@ -1,6 +1,5 @@
 package com.constructionmitra.user.repository
 
-import android.print.PrintJobId
 import com.constructionmitra.user.api.CMitraService
 import com.constructionmitra.user.api.Failure
 import com.constructionmitra.user.api.Result
@@ -8,7 +7,6 @@ import com.constructionmitra.user.api.Success
 import com.constructionmitra.user.data.*
 import com.constructionmitra.user.utilities.ServerConstants
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import timber.log.Timber
 import javax.inject.Inject
@@ -87,7 +85,8 @@ class CMitraRepository  @Inject constructor(
         userId: String,
         limit: Int,
         offset: Int,
-        locationId: String
+        locationId: String,
+        availableJobs: Boolean = true
     ): Result<BaseResponse<List<Job>>>{
         val mapReq = hashMapOf<String, Any>(
             "user_id" to userId,
@@ -96,7 +95,10 @@ class CMitraRepository  @Inject constructor(
             "location_id" to locationId,
         )
         return try {
-            Success(cMitraService.getAvailableJobs(mapReq))
+            Success(
+                if(availableJobs) cMitraService.getAvailableJobs(mapReq) else
+                    cMitraService.getAppliedJobs(mapReq)
+            )
         }catch (exp: Exception){
             Timber.d("okhttp: ${exp.toString()}")
             Failure(exp)

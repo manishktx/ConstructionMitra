@@ -27,6 +27,10 @@ import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+/**
+ *  Class used to show the list of available works and applied works
+ *  manages data by the check of {showAppliedWork}
+ */
 @AndroidEntryPoint
 class AvailableWorkListFragment : Fragment() {
 
@@ -65,6 +69,12 @@ class AvailableWorkListFragment : Fragment() {
 
         if(showAppliedWork){
             // Show list of applied work
+            viewModel.getAvailableJobs(
+                appPreferences.getUserId()!!,
+                limit = DEFAULT_LIMIT,
+                offset = DEFAULT_OFFSET,
+                locationId = "all", false
+            )
         }
         else {
             // Show list of available work
@@ -72,7 +82,7 @@ class AvailableWorkListFragment : Fragment() {
                 appPreferences.getUserId()!!,
                 limit = DEFAULT_LIMIT,
                 offset = DEFAULT_OFFSET,
-                locationId = "all"
+                locationId = "all", true
             )
         }
 
@@ -87,7 +97,7 @@ class AvailableWorkListFragment : Fragment() {
 
             }?: run {
                 // No jobs available
-                binding.tvWorkNotAvailable.visibility = View.GONE
+                binding.tvWorkNotAvailable.visibility = View.VISIBLE
             }
         }
 

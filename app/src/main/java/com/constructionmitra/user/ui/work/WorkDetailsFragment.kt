@@ -12,11 +12,9 @@ import com.constructionmitra.user.FragmentContainerActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.data.Job
-import com.constructionmitra.user.databinding.FragmentContainerActivityBinding
 import com.constructionmitra.user.databinding.FragmentRequestForWorkBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.dialogs.AlertDialogWith1ActionButton
-import com.constructionmitra.user.ui.home.AvailableJobsViewModel
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber

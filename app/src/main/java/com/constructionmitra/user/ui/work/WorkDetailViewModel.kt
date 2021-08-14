@@ -4,9 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.constructionmitra.user.api.Failure
 import com.constructionmitra.user.api.Success
-import com.constructionmitra.user.data.BaseResponse
-import com.constructionmitra.user.data.Job
-import com.constructionmitra.user.data.LoginResponse
 import com.constructionmitra.user.repository.CMitraRepository
 import com.constructionmitra.user.ui.base.BaseViewModel
 import com.constructionmitra.user.utilities.ServerConstants

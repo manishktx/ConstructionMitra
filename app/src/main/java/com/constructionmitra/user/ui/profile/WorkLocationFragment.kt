@@ -6,12 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.constructionmitra.user.R
 import com.constructionmitra.user.adapters.LocationAdapter
 import com.constructionmitra.user.api.ProfileRequests
 import com.constructionmitra.user.data.AppPreferences
-import com.constructionmitra.user.data.Location
-import com.constructionmitra.user.databinding.FragmentAboutBinding
 import com.constructionmitra.user.databinding.FragmentAboutYourWorkLocationBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.utilities.StringUtils
@@ -76,9 +73,9 @@ class WorkLocationFragment : Fragment() {
                 val locationIds = StringUtils.stringPresentationOfLocations(_locations)
                 showProgress(true)
                 viewModel.updateProfile(profileRequests.updateLocation(
-                    appPreferences.getUserId()!!,
-                    appPreferences.getToken()!!,
-                    locationIds
+                    userId = appPreferences.getUserId()!!,
+                    token = appPreferences.getToken()!!,
+                    preferredWorkLocations = locationIds
                 ))
             }
         }
@@ -89,6 +86,7 @@ class WorkLocationFragment : Fragment() {
 
     private fun registerObserver(){
         viewModel.profileUpdated.observe(viewLifecycleOwner){
+            showProgress(false)
             if(it){
                 binding.root.showToast("Your work preferences updated!")
             }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/payment_form_nav_graph"
+    app:startDestination="@id/jobRoleDetails">
+
+
+    <fragment
+        android:id="@+id/jobRoleDetails"
+        android:name="com.constructionmitra.user.ui.contractor.FragmentJobRoleDetails"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_add_job_role_details">
+
+    </fragment>
+
+</navigation>

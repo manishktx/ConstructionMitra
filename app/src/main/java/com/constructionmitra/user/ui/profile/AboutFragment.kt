@@ -73,7 +73,14 @@ class AboutFragment : Fragment() {
                 binding.root.showToast("Nothing to update!")
         }
 
-        registerObservers()
+        registerObservers(); onError()
+    }
+
+    private fun onError() {
+        viewModel.errorMsg.observe(viewLifecycleOwner){
+            showProgress(false)
+            binding.root.showToast(it!!)
+        }
     }
 
     private fun registerObservers() {

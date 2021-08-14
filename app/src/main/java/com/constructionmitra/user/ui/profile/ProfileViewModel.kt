@@ -52,7 +52,7 @@ class ProfileViewModel @Inject constructor(
                     }
                 }
                 is Failure -> {
-
+                    onFailedResponse(result.error as Exception)
                 }
             }
         }

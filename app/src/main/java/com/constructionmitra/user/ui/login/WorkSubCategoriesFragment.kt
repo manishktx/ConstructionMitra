@@ -15,7 +15,6 @@ import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategorie
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
 import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
-import com.constructionmitra.user.utilities.showSnackBarShort
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber

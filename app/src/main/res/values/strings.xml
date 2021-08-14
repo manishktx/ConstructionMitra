@@ -18,7 +18,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <!-- Buttons text -->
-
+    <string name="continue_text">Continue</string>
 
     <!-- Login Module -->
     <string name="login_title">&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
@@ -125,4 +125,14 @@
     <string name="hint_req_for_number">&lt;font color="#797979">नंबर पाने के लिए अभी&lt;font/> &lt;font color="#FF1D2A">अवेदन करे&lt;font/></string>
     <string name="congratulation_msg_on_work_req">बधाई हो ! आपने इस काम के लिए सफलता पूर्वक आवेदन कर दिया है। कंपनी द्वारा आपकी रोफाइल देखने के बाद कॉल आएगा। अगर आप खुद कंपनी को सीधे कान पे बात करना चाहते है तो । &lt;font color="#FF1D2A">कांटेक्ट देखें&lt;font/>पर क्लिक करें</string>
 
+    <!-- Petty contractor job post -->
+    <string name="select_work_heading">Please select work and no. of worker required.</string>
+    <string name="hint_enter_no_worker">Enter no. Of Worker Required</string>
+    <string name="add_job">Add Job +</string>
+    <string name="job_role_details">JOB ROLE DETAILS</string>
+    <string name="edit">Edit</string>
+    <string name="select_project_type">Select Type Of Project</string>
+    <string name="type_of_project">Type Of Project</string>
+    <string name="when_is_requirement_of_worker">When is the requirement of workers ?</string>
+    <string name="work_desc">Work Description</string>
 </resources>
