@@ -19,6 +19,7 @@
 
     <!-- Buttons text -->
     <string name="continue_text">Continue</string>
+    <string name="back">Back</string>
 
     <!-- Login Module -->
     <string name="login_title">&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
@@ -134,5 +135,20 @@
     <string name="select_project_type">Select Type Of Project</string>
     <string name="type_of_project">Type Of Project</string>
     <string name="when_is_requirement_of_worker">When is the requirement of workers ?</string>
-    <string name="work_desc">Work Description</string>
+    <string name="company_name">Company Name</string>
+    <string name="enter_company_name">Enter Company Name</string>
+    <string name="person_name_for_job">Name of the person posting job requirement</string>
+    <string name="enter_contact_person_name">Enter Contact Person Name*</string>
+    <string name="designation">Designation</string>
+    <string name="enter_designation">Enter your Designation</string>
+    <string name="contact_person_mobile_number">Contact Person Mobile number</string>
+    <string name="you_will_receive_notification">You will be receiving notification over this number</string>
+    <string name="email_id">Email-ID</string>
+    <string name="enter_email_id">Enter Email-Id*</string>
+    <string name="add_project_details">Add Project Detail</string>
+    <string name="name_of_project">Name of the Project</string>
+    <string name="enter_project_name">Please enter Project name</string>
+    <string name="add_employee_details">Add Employee Details</string>
+    <string name="enter_project_location">Enter Project Location*</string>
+
 </resources>

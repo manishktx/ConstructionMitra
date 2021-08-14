@@ -8,10 +8,37 @@
 
     <fragment
         android:id="@+id/jobRoleDetails"
-        android:name="com.constructionmitra.user.ui.contractor.FragmentJobRoleDetails"
+        android:name="com.constructionmitra.user.ui.contractor.JobRoleDetailsFragment"
         android:label="fragment_video_message_for"
         tools:layout="@layout/fragment_add_job_role_details">
 
+        <action
+            android:id="@+id/toAddEmployeeDetails"
+            app:destination="@id/addEmployeeDetails"
+            />
     </fragment>
+
+    <fragment
+        android:id="@+id/addEmployeeDetails"
+        android:name="com.constructionmitra.user.ui.contractor.AddEmployeeDetailsFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_add_employee_details">
+
+        <action
+            android:id="@+id/toReviewYourJobFragment"
+            app:destination="@id/reviewYourJobFragment"
+            />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/reviewYourJobFragment"
+        android:name="com.constructionmitra.user.ui.work.WorkDetailsFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_request_for_work">
+
+    </fragment>
+
 
 </navigation>

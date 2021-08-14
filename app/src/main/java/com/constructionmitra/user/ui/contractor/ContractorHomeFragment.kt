@@ -8,13 +8,14 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
 import com.constructionmitra.user.R
+import com.constructionmitra.user.databinding.FragmentAddEmployeeDetailsBinding
 import com.constructionmitra.user.databinding.FragmentJobRoleDetailsBinding
 import com.constructionmitra.user.databinding.FragmentSelectJobBinding
 import kotlinx.android.synthetic.main.fragment_otp.*
 
-class FragmentJobRoleDetails : Fragment() {
+class ContractorHomeFragment : Fragment() {
 
-    private var _binding: FragmentJobRoleDetailsBinding? = null
+    private var _binding: FragmentAddEmployeeDetailsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,7 +25,7 @@ class FragmentJobRoleDetails : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentJobRoleDetailsBinding.inflate(inflater, container, false)
+        _binding = FragmentAddEmployeeDetailsBinding.inflate(inflater, container, false)
         return binding.root
 
     }

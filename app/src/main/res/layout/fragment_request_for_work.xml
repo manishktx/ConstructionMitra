@@ -6,43 +6,36 @@
     android:layout_height="match_parent"
     >
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivIcon"
-        android:layout_width="@dimen/work_detail_icon"
-        android:layout_height="@dimen/work_detail_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/_8sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_bag"
-        app:tint="@color/blue_300" />
-
-    <View
-        android:id="@+id/separator1"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        app:layout_constraintTop_toBottomOf="@+id/ivIcon"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:background="@color/grey_100"
-        />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/separator1"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/separator2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="@dimen/work_detail_icon"
+                android:layout_height="@dimen/work_detail_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_bag"
+                app:tint="@color/blue_300" />
+
             <include
                 android:id="@+id/viewWorkDetails"
                 layout="@layout/item_work_detail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@+id/ivIcon"/>
 
             <include
                 android:id="@+id/viewTeamDetails"

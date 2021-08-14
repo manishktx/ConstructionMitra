@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/jobDetailsFragment"
-        android:name="com.constructionmitra.user.ui.contractor.FragmentJobRoleDetails"
+        android:name="com.constructionmitra.user.ui.contractor.JobRoleDetailsFragment"
         android:label="@string/login_fragment_label"
         tools:layout="@layout/fragment_job_role_details">
 
