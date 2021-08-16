@@ -40,7 +40,7 @@ interface CMitraService {
     @FormUrlEncoded
     @POST("api/v1/user/update_profile")
     suspend fun updateJobRoles(
-        @FieldMap map: HashMap<String, String>
+        @FieldMap(encoded = true) map: HashMap<String, String>
     ): BaseResponse<Any>
 
     @GET("api/v1/common/active_locations")

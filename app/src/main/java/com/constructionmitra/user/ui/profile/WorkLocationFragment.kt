@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import com.constructionmitra.user.adapters.LocationAdapter
 import com.constructionmitra.user.api.ProfileRequests
@@ -24,6 +26,7 @@ class WorkLocationFragment : Fragment() {
 
     private lateinit var binding: FragmentAboutYourWorkLocationBinding
     private lateinit var progressBarBinding: ProgressBarBinding
+    private var isUpdated: Boolean = false
 
     @Inject
     lateinit var appPreferences: AppPreferences
@@ -36,6 +39,14 @@ class WorkLocationFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
 
+        }
+    }
+
+    private val backPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if(isUpdated)
+                requireActivity().setResult(AppCompatActivity.RESULT_OK)
+            requireActivity().finish()
         }
     }
 
@@ -52,8 +63,8 @@ class WorkLocationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
         showProgress(true)
-
         // Get and observe all active work locations
         viewModel.getActiveLocations()
         viewModel.activeLocations.observe(viewLifecycleOwner){
@@ -88,6 +99,7 @@ class WorkLocationFragment : Fragment() {
         viewModel.profileUpdated.observe(viewLifecycleOwner){
             showProgress(false)
             if(it){
+                isUpdated = true
                 binding.root.showToast("Your work preferences updated!")
             }
         }

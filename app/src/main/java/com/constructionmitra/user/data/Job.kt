@@ -34,7 +34,7 @@ data class Job(
     @SerializedName("project_location_hn")
     val projectLocationHn: String,
     @SerializedName("project_type")
-    val projectType: String,
+    val projectType: String?= null,
     @SerializedName("required_days")
     val requiredDays: String,
     @SerializedName("work_description")

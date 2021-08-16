@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.constructionmitra.user.api.ProfileRequests
 import com.constructionmitra.user.data.AppPreferences
@@ -20,6 +23,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class WorkExpFragment : Fragment() {
 
+    private var isUpdated: Boolean = false
     private var adapter: WorkExpAdapter? = null
     private lateinit var binding: FragmentAboutWorkExpBinding
     private lateinit var progressBarBinding: ProgressBarBinding
@@ -28,6 +32,14 @@ class WorkExpFragment : Fragment() {
 
     @Inject lateinit var appPreferences: AppPreferences
     @Inject lateinit var profileRequests: ProfileRequests
+
+    private val backPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if(isUpdated)
+                requireActivity().setResult(AppCompatActivity.RESULT_OK)
+            requireActivity().finish()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +75,10 @@ class WorkExpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showProgress(true)
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            backPressedCallback
+        )
         viewModel.getWorkExpOptions()
         viewModel.workExpOptions.observe(viewLifecycleOwner){
             showProgress(false)
@@ -79,6 +95,7 @@ class WorkExpFragment : Fragment() {
         viewModel.profileUpdated.observe(viewLifecycleOwner){
             showProgress(false)
             if(it){
+                isUpdated = true
                 binding.root.showToast("Your Work Exp Updated!")
             }
         }

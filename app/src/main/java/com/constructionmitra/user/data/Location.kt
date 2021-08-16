@@ -4,7 +4,7 @@ package com.constructionmitra.user.data
 import com.google.gson.annotations.SerializedName
 
 data class Location(
-    @SerializedName("id")
+    @SerializedName("active_location_id")
     val id: String,
     @SerializedName("name")
     val name: String,

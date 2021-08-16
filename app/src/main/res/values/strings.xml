@@ -27,7 +27,7 @@
     <!-- Login Module -->
     <string name="login_title">&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
     <string name="login_sub_heading">निर्माण स्थलों पर काम पाना हुआ अब आसान............</string>
-    <string name="labour_contractor">&lt;font color="#4883C1"> निर्माण श्रमिक, &lt;font/>  &lt;font color="#00B867">मित्रा&lt;font/></string>
+    <string name="labour_contractor">&lt;font color="#4883C1"> निर्माण श्रमिक, &lt;font/>  &lt;font color="#00B867">निर्माण कर्ता&lt;font/></string>
     <string name="get_together_here">दोनों मिलते है यहाँ</string>
     <string name="labour_type">इंजीनियर / सुपरवाइजर निर्माण एजेंसी, पेट्टी कॉन्ट्रैक्टर, निर्माण श्रमिक</string>
     <string name="contractor_type">निर्माण कर्ता</string>
@@ -109,6 +109,15 @@
     <string name="preferred_location_for_work">आप कोस शहर में काम करना चाहते हो</string>
     <string name="update_exp">जानकारी जोड़े</string>
     <string name="share_your_exp">अपना अनुभव साझा करें</string>
+    <string name="work_exp">काम का अनुभव</string>
+    <string name="work_exp_in_years">आपको अपने काम का कितने सालों का अनुभव है ?</string>
+    <string name="location_priority">शहर की प्रार्थमिकता</string>
+    <string name="which_location_you_want_to_work">आप कोनसे शहर में काम चाहते है</string>
+    <string name="selected_work">चयनित काम</string>
+    <string name="change_selected_work">चुने हुए काम को बदले</string>
+    <string name="contractor_verification_doc">कॉन्ट्रैक्टर सत्यापन डाक्यूमेंट</string>
+    <string name="upload_doc">डाक्यूमेंट अपलोड करें</string>
+
     <string name="quality">कौशल: %s</string>
     <string-array name="work_exp_options">
         <item>कोई अनुभव नहीं है</item>
@@ -117,6 +126,7 @@
         <item>7 &#8211; 12 वर्ष अनुभव है</item>
         <item>12 वर्शो से अधिकै</item>
     </string-array>
+
 
     <!-- work -->
     <string name="request_for_work">अवेदन करे</string>
@@ -158,6 +168,7 @@
     <string name="enter_project_location">Enter Project Location*</string>
     <string name="enter_location">Enter Location*</string>
     <string name="select_city">Select City</string>
+    <string name="select_city_hn">शहर चुनें</string>
     <string name="posted_jobs">Posted Jobs</string>
     <string name="active_jobs">Active Jobs</string>
     <string name="applied_by">Applied By</string>

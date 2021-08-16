@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvProfileSectionTitle"
+        android:id="@+id/tvHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12sdp"
@@ -32,13 +32,13 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileSectionTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
         tools:cardBackgroundColor="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/small">
+            android:paddingTop="@dimen/small">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivIcon"
@@ -47,31 +47,43 @@
                 android:scaleType="centerCrop"
                 android:tint="@color/blue_300"
                 app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_5sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_bag" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDetail"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:text="Nitin khushal"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="Kha kaam krna chahte ho ??"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_medium"
                 app:layout_constraintStart_toEndOf="@+id/ivIcon"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/App.Button.Blue"
-                android:layout_width="@dimen/_140sdp"
+                android:id="@+id/tvCta"
+                android:background="@drawable/bg_button_blue"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:gravity="center_horizontal"
-                android:padding="@dimen/_3sdp"
+                android:paddingStart="@dimen/_8sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingBottom="@dimen/_3sdp"
                 android:text="@string/change_your_work"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvDetail"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
