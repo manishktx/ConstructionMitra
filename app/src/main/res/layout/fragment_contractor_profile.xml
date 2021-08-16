@@ -16,10 +16,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large"
-            android:text="@string/add_employee_details"
+            android:text="@string/edit"
             android:textColor="@color/blue_300"
             android:typeface="serif"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
@@ -30,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:text="@string/company_name"
+            android:text="@string/employee_name"
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_company_name"
+            android:hint="@string/employee_name"
             android:inputType="number"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:text="@string/person_name_for_job"
+            android:text="@string/designation"
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +68,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_contact_person_name"
+            android:hint="@string/enter_designation"
             android:inputType="number"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:text="@string/designation"
+            android:text="@string/mobile_number"
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +93,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_designation"
+            android:hint="@string/enter_your_mobile"
             android:inputType="number"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:text="@string/contact_person_mobile_number"
+            android:text="@string/email_id"
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +118,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_your_mobile"
+            android:hint="@string/enter_email_id"
             android:inputType="number"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,27 +126,15 @@
             app:layout_constraintTop_toBottomOf="@+id/tvMobileNum" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvNotificationIns"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:text="@string/you_will_receive_notification"
-            android:textColor="@color/greyed_text"
-            android:textSize="@dimen/_10sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etMobileNum"
-            />
-
-        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:text="@string/email_id"
+            android:text="@string/company_name"
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNotificationIns"
+            app:layout_constraintTop_toBottomOf="@+id/etMobileNum"
             />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -156,37 +143,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_email_id"
+            android:hint="@string/enter_company_name"
             android:inputType="number"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvAddProjectDetails"
-            style="@style/Text.SubHeading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium"
-            android:text="@string/add_project_details"
-            android:textColor="@color/blue_300"
-            android:typeface="serif"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEmail"
-            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvNameOfProject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:text="@string/name_of_project"
+            android:text="@string/company_address"
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAddProjectDetails"
+            app:layout_constraintTop_toBottomOf="@+id/etEmail"
             />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -195,7 +169,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_project_name"
+            android:hint="@string/enter_location"
             android:inputType="number"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
@@ -208,7 +182,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:hint="@string/enter_project_location"
+            android:hint="@string/select_city"
             android:inputType="number"
             android:paddingEnd="@dimen/_10sdp"
             android:maxLines="1"
@@ -217,6 +191,45 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etProjectName" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCompanyVerification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/etProjectLocation"
+            android:text="Company Verification Document"
+            android:textColor="@color/greyed_text"
+            android:padding="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_border_grey_with_rounded_corner"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_complete_verification"
+            style="@style/Text.Card.Heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvCompanyVerification"
+            android:text="@string/complete_your_verification_inst"
+            android:textColor="@color/greyed_text"
+            android:layout_marginTop="@dimen/_2sdp"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEdit"
+            style="@style/App.Button.Blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_and_update"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:paddingTop="@dimen/_3sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@+id/text_complete_verification"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

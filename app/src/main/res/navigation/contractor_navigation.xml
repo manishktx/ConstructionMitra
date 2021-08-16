@@ -3,7 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/selectJobFragment">
+    app:startDestination="@id/contractorHomeFragment">
+
+    <fragment
+        android:id="@+id/contractorHomeFragment"
+        android:name="com.constructionmitra.user.ui.contractor.ContractorHomeFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/fragment_contractor_home">
+
+        <action android:id="@+id/toSelectJobFragment"
+            app:destination="@id/selectJobFragment"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contractorHomeContainerFragment"
+        android:label="Home Fragment"
+        android:name="com.constructionmitra.user.ui.contractor.ContractorHomeContainerFragment"
+        tools:layout="@layout/fragment_contractor_home_container">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/postedJobsFragment"
+        android:name="com.constructionmitra.user.ui.contractor.ContractorHomeFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/fragment_contractor_home">
+
+        <action android:id="@+id/toSelectJobFragment"
+            app:destination="@id/selectJobFragment"
+            />
+    </fragment>
+
 
     <fragment
         android:id="@+id/selectJobFragment"
@@ -14,6 +45,7 @@
         <action android:id="@+id/toSelectWorkFragment"
             app:destination="@id/selectWorkFragment"
             />
+
     </fragment>
 
     <fragment
@@ -30,7 +62,7 @@
 
     <fragment
         android:id="@+id/jobDetailsFragment"
-        android:name="com.constructionmitra.user.ui.contractor.JobRoleDetailsFragment"
+        android:name="com.constructionmitra.user.ui.contractor.JobDetailsFragment"
         android:label="@string/login_fragment_label"
         tools:layout="@layout/fragment_job_role_details">
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.constructionmitra.user.R
 import com.constructionmitra.user.databinding.FragmentRegistrationBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
@@ -21,6 +22,7 @@ class RegistrationFragment : Fragment() {
     private lateinit var progressBarBinding: ProgressBarBinding
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
+    private val args: RegistrationFragmentArgs by navArgs()
 
     private val viewModel: LoginViewModel by viewModels()
 
@@ -61,7 +63,8 @@ class RegistrationFragment : Fragment() {
                 RegistrationFragmentDirections.toOtpFragment(
                     otp =  it.data.otp,
                     id = it.data.id,
-                    mobile = etMobileNum.text.toString()
+                    mobile = etMobileNum.text.toString(),
+                    profileType = args.profileType
                 ).apply {
                     findNavController().navigate(this)
                 }

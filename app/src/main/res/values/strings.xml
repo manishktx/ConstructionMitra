@@ -5,6 +5,9 @@
     <string name="title_notifications">प्रोफ़ाइल</string>
     <string name="title_activity_login">LoginActivity</string>
 
+    <!-- Messages -->
+    <string name="msg_select_your_category">Please choose your category</string>
+
     <!--Errors -->
     <string name="enter_valid_details">Please Enter Valid Details</string>
     <string name="enter_valid_otp">Please Enter Valid OTP</string>
@@ -136,6 +139,7 @@
     <string name="type_of_project">Type Of Project</string>
     <string name="when_is_requirement_of_worker">When is the requirement of workers ?</string>
     <string name="company_name">Company Name</string>
+    <string name="company_address">Company Address</string>
     <string name="enter_company_name">Enter Company Name</string>
     <string name="person_name_for_job">Name of the person posting job requirement</string>
     <string name="enter_contact_person_name">Enter Contact Person Name*</string>
@@ -148,7 +152,30 @@
     <string name="add_project_details">Add Project Detail</string>
     <string name="name_of_project">Name of the Project</string>
     <string name="enter_project_name">Please enter Project name</string>
+    <string name="work_desc">Work Description</string>
     <string name="add_employee_details">Add Employee Details</string>
+    <string name="employee_name">Employee Name</string>
     <string name="enter_project_location">Enter Project Location*</string>
+    <string name="enter_location">Enter Location*</string>
+    <string name="select_city">Select City</string>
+    <string name="posted_jobs">Posted Jobs</string>
+    <string name="active_jobs">Active Jobs</string>
+    <string name="applied_by">Applied By</string>
+    <string name="contact_seen">Contact Seen</string>
+    <string name="title_contractor_home_screen">Find Construction workplace with&lt;br/>&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
+    <string name="in_3_steps">in just 3 steps</string>
+    <string name="post_a_job">Post A Job</string>
+    <string name="provide_details_about_job">2.\nProvide\nDetails About\nThe Job</string>
+    <string name="review_and_post">3.\nReview and\nPost</string>
+    <string name="select_job_role">1.\nSelect Job\nRole</string>
+    <string name="save_and_update">Save and Update</string>
+    <string name="save">Save</string>
+    <string name="complete_your_verification_inst">Complete your company verification by uploading company document for faster job approval</string>
+    <string-array name="job_categories">
+        <item>Engineer/ Supervisor</item>
+        <item>Petty Contractor</item>
+        <item>Specialised Agency</item>
+    </string-array>
+
 
 </resources>

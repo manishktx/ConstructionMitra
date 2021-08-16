@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.constructionmitra.user.R
-import com.constructionmitra.user.databinding.FragmentContractorHomeBinding
+import com.constructionmitra.user.databinding.FragmentContractorProfileBinding
 
-class ContractorHomeFragment : Fragment() {
+class ContractorProfileFragment : Fragment() {
 
-    private var _binding: FragmentContractorHomeBinding? = null
+    private var _binding: FragmentContractorProfileBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +19,7 @@ class ContractorHomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentContractorHomeBinding.inflate(inflater, container, false).apply {
-            tvTitle.text = HtmlCompat.fromHtml(getString(R.string.title_contractor_home_screen), HtmlCompat.FROM_HTML_MODE_LEGACY)
-            tvPostAJob.setOnClickListener {
-                ContractorHomeFragmentDirections.toSelectJobFragment().apply {
-                    findNavController().navigate(this)
-                }
-            }
-        }
+        _binding = FragmentContractorProfileBinding.inflate(inflater, container, false)
         return binding.root
 
     }

@@ -4,16 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.constructionmitra.user.FragmentContainerActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.data.Job
 import com.constructionmitra.user.databinding.FragmentRequestForWorkBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.ui.contractor.viewmodels.JobDetailsViewModel
 import com.constructionmitra.user.ui.dialogs.AlertDialogWith1ActionButton
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,10 +35,22 @@ class WorkDetailsFragment : Fragment() {
     lateinit var appPreferences: AppPreferences
     private val viewModel: WorkDetailViewModel by viewModels()
 
+    private val jobDetailsViewModel: JobDetailsViewModel by lazy {
+        ViewModelProvider(
+            requireParentFragment().requireParentFragment()
+        ).get(JobDetailsViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             job = it.getParcelable(FragmentContainerActivity.PARCELABLE_KEY)
+        }
+    }
+
+    private val backPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            findNavController().popBackStack()
         }
     }
 
@@ -51,6 +67,21 @@ class WorkDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // If job is null means navigation from Contractor Job Post
+        job ?: run {
+            requireActivity().onBackPressedDispatcher.addCallback(
+                viewLifecycleOwner,
+                backPressedCallback
+            )
+            jobDetailsViewModel.onFragmentSelected(2)
+            with(binding){
+                tvActionButton.visibility = View.GONE
+                tvReqForContact.visibility = View.GONE
+                separator2.visibility = View.GONE
+            }
+
+        }
+
         binding.tvReqForContact.text = HtmlCompat.fromHtml(
             getString(R.string.hint_req_for_number),
             HtmlCompat.FROM_HTML_MODE_LEGACY

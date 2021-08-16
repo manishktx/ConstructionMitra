@@ -24,7 +24,7 @@
         android:id="@+id/tvHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_title"
+        android:text="Construction Mitra"
         android:textSize="@dimen/_22ssp"
         android:gravity="center"
         android:layout_marginTop="@dimen/_40sdp"
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_60sdp"
         android:gravity="center"
-        android:text="@string/labour_contractor"
+        android:text="Nirmaan Shramik and Nirmaan karta"
         android:textSize="@dimen/_22ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
         />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/labourCardView"
+        android:id="@+id/nirmaanShramikView"
         android:layout_width="0dp"
         android:layout_height="@dimen/login_card_height"
         android:layout_marginStart="@dimen/_2sdp"
@@ -84,7 +84,7 @@
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_3sdp"
         app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toStartOf="@+id/contractorCardView"
+        app:layout_constraintEnd_toStartOf="@+id/nirmaanKartaView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubHeading2"
         tools:cardBackgroundColor="@color/blue_100">
@@ -115,10 +115,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
+
     </androidx.cardview.widget.CardView>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTickNirmaanShramik"
+        android:layout_width="@dimen/ic_done_size"
+        android:layout_height="@dimen/ic_done_size"
+        app:srcCompat="@drawable/ic_round_done"
+        android:tint="@color/blue_300"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@id/nirmaanShramikView"
+        app:layout_constraintStart_toStartOf="@+id/nirmaanShramikView"
+        android:layout_margin="@dimen/_5sdp"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/nirmaanShramikView"
+        tools:visibility="visible" />
+
     <androidx.cardview.widget.CardView
-        android:id="@+id/contractorCardView"
+        android:id="@+id/nirmaanKartaView"
         android:layout_width="0dp"
         android:layout_height="@dimen/login_card_height"
         app:cardCornerRadius="@dimen/_10sdp"
@@ -127,7 +143,7 @@
         android:clipToPadding="false"
         app:cardUseCompatPadding="true"
         android:layout_marginTop="@dimen/_20sdp"
-        app:layout_constraintStart_toEndOf="@+id/labourCardView"
+        app:layout_constraintStart_toEndOf="@+id/nirmaanShramikView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubHeading2"
         app:cardElevation="@dimen/_3sdp"
@@ -161,8 +177,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
+
     </androidx.cardview.widget.CardView>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTickNirmaanKarta"
+        android:layout_width="@dimen/ic_done_size"
+        android:layout_height="@dimen/ic_done_size"
+        app:srcCompat="@drawable/ic_round_done"
+        android:tint="@color/blue_300"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="@id/nirmaanKartaView"
+        app:layout_constraintStart_toStartOf="@+id/nirmaanKartaView"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/nirmaanKartaView"
+        tools:visibility="visible" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvLogin"

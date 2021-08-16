@@ -29,6 +29,29 @@
                 />
         </androidx.appcompat.widget.Toolbar>
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            style="@style/Widget.MaterialComponents.TabLayout.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:tabTextColor="@color/tab_text_color_selector"
+            android:background="@color/blue_100"
+            android:visibility="gone"
+            >
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Posted Jobs"
+                />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                />
+        </com.google.android.material.tabs.TabLayout>
+
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <fragment
@@ -41,6 +64,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
-        app:navGraph="@navigation/contractor_nav_graph" />
+        app:navGraph="@navigation/contractor_navigation" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

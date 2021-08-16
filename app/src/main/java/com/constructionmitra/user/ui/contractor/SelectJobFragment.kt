@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.constructionmitra.user.R
 import com.constructionmitra.user.databinding.FragmentSelectJobBinding
 import kotlinx.android.synthetic.main.fragment_otp.*
@@ -32,11 +33,13 @@ class SelectJobFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
 //            val items = listOf("Material", "Design", "Components", "Android")
-            val items = resources.getStringArray(R.array.work_options)
+            val items = resources.getStringArray(R.array.job_categories)
             val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, items)
             (textInput.editText as? AutoCompleteTextView)?.setAdapter(adapter)
             tvNext.setOnClickListener {
-
+                SelectJobFragmentDirections.toSelectWorkFragment().apply {
+                    findNavController().navigate(this)
+                }
             }
         }
     }

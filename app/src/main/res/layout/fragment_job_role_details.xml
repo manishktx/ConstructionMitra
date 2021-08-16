@@ -1,52 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/jobDetailsNavigation"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="false"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/indicatorView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:navGraph="@navigation/job_role_details_navigation" />
-
-    <include
-        android:id="@+id/indicatorView"
-        layout="@layout/brick_type_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/story_indicator_height"
-        app:layout_constraintBottom_toTopOf="@+id/viewFooter" />
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/viewFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:padding="@dimen/_8sdp">
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        >
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvLogin"
-            style="@style/App.Button.Blue"
+            style="@style/Text.SubHeading"
+            android:id="@+id/heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/job_role_details"
+            android:typeface="serif"
+            android:textSize="@dimen/text_medium"
+            android:padding="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Job roles card -->
+
+        <include
+            android:id="@+id/cardJobRoles"
+            layout="@layout/card_job_roles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/heading"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvWhen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium"
+            android:textColor="@color/greyed_text"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardJobRoles"
+            android:text="@string/when_is_requirement_of_worker" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etMinDuration"
+            style="@style/App.Editable.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/next"
-            android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/etMaxDuration"
+            app:layout_constraintTop_toBottomOf="@+id/tvWhen"
+            android:hint="0 - 15 days"
+            android:inputType="number"
+            android:maxLines="1" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etMaxDuration"
+            style="@style/App.Editable.Blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/etMinDuration"
+            app:layout_constraintTop_toBottomOf="@+id/tvWhen"
+            android:hint="0 - 15 days"
+            android:inputType="number"
+            android:maxLines="1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium"
+            android:textColor="@color/greyed_text"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etMinDuration"
+            android:text="@string/type_of_project" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvType"
+            >
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/greyed_text"
+                android:text="@string/select_project_type" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvWorkDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium"
+            android:textColor="@color/greyed_text"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInput"
+            android:text="@string/work_desc" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etWrokDesc"
+            style="@style/App.Editable.Blue"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginHorizontal="@dimen/_50sdp"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/tvWorkDesc"
+            android:gravity="top|start"
+            android:hint="0 - 15 days"
+            android:inputType="number" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

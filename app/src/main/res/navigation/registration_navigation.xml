@@ -26,6 +26,10 @@
             android:id="@+id/to_otpFragment"
             app:destination="@id/otpFragment" />
 
+        <argument
+            android:name="profileType"
+            app:argType="com.constructionmitra.user.ui.login.ProfileType"/>
+
     </fragment>
 
     <fragment
@@ -50,6 +54,10 @@
         <argument
             android:name="mobile"
             app:argType="string"/>
+
+        <argument
+            android:name="profileType"
+            app:argType="com.constructionmitra.user.ui.login.ProfileType"/>
 
     </fragment>
 

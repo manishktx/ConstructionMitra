@@ -8,6 +8,7 @@ import com.constructionmitra.user.R
 import com.constructionmitra.user.api.CMitraService
 import com.constructionmitra.user.databinding.ActivityContractorMainBinding
 import com.constructionmitra.user.databinding.ActivityLoginBinding
+import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_contractor_main.*
 import kotlinx.android.synthetic.main.item_profile.*
@@ -26,6 +27,19 @@ class ContractorMainActivity : AppCompatActivity() {
         binding = ActivityContractorMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
             tvTitle.text = HtmlCompat.fromHtml(getString(R.string.login_title), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+
+                }
+            })
         }
     }
 

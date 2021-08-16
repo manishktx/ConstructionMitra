@@ -32,30 +32,8 @@
         android:layout_marginStart="@dimen/_1sdp"
         android:layout_marginEnd="@dimen/_1sdp"
         android:background="@drawable/selector_brick_indicator"
-        app:layout_constraintEnd_toStartOf="@id/forth"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/second"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/forth"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/story_indicator_height"
-        android:layout_marginStart="@dimen/_1sdp"
-        android:layout_marginEnd="@dimen/_1sdp"
-        android:background="@drawable/selector_brick_indicator"
-        app:layout_constraintEnd_toStartOf="@+id/fifth"
-        app:layout_constraintStart_toEndOf="@+id/third"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/fifth"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/story_indicator_height"
-        android:layout_marginStart="@dimen/_1sdp"
-        android:background="@drawable/selector_brick_indicator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/forth"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.constructionmitra.user.R
 import com.constructionmitra.user.databinding.FragmentLoginBinding
+import com.constructionmitra.user.utilities.showToast
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -17,6 +18,7 @@ import com.constructionmitra.user.databinding.FragmentLoginBinding
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
+    private var profileType: ProfileType? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -37,9 +39,25 @@ class LoginFragment : Fragment() {
             tvHeading.text = HtmlCompat.fromHtml(getString(R.string.login_title), HtmlCompat.FROM_HTML_MODE_LEGACY)
             tvHeading2.text = HtmlCompat.fromHtml(getString(R.string.labour_contractor), HtmlCompat.FROM_HTML_MODE_LEGACY)
             tvLogin.setOnClickListener{
-                LoginFragmentDirections.toRegistrationFragment().apply {
-                    findNavController().navigate(this)
+                profileType?.let {
+                    LoginFragmentDirections.toRegistrationFragment(it).apply {
+                        findNavController().navigate(this)
+                    }
+                    return@setOnClickListener
                 }
+                binding.root.showToast(getString(R.string.msg_select_your_category))
+            }
+
+            nirmaanKartaView.setOnClickListener {
+                profileType = ProfileType.NIRMAAN_KARTA
+                ivTickNirmaanKarta.visibility = View.VISIBLE
+                ivTickNirmaanShramik.visibility = View.GONE
+            }
+
+            nirmaanShramikView.setOnClickListener {
+                profileType = ProfileType.NIRMAAN_SHRAMIK
+                ivTickNirmaanKarta.visibility = View.GONE
+                ivTickNirmaanShramik.visibility = View.VISIBLE
             }
         }
     }

@@ -73,18 +73,17 @@
         android:layout_height="wrap_content"
         android:text="@string/title_contractor_home_screen"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/separator2"
         android:textSize="@dimen/text_medium"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textSelectAJob"
         android:layout_width="@dimen/circle_size_bg"
         android:layout_height="@dimen/circle_size_bg"
-        android:textSize="@dimen/_9ssp"
+        android:textSize="@dimen/text_small"
         android:text="@string/select_job_role"
         android:background="@drawable/bg_circle_green"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +98,7 @@
         android:id="@+id/textProvideDetails"
         android:layout_width="@dimen/circle_size_bg"
         android:layout_height="@dimen/circle_size_bg"
-        android:textSize="@dimen/_9ssp"
+        android:textSize="@dimen/text_small"
         android:text="@string/provide_details_about_job"
         android:background="@drawable/bg_circle_green"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +113,7 @@
         android:id="@+id/textReviewAndPost"
         android:layout_width="@dimen/circle_size_bg"
         android:layout_height="@dimen/circle_size_bg"
-        android:textSize="@dimen/_9ssp"
+        android:textSize="@dimen/text_small"
         android:text="@string/review_and_post"
         android:background="@drawable/bg_circle_green"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +125,6 @@
         />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvPostAJob"
         style="@style/App.Button.Green"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

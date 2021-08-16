@@ -1,5 +1,6 @@
 package com.constructionmitra.user.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.constructionmitra.user.MainActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.databinding.FragmentOtpBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.ui.contractor.ContractorMainActivity
 import com.constructionmitra.user.utilities.showSnackBarShort
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -73,11 +76,18 @@ class OtpFragment : Fragment() {
                 appPreferences.saveUserDetails(
                     it.userId, it.userRole, it.token
                 )
-                // navigate to work category Fragment
-                OtpFragmentDirections.toWorkCategory(
-                    args.mobile
-                ).apply {
-                    findNavController().navigate(this)
+                when(args.profileType)
+                {
+                    // navigate to work category Fragment
+                    ProfileType.NIRMAAN_SHRAMIK -> {
+                        OtpFragmentDirections.toWorkCategory(
+                            args.mobile
+                        ).apply {
+                            findNavController().navigate(this)
+                        }
+                    }
+                    // navigate to work Contractor profile
+                    else -> navigateToContractorProfile()
                 }
 
             } ?: binding.root.showSnackBarShort("Please try again")
@@ -89,6 +99,14 @@ class OtpFragment : Fragment() {
                 binding.root.showSnackBarShort(it)
             }
         }
+    }
+
+    private fun navigateToContractorProfile(){
+        Intent(context, ContractorMainActivity::class.java).apply {
+            requireContext().startActivity(this)
+            requireActivity().finish()
+        }
+        requireActivity().overridePendingTransition(R.anim.enter_anim_activity, R.anim.exit_anim_activity)
     }
 
     private fun validateOtp() =
