@@ -21,6 +21,7 @@ class FragmentContainerActivity : AppCompatActivity() {
             this@FragmentContainerActivity.setContentView(it.root)
 
             val job = intent.getParcelableExtra<Job>(PARCELABLE_KEY)
+            val path = intent.getStringExtra(PATH)
 
             intent.getStringExtra(FRAGMENT_NAME)?.let { // check if name is not null
                 supportFragmentManager.commit { // add fragment by commit
@@ -33,6 +34,7 @@ class FragmentContainerActivity : AppCompatActivity() {
                                 // if yes pass it to fragment
                                 arguments?.apply {
                                     putParcelable(PARCELABLE_KEY, job)
+                                    putString(PATH, path)
                                 }
                             }
                         }
@@ -44,6 +46,7 @@ class FragmentContainerActivity : AppCompatActivity() {
 
     companion object{
         const val  FRAGMENT_NAME = "key_fragment"
+        const val  PATH = "from"
         const val  PARCELABLE_KEY = "key_parcelable"
     }
 }

@@ -48,12 +48,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvPhoneNum"
+                android:id="@+id/tvFirmName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/medium"
-                android:textColor="@color/greyed_text"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:textColor="@color/grey_500"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toEndOf="@+id/ivAvatar"
                 app:layout_constraintTop_toBottomOf="@id/tvName"
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                app:layout_constraintTop_toBottomOf="@+id/tvPhoneNum">
+                app:layout_constraintTop_toBottomOf="@+id/tvFirmName">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/titles"
@@ -112,6 +112,7 @@
                     tools:listitem="@layout/item_job_role" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvChangeSelectedWork"
                     style="@style/App.Button.Blue"
                     android:layout_width="@dimen/_140sdp"
                     android:layout_height="wrap_content"

@@ -20,7 +20,7 @@ class WorkCategoryFragment : Fragment() {
     private lateinit var binding: FragmentChooseWorkCategoryBinding
     @Inject
     lateinit var appPreferences: AppPreferences
-    val args: WorkCategoryFragmentArgs by navArgs()
+    private val args: WorkCategoryFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

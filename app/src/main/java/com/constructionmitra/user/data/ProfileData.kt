@@ -18,6 +18,8 @@ data class ProfileData(
     val fcmId: String,
     @SerializedName("full_name")
     val fullName: String,
+    @SerializedName("firm_name")
+    val firmName: String,
     @SerializedName("no_of_workers")
     val noOfWorker: String,
 
@@ -39,4 +41,14 @@ data class ProfileData(
     val profilePic: String,
     @SerializedName("user_doc")
     val userDoc: String
+)
+
+data class AboutData(
+    var name: String = "",
+    var phoneNum: String = "",
+    var otherMobileNum: String = "",
+    var gender: String = "",
+    var age: String = "",
+    var homeAddress: String = "",
+    var currentAddress: String = "",
 )

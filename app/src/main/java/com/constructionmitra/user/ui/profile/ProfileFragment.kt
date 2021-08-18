@@ -14,11 +14,12 @@ import com.constructionmitra.user.R
 import com.constructionmitra.user.adapters.JobRoleAdapter
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.data.ProfileData
-import com.constructionmitra.user.databinding.FragmentProfileBinding
-import com.constructionmitra.user.databinding.ItemProfileCardBinding
-import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.databinding.*
 import com.constructionmitra.user.utilities.StringUtils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_contractor_home.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
+import kotlinx.android.synthetic.main.item_profile_card_3.view.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -26,7 +27,7 @@ import javax.inject.Inject
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var profileViewBinding: ItemProfileCardBinding
+    private lateinit var profileViewBinding: ItemProfileCard3Binding
     private lateinit var progressBarBinding: ProgressBarBinding
 
     @Inject
@@ -66,7 +67,7 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
-            profileViewBinding = ItemProfileCardBinding.bind(viewContainer)
+            profileViewBinding = ItemProfileCard3Binding.bind(viewContainer)
         }
         return binding.root
     }
@@ -87,17 +88,17 @@ class ProfileFragment : Fragment() {
 
     private fun bindData(profileData: ProfileData) {
         with(profileData){
-            profileViewBinding.tvName.text = fullName
-            if(profileData.jobRoles.isNotEmpty()) {
-                profileViewBinding.rvJobRoles.adapter =
-                    JobRoleAdapter(profileData.jobRoles, noOfWorker) {}
+            binding.profileData = profileData
+            with(profileViewBinding){
+                tvName.text = fullName
+                tvFirmName.text  = firmName
+                tvMobileNum.text  = phoneNumber
+                textGender.text = gender
+                textAge.text = age
+                textHomeTown.text = getString(R.string.home_address_formatter, address)
+                textCurrentAddress.text = getString(R.string.current_address_formatter, currentResidence)
+//                this.profileData = profileData
             }
-            else
-                profileViewBinding.viewRoles.visibility = View.GONE
-
-            // set phone number
-            profileViewBinding.tvPhoneNum.text = profileData.phoneNumber
-
             // set initial data
             with(binding.viewWorkExp){
                 tvHeading.text = getString(R.string.work_exp)

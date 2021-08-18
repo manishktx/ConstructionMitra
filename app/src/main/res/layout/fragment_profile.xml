@@ -1,83 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="profileData"
+            type="com.constructionmitra.user.data.ProfileData" />
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/viewContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:text="@string/profile"
-                android:textColor="@color/green_200"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSubHeading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/profile_subheading"
-                android:textColor="@color/greyed_text"
-                android:textSize="@dimen/text_small"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
-
-            <include
-                android:id="@+id/viewProfileCard"
-                layout="@layout/item_profile_card"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/tvSubHeading" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <include
-                android:id="@+id/viewWorkExp"
-                layout="@layout/item_profile_section_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/viewProfileCard" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/profile"
+                    android:textColor="@color/green_200"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <include
-                android:id="@+id/workLocationPriority"
-                layout="@layout/item_profile_section_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/viewWorkExp" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSubHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/profile_subheading"
+                    android:textColor="@color/greyed_text"
+                    android:textSize="@dimen/text_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title" />
 
-            <include
-                android:id="@+id/viewSelectedWork"
-                layout="@layout/item_profile_section_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/workLocationPriority" />
+                <include
+                    android:id="@+id/viewProfileCard"
+                    layout="@layout/item_profile_card_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSubHeading" />
 
-            <include
-                android:id="@+id/viewUploadId"
-                layout="@layout/item_profile_section_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/viewSelectedWork" />
+                <include
+                    android:id="@+id/viewWorkExp"
+                    layout="@layout/item_profile_section_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/viewProfileCard" />
+
+                <include
+                    android:id="@+id/workLocationPriority"
+                    layout="@layout/item_profile_section_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/viewWorkExp" />
+
+                <include
+                    android:id="@+id/viewSelectedWork"
+                    layout="@layout/item_profile_section_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/workLocationPriority" />
+
+                <include
+                    android:id="@+id/viewUploadId"
+                    layout="@layout/item_profile_section_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/viewSelectedWork" />
 
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include layout="@layout/progress_bar" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <include layout="@layout/progress_bar" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+</layout>

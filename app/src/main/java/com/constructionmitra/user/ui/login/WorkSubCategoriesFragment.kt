@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.constructionmitra.user.FragmentContainerActivity
 import com.constructionmitra.user.MainActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
@@ -15,6 +16,7 @@ import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategorie
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
 import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
+import com.constructionmitra.user.utilities.constants.IntentConstants
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -23,6 +25,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class WorkSubCategoriesFragment : Fragment() {
 
+    private var isFromHome: Boolean = false
     private lateinit var binding: FragmentChooseYourWorkSubCategoriesBinding
     private lateinit var progressBarBinding: ProgressBarBinding
 
@@ -52,7 +55,11 @@ class WorkSubCategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showProgress(true)
+        // Check if navigation come from [@HomeFragment] if yes then update UI
+        checkIfCameFromHome()
+
         viewModel.requestJobRoles(args.jobCategory)
+
         // set listener on next button
         binding.tvNext.setOnClickListener {
             viewModel.jobRoles.value?.filter {
@@ -73,6 +80,17 @@ class WorkSubCategoriesFragment : Fragment() {
             }
         }
         registerObservers()
+    }
+
+    private fun checkIfCameFromHome() {
+        arguments?.getString(FragmentContainerActivity.PATH)?.let {
+            it.takeIf { it == IntentConstants.PATH_HOME }?.let {
+                _path ->
+                // change UI
+                isFromHome = true
+                binding.tvNext.text = getString(R.string.save)
+            }
+        }
     }
 
     private fun registerObservers() {
@@ -131,7 +149,7 @@ class WorkSubCategoriesFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             WorkSubCategoriesFragment().apply {
                 arguments = Bundle().apply {
 

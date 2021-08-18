@@ -82,7 +82,8 @@
 
         <argument
             android:name="jobCategory"
-            app:argType="string"/>
+            app:argType="string"
+            android:defaultValue="2"/>
     </fragment>
 
 </navigation>

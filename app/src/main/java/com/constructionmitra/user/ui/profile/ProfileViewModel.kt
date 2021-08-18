@@ -122,6 +122,7 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
+
     fun updateProfile(hashMap: HashMap<String, String>){
         viewModelScope.launch {
             when(val result = repository.updateProfile(hashMap)){

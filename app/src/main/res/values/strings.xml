@@ -11,6 +11,8 @@
     <!--Errors -->
     <string name="enter_valid_details">Please Enter Valid Details</string>
     <string name="enter_valid_otp">Please Enter Valid OTP</string>
+    <string name="enter_valid_mobile_num">Please Enter Valid Mobile Number</string>
+    <string name="enter_valid_name">Please enter your name</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login Fragment</string>
@@ -87,6 +89,7 @@
 
     <!-- Profile -->
     <string name="about_yourself">अपने बारे में बताओ</string>
+    <string name="change_about_details">व्यक्तिगत जानकारी बदले</string>
     <string name="profile">प्रोफ़ाइल</string>
     <string name="your_name">अपना नाम बतायें</string>
     <string name="your_phone_number">अपना फोन नंबर बतायें</string>
@@ -117,6 +120,8 @@
     <string name="change_selected_work">चुने हुए काम को बदले</string>
     <string name="contractor_verification_doc">कॉन्ट्रैक्टर सत्यापन डाक्यूमेंट</string>
     <string name="upload_doc">डाक्यूमेंट अपलोड करें</string>
+    <string name="home_address_formatter">गृह नगरं - %s</string>
+    <string name="current_address_formatter">वर्तमान निवास - %s</string>
 
     <string name="quality">कौशल: %s</string>
     <string-array name="work_exp_options">
@@ -187,6 +192,5 @@
         <item>Petty Contractor</item>
         <item>Specialised Agency</item>
     </string-array>
-
 
 </resources>

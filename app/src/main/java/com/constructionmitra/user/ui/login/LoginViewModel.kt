@@ -67,13 +67,11 @@ class LoginViewModel @Inject constructor(
             }
         }
     }
-
     fun getCheckedItemsIds(jobRoles: List<JobRole>): String{
-        var ids = ""
-        for (jobRole in jobRoles){
-            ids = ids.plus(jobRole.roleId).plus(",")
+        val idList = jobRoles.map {
+            jobRole ->  jobRole.roleId
         }
-        return ids.subSequence(0, ids.length - 2).toString()
+        return idList.joinToString(separator = ",")
     }
 
     fun requestJobRoles(jobCategory: String) {

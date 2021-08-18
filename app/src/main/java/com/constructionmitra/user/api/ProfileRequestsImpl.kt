@@ -1,5 +1,6 @@
 package com.constructionmitra.user.api
 
+import com.constructionmitra.user.data.AboutData
 import com.constructionmitra.user.data.WorkExperience
 import javax.inject.Inject
 
@@ -48,5 +49,23 @@ class ProfileRequestsImpl @Inject constructor() : ProfileRequests{
             hashMap.put(ProfileRequests.EXPERIENCE, exp.experience)
         }
         return hashMap
+    }
+
+    override fun updateAbout(
+        userId: String,
+        token: String,
+        aboutData: AboutData
+    ) : HashMap<String, String>{
+        return hashMapOf(
+            ProfileRequests.USER_ID to userId,
+            ProfileRequests.TOKEN to token,
+            ProfileRequests.PARAM_FULL_NAME to aboutData.name,
+            ProfileRequests.PARAM_PHONE_NUM to aboutData.phoneNum,
+            ProfileRequests.PARAM_OTHER_PHONE_NUM to aboutData.otherMobileNum,
+            ProfileRequests.PARAM_AGE to aboutData.age,
+            ProfileRequests.PARAM_GENDER to aboutData.gender,
+            ProfileRequests.PARAM_HOME_ADDRESS to aboutData.homeAddress,
+            ProfileRequests.PARAM_CURRENT_ADDRESS to aboutData.currentAddress,
+        )
     }
 }

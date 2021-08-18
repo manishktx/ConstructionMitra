@@ -15,7 +15,7 @@ enum class Profile{
 }
 
 val  PROFILE_CARDS = listOf<ProfileItem>(
-    ProfileItem(R.drawable.ic_bag,
+    ProfileItem(R.drawable.ic_person,
         "अपने बारे में बताओ",
         "जानकारी जोड़े",
         Profile.ABOUT),
@@ -25,19 +25,19 @@ val  PROFILE_CARDS = listOf<ProfileItem>(
         Profile.EXPERIENCE,
     ),
 
-    ProfileItem(R.drawable.ic_bag,
+    ProfileItem(R.drawable.ic_location,
         "अपने काम करने की जगों",
         "जानकारी जोड़े",
         Profile.WORK_LOCATION,
     ),
 
-    ProfileItem(R.drawable.ic_bag,
-        "अपने काम की प्रथमिकता",
-        "जानकारी जोड़े",
-        Profile.WORK_PRIORITY,
-    ),
+//    ProfileItem(R.drawable.ic_bag,
+//        "अपने काम की प्रथमिकता",
+//        "जानकारी जोड़े",
+//        Profile.WORK_PRIORITY,
+//    ),
 
-    ProfileItem(R.drawable.ic_bag,
+    ProfileItem(R.drawable.ic_camera_alt,
         "फोटो और आईडी",
         "जानकारी जोड़े",
         Profile.PHOTO_AND_ID_CARD
