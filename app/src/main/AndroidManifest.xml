@@ -23,11 +23,11 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.ConstructionMitra.NoActionBar" >
-            <intent-filter>
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
 
         <activity
@@ -36,11 +36,11 @@
             android:screenOrientation="portrait"
             android:label="@string/app_name">
 
-           <!-- <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
 
         <activity
@@ -59,6 +59,11 @@
 
         <activity
             android:name=".FragmentContainerActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"/>
+
+        <activity
+            android:name=".ui.PreviewImageActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name"/>
 

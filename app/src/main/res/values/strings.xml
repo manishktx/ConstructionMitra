@@ -7,12 +7,14 @@
 
     <!-- Messages -->
     <string name="msg_select_your_category">Please choose your category</string>
+    <string name="work_sample_added">Work Sample Added</string>
 
     <!--Errors -->
     <string name="enter_valid_details">Please Enter Valid Details</string>
     <string name="enter_valid_otp">Please Enter Valid OTP</string>
     <string name="enter_valid_mobile_num">Please Enter Valid Mobile Number</string>
     <string name="enter_valid_name">Please enter your name</string>
+    <string name="something_went_wrong">Something went wrong, please try again.</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login Fragment</string>

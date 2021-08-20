@@ -6,7 +6,10 @@ import com.constructionmitra.user.api.Result
 import com.constructionmitra.user.api.Success
 import com.constructionmitra.user.data.*
 import com.constructionmitra.user.utilities.ServerConstants
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import timber.log.Timber
 import javax.inject.Inject
@@ -148,4 +151,17 @@ class CMitraRepository  @Inject constructor(
             Failure(exp)
         }
     }
+
+    suspend fun addWork(userId: String, file: MultipartBody.Part): Result<BaseResponse<Any>>{
+        return try {
+            Success(cMitraService.addWork(
+                userId,
+                file)
+            )
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
 }

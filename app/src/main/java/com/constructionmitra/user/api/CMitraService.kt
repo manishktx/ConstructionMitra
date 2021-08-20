@@ -1,9 +1,11 @@
 package com.constructionmitra.user.api
 
 import com.constructionmitra.user.data.*
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
@@ -51,6 +53,13 @@ interface CMitraService {
     suspend fun workExpOptions(
     ): BaseResponse<List<WorkExperience>>
 
+    @Multipart
+    @POST("api/v1/user/add_work_history")
+    suspend fun addWork(
+        @Part("user_id") userId: String,
+        @Part file: MultipartBody.Part,
+    ): BaseResponse<Any>
+
     // Work
     @GET("api/v1/common/job_roles/{jobCategory}")
     suspend fun getJobRoles(
@@ -78,6 +87,7 @@ interface CMitraService {
 
     companion object {
         private const val BASE_URL = "http://creativemint.in/cmitra/"
+
 
         fun  create(): CMitraService{
             val interceptor =

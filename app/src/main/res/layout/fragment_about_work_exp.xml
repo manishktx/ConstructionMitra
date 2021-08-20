@@ -48,6 +48,7 @@
 
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icCamera"
         android:layout_width="@dimen/_55sdp"
         android:layout_height="@dimen/_55sdp"
         app:srcCompat="@drawable/ic_camera_alt"

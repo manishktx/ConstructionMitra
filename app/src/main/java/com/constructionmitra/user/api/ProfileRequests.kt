@@ -46,5 +46,6 @@ interface ProfileRequests {
         const val  TOKEN = "token"
         const val  PREFERRED_WORK_LOCATIONS = "preffered_location"
         const val  EXPERIENCE = "experience"
+        const val  PARAM_IMAGE = "image"
     }
 }
