@@ -20,6 +20,7 @@ import com.constructionmitra.user.databinding.FragmentAboutWorkExpBinding
 import com.constructionmitra.user.databinding.ItemWorkExpBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.PreviewImageActivity
+import com.constructionmitra.user.ui.PreviewImageFragment
 import com.constructionmitra.user.utilities.BitmapConfig
 import com.constructionmitra.user.utilities.CMBitmapConfig
 import com.constructionmitra.user.utilities.showToast
@@ -149,6 +150,7 @@ class WorkExpFragment : Fragment() {
         startActivityForResult.launch(
             Intent(requireContext(), PreviewImageActivity::class.java).apply {
                 putExtra(PreviewImageActivity.FILE_PATH, it.absolutePath)
+                putExtra(PreviewImageActivity.SAVE_WHERE, PreviewImageFragment.IN_WORK_CATALOGUE)
             }
         )
         requireActivity().overridePendingTransition(

@@ -35,4 +35,7 @@ object StringUtils {
         }
         return locations.subSequence(0, locations.length - 3).toString()
     }
+
+    @JvmStatic
+    fun isNullOrEmpty(value: String?) = value.isNullOrEmpty()
 }

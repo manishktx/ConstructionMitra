@@ -21,6 +21,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class PreviewImageFragment : Fragment() {
 
+    private var saveWhere: String? = null
     private lateinit var binding: FragmentPreviewImageBinding
     private var filePath: String? = null
     private lateinit var progressBarBinding: ProgressBarBinding
@@ -33,6 +34,7 @@ class PreviewImageFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             filePath = it.getString(FILE_PATH)
+            saveWhere = it.getString(SAVE_WHERE)
         }
     }
 
@@ -46,15 +48,32 @@ class PreviewImageFragment : Fragment() {
             Glide.with(root).load(File(filePath)).into(ivPreview)
             tvSave.setOnClickListener {
                 // Upload image
-                showProgress(true)
-                profileViewModel.addWork(
-                    appPreferences.getUserId()!!,
-                    File(filePath)
-                )
+                saveImage()
             }
 
         }
         return binding.root
+
+    }
+
+    private fun saveImage() {
+        saveWhere?.let {
+            where ->
+            showProgress(true)
+            when(where){
+                IN_WORK_CATALOGUE ->
+                    profileViewModel.addWork(
+                        appPreferences.getUserId()!!,
+                        File(filePath)
+                    )
+                PROFILE_IMAGE ->
+                    profileViewModel.updateProfilePicture(
+                        appPreferences.getUserId()!!,
+                        appPreferences.getToken()!!,
+                        File(filePath)
+                    )
+            }
+        }
 
     }
 
@@ -63,14 +82,28 @@ class PreviewImageFragment : Fragment() {
         profileViewModel.workSampleAdded.observe(viewLifecycleOwner){
             showProgress(false)
             if(it){
-                binding.root.showToast(getString(R.string.work_sample_added))
-                requireActivity().setResult(AppCompatActivity.RESULT_OK)
-                requireActivity().finish()
+               showMessageAndFinishActivity(getString(R.string.work_sample_added))
             }
             else{
                 binding.root.showToast(getString(R.string.something_went_wrong))
             }
         }
+
+        profileViewModel.profilePictureUpdated.observe(viewLifecycleOwner){
+            showProgress(false)
+            if(it){
+                showMessageAndFinishActivity(getString(R.string.profile_picture_updated))
+            }
+            else{
+                binding.root.showToast(getString(R.string.something_went_wrong))
+            }
+        }
+    }
+
+    private fun showMessageAndFinishActivity(message: String){
+        binding.root.showToast(message)
+        requireActivity().setResult(AppCompatActivity.RESULT_OK)
+        requireActivity().finish()
     }
 
     private fun showProgress(show: Boolean) {
@@ -80,11 +113,19 @@ class PreviewImageFragment : Fragment() {
 
     companion object {
         private const val  FILE_PATH = "file_path"
+        const val  SAVE_WHERE = "save_where"
+        const val  PROFILE_IMAGE = "profile_image"
+        const val  IN_WORK_CATALOGUE = "work_category"
+        const val  IN_COMPANY_DOCUMENTS = "company_docs"
+
+
+
         @JvmStatic
-        fun newInstance(filePath: String) =
+        fun newInstance(filePath: String, saveWhere: String) =
             PreviewImageFragment().apply {
                 arguments = Bundle().apply {
                     putString(FILE_PATH, filePath)
+                    putString(SAVE_WHERE, saveWhere)
                 }
             }
     }

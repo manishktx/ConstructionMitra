@@ -1,5 +1,7 @@
 package com.constructionmitra.user.ui.profile
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +10,11 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.RadioButton
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.constructionmitra.user.R
 import com.constructionmitra.user.api.ProfileRequests
 import com.constructionmitra.user.data.AboutData
@@ -18,12 +22,17 @@ import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.data.ProfileData
 import com.constructionmitra.user.databinding.FragmentAboutBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.ui.PreviewImageActivity
+import com.constructionmitra.user.ui.PreviewImageFragment
 import com.constructionmitra.user.utilities.AppUtils
+import com.constructionmitra.user.utilities.BitmapConfig
+import com.constructionmitra.user.utilities.CMBitmapConfig
 import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_request_for_work.*
 import timber.log.Timber
+import java.io.File
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -38,6 +47,10 @@ class AboutFragment : Fragment() {
 
     private val viewModel: ProfileViewModel by viewModels()
 
+    private val bitmapConfig: BitmapConfig by lazy {
+        CMBitmapConfig()
+    }
+
     private val backPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             if(isProfileUpdated)
@@ -45,6 +58,29 @@ class AboutFragment : Fragment() {
             requireActivity().finish()
         }
     }
+
+    private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        it?.let { imageUri ->
+            // Decode and save image code
+            viewModel.decodeAndSaveGalleryImage(
+                imageUri,
+                bitmapConfig,
+                requireContext()
+            )
+        }
+    }
+
+    private val startActivityForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // todo:: hit fetch user details and update image UI
+//                showProgress(true)
+//                viewModel.fetchProfileInfo(appPreferences.getUserId()!!, appPreferences.getToken()!!)
+//                Timber.d("startActivityForResult called !")
+//                result.data?.let {
+//                }
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,8 +90,6 @@ class AboutFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
         binding = FragmentAboutBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
-            val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, AppConstants.ages)
-            (textAge.editText as? AutoCompleteTextView)?.setAdapter(adapter)
         }
         return binding.root
     }
@@ -63,7 +97,9 @@ class AboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showProgress(true)
-        viewModel.fetchProfileInfo(appPreferences.getUserId()!!, appPreferences.getToken()!!)
+        lifecycleScope.launchWhenResumed {
+            viewModel.fetchProfileInfo(appPreferences.getUserId()!!, appPreferences.getToken()!!)
+        }
         viewModel.profileData.observe(viewLifecycleOwner){
             showProgress(false)
             it?.let {
@@ -84,6 +120,10 @@ class AboutFragment : Fragment() {
             }
         }
 
+        binding.ivAvatar.setOnClickListener {
+            pickImageFromGallery()
+        }
+
         registerObservers(); onError()
     }
 
@@ -94,9 +134,34 @@ class AboutFragment : Fragment() {
                 if(it){
                     isProfileUpdated = true
                     binding.root.showToast("ProfileUpdated!")
+                    requireActivity().setResult(AppCompatActivity.RESULT_OK)
+                    requireActivity().finish()
                 }
             }
         }
+
+        viewModel.galleryImageSaved.observe(viewLifecycleOwner){
+            it?.let {
+                navigateToPreview(it)
+            }
+        }
+    }
+
+    private fun pickImageFromGallery() {
+        pickImage.launch("image/*")
+    }
+
+    private fun navigateToPreview(it: File) {
+        startActivityForResult.launch(
+            Intent(requireContext(), PreviewImageActivity::class.java).apply {
+                putExtra(PreviewImageActivity.FILE_PATH, it.absolutePath)
+                putExtra(PreviewImageFragment.SAVE_WHERE, PreviewImageFragment.PROFILE_IMAGE)
+            }
+        )
+        requireActivity().overridePendingTransition(
+            R.anim.enter_anim_activity,
+            R.anim.exit_anim_activity
+        )
     }
 
     fun onRadioButtonClicked(view: View) {
@@ -157,7 +222,7 @@ class AboutFragment : Fragment() {
         with(binding){
             // set gender
             aboutData.gender = if(rbFemale.isChecked || rbMale.isChecked || rbOther.isChecked){
-                    AppUtils.genderInEnglish(
+                    AppUtils.genderType(
                         (root.findViewById(rgGender.checkedRadioButtonId) as RadioButton).text.toString()
                     )
             } else ""
@@ -188,7 +253,17 @@ class AboutFragment : Fragment() {
 
     private fun bindData(profileData: ProfileData) {
         with(binding){
-            binding.profileData = profileData
+            this.profileData = profileData
+            if(profileData.age.isNotEmpty())
+                (textAge.editText as AutoCompleteTextView).setText(profileData.age)
+
+            val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, AppConstants.ages)
+            (textAge.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+
+            if(profileData.gender.isNotEmpty())
+            {
+                this.gender = AppUtils.genderTypeValue(profileData.gender)
+            }
         }
     }
 

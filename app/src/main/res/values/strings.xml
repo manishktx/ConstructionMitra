@@ -8,6 +8,7 @@
     <!-- Messages -->
     <string name="msg_select_your_category">Please choose your category</string>
     <string name="work_sample_added">Work Sample Added</string>
+    <string name="profile_picture_updated">Profile Picture Updated</string>
 
     <!--Errors -->
     <string name="enter_valid_details">Please Enter Valid Details</string>
@@ -93,6 +94,7 @@
     <string name="about_yourself">अपने बारे में बताओ</string>
     <string name="change_about_details">व्यक्तिगत जानकारी बदले</string>
     <string name="profile">प्रोफ़ाइल</string>
+    <string name="catalog_heading">किए हुए कामों की तस्वीरें</string>
     <string name="your_name">अपना नाम बतायें</string>
     <string name="your_phone_number">अपना फोन नंबर बतायें</string>
     <string name="profile_subheading">काम पाने के लिए अपनी जानकारी सही दे या प्रोफाइल को अपडेट रखें</string>
@@ -123,7 +125,12 @@
     <string name="contractor_verification_doc">कॉन्ट्रैक्टर सत्यापन डाक्यूमेंट</string>
     <string name="upload_doc">डाक्यूमेंट अपलोड करें</string>
     <string name="home_address_formatter">गृह नगरं - %s</string>
+    <string name="age_formatter">%s वर्ष</string>
     <string name="current_address_formatter">वर्तमान निवास - %s</string>
+    <string name="view_all_formatter">%s images\nView all\nimages</string>
+    <string name="upload_work_history">अपने पुराने कामों की फोटो सेव कर सकते है , इससे काम जल्दी मिलने के संभावनाएं बढ़ती है</string>
+    <string name="upload_your_letter_head">वेरिफिकेशन के लिए अपना लेटर हेड \nअपलोड करें</string>
+    <string name="letter_head_instruction">आई.डी से आपकी प्रोफाइल की विश्वसनीयता की पहचान होती हैं</string>
 
     <string name="quality">कौशल: %s</string>
     <string-array name="work_exp_options">

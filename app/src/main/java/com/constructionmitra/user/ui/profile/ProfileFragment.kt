@@ -7,19 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.constructionmitra.user.FragmentContainerActivity
 import com.constructionmitra.user.R
-import com.constructionmitra.user.adapters.JobRoleAdapter
+import com.constructionmitra.user.adapters.CatalogPreviewAdapter
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.data.ProfileData
-import com.constructionmitra.user.databinding.*
+import com.constructionmitra.user.data.WorkHistory
+import com.constructionmitra.user.databinding.FragmentProfileBinding
+import com.constructionmitra.user.databinding.ItemProfileCard3Binding
+import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.ui.ShowImageFragment
 import com.constructionmitra.user.utilities.StringUtils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_contractor_home.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
-import kotlinx.android.synthetic.main.item_profile_card_3.view.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -75,13 +79,52 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showProgress(true)
+        // get profile info
         viewModel.fetchProfileInfo(appPreferences.getUserId()!!, appPreferences.getToken()!!)
+
+        // get work history
+        lifecycleScope.launchWhenResumed {
+            viewModel.workHistory(appPreferences.getUserId()!!)
+        }
+
         viewModel.profileData.observe(viewLifecycleOwner){
             binding.viewContainer.visibility = View.VISIBLE
             showProgress(false)
             showProgress(false)
             it?.let {
                 bindData(it)
+            }
+        }
+
+        registerObservers()
+    }
+
+    private fun registerObservers() {
+        viewModel.workHistory.observe(viewLifecycleOwner){
+            it?.takeIf { it.isNotEmpty() }?.let {
+                with(binding.viewCatalog){
+                    textIns.visibility = View.GONE
+                    // TODO Remove dummy list
+                    var newList: MutableList<WorkHistory> = it as MutableList<WorkHistory>
+                    newList = newList.asSequence().plus( it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0])
+                        .toList() as MutableList<WorkHistory>
+                    rvCatalog.adapter = CatalogPreviewAdapter(
+                        newList,
+                        onItemClick =  {
+                            _workHistory ->
+                            navigateToShowImage(_workHistory.image)
+                        },
+                        onViewAllClick = {
+                            navigateTo(CatalogFragment::class.java.name)
+                        }
+                    )
+                    rvCatalog.addItemDecoration(getDividerDecorator())
+                }
+            }?: run {
+                // Work history is empty
+                with(binding.viewCatalog){
+                    rvCatalog.visibility = View.GONE
+                }
             }
         }
     }
@@ -94,7 +137,7 @@ class ProfileFragment : Fragment() {
                 tvFirmName.text  = firmName
                 tvMobileNum.text  = phoneNumber
                 textGender.text = gender
-                textAge.text = age
+                textAge.text = getString(R.string.age_formatter, age)
                 textHomeTown.text = getString(R.string.home_address_formatter, address)
                 textCurrentAddress.text = getString(R.string.current_address_formatter, currentResidence)
 //                this.profileData = profileData
@@ -156,11 +199,34 @@ class ProfileFragment : Fragment() {
         )
     }
 
+    private fun getDividerDecorator(): DividerItemDecoration {
+        return DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL).also {
+            ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.divider
+            )?.apply {
+                it.setDrawable(this)
+            }
+        }
+    }
+
+    private fun navigateToShowImage(imageUrl: String){
+        startActivityForResult.launch(
+            Intent(requireContext(), FragmentContainerActivity::class.java).apply {
+                putExtra(FragmentContainerActivity.FRAGMENT_NAME, ShowImageFragment::class.java.name)
+                putExtra(FragmentContainerActivity.IMAGE_URL, imageUrl)
+            }
+        )
+        requireActivity().overridePendingTransition(
+            R.anim.enter_anim_activity,
+            R.anim.exit_anim_activity
+        )
+    }
+
     private fun showProgress(show: Boolean) {
         progressBarBinding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
         binding.viewContainer.visibility = if (show) View.INVISIBLE else View.VISIBLE
     }
-
 
     companion object {
 

@@ -164,4 +164,32 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
+    suspend fun updateProfilePic(
+        userId: String,
+        token: String,
+        file: MultipartBody.Part
+    ): Result<BaseResponse<Any>>{
+        return try {
+            Success(cMitraService.updateProfilePic(
+                userId,
+                token,
+                file)
+            )
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun workHistory(
+        userId: String,
+    ): Result<BaseResponse<List<WorkHistory>>>{
+        return try {
+            Success(cMitraService.workHistory(userId))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
 }

@@ -16,19 +16,21 @@ class PreviewImageActivity : AppCompatActivity() {
         FragmentContainerActivityBinding.inflate(layoutInflater).also {
             this@PreviewImageActivity.setContentView(it.root)
             val filePath = intent.getStringExtra(FILE_PATH)
-            if(filePath.isNullOrEmpty())
-                throw  Exception("File path can not be null")
+            val saveImageWherePath = intent.getStringExtra(SAVE_WHERE)
+            if(filePath.isNullOrEmpty() && saveImageWherePath.isNullOrEmpty())
+                throw  Exception("File path or saveImageWherePath can not be null")
 
             supportFragmentManager.commit { // add fragment by commit
                 setReorderingAllowed(true)
                 add(
                     R.id.fragment_container,
-                    PreviewImageFragment.newInstance(filePath)
+                    PreviewImageFragment.newInstance(filePath!!, saveImageWherePath!!)
                 )
             }
         }
     }
     companion object{
         const val  FILE_PATH = "file_path"
+        const val  SAVE_WHERE = PreviewImageFragment.SAVE_WHERE
     }
 }

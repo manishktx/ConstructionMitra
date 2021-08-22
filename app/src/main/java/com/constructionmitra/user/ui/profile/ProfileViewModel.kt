@@ -11,6 +11,7 @@ import com.constructionmitra.user.api.Success
 import com.constructionmitra.user.data.Location
 import com.constructionmitra.user.data.ProfileData
 import com.constructionmitra.user.data.WorkExperience
+import com.constructionmitra.user.data.WorkHistory
 import com.constructionmitra.user.repository.CMitraRepository
 import com.constructionmitra.user.ui.base.BaseViewModel
 import com.constructionmitra.user.utilities.*
@@ -46,6 +47,13 @@ class ProfileViewModel @Inject constructor(
 
     private var _workSampleAdded  = SingleLiveEvent<Boolean>()
     val workSampleAdded = _workSampleAdded
+
+    private var _workHistory  = SingleLiveEvent<List<WorkHistory>>()
+    val workHistory = _workHistory
+
+    private var _profilePictureUpdated  = SingleLiveEvent<Boolean>()
+    val profilePictureUpdated = _profilePictureUpdated
+
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
@@ -182,9 +190,44 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
+    fun updateProfilePicture(userId: String, token: String, file: File){
+        viewModelScope.launch {
+            when(val result =  repository.updateProfilePic(userId, token, createMultipartBodyForProfilePic(file))){
+                is Success -> {
+                    _workSampleAdded.postValue(result.data.status == ServerConstants.STATUS_SUCCESS)
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
+
+    fun workHistory(userId: String){
+        viewModelScope.launch {
+            when(val result =  repository.workHistory(userId)){
+                is Success -> {
+                    _workHistory.postValue(result.data.data!!)
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
     private fun createMultipartBody(file: File): MultipartBody.Part {
         return MultipartBody.Part.createFormData(
             ProfileRequests.PARAM_IMAGE, file.name,
+            getRequestBody(file, MIMEType.IMAGE.value)
+        )
+    }
+
+
+    private fun createMultipartBodyForProfilePic(file: File): MultipartBody.Part {
+        return MultipartBody.Part.createFormData(
+            ProfileRequests.PROFILE_PIC, file.name,
             getRequestBody(file, MIMEType.IMAGE.value)
         )
     }

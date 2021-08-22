@@ -4,9 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.constructionmitra.user.utilities.StringUtils"/>
+        <import type="com.constructionmitra.user.api.MALE"/>
+        <import type="com.constructionmitra.user.api.FEMALE"/>
+        <import type="com.constructionmitra.user.api.OTHER"/>
+
         <variable
             name="profileData"
             type="com.constructionmitra.user.data.ProfileData" />
+
+        <variable
+            name="gender"
+            type="com.constructionmitra.user.api.Gender" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,10 +23,12 @@
         android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvUpdatePic">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -30,10 +41,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:text="@string/about_yourself"
                     android:textColor="@color/greyed_text"
-                    android:textSize="@dimen/x_large" />
+                    android:textSize="@dimen/text_large" />
 
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -41,7 +52,7 @@
                     style="@style/App.Editable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_5sdp"
                     android:gravity="center_horizontal"
@@ -76,6 +87,7 @@
                     android:drawableStart="@drawable/ic_phone"
                     android:drawablePadding="@dimen/_5sdp"
                     android:maxLength="10"
+                    android:text="@{profileData.otherPhoneNumber}"
                     android:gravity="center_horizontal"
                     android:hint="@string/other_mobile_num"
                     android:inputType="number"
@@ -84,7 +96,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp">
+                    android:layout_marginTop="@dimen/_5sdp">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvGender"
@@ -116,6 +128,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:text="@string/male"
+                            android:checked="@{gender instanceof MALE}"
+                            android:layout_weight="1"
                             android:textColor="@color/greyed_text"
                             android:textSize="@dimen/medium"
                             />
@@ -126,7 +140,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginStart="@dimen/_20sdp"
+                            android:checked="@{gender instanceof FEMALE}"
                             android:text="@string/female"
+                            android:layout_weight="1"
                             android:textColor="@color/greyed_text"
                             android:textSize="@dimen/medium" />
 
@@ -136,7 +152,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginStart="@dimen/_20sdp"
+                            android:checked="@{gender instanceof OTHER}"
                             android:text="@string/other"
+                            android:layout_weight="1"
                             android:textColor="@color/greyed_text"
                             android:textSize="@dimen/medium"
                             />
@@ -152,9 +170,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/heading"
-                    android:layout_marginTop="@dimen/_6sdp">
+                    android:layout_marginTop="@dimen/_2sdp">
 
                     <AutoCompleteTextView
+                        android:id="@+id/etAge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="none"
@@ -175,6 +194,7 @@
                     android:layout_marginTop="@dimen/_12sdp"
                     android:drawableStart="@drawable/ic_location"
                     android:drawablePadding="@dimen/_5sdp"
+                    android:text="@{profileData.address}"
                     android:drawableTint="@color/blue_200"
                     android:gravity="center_horizontal"
                     android:hint="@string/where_is_your_home"
@@ -190,6 +210,7 @@
                     android:drawableStart="@drawable/ic_location"
                     android:drawablePadding="@dimen/_5sdp"
                     android:gravity="center_horizontal"
+                    android:text="@{profileData.currentResidence}"
                     android:hint="@string/where_is_your_home"
                     android:inputType="textCapWords"
                     android:maxLines="1" />
@@ -206,14 +227,40 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etOtp" />
 
-
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.core.widget.NestedScrollView>
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/App.Button.Blue"
+            android:id="@+id/tvUpdatePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/upload_your_pic"
+            android:textColor="@color/greyed_text"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:layout_constraintBottom_toTopOf="@+id/ivAvatar"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            app:srcCompat="@drawable/ic_camera_alt"
+            app:tint="@color/blue_300"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/tvSaveDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/_8sdp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSaveDetails"
+            style="@style/App.Button.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="अपनी जानकारी सहेजें"

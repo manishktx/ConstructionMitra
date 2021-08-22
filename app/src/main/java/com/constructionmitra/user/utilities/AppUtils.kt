@@ -5,14 +5,25 @@ import com.constructionmitra.user.api.MALE
 import com.constructionmitra.user.api.OTHER
 
 object AppUtils {
-     fun genderInEnglish(genderInHindi: String) = when (genderInHindi) {
-        MALE().hindiName -> {
+     fun genderType(gender: String) = when (gender) {
+        MALE().hindiName, MALE().englishName-> {
             MALE().englishName
         }
 
-        FEMALE().hindiName -> {
+        FEMALE().hindiName, FEMALE().englishName -> {
             FEMALE().englishName
         }
         else -> OTHER().englishName
+    }
+
+    fun genderTypeValue(gender: String) = when (gender) {
+        MALE().hindiName, MALE().englishName-> {
+            MALE()
+        }
+
+        FEMALE().hindiName, FEMALE().englishName -> {
+            FEMALE()
+        }
+        else -> OTHER()
     }
 }
