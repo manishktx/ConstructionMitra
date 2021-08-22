@@ -55,6 +55,9 @@ class FragmentFactory @Inject constructor() {
                 CatalogFragment::class.java.name ->
                     CatalogFragment.newInstance()
 
+                CompanyLetterHeadFragment::class.java.name ->
+                    CompanyLetterHeadFragment.newInstance()
+
                 else ->
                     throw IllegalArgumentException("Unknown Fragment class $className")
             }

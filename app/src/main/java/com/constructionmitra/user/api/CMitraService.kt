@@ -68,6 +68,14 @@ interface CMitraService {
         @Part file: MultipartBody.Part,
     ): BaseResponse<Any>
 
+    @Multipart
+    @POST("api/v1/user/update_profile")
+    suspend fun updateLetterHead(
+        @Part("user_id") userId: String,
+        @Part("token") token: String,
+        @Part file: MultipartBody.Part,
+    ): BaseResponse<Any>
+
     @FormUrlEncoded
     @POST("api/v1/user/work_history")
     suspend fun workHistory(

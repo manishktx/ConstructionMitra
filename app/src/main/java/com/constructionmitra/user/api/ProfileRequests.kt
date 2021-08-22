@@ -48,5 +48,6 @@ interface ProfileRequests {
         const val  EXPERIENCE = "experience"
         const val  PARAM_IMAGE = "image"
         const val  PROFILE_PIC = "profile_pic"
+        const val  LETTER_HEAD = "user_doc"
     }
 }

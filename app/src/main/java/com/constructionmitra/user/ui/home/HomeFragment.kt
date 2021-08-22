@@ -86,7 +86,7 @@ class HomeFragment : Fragment() {
                 Profile.WORK_LOCATION ->
                     navigateTo(WorkLocationFragment::class.java.name)
                 Profile.PHOTO_AND_ID_CARD ->
-                    navigateTo(UploadPhotoAndIdFragment::class.java.name)
+                    navigateTo(CompanyLetterHeadFragment::class.java.name)
             }
         }
         binding.dotsIndicator.setViewPager(binding.vpProfile)

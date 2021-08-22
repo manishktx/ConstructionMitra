@@ -48,6 +48,9 @@ class ProfileViewModel @Inject constructor(
     private var _workSampleAdded  = SingleLiveEvent<Boolean>()
     val workSampleAdded = _workSampleAdded
 
+    private var _letterHeadUpdated  = SingleLiveEvent<Boolean>()
+    val letterHeadUpdated = _letterHeadUpdated
+
     private var _workHistory  = SingleLiveEvent<List<WorkHistory>>()
     val workHistory = _workHistory
 
@@ -203,6 +206,19 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
+    fun updateLetterHead(userId: String, token: String, file: File){
+        viewModelScope.launch {
+            when(val result =  repository.updateLetterHead(userId, token, createMultipartBodyForLetterHead(file))){
+                is Success -> {
+                    _letterHeadUpdated.postValue(result.data.status == ServerConstants.STATUS_SUCCESS)
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
 
     fun workHistory(userId: String){
         viewModelScope.launch {
@@ -228,6 +244,13 @@ class ProfileViewModel @Inject constructor(
     private fun createMultipartBodyForProfilePic(file: File): MultipartBody.Part {
         return MultipartBody.Part.createFormData(
             ProfileRequests.PROFILE_PIC, file.name,
+            getRequestBody(file, MIMEType.IMAGE.value)
+        )
+    }
+
+    private fun createMultipartBodyForLetterHead(file: File): MultipartBody.Part {
+        return MultipartBody.Part.createFormData(
+            ProfileRequests.LETTER_HEAD, file.name,
             getRequestBody(file, MIMEType.IMAGE.value)
         )
     }

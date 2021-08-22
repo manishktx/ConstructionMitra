@@ -15,6 +15,7 @@ import com.constructionmitra.user.databinding.FragmentCompanyLetterHeadBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.PreviewImageActivity
 import com.constructionmitra.user.ui.PreviewImageFragment
+import com.constructionmitra.user.utilities.BindingAdapters
 import com.constructionmitra.user.utilities.BitmapConfig
 import com.constructionmitra.user.utilities.CMBitmapConfig
 import com.constructionmitra.user.utilities.showToast
@@ -95,13 +96,21 @@ class CompanyLetterHeadFragment : Fragment() {
 
             }
         }
+
+        viewModel.profileData.observe(viewLifecycleOwner){
+            showProgress(false)
+            it?.let {
+                profileData ->
+                BindingAdapters.loadImage(binding.ivLetterHead, profileData.userDoc)
+            }
+        }
     }
 
     private fun navigateToPreview(it: File) {
         startActivityForResult.launch(
             Intent(requireContext(), PreviewImageActivity::class.java).apply {
                 putExtra(PreviewImageActivity.FILE_PATH, it.absolutePath)
-                putExtra(PreviewImageActivity.SAVE_WHERE, PreviewImageFragment.IN_WORK_CATALOGUE)
+                putExtra(PreviewImageActivity.SAVE_WHERE, PreviewImageFragment.IN_COMPANY_DOCUMENTS)
             }
         )
         requireActivity().overridePendingTransition(

@@ -23,6 +23,7 @@ import com.constructionmitra.user.databinding.ItemProfileCard3Binding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.ShowImageFragment
 import com.constructionmitra.user.utilities.StringUtils
+import com.constructionmitra.user.utilities.constants.IntentConstants
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
@@ -72,6 +73,9 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
             profileViewBinding = ItemProfileCard3Binding.bind(viewContainer)
+            viewProfileCard.tvChangeAbout.setOnClickListener {
+                navigateTo(AboutFragment::class.java.name)
+            }
         }
         return binding.root
     }
@@ -191,6 +195,7 @@ class ProfileFragment : Fragment() {
         startActivityForResult.launch(
             Intent(requireContext(), FragmentContainerActivity::class.java).apply {
                 putExtra(FragmentContainerActivity.FRAGMENT_NAME, fragmentName)
+                putExtra(FragmentContainerActivity.PATH, fragmentName)
             }
         )
         requireActivity().overridePendingTransition(

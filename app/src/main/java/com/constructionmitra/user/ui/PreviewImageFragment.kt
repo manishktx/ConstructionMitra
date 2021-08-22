@@ -72,6 +72,13 @@ class PreviewImageFragment : Fragment() {
                         appPreferences.getToken()!!,
                         File(filePath)
                     )
+
+                IN_COMPANY_DOCUMENTS ->
+                    profileViewModel.updateLetterHead(
+                        appPreferences.getUserId()!!,
+                        appPreferences.getToken()!!,
+                        File(filePath)
+                    )
             }
         }
 
@@ -98,6 +105,17 @@ class PreviewImageFragment : Fragment() {
                 binding.root.showToast(getString(R.string.something_went_wrong))
             }
         }
+
+        profileViewModel.letterHeadUpdated.observe(viewLifecycleOwner){
+            showProgress(false)
+            if(it){
+                showMessageAndFinishActivity(getString(R.string.company_document_updated))
+            }
+            else{
+                binding.root.showToast(getString(R.string.something_went_wrong))
+            }
+        }
+
     }
 
     private fun showMessageAndFinishActivity(message: String){

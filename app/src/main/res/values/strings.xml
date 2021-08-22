@@ -9,6 +9,7 @@
     <string name="msg_select_your_category">Please choose your category</string>
     <string name="work_sample_added">Work Sample Added</string>
     <string name="profile_picture_updated">Profile Picture Updated</string>
+    <string name="company_document_updated">Company Document Updated</string>
 
     <!--Errors -->
     <string name="enter_valid_details">Please Enter Valid Details</string>
