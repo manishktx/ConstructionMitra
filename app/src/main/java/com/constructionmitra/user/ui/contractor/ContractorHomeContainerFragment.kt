@@ -7,13 +7,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.constructionmitra.user.databinding.FragmentContractorHomeContainerBinding
+import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
+import com.constructionmitra.user.ui.contractor.viewmodels.UiViewModel
 
 private const val NUM_PAGES = 2
 class ContractorHomeContainerFragment : Fragment() {
 
     private var _binding: FragmentContractorHomeContainerBinding? = null
-
+    private val viewModel: JobPostViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(JobPostViewModel::class.java)
+    }
+    private val uiViewModel: UiViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(UiViewModel::class.java)
+    }
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -22,6 +31,7 @@ class ContractorHomeContainerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        uiViewModel.showHomeTabs(true)
         _binding = FragmentContractorHomeContainerBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -30,13 +40,26 @@ class ContractorHomeContainerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
-            vpProfile.adapter = ScreenSlidePagerAdapter(parentFragmentManager)
+            vpProfile.adapter = ScreenSlidePagerAdapter(childFragmentManager)
+        }
+
+        viewModel.tabSelected.observe(viewLifecycleOwner){
+            binding.vpProfile.currentItem = it
+        }
+
+        uiViewModel.initJobPost.observe(viewLifecycleOwner){
+            if(it){
+                findNavController().navigate(
+                    ContractorHomeContainerFragmentDirections.toSelectJobFragment()
+                )
+            }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        uiViewModel.showHomeTabs(false)
     }
 
     private inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {

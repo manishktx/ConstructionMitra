@@ -33,7 +33,7 @@
             android:inputType="none"
             android:padding="@dimen/_10sdp"
             android:textColor="@color/greyed_text"
-            android:text="Select Your Job Role" />
+            android:text="@string/select_your_job_role" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,5 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+    <include layout="@layout/progress_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

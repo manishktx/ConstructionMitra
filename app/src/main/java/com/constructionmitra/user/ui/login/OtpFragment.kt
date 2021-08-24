@@ -102,6 +102,7 @@ class OtpFragment : Fragment() {
     }
 
     private fun navigateToContractorProfile(){
+        appPreferences.saveBoolean(AppPreferences.IS_NEW_CONTRACTOR, true)
         Intent(context, ContractorMainActivity::class.java).apply {
             requireContext().startActivity(this)
             requireActivity().finish()

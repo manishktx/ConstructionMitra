@@ -11,4 +11,8 @@ data class JobRole(
 ){
 
     var isChecked = false
+
+    override fun toString(): String {
+        return jobRole
+    }
 }

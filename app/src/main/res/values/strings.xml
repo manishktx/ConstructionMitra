@@ -14,7 +14,8 @@
     <!--Errors -->
     <string name="enter_valid_details">Please Enter Valid Details</string>
     <string name="enter_valid_otp">Please Enter Valid OTP</string>
-    <string name="enter_valid_mobile_num">Please Enter Valid Mobile Number</string>
+    <string name="enter_valid_mobile_num">Please Enter A Valid Mobile Number</string>
+    <string name="enter_valid_email_address">Please Enter A Valid Email Id</string>
     <string name="enter_valid_name">Please enter your name</string>
     <string name="something_went_wrong">Something went wrong, please try again.</string>
 
@@ -32,6 +33,7 @@
 
     <!-- Login Module -->
     <string name="login_title">&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
+    <string name="app_title_english">&lt;font color="#4883C1"> Construction &lt;font/> &lt;font color="#00B867">Mitra&lt;font/></string>
     <string name="login_sub_heading">निर्माण स्थलों पर काम पाना हुआ अब आसान............</string>
     <string name="labour_contractor">&lt;font color="#4883C1"> निर्माण श्रमिक, &lt;font/>  &lt;font color="#00B867">निर्माण कर्ता&lt;font/></string>
     <string name="get_together_here">दोनों मिलते है यहाँ</string>
@@ -164,8 +166,9 @@
     <string name="type_of_project">Type Of Project</string>
     <string name="when_is_requirement_of_worker">When is the requirement of workers ?</string>
     <string name="company_name">Company Name</string>
+    <string name="enter_mobile_number">Enter Mobile Number*</string>
     <string name="company_address">Company Address</string>
-    <string name="enter_company_name">Enter Company Name</string>
+    <string name="enter_company_name">Enter Company Name*</string>
     <string name="person_name_for_job">Name of the person posting job requirement</string>
     <string name="enter_contact_person_name">Enter Contact Person Name*</string>
     <string name="designation">Designation</string>
@@ -197,6 +200,8 @@
     <string name="save_and_update">Save and Update</string>
     <string name="save">Save</string>
     <string name="complete_your_verification_inst">Complete your company verification by uploading company document for faster job approval</string>
+    <string name="select_your_job_role">Select Your Job Role</string>
+    <string name="please_mention_details_about_the_work">Please mention details about the work.</string>
     <string-array name="job_categories">
         <item>Engineer/ Supervisor</item>
         <item>Petty Contractor</item>

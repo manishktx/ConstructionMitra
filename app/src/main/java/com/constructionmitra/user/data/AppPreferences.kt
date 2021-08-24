@@ -15,15 +15,21 @@ class AppPreferences @Inject constructor(
         token: String,
     ){
         sharedPreferences.edit().apply {
-            putString(USER_ID, userId)
+            putInt(USER_ID, userId.toInt())
             putString(USER_ROLE, userRole)
             putString(TOKEN, token)
         }.apply()
     }
 
+    fun saveBoolean(key: String, value: Boolean){
+        sharedPreferences.edit().putBoolean(key, value).apply()
+    }
+
+    fun getBoolean(key: String) = sharedPreferences.getBoolean(key, false)
+
     fun getToken() = sharedPreferences.getString(TOKEN, "")
 
-    fun getUserId() = sharedPreferences.getString(USER_ID, "")
+    fun getUserId() = sharedPreferences.getInt(USER_ID, 0).toString()
 
     fun getUserRole() = sharedPreferences.getString(USER_ROLE, "")
 
@@ -32,5 +38,6 @@ class AppPreferences @Inject constructor(
         const val USER_ID = "user_id"
         const val USER_ROLE = "user_role"
         const val TOKEN = "token"
+        const val IS_NEW_CONTRACTOR = "new_contractor"
     }
 }

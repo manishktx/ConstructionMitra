@@ -125,6 +125,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <include layout="@layout/progress_bar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

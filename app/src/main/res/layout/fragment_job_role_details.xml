@@ -115,7 +115,7 @@
             android:text="@string/work_desc" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etWrokDesc"
+            android:id="@+id/etWorkDesc"
             style="@style/App.Editable.Blue"
             android:layout_width="0dp"
             android:layout_height="@dimen/_80sdp"
@@ -124,8 +124,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWorkDesc"
             android:gravity="top|start"
-            android:hint="0 - 15 days"
-            android:inputType="number" />
+            android:maxLines="3"
+            android:text="From this project we gonna change the world, it's a new revolution."
+            android:hint="@string/please_mention_details_about_the_work"
+            />
+
+        <include layout="@layout/progress_bar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

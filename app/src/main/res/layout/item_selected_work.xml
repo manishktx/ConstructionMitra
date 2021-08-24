@@ -3,15 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="jobRole"
-            type="com.constructionmitra.user.data.JobRole" />
-
-        <variable
-            name="numberOfWorker"
-            type="String" />
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,7 +13,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@string/about_yourself"
-            android:text="@{jobRole.jobRole}"
             android:textSize="@dimen/text_medium"
             android:layout_marginStart="@dimen/_5sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +23,6 @@
             android:id="@+id/tvTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{numberOfWorker}"
             android:textSize="@dimen/text_medium"
             android:layout_marginEnd="@dimen/_20sdp"
             app:layout_constraintEnd_toEndOf="parent"

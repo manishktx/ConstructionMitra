@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/contractorHomeFragment">
+    android:id="@+id/nav_graph">
 
     <fragment
         android:id="@+id/contractorHomeFragment"
@@ -22,17 +21,10 @@
         android:name="com.constructionmitra.user.ui.contractor.ContractorHomeContainerFragment"
         tools:layout="@layout/fragment_contractor_home_container">
 
-    </fragment>
-
-    <fragment
-        android:id="@+id/postedJobsFragment"
-        android:name="com.constructionmitra.user.ui.contractor.ContractorHomeFragment"
-        android:label="@string/login_fragment_label"
-        tools:layout="@layout/fragment_contractor_home">
-
         <action android:id="@+id/toSelectJobFragment"
             app:destination="@id/selectJobFragment"
             />
+
     </fragment>
 
 
@@ -56,6 +48,10 @@
 
         <action android:id="@+id/toJobDetailsFragment"
             app:destination="@id/jobDetailsFragment"
+            />
+
+        <argument android:name="categoryId"
+            app:argType="integer"
             />
 
     </fragment>

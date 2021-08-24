@@ -182,7 +182,7 @@ class ProfileViewModel @Inject constructor(
 
     fun addWork(userId: String, file: File){
         viewModelScope.launch {
-            when(val result =  repository.addWork(userId, createMultipartBody(file))){
+            when(val result =  repository.addWork(userId.toInt(), createMultipartBody(file))){
                 is Success -> {
                     _workSampleAdded.postValue(result.data.status == ServerConstants.STATUS_SUCCESS)
                 }
@@ -195,7 +195,7 @@ class ProfileViewModel @Inject constructor(
 
     fun updateProfilePicture(userId: String, token: String, file: File){
         viewModelScope.launch {
-            when(val result =  repository.updateProfilePic(userId, token, createMultipartBodyForProfilePic(file))){
+            when(val result =  repository.updateProfilePic(userId.toInt(), token, createMultipartBodyForProfilePic(file))){
                 is Success -> {
                     _workSampleAdded.postValue(result.data.status == ServerConstants.STATUS_SUCCESS)
                 }
@@ -208,7 +208,7 @@ class ProfileViewModel @Inject constructor(
 
     fun updateLetterHead(userId: String, token: String, file: File){
         viewModelScope.launch {
-            when(val result =  repository.updateLetterHead(userId, token, createMultipartBodyForLetterHead(file))){
+            when(val result =  repository.updateLetterHead(userId.toInt(), token, createMultipartBodyForLetterHead(file))){
                 is Success -> {
                     _letterHeadUpdated.postValue(result.data.status == ServerConstants.STATUS_SUCCESS)
                 }

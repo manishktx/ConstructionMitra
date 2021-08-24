@@ -113,7 +113,7 @@ class AboutFragment : Fragment() {
                 Timber.d("About data = $it")
                 showProgress(true)
                 viewModel.updateProfile(profileRequests.updateAbout(
-                    userId = appPreferences.getUserId()!!,
+                    userId = appPreferences.getUserId(),
                     token = appPreferences.getToken()!!,
                     aboutData = it
                 ))
@@ -259,7 +259,6 @@ class AboutFragment : Fragment() {
 
             val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, AppConstants.ages)
             (textAge.editText as? AutoCompleteTextView)?.setAdapter(adapter)
-
             if(profileData.gender.isNotEmpty())
             {
                 this.gender = AppUtils.genderTypeValue(profileData.gender)

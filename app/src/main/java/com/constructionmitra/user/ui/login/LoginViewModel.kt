@@ -36,9 +36,9 @@ class LoginViewModel @Inject constructor(
     private var _updateJobRoles  = MutableLiveData<BaseResponse<Any>>()
     val updateJobRoles = _updateJobRoles
 
-    fun requestOtp(mobile: String) {
+    fun requestOtp(mobile: String, jobRole: String) {
         viewModelScope.launch {
-            when (val result: Result<LoginResponse> = repository.requestOtp(mobile)){
+            when (val result: Result<LoginResponse> = repository.requestOtp(mobile, jobRole)){
                 is Success -> {
                     loginResponse.postValue(result.data)
                 }
@@ -55,7 +55,7 @@ class LoginViewModel @Inject constructor(
             when (val result: Result<BaseResponse<VerifyOtpData>> = repository.verifyOtp(mobile, otp)){
                 is Success -> {
                     if(result.data.status.equals(ServerConstants.STATUS_SUCCESS, ignoreCase = true)){
-                        verifyOtpData.postValue(result.data.data)
+                        _verifyOtpData.postValue(result.data.data!!)
                     }
                     else{
                         onFailedResponse(java.lang.Exception(result.data.message))

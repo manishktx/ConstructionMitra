@@ -17,7 +17,7 @@ import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.data.Job
 import com.constructionmitra.user.databinding.FragmentRequestForWorkBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
-import com.constructionmitra.user.ui.contractor.viewmodels.JobDetailsViewModel
+import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
 import com.constructionmitra.user.ui.dialogs.AlertDialogWith1ActionButton
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,10 +35,10 @@ class WorkDetailsFragment : Fragment() {
     lateinit var appPreferences: AppPreferences
     private val viewModel: WorkDetailViewModel by viewModels()
 
-    private val jobDetailsViewModel: JobDetailsViewModel by lazy {
+    private val jobPostViewModel: JobPostViewModel by lazy {
         ViewModelProvider(
-            requireParentFragment().requireParentFragment()
-        ).get(JobDetailsViewModel::class.java)
+            requireActivity()
+        ).get(JobPostViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,19 +67,22 @@ class WorkDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // If job is null means navigation from Contractor Job Post
+        // If job is null means navigation done here from Contractor Job Post
         job ?: run {
             requireActivity().onBackPressedDispatcher.addCallback(
                 viewLifecycleOwner,
                 backPressedCallback
             )
-            jobDetailsViewModel.onFragmentSelected(2)
+            jobPostViewModel.onFragmentSelected(2)
             with(binding){
                 tvActionButton.visibility = View.GONE
                 tvReqForContact.visibility = View.GONE
                 separator2.visibility = View.GONE
             }
-
+            // bind data with UI
+            jobPostViewModel.jobPostRequest?.let {
+                bindData(it.toJob())
+            }
         }
 
         binding.tvReqForContact.text = HtmlCompat.fromHtml(

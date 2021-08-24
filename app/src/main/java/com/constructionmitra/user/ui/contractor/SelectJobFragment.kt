@@ -1,30 +1,57 @@
 package com.constructionmitra.user.ui.contractor
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.constructionmitra.user.R
+import com.constructionmitra.user.data.JobCategory
 import com.constructionmitra.user.databinding.FragmentSelectJobBinding
+import com.constructionmitra.user.databinding.ItemDropDownBinding
+import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
+import com.constructionmitra.user.ui.login.LoginViewModel
+import com.constructionmitra.user.utilities.constants.AppConstants
+import com.constructionmitra.user.utilities.showToast
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_otp.*
 
+@AndroidEntryPoint
 class SelectJobFragment : Fragment() {
 
+    private var selectedItem: Int? = null
     private var _binding: FragmentSelectJobBinding? = null
+    private lateinit var progressBarBinding: ProgressBarBinding
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val viewModel: JobPostViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(JobPostViewModel::class.java)
+    }
+
+    private val onItemSelectedListener: AdapterView.OnItemClickListener =
+        AdapterView.OnItemClickListener {
+                parent, view, position, id -> selectedItem = position
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSelectJobBinding.inflate(inflater, container, false)
+        _binding = FragmentSelectJobBinding.inflate(inflater, container, false).apply {
+            progressBarBinding = ProgressBarBinding.bind(root)
+        }
         return binding.root
 
     }
@@ -32,16 +59,51 @@ class SelectJobFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
-//            val items = listOf("Material", "Design", "Components", "Android")
-            val items = resources.getStringArray(R.array.job_categories)
-            val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, items)
-            (textInput.editText as? AutoCompleteTextView)?.setAdapter(adapter)
             tvNext.setOnClickListener {
-                SelectJobFragmentDirections.toSelectWorkFragment().apply {
-                    findNavController().navigate(this)
+                if(binding.textInput.editText?.text.toString() !=
+                    getString(R.string.select_your_job_role)
+                ){
+                    selectedItem?.let {
+                        val selectedJob = viewModel.jobCategories.value?.get(it)!!
+                        viewModel.saveJobCategory(selectedJob.categoryId)
+                        SelectJobFragmentDirections.toSelectWorkFragment(
+                            selectedJob.categoryId.toInt()
+                        ).apply {
+                            findNavController().navigate(this)
+                        }
+                    }
+                }
+                else{
+
                 }
             }
         }
+
+        showProgress(true)
+        viewModel.jobCategories()
+
+        registerObservers()
+    }
+
+    private fun registerObservers() {
+        viewModel.jobCategories.observe(viewLifecycleOwner){
+            showProgress(false)
+            it?.takeIf { it.isNotEmpty() }?.let {
+                    items ->
+                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, items)
+                (binding.textInput.editText as? AutoCompleteTextView)?.apply {
+                    onItemClickListener = this@SelectJobFragment.onItemSelectedListener
+                    setAdapter(adapter)
+                }
+            } ?: run {
+                // List is empty
+                binding.root.showToast("Categories are empty!")
+            }
+        }
+    }
+
+    private fun showProgress(show: Boolean) {
+        progressBarBinding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {

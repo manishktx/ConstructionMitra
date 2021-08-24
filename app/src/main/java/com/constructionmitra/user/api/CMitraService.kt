@@ -56,14 +56,14 @@ interface CMitraService {
     @Multipart
     @POST("api/v1/user/add_work_history")
     suspend fun addWork(
-        @Part("user_id") userId: String,
+        @Part("user_id") userId: Int,
         @Part file: MultipartBody.Part,
     ): BaseResponse<Any>
 
     @Multipart
     @POST("api/v1/user/update_profile")
     suspend fun updateProfilePic(
-        @Part("user_id") userId: String,
+        @Part("user_id") userId: Int,
         @Part("token") token: String,
         @Part file: MultipartBody.Part,
     ): BaseResponse<Any>
@@ -71,7 +71,7 @@ interface CMitraService {
     @Multipart
     @POST("api/v1/user/update_profile")
     suspend fun updateLetterHead(
-        @Part("user_id") userId: String,
+        @Part("user_id") userId: Int,
         @Part("token") token: String,
         @Part file: MultipartBody.Part,
     ): BaseResponse<Any>
@@ -87,6 +87,10 @@ interface CMitraService {
     suspend fun getJobRoles(
         @Path("jobCategory") jobCategory: String
     ): BaseResponse<List<JobRole>>
+
+    @GET("api/v1/common/job_categories")
+    suspend fun jobCategories(
+    ): BaseResponse<List<JobCategory>>
 
     @FormUrlEncoded
     @POST("api/v1/common/job_post_list/available")
@@ -106,6 +110,33 @@ interface CMitraService {
         @Field("user_id") userId: String,
         @Field("job_post_id") jobPostId: String,
     ): BaseResponse<Any>
+
+
+    /**
+     *  Contractor apis
+     */
+
+    @FormUrlEncoded
+    @POST("api/v1/common/add_job_work")
+    suspend fun addJobWork(
+        @Field("user_id") userId: Int,
+        @Field("job_category_id") jobCategoryId: String,
+        @Field("job_role_id") jobRoleId: String,
+        @Field("no_of_workers") numOfWorker: Int,
+        @Field("job_post_id") jobPostId: Int,
+    ): BaseResponse<JobPostId>
+
+    @GET("api/v1/common/project_types")
+    suspend fun projectTypes(
+    ): BaseResponse<List<ProjectType>>
+
+
+    @FormUrlEncoded
+    @POST("api/v1/common/manage_job")
+    suspend fun postAJob(
+        @FieldMap map: HashMap<String, String>
+    ): BaseResponse<Any>
+
 
     companion object {
         private const val BASE_URL = "http://creativemint.in/cmitra/"

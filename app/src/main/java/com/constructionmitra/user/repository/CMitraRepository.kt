@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.http.Field
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,11 +21,11 @@ class CMitraRepository  @Inject constructor(
     private  val cMitraService: CMitraService
 ){
 
-    suspend fun  requestOtp(mobile: String): Result<LoginResponse>{
+    suspend fun  requestOtp(mobile: String, jobRole: String): Result<LoginResponse>{
         return try {
             Success(cMitraService.requestOtp(
                 hashMapOf(
-                    "user_role" to "3".toRequestBody("text/plain".toMediaTypeOrNull()),
+                    "user_role" to jobRole.toRequestBody("text/plain".toMediaTypeOrNull()),
                     "fcm_id" to  "ANDROIDKT".toRequestBody("text/plain".toMediaTypeOrNull()),
                     "phone_number" to mobile.toRequestBody("text/plain".toMediaTypeOrNull()),
                     "full_name" to "Manish".toRequestBody("text/plain".toMediaTypeOrNull())
@@ -51,6 +52,21 @@ class CMitraRepository  @Inject constructor(
     suspend fun jobRoles(jobCategory: String): Result<List<JobRole>>{
         return try {
            val baseResponse = cMitraService.getJobRoles(jobCategory)
+            Timber.d("jobRoles: $baseResponse")
+            if(baseResponse.status.equals(ServerConstants.STATUS_SUCCESS, ignoreCase = true)){
+                Success(baseResponse.data!!)
+            }
+            else
+                Failure(Exception(baseResponse.message))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun jobCategories(): Result<List<JobCategory>>{
+        return try {
+            val baseResponse = cMitraService.jobCategories()
             Timber.d("jobRoles: $baseResponse")
             if(baseResponse.status.equals(ServerConstants.STATUS_SUCCESS, ignoreCase = true)){
                 Success(baseResponse.data!!)
@@ -152,7 +168,7 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
-    suspend fun addWork(userId: String, file: MultipartBody.Part): Result<BaseResponse<Any>>{
+    suspend fun addWork(userId: Int, file: MultipartBody.Part): Result<BaseResponse<Any>>{
         return try {
             Success(cMitraService.addWork(
                 userId,
@@ -165,7 +181,7 @@ class CMitraRepository  @Inject constructor(
     }
 
     suspend fun updateProfilePic(
-        userId: String,
+        userId: Int,
         token: String,
         file: MultipartBody.Part
     ): Result<BaseResponse<Any>>{
@@ -182,12 +198,12 @@ class CMitraRepository  @Inject constructor(
     }
 
     suspend fun updateLetterHead(
-        userId: String,
+        userId: Int,
         token: String,
         file: MultipartBody.Part
     ): Result<BaseResponse<Any>>{
         return try {
-            Success(cMitraService.updateProfilePic(
+            Success(cMitraService.updateLetterHead(
                 userId,
                 token,
                 file)
@@ -203,6 +219,49 @@ class CMitraRepository  @Inject constructor(
     ): Result<BaseResponse<List<WorkHistory>>>{
         return try {
             Success(cMitraService.workHistory(userId))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    /**
+     *  Contractor apis
+     */
+
+    suspend fun addJobWork(
+        userId: String,
+        jobCategoryId: String,
+        jobRoleId: String,
+        numOfWorker: String,
+        jobPostId: String
+    ): Result<BaseResponse<JobPostId>>{
+        return try {
+            Success(cMitraService.addJobWork(
+                userId = userId.toInt(),
+                jobCategoryId = jobCategoryId,
+                jobRoleId = jobRoleId,
+                numOfWorker =  numOfWorker.toInt(),
+                jobPostId = jobPostId.toInt()
+            ))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun projectTypes(): Result<BaseResponse<List<ProjectType>>>{
+        return try {
+            Success(cMitraService.projectTypes())
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun postAJob(hashMap: HashMap<String, String>): Result<BaseResponse<Any>>{
+        return try {
+            Success(cMitraService.postAJob(hashMap))
         }catch (exp: Exception){
             Timber.d("okhttp: ${exp.toString()}")
             Failure(exp)

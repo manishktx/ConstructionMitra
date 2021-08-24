@@ -13,6 +13,7 @@ import com.constructionmitra.user.databinding.FragmentRegistrationBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.utilities.ServerConstants
 import com.constructionmitra.user.utilities.showSnackBarShort
+import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_registration.*
 
@@ -42,7 +43,13 @@ class RegistrationFragment : Fragment() {
         binding.tvNext.setOnClickListener {
             if(validateDetails()) {
                 showProgress(true)
-                viewModel.requestOtp(binding.etMobileNum.text.toString())
+                viewModel.requestOtp(binding.etMobileNum.text.toString(),
+                    when(args.profileType){
+                        ProfileType.NIRMAAN_SHRAMIK -> "3"
+                        ProfileType.NIRMAAN_KARTA -> "4"
+                        else -> "6"
+                    }
+                )
 //                RegistrationFragmentDirections.toOtpFragment().apply {
 //                    findNavController().navigate(this)
 //                }
@@ -69,7 +76,18 @@ class RegistrationFragment : Fragment() {
                 }
             }
         }
+
+        onError()
+
     }
+
+    private fun onError() {
+        viewModel.errorMsg.observe(viewLifecycleOwner){
+            showProgress(false)
+            binding.root.showToast("You are already registered!")
+        }
+    }
+
 
     private fun validateDetails() =
         binding.etMobileNum.text.toString().trim().length == 10 || binding.etName.text.toString().trim().length >= 3

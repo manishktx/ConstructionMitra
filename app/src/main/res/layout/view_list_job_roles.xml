@@ -40,6 +40,6 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/tvTeam"
         tools:itemCount="3"
-        tools:listitem="@layout/item_job_role" />
+        tools:listitem="@layout/item_selected_work" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

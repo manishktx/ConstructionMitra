@@ -1,5 +1,6 @@
 package com.constructionmitra.user.ui.contractor
 
+import android.content.Intent
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,22 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.ViewModelProvider
 import com.constructionmitra.user.R
+import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.databinding.*
-import com.constructionmitra.user.ui.contractor.viewmodels.JobDetailsViewModel
-import com.constructionmitra.user.ui.work.WorkDetailsFragment
+import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
+import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_otp.*
 import timber.log.Timber
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class JobDetailsFragment : Fragment() {
 
     private var _binding: FragmentJobDetailsBinding? = null
+    private lateinit var progressBarBinding: ProgressBarBinding
 
-    private val viewModel: JobDetailsViewModel by viewModels()
-
+    private val viewModel: JobPostViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(JobPostViewModel::class.java)
+    }
+    @Inject
+    lateinit var appPreferences: AppPreferences
     // to manage the indicator state
     private val mIndicatorStates = hashMapOf<Int, Int>()
 
@@ -34,7 +40,9 @@ class JobDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentJobDetailsBinding.inflate(inflater, container, false)
+        _binding = FragmentJobDetailsBinding.inflate(inflater, container, false).apply {
+            progressBarBinding = ProgressBarBinding.bind(root)
+        }
         return binding.root
 
     }
@@ -53,6 +61,13 @@ class JobDetailsFragment : Fragment() {
             }
             tvSave.setOnClickListener {
                 // Save post
+                showProgress(true)
+                viewModel.postJob(appPreferences.getUserId())
+            }
+            tvPostAJob.setOnClickListener {
+                // Save post
+                showProgress(true)
+                viewModel.postJob(appPreferences.getUserId())
             }
         }
         registerObservers()
@@ -65,6 +80,16 @@ class JobDetailsFragment : Fragment() {
             // set story indicator
             it?.let { _position ->
                 setIndicator(_position)
+            }
+        }
+
+        viewModel.jobPosted.observe(viewLifecycleOwner){
+            showProgress(false)
+            if(it){
+                binding.root.showToast("Job Posted")
+                navigateToContractorProfile()
+            } else {
+                binding.root.showToast("Something went wrong")
             }
         }
     }
@@ -87,6 +112,19 @@ class JobDetailsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun navigateToContractorProfile(){
+        appPreferences.saveBoolean(AppPreferences.IS_NEW_CONTRACTOR, false)
+        Intent(context, ContractorMainActivity::class.java).apply {
+            requireContext().startActivity(this)
+            requireActivity().finish()
+        }
+        requireActivity().overridePendingTransition(R.anim.enter_anim_activity, R.anim.exit_anim_activity)
+    }
+
+    private fun showProgress(show: Boolean) {
+        progressBarBinding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
