@@ -2,7 +2,8 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F9F9F9">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,13 +38,13 @@
             />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etCompanyName"
+            android:id="@+id/etEmployeeName"
             style="@style/App.Editable.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             android:hint="@string/employee_name"
-            android:inputType="number"
+            android:inputType="textCapWords"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +52,7 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvContactPersonName"
+            android:id="@+id/tvDesignation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
@@ -59,32 +60,7 @@
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etCompanyName"
-            />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etContactPersonName"
-            style="@style/App.Editable.Blue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_designation"
-            android:inputType="number"
-            android:maxLines="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvContactPersonName" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDesignation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium"
-            android:text="@string/mobile_number"
-            android:textColor="@color/greyed_text"
-            android:textSize="@dimen/_10sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etContactPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/etEmployeeName"
             />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -93,19 +69,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_your_mobile"
-            android:inputType="number"
+            android:hint="@string/enter_designation"
+            android:inputType="textCapWords"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvDesignation" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvMobileNum"
+            android:id="@+id/tvMobileNumb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:text="@string/email_id"
+            android:text="@string/mobile_number"
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -118,19 +94,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_email_id"
+            android:hint="@string/enter_your_mobile"
             android:inputType="number"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMobileNum" />
+            app:layout_constraintTop_toBottomOf="@+id/tvMobileNumb" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:text="@string/company_name"
+            android:text="@string/email_id"
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,20 +119,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:hint="@string/enter_company_name"
-            android:inputType="number"
+            android:hint="@string/enter_email_id"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
-
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvNameOfProject"
+            android:id="@+id/tvCompanyName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
-            android:text="@string/company_address"
+            android:text="@string/company_name"
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -164,38 +139,64 @@
             />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etProjectName"
+            android:id="@+id/etCompany"
+            style="@style/App.Editable.Blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:hint="@string/enter_company_name"
+            android:inputType="textCapWords"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCompanyName" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium"
+            android:text="@string/company_address"
+            android:textColor="@color/greyed_text"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etCompany"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etAddress"
             style="@style/App.Editable.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             android:hint="@string/enter_location"
-            android:inputType="number"
+            android:inputType="textCapWords"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameOfProject" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etProjectLocation"
+            android:id="@+id/etSelectCity"
             style="@style/App.Editable.Blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium"
             android:hint="@string/select_city"
-            android:inputType="number"
+            android:inputType="textCapWords"
             android:paddingEnd="@dimen/_10sdp"
             android:maxLines="1"
             android:drawableEnd="@drawable/ic_location"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etProjectName" />
+            app:layout_constraintTop_toBottomOf="@+id/etAddress" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvCompanyVerification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/etProjectLocation"
+            app:layout_constraintTop_toBottomOf="@id/etSelectCity"
             android:text="Company Verification Document"
             android:textColor="@color/greyed_text"
             android:padding="@dimen/_12sdp"
@@ -232,6 +233,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_complete_verification"
             />
+
+        <include layout="@layout/progress_bar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

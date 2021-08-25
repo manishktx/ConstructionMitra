@@ -50,4 +50,5 @@ data class  EmployeeDetails(
     val emailId: String,
     var projectName: String? = null,
     val projectLocation: String,
+    val projectLocationId: String,
 )

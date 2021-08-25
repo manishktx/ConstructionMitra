@@ -3,37 +3,61 @@ package com.constructionmitra.user.ui.contractor.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.constructionmitra.user.api.Failure
-import com.constructionmitra.user.api.JobPostRequestMapper
-import com.constructionmitra.user.api.Result
 import com.constructionmitra.user.api.Success
-import com.constructionmitra.user.data.*
+import com.constructionmitra.user.data.ProfileData
+import com.constructionmitra.user.data.ProfileDataContractor
 import com.constructionmitra.user.repository.CMitraRepository
 import com.constructionmitra.user.ui.base.BaseViewModel
 import com.constructionmitra.user.utilities.ServerConstants
-import com.constructionmitra.user.utilities.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
-class ContractorProfileViewModel (
+@HiltViewModel
+class ContractorProfileViewModel @Inject constructor(
+    private val repository: CMitraRepository,
 ) : BaseViewModel() {
 
-    private var _showTabs = SingleLiveEvent<Boolean>()
-    val showTabs = _showTabs
+    private var _profileData  = MutableLiveData<ProfileData>()
+    val profileData = _profileData
 
-    private var _initJobPost = SingleLiveEvent<Boolean>()
-    val initJobPost = _initJobPost
+    private var _profileDataWithPostedJob  = MutableLiveData<ProfileDataContractor>()
+    val profileDataWithPostedJob = _profileDataWithPostedJob
 
-    fun init(){}
-
-    fun showHomeTabs(value: Boolean)
-    {
-        _showTabs.value = value
+    fun fetchProfileInfo(userId: String, token: String){
+        viewModelScope.launch {
+            when(val result = repository.fetchProfile(userId, token)){
+                is Success -> {
+                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
+                        _profileData.postValue(result.data.data!!)
+                    }
+                    else{
+                        onFailedResponse(Exception(result.data.message))
+                    }
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
     }
 
-    fun initJobPostProcess(value: Boolean)
-    {
-        _initJobPost.value = value
+    fun getProfileWithPostedJobs(userId: String){
+        viewModelScope.launch {
+            when(val result = repository.fetchProfileContractor(userId)){
+                is Success -> {
+                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
+                        _profileDataWithPostedJob.postValue(result.data.data!!)
+                    }
+                    else{
+                        onFailedResponse(Exception(result.data.message))
+                    }
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
     }
+
 }

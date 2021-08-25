@@ -99,6 +99,55 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <!-- Terms and conditions view -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewTnC"
+        app:layout_constraintBottom_toTopOf="@+id/separator2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/cbConfirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/_10sdp"
+            android:text="@string/i_confirm_information"
+            app:layout_constraintTop_toTopOf="@+id/cbConfirm"
+            app:layout_constraintBottom_toBottomOf="@+id/cbConfirm"
+            />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbAgreeTnC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cbConfirm"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/cbAgreeTnC"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/_10sdp"
+            android:text="@string/text_terms_and_condition"
+            app:layout_constraintTop_toTopOf="@+id/cbAgreeTnC"
+            app:layout_constraintBottom_toBottomOf="@+id/cbAgreeTnC"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <View
         android:id="@+id/separator2"
         android:layout_width="match_parent"

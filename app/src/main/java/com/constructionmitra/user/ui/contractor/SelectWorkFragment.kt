@@ -21,6 +21,7 @@ import com.constructionmitra.user.databinding.FragmentSelectJobBinding
 import com.constructionmitra.user.databinding.FragmentSelectWorkBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
+import com.constructionmitra.user.utilities.AppUtils
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_otp.*
@@ -62,6 +63,7 @@ class SelectWorkFragment : Fragment() {
             tvAddJob.setOnClickListener {
                 // Add job role
                 if(selectedItem != null && binding.etNumOfWorker.text.toString().trimEnd().isNotEmpty()){
+                    AppUtils.hideSoftKeyboard(requireActivity())
                     showProgress(true)
                     viewModel.addJobWork(
                         userId = appPreferences.getUserId(),
@@ -86,8 +88,10 @@ class SelectWorkFragment : Fragment() {
             // Hide showAddedJobRole view
             addJobRolesLayout.layoutJobRolesContainer.visibility = View.GONE
             tvContinue.setOnClickListener {
-                if(selectedItem != null){
-                    viewModel.updateSelectedWorkList(selectWorkAdapter?.allWorkList()!!)
+                if(selectedItem != null && selectWorkAdapter != null){
+                    selectWorkAdapter?.allWorkList()?.let {
+                        viewModel.updateSelectedWorkList(it)
+                    }
                     SelectWorkFragmentDirections.toJobDetailsFragment().apply {
                         findNavController().navigate(this)
                     }

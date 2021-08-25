@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.EmployeeDetails
 import com.constructionmitra.user.databinding.FragmentAddEmployeeDetailsBinding
+import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
 import com.constructionmitra.user.utilities.AppUtils
 import com.constructionmitra.user.utilities.showToast
@@ -18,7 +23,9 @@ import kotlinx.android.synthetic.main.fragment_request_for_work.*
 
 class AddEmployeeDetailsFragment : Fragment() {
 
+    private var selectedItem: Int? = null
     private var _binding: FragmentAddEmployeeDetailsBinding? = null
+    private lateinit var progressBarBinding: ProgressBarBinding
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,11 +43,22 @@ class AddEmployeeDetailsFragment : Fragment() {
         }
     }
 
+    private val onItemSelectedListener: AdapterView.OnItemClickListener =
+        AdapterView.OnItemClickListener {
+                parent, view, position, id -> selectedItem = position
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAddEmployeeDetailsBinding.inflate(inflater, container, false)
+        _binding = FragmentAddEmployeeDetailsBinding.inflate(inflater, container, false).apply {
+            progressBarBinding = ProgressBarBinding.bind(root)
+        }
+        lifecycleScope.launchWhenResumed {
+            showProgress(true)
+            jobPostViewModel.getActiveLocations()
+        }
         return binding.root
 
     }
@@ -65,7 +83,8 @@ class AddEmployeeDetailsFragment : Fragment() {
                         mobileNumber = binding.etMobileNum.text.toString(),
                         emailId = binding.etEmail.text.toString(),
                         projectName = binding.etProjectName.text.toString(),
-                        projectLocation = binding.etProjectLocation.text.toString(),
+                        projectLocation = jobPostViewModel.activeLocations.value?.get(selectedItem!!)?.name!!,
+                        projectLocationId = jobPostViewModel.activeLocations.value?.get(selectedItem!!)?.id!!,
                         designation = binding.etDesignation.text.toString(),
                     )
                 )
@@ -75,6 +94,25 @@ class AddEmployeeDetailsFragment : Fragment() {
             }
             else{
 
+            }
+        }
+
+        registerObservers()
+    }
+
+    private fun registerObservers() {
+        jobPostViewModel.activeLocations.observe(viewLifecycleOwner){
+            showProgress(false)
+            it?.takeIf { it.isNotEmpty() }?.let {
+                    items ->
+                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, items)
+                (binding.textInput.editText as? AutoCompleteTextView)?.apply {
+                    onItemClickListener = this@AddEmployeeDetailsFragment.onItemSelectedListener
+                    setAdapter(adapter)
+                }
+            } ?: run {
+                // List is empty
+                binding.root.showToast("Categories are empty!")
             }
         }
     }
@@ -103,12 +141,16 @@ class AddEmployeeDetailsFragment : Fragment() {
                 return false
             }
 
-            if(etProjectLocation.text.toString().trimEnd().isEmpty()){
+            if(selectedItem == null){
                 return false
             }
         }
 
         return true
+    }
+
+    private fun showProgress(show: Boolean) {
+        progressBarBinding.progressBar.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {

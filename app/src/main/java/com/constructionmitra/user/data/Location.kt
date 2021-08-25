@@ -16,4 +16,8 @@ data class Location(
     val nameHn: String
 ){
     var isChecked = false
+
+    override fun toString(): String {
+        return city
+    }
 }

@@ -137,6 +137,12 @@ interface CMitraService {
         @FieldMap map: HashMap<String, String>
     ): BaseResponse<Any>
 
+    @FormUrlEncoded
+    @POST("api/v1/common/total_job_post")
+    suspend fun fetchProfileContractor(
+        @Field("user_id") userId: String
+    ): BaseResponse<ProfileDataContractor>
+
 
     companion object {
         private const val BASE_URL = "http://creativemint.in/cmitra/"

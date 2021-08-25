@@ -39,4 +39,6 @@ data class Job(
     val requiredDays: String,
     @SerializedName("work_description")
     val workDescription: String
-): Parcelable
+): Parcelable {
+
+}

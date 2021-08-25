@@ -268,4 +268,13 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
+    suspend fun fetchProfileContractor(userId: String): Result<BaseResponse<ProfileDataContractor>>{
+        return try {
+            Success(cMitraService.fetchProfileContractor(userId))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
 }

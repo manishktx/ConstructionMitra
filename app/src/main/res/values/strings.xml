@@ -184,6 +184,7 @@
     <string name="add_employee_details">Add Employee Details</string>
     <string name="employee_name">Employee Name</string>
     <string name="enter_project_location">Enter Project Location*</string>
+    <string name="project_location">Project Location</string>
     <string name="enter_location">Enter Location*</string>
     <string name="select_city">Select City</string>
     <string name="select_city_hn">शहर चुनें</string>
@@ -199,9 +200,19 @@
     <string name="select_job_role">1.\nSelect Job\nRole</string>
     <string name="save_and_update">Save and Update</string>
     <string name="save">Save</string>
+    <string name="text_work">Work</string>
+    <string name="text_requirement">Requirement</string>
+    <string name="person_name_and_designation">Person name &amp; designation</string>
+    <string name="contact_person_mobile">Contact person mobile</string>
+    <string name="job_created_on">Job created on</string>
+    <string name="i_confirm_information">I confirm that the information provided is correct.</string>
+    <string name="text_terms_and_condition">By Posting job, I agree with terms and conditions of Construction Mitra</string>
     <string name="complete_your_verification_inst">Complete your company verification by uploading company document for faster job approval</string>
     <string name="select_your_job_role">Select Your Job Role</string>
     <string name="please_mention_details_about_the_work">Please mention details about the work.</string>
+    <string name="posted_on">Posted: %s</string>
+    <string name="applied_by_formatter">Applied by: % People</string>
+    <string name="no_of_worker_formatter">%s Nos.</string>
     <string-array name="job_categories">
         <item>Engineer/ Supervisor</item>
         <item>Petty Contractor</item>

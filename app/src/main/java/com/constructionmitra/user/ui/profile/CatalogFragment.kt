@@ -60,11 +60,11 @@ class CatalogFragment : Fragment() {
         viewModel.workHistory.observe(viewLifecycleOwner) {
             showProgress(false)
             it?.let {
-                var newList: MutableList<WorkHistory> = it as MutableList<WorkHistory>
-                newList = newList.asSequence().plus( it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0])
-                    .toList() as MutableList<WorkHistory>
+//                var newList: MutableList<WorkHistory> = it as MutableList<WorkHistory>
+//                newList = newList.asSequence().plus( it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0])
+//                    .toList() as MutableList<WorkHistory>
                 binding.rvCatalog.adapter  = CatalogAdapter(
-                    newList,
+                    it,
                     onItemClick = {
 
                     }

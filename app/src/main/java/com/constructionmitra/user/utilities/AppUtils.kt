@@ -1,5 +1,8 @@
 package com.constructionmitra.user.utilities
 
+import android.app.Activity
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import com.constructionmitra.user.api.FEMALE
 import com.constructionmitra.user.api.MALE
 import com.constructionmitra.user.api.OTHER
@@ -61,4 +64,15 @@ object AppUtils {
             }
             return idList.joinToString(separator = ",")
         }
+
+    fun hideSoftKeyboard(activity: Activity) {
+        val inputMethodManager =
+            activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        if (activity.currentFocus != null) {
+            inputMethodManager.hideSoftInputFromWindow(
+                activity.currentFocus!!.windowToken, 0
+            )
+        }
+    }
+
 }

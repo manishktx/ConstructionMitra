@@ -23,7 +23,7 @@ class JobPostRequestImpl @Inject constructor(): JobPostRequestMapper {
             JobPostRequestMapper.Params.MOBILE_NUMBER to jobPostRequest.employeeDetails!!.mobileNumber,
             JobPostRequestMapper.Params.EMAIL_ID to jobPostRequest.employeeDetails!!.emailId,
             JobPostRequestMapper.Params.PROJECT_NAME to jobPostRequest.employeeDetails!!.projectName!!,
-            JobPostRequestMapper.Params.PROJECT_LOCATION_ID to jobPostRequest.employeeDetails!!.projectLocation,
+            JobPostRequestMapper.Params.PROJECT_LOCATION_ID to jobPostRequest.employeeDetails!!.projectLocationId,
             JobPostRequestMapper.Params.IS_PUBLISHED to "0",
         )
     }

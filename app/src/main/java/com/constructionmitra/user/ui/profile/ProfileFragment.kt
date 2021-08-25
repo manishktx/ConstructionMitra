@@ -108,12 +108,12 @@ class ProfileFragment : Fragment() {
             it?.takeIf { it.isNotEmpty() }?.let {
                 with(binding.viewCatalog){
                     textIns.visibility = View.GONE
-                    // TODO Remove dummy list
-                    var newList: MutableList<WorkHistory> = it as MutableList<WorkHistory>
-                    newList = newList.asSequence().plus( it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0])
-                        .toList() as MutableList<WorkHistory>
+//                    // TODO Remove dummy list
+//                    var newList: MutableList<WorkHistory> = it as MutableList<WorkHistory>
+//                    newList = newList.asSequence().plus( it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0])
+//                        .toList() as MutableList<WorkHistory>
                     rvCatalog.adapter = CatalogPreviewAdapter(
-                        newList,
+                        it,
                         onItemClick =  {
                             _workHistory ->
                             navigateToShowImage(_workHistory.image)

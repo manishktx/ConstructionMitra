@@ -56,6 +56,9 @@ class JobPostViewModel @Inject constructor(
     private var _jobPostRequest: JobPostRequest? = JobPostRequest()
     val jobPostRequest = _jobPostRequest
 
+    private var _activeLocations  = MutableLiveData<List<Location>>()
+    val activeLocations = _activeLocations
+
     fun init(){}
 
     fun onFragmentSelected(position: Int) {
@@ -173,6 +176,25 @@ class JobPostViewModel @Inject constructor(
             }
         }
     }
+
+    fun getActiveLocations(){
+        viewModelScope.launch {
+            when(val result = repository.activeLocations()){
+                is Success -> {
+                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
+                        _activeLocations.postValue(result.data.data!!)
+                    }
+                    else{
+                        onFailedResponse(Exception(result.data.message))
+                    }
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
     companion object {
         fun log(message: String){
             Timber.d("JobPostViewModel: $message")
