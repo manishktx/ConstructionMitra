@@ -61,6 +61,7 @@ class PostedJobsFragment : Fragment() {
             showProgress(false)
             // setAdapter
             binding.headerProfile.tvPostedJobsCount.text = it.totalJobs.toString()
+            binding.headerProfile.tvAppliedJobsCount.text = it.totalAppliedUser.toString()
             binding.rvPostedJobs.adapter = PostedJobsAdapter(it.postedJobDataList){
 
             }

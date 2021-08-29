@@ -13,6 +13,7 @@ import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.databinding.*
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
+import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -116,6 +117,7 @@ class JobDetailsFragment : Fragment() {
 
     private fun navigateToContractorProfile(){
         appPreferences.saveBoolean(AppPreferences.IS_NEW_CONTRACTOR, false)
+        appPreferences.saveUserType(AppConstants.USER_TYPE_CONTRACTOR)
         Intent(context, ContractorMainActivity::class.java).apply {
             requireContext().startActivity(this)
             requireActivity().finish()

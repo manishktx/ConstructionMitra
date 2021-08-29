@@ -6,7 +6,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2sdp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/jobTitle"
@@ -16,6 +17,7 @@
             android:textSize="@dimen/text_medium"
             android:layout_marginStart="@dimen/_5sdp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -24,9 +26,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_medium"
-            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:layout_constraintEnd_toStartOf="@id/icDelete"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="256"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icDelete"
+            android:layout_width="@dimen/delete_icon_size"
+            android:layout_height="@dimen/delete_icon_size"
+            app:srcCompat="@drawable/ic_outline_delete_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="@drawable/selector_bg_circle_light_blue"
+            android:tint="@color/blue_800"
+            android:padding="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

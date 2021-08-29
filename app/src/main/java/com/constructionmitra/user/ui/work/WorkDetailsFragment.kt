@@ -19,8 +19,10 @@ import com.constructionmitra.user.databinding.FragmentRequestForWorkBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
 import com.constructionmitra.user.ui.dialogs.AlertDialogWith1ActionButton
+import com.constructionmitra.user.utilities.AppUtils
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.item_work.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -95,6 +97,7 @@ class WorkDetailsFragment : Fragment() {
             Timber.d("Job details are = $_job")
             bindTitles(_job)
 //            bindData(_job)
+            binding.viewTnC.visibility = View.GONE
             binding.tvActionButton.setOnClickListener {
                 showProgress(true)
                 if(binding.tvActionButton.text == getString(R.string.go_back_to_home))
@@ -149,7 +152,13 @@ class WorkDetailsFragment : Fragment() {
             contactDetails.tvDesc.text =  ""
             contactDetails.tvShowPhoneNum.setOnClickListener {
                 if(isShowContact) {
-                    contactDetails.tvDesc.text = job.mobileNumber
+                    if(contactDetails.tvDesc.text.length >= 10) {
+                        AppUtils.openDial(requireActivity(), job.mobileNumber)
+                    }
+                    else {
+                        contactDetails.tvShowPhoneNum.text = getString(R.string.call_kare)
+                        contactDetails.tvDesc.text = job.mobileNumber
+                    }
                 }
             }
             // Contractor details

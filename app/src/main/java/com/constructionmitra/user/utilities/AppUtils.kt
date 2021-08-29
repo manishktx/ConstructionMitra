@@ -2,18 +2,26 @@ package com.constructionmitra.user.utilities
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.inputmethod.InputMethodManager
 import com.constructionmitra.user.api.FEMALE
 import com.constructionmitra.user.api.MALE
 import com.constructionmitra.user.api.OTHER
-import com.constructionmitra.user.data.JobRole
 import com.constructionmitra.user.data.SelectWorkData
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 object AppUtils {
-     fun genderType(gender: String) = when (gender) {
-        MALE().hindiName, MALE().englishName-> {
+
+    const val TIME_STAMP_FORMAT = "d MMM\nh:mm aaa"
+    const val APP_TIME_STAMP_FORMAT = "yyyy-MM-dd HH:mm:ss"
+    const val ONLY_TIME_STAMP_FORMAT = "hh:mm a"
+    const val ONLY_DATE_MONTH_FORMAT = "dd-MMM-yyyy"
+    const val ONLY_DATE_MONTH_NO_FORMAT = "dd-MM-yyyy"
+
+    fun genderType(gender: String) = when (gender) {
+        MALE().hindiName, MALE().englishName -> {
             MALE().englishName
         }
 
@@ -24,7 +32,7 @@ object AppUtils {
     }
 
     fun genderTypeValue(gender: String) = when (gender) {
-        MALE().hindiName, MALE().englishName-> {
+        MALE().hindiName, MALE().englishName -> {
             MALE()
         }
 
@@ -58,12 +66,12 @@ object AppUtils {
         return matcher.matches()
     }
 
-    fun getSelectedWorkString(selectedWorkData: List<SelectWorkData>): String{
-            val idList = selectedWorkData.map {
-                    jobRole ->  jobRole.work
-            }
-            return idList.joinToString(separator = ",")
+    fun getSelectedWorkString(selectedWorkData: List<SelectWorkData>): String {
+        val idList = selectedWorkData.map { jobRole ->
+            jobRole.work
         }
+        return idList.joinToString(separator = ",")
+    }
 
     fun hideSoftKeyboard(activity: Activity) {
         val inputMethodManager =
@@ -73,6 +81,13 @@ object AppUtils {
                 activity.currentFocus!!.windowToken, 0
             )
         }
+    }
+
+    fun openDial(activity: Activity, number: String) {
+        val num = "+91$number"
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:$num")
+        activity.startActivity(intent)
     }
 
 }

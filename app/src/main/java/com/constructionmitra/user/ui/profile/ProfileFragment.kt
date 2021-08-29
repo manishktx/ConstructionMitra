@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -22,8 +23,11 @@ import com.constructionmitra.user.databinding.FragmentProfileBinding
 import com.constructionmitra.user.databinding.ItemProfileCard3Binding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.ShowImageFragment
+import com.constructionmitra.user.ui.login.WorkSubCategoriesFragment
+import com.constructionmitra.user.utilities.BindingAdapters
 import com.constructionmitra.user.utilities.StringUtils
 import com.constructionmitra.user.utilities.constants.IntentConstants
+import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
@@ -32,7 +36,7 @@ import javax.inject.Inject
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var profileViewBinding: ItemProfileCard3Binding
+//    private lateinit var profileViewBinding: ItemProfileCard3Binding
     private lateinit var progressBarBinding: ProgressBarBinding
 
     @Inject
@@ -72,7 +76,7 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
-            profileViewBinding = ItemProfileCard3Binding.bind(viewContainer)
+//            profileViewBinding = ItemProfileCard3Binding.bind(viewContainer)
             viewProfileCard.tvChangeAbout.setOnClickListener {
                 navigateTo(AboutFragment::class.java.name)
             }
@@ -94,7 +98,6 @@ class ProfileFragment : Fragment() {
         viewModel.profileData.observe(viewLifecycleOwner){
             binding.viewContainer.visibility = View.VISIBLE
             showProgress(false)
-            showProgress(false)
             it?.let {
                 bindData(it)
             }
@@ -108,10 +111,8 @@ class ProfileFragment : Fragment() {
             it?.takeIf { it.isNotEmpty() }?.let {
                 with(binding.viewCatalog){
                     textIns.visibility = View.GONE
-//                    // TODO Remove dummy list
-//                    var newList: MutableList<WorkHistory> = it as MutableList<WorkHistory>
-//                    newList = newList.asSequence().plus( it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0])
-//                        .toList() as MutableList<WorkHistory>
+                    tvCta.text = getString(R.string.change_catalog_images)
+                    tvHeading.text = getString(R.string.edit_catalog_heading)
                     rvCatalog.adapter = CatalogPreviewAdapter(
                         it,
                         onItemClick =  {
@@ -123,6 +124,10 @@ class ProfileFragment : Fragment() {
                         }
                     )
                     rvCatalog.addItemDecoration(getDividerDecorator())
+                    // cta
+                    tvCta.setOnClickListener {
+                        navigateTo(WorkExpFragment::class.java.name)
+                    }
                 }
             }?: run {
                 // Work history is empty
@@ -131,12 +136,14 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
+
+        onError()
     }
 
     private fun bindData(profileData: ProfileData) {
         with(profileData){
             binding.profileData = profileData
-            with(profileViewBinding){
+            with(binding.viewProfileCard){
                 tvName.text = fullName
                 tvFirmName.text  = firmName
                 tvMobileNum.text  = phoneNumber
@@ -144,6 +151,7 @@ class ProfileFragment : Fragment() {
                 textAge.text = getString(R.string.age_formatter, age)
                 textHomeTown.text = getString(R.string.home_address_formatter, address)
                 textCurrentAddress.text = getString(R.string.current_address_formatter, currentResidence)
+                BindingAdapters.profilePic(ivAvatar, profileData.profilePic)
 //                this.profileData = profileData
             }
             // set initial data
@@ -178,14 +186,28 @@ class ProfileFragment : Fragment() {
                 else
                     "आप कोसा काम करना चाहते हैं"
                 tvCta.text = getString(R.string.change_selected_work)
+                tvCta.setOnClickListener {
+                    navigateTo(WorkSubCategoriesFragment::class.java.name)
+                }
                 ivIcon.setImageResource(R.drawable.ic_bag)
             }
 
             with(binding.viewUploadId){
                 tvHeading.text = getString(R.string.contractor_verification_doc)
-                tvDetail.text = "ID"
+                if(profileData.userDoc.isNotEmpty()){
+                    viewIdCard.visibility = View.VISIBLE
+                    BindingAdapters.loadResizedImage(ivWork, profileData.userDoc)
+                    ivWork.setOnClickListener {
+                        navigateToShowImage(profileData.userDoc)
+                    }
+                }
+                else{
+                    viewIdCard.visibility = View.GONE
+                }
                 tvCta.text = getString(R.string.upload_doc)
-                ivIcon.visibility = View.GONE
+                tvCta.setOnClickListener {
+                    navigateTo(CompanyLetterHeadFragment::class.java.name)
+                }
             }
 
         }
@@ -195,7 +217,7 @@ class ProfileFragment : Fragment() {
         startActivityForResult.launch(
             Intent(requireContext(), FragmentContainerActivity::class.java).apply {
                 putExtra(FragmentContainerActivity.FRAGMENT_NAME, fragmentName)
-                putExtra(FragmentContainerActivity.PATH, fragmentName)
+                putExtra(FragmentContainerActivity.PATH, IntentConstants.PATH_HOME)
             }
         )
         requireActivity().overridePendingTransition(
@@ -226,6 +248,13 @@ class ProfileFragment : Fragment() {
             R.anim.enter_anim_activity,
             R.anim.exit_anim_activity
         )
+    }
+
+    private fun onError() {
+        viewModel.errorMsg.observe(viewLifecycleOwner){
+            showProgress(false)
+            binding.root.showToast(it!!)
+        }
     }
 
     private fun showProgress(show: Boolean) {

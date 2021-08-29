@@ -55,7 +55,7 @@ class GetFirmDetailsDialog(
     }
 
     private fun isDetailsAreValid() =
-        binding.etFirmName.text.toString().trim().length > 3 &&
+        binding.etFirmName.text.toString().trim().isNotEmpty() &&
                 binding.etTeamCount.text.toString().trim().isNotEmpty()
 
     companion object {

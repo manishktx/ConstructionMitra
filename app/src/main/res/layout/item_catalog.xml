@@ -19,7 +19,7 @@
             android:id="@+id/ivWork"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:layout_margin="@dimen/_1sdp"
             app:loadResizedImage="@{workHistory.image}"
             app:layout_constraintStart_toStartOf="parent"

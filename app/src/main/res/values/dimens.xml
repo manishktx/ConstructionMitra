@@ -24,5 +24,6 @@
     <dimen name="story_indicator_height">@dimen/_2sdp</dimen>
     <dimen name="profile_header_contractor_size">@dimen/_70sdp</dimen>
     <dimen name="circle_size_bg">@dimen/_80sdp</dimen>
+    <dimen name="delete_icon_size">@dimen/_20sdp</dimen>
 
 </resources>

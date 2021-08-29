@@ -1,5 +1,7 @@
 package com.constructionmitra.user.ui.contractor.viewmodels
 
+import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.constructionmitra.user.api.Failure
@@ -8,9 +10,14 @@ import com.constructionmitra.user.data.ProfileData
 import com.constructionmitra.user.data.ProfileDataContractor
 import com.constructionmitra.user.repository.CMitraRepository
 import com.constructionmitra.user.ui.base.BaseViewModel
-import com.constructionmitra.user.utilities.ServerConstants
+import com.constructionmitra.user.utilities.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.Dispatcher
+import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,6 +27,12 @@ class ContractorProfileViewModel @Inject constructor(
 
     private var _profileData  = MutableLiveData<ProfileData>()
     val profileData = _profileData
+
+    private var _galleryImageSaved = SingleLiveEvent<File>()
+    val galleryImageSaved = _galleryImageSaved
+
+    private var _profileUpdated = SingleLiveEvent<Boolean>()
+    val profileUpdated = _profileUpdated
 
     private var _profileDataWithPostedJob  = MutableLiveData<ProfileDataContractor>()
     val profileDataWithPostedJob = _profileDataWithPostedJob
@@ -59,5 +72,36 @@ class ContractorProfileViewModel @Inject constructor(
             }
         }
     }
+
+    fun decodeAndSaveGalleryImage(imageUri: Uri, bitmapConfig: BitmapConfig, context: Context) {
+        viewModelScope.launch {
+            val bitmap = BitmapUtils.decodeStreamToBitmap(context, imageUri, bitmapConfig)
+            withContext(Dispatchers.IO) {
+                bitmap?.let {
+                    val outputFile = FileUtils.saveBitmapToFile(bitmap, context)
+                    _galleryImageSaved.postValue(outputFile)
+                }
+            }
+        }
+    }
+
+    fun updateProfile(hashMap: HashMap<String, String>){
+        viewModelScope.launch {
+            when(val result = repository.updateProfile(hashMap)){
+                is Success -> {
+                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
+                        _profileUpdated.postValue(true)
+                    }
+                    else{
+                        onFailedResponse(Exception(result.data.message))
+                    }
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
 
 }

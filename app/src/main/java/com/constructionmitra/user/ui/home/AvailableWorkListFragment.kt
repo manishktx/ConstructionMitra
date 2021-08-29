@@ -58,6 +58,7 @@ class AvailableWorkListFragment : Fragment() {
     ): View? {
         _binding = FragmentAvailableWorkListBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
+            isShowingAvailableJobs = !showAppliedWork
         }
         return binding.root
     }
@@ -112,13 +113,16 @@ class AvailableWorkListFragment : Fragment() {
 
             }?: run {
                 // No jobs available
-                binding.tvWorkNotAvailable.visibility = View.GONE
+                binding.tvWorkNotAvailable.visibility = View.VISIBLE
             }
         }
     }
 
     private fun setAdapter(jobs: List<Job>){
-        binding.rvWork.adapter = HomeAdapter(jobs){
+        binding.rvWork.adapter = HomeAdapter(
+            jobs,
+            isAvailableJob =  !showAppliedWork
+        ){
             Intent(requireContext(), FragmentContainerActivity::class.java).apply {
                 putExtra(FragmentContainerActivity.FRAGMENT_NAME, WorkDetailsFragment::class.java.name)
                 putExtra(FragmentContainerActivity.PARCELABLE_KEY, it)

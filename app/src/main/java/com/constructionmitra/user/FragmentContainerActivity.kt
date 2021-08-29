@@ -47,6 +47,12 @@ class FragmentContainerActivity : AppCompatActivity() {
                                     putString(ShowImageFragment.IMAGE_URL, it)
                                 }
                             }
+                            path?.let {
+                                arguments?.apply {
+                                    Timber.d("Path added")
+                                    putString(PATH, it)
+                                }
+                            }
                         }
                     )
                 }

@@ -52,3 +52,13 @@ data class AboutData(
     var homeAddress: String = "",
     var currentAddress: String = "",
 )
+
+data class ContractorAboutData(
+    var employeeName: String = "",
+    var designation: String = "",
+    var mobileNumber: String = "",
+    var emailId: String = "",
+    var companyName: String = "",
+    var companyAddress: String = "",
+    var city: String = "",
+)

@@ -83,7 +83,7 @@ class AddEmployeeDetailsFragment : Fragment() {
                         mobileNumber = binding.etMobileNum.text.toString(),
                         emailId = binding.etEmail.text.toString(),
                         projectName = binding.etProjectName.text.toString(),
-                        projectLocation = jobPostViewModel.activeLocations.value?.get(selectedItem!!)?.name!!,
+                        projectLocation = jobPostViewModel.activeLocations.value?.get(selectedItem!!)?.city!!,
                         projectLocationId = jobPostViewModel.activeLocations.value?.get(selectedItem!!)?.id!!,
                         designation = binding.etDesignation.text.toString(),
                     )
@@ -93,7 +93,7 @@ class AddEmployeeDetailsFragment : Fragment() {
                 }
             }
             else{
-
+                binding.root.showToast(getString(R.string.mandatory_fields_error))
             }
         }
 

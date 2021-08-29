@@ -18,6 +18,7 @@ import com.constructionmitra.user.databinding.FragmentHomeBinding
 import com.constructionmitra.user.databinding.ItemProfileCardBinding
 import com.constructionmitra.user.ui.login.WorkSubCategoriesFragment
 import com.constructionmitra.user.ui.profile.*
+import com.constructionmitra.user.utilities.BindingAdapters
 import com.constructionmitra.user.utilities.constants.IntentConstants
 import com.constructionmitra.user.utilities.showSnackBarShort
 import com.google.android.material.tabs.TabLayoutMediator
@@ -130,6 +131,7 @@ class HomeFragment : Fragment() {
 
     private fun updateUi(profileData: ProfileData) {
         with(profileData){
+            BindingAdapters.profilePic(profileViewBinding.ivAvatar, profileData.profilePic)
             profileViewBinding.tvName.text = fullName
             profileViewBinding.tvFirmName.text = firmName
             if(profileData.jobRoles.isNotEmpty()) {

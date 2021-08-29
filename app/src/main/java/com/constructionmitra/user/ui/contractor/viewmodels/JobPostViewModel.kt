@@ -11,6 +11,7 @@ import com.constructionmitra.user.repository.CMitraRepository
 import com.constructionmitra.user.ui.base.BaseViewModel
 import com.constructionmitra.user.utilities.ServerConstants
 import com.constructionmitra.user.utilities.SingleLiveEvent
+import com.constructionmitra.user.utilities.constants.AppConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -55,6 +56,9 @@ class JobPostViewModel @Inject constructor(
 
     private var _jobPostRequest: JobPostRequest? = JobPostRequest()
     val jobPostRequest = _jobPostRequest
+
+    private var _jobDeleted = SingleLiveEvent<Int>()
+    val jobDeleted = _jobDeleted
 
     private var _activeLocations  = MutableLiveData<List<Location>>()
     val activeLocations = _activeLocations
@@ -164,6 +168,21 @@ class JobPostViewModel @Inject constructor(
         }
     }
 
+    fun deleteJobWork(
+        jobWorkId: Int,
+    ) {
+        viewModelScope.launch {
+            when (val result: Result<BaseResponse<Any>> = repository.deleteJobWork(jobWorkId = jobWorkId)) {
+                is Success -> {
+                    _jobDeleted.postValue(jobWorkId)
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
     fun getProjectTypes() {
         viewModelScope.launch {
             when (val result: Result<BaseResponse<List<ProjectType>>> = repository.projectTypes()) {
@@ -193,6 +212,11 @@ class JobPostViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    public fun clearData() {
+        super.onCleared()
+        _jobPostRequest = null
     }
 
     companion object {

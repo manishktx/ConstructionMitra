@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.constructionmitra.user.data.JobRole
 import com.constructionmitra.user.databinding.ItemWorkSubCategoryBinding
+import com.constructionmitra.user.utilities.showToast
 
 class WorkSubCategoryAdapter(
     private val list: List<JobRole>,
@@ -30,7 +31,7 @@ class WorkSubCategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindData(onItemClick, list[position])
+        holder.bindData(onItemClick, list[position], position)
     }
 
 
@@ -39,18 +40,22 @@ class WorkSubCategoryAdapter(
         @SuppressLint("NotifyDataSetChanged")
         fun bindData(
             onItemClick: (jobRole: List<JobRole>) -> Unit,
-            jobRole: JobRole,
+            jobRole: JobRole, position: Int
         ) {
             binding.jobRole = jobRole
-            binding.tvCategory.text = jobRole.jobRole
+            binding.tvCategory.text = jobRole.jobRoleHn.plus("\n").plus(jobRole.jobRole)
             binding.ivTick.visibility = if(jobRole.isChecked) View.VISIBLE else View.GONE
-            if(isSubCategory) {
-                binding.cardView.setCardBackgroundColor(Color.parseColor("#FFD89C"))
+            jobRole.color?.let {
+                binding.cardView.setCardBackgroundColor(Color.parseColor(it))
             }
 
             binding.root.setOnClickListener{
+                if(list.filter { it.isChecked }.size >= 3 && !jobRole.isChecked){
+                    binding.root.showToast("Maximum 3 works can be selected at a time. ")
+                    return@setOnClickListener
+                }
                 jobRole.isChecked = !jobRole.isChecked
-                this@WorkSubCategoryAdapter.notifyDataSetChanged()
+                this@WorkSubCategoryAdapter.notifyItemChanged(position)
             }
         }
     }

@@ -13,7 +13,10 @@ data class Location(
     val city: String,
 
     @SerializedName("name_hn")
-    val nameHn: String
+    val nameHn: String,
+
+    @SerializedName("image")
+    val image: String
 ){
     var isChecked = false
 

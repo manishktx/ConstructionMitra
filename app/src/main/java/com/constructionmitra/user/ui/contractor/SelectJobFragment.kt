@@ -1,6 +1,5 @@
 package com.constructionmitra.user.ui.contractor
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,19 +7,13 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.constructionmitra.user.R
-import com.constructionmitra.user.data.JobCategory
 import com.constructionmitra.user.databinding.FragmentSelectJobBinding
-import com.constructionmitra.user.databinding.ItemDropDownBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
-import com.constructionmitra.user.ui.login.LoginViewModel
-import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_otp.*
@@ -51,6 +44,7 @@ class SelectJobFragment : Fragment() {
     ): View? {
         _binding = FragmentSelectJobBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
+            viewModel.clearData()
         }
         return binding.root
 

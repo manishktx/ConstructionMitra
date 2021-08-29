@@ -37,5 +37,5 @@ object StringUtils {
     }
 
     @JvmStatic
-    fun isNullOrEmpty(value: String?) = value.isNullOrEmpty()
+    fun isNotNullOrEmpty(value: String?) = !value.isNullOrEmpty()
 }

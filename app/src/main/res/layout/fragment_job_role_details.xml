@@ -46,32 +46,36 @@
             app:layout_constraintTop_toBottomOf="@id/cardJobRoles"
             android:text="@string/when_is_requirement_of_worker" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etMinDuration"
-            style="@style/App.Editable.Blue"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMinDays"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:padding="@dimen/_9sdp"
+            android:typeface="serif"
+            android:background="@drawable/bg_button_blue_unselected"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/etMaxDuration"
+            app:layout_constraintEnd_toStartOf="@+id/tvMaxDays"
             app:layout_constraintTop_toBottomOf="@+id/tvWhen"
-            android:hint="0 - 15 days"
-            android:inputType="number"
-            android:maxLines="1" />
+            android:text="@string/workers_required_in_days"
+            />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etMaxDuration"
-            style="@style/App.Editable.Blue"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMaxDays"
             android:layout_width="0dp"
+            android:padding="@dimen/_9sdp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_20sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/etMinDuration"
+            android:gravity="center_horizontal"
+            android:typeface="serif"
+            android:background="@drawable/bg_button_blue_unselected"
+            app:layout_constraintStart_toEndOf="@+id/tvMinDays"
             app:layout_constraintTop_toBottomOf="@+id/tvWhen"
-            android:hint="0 - 15 days"
-            android:inputType="number"
-            android:maxLines="1" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/workers_required_in_days"
+            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvType"
@@ -81,7 +85,7 @@
             android:textColor="@color/greyed_text"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etMinDuration"
+            app:layout_constraintTop_toBottomOf="@id/tvMinDays"
             android:text="@string/type_of_project" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -125,7 +129,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvWorkDesc"
             android:gravity="top|start"
             android:maxLines="3"
-            android:text="From this project we gonna change the world, it's a new revolution."
+            tools:text="From this project we gonna change the world, it's a new revolution."
             android:hint="@string/please_mention_details_about_the_work"
             />
 

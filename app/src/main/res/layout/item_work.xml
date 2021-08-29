@@ -7,6 +7,10 @@
         <variable
             name="data"
             type="com.constructionmitra.user.data.Job" />
+
+        <variable
+            name="isAvailableJob"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,18 +52,22 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvVerified"
-                    android:layout_width="@dimen/_50sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@color/blue_200"
                     android:textSize="@dimen/_9ssp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_2sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    android:text="@{data.isVerified()}"
                     app:layout_constraintStart_toEndOf="@+id/tvTitle"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:padding="@dimen/_2sdp"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:background="@drawable/bg_rectangle_blue_rounded_corners"
-                    android:text="Verified" />
+                    tools:text="Pending" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvCompany"
@@ -124,13 +132,15 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvProject"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textColor="@color/greyed_text"
                         android:text="@{data.projectType}"
                         android:textSize="@dimen/_10ssp"
                         android:layout_marginTop="@dimen/_2sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        app:layout_constraintStart_toEndOf="@+id/tvEstimatedTime"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="Residential Project" />
@@ -152,7 +162,7 @@
                     tools:text="काम का विवरण: कंस्ट्रक्शन साइट पे काम करने के लिए राज मिस्त्री चाहिए जो  की ब्रिक और ब्लॉक का काम जानता हो" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvDuration"
+                    android:id="@+id/tvJobPostedOn"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -163,21 +173,26 @@
                     android:padding="@dimen/_3sdp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDesc"
-                    android:text="5 दिन पूर्व" />
+                    android:text="@string/job_created_on_formatter" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvRequestForWork"
-                    android:layout_width="@dimen/_50sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="@dimen/_50sdp"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_10ssp"
                     android:background="@drawable/bg_button_green"
                     android:layout_marginTop="@dimen/_7sdp"
-                    android:padding="@dimen/_3sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:paddingBottom="@dimen/_3sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDesc"
-                    android:text="आवेदन करें" />
+                    android:text="@{isAvailableJob ? @string/apply_job : @string/applied_job}"
+                    tools:text="@string/applied_job"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

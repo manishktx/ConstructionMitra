@@ -126,6 +126,13 @@ interface CMitraService {
         @Field("job_post_id") jobPostId: Int,
     ): BaseResponse<JobPostId>
 
+    @FormUrlEncoded
+    @POST("api/v1/common/delete_job_work")
+    suspend fun deleteJobWork(
+        @Field("job_work_id") jobWorkId: Int,
+    ): BaseResponse<Any>
+
+
     @GET("api/v1/common/project_types")
     suspend fun projectTypes(
     ): BaseResponse<List<ProjectType>>

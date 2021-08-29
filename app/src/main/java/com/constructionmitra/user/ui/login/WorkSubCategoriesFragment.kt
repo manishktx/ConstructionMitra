@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -16,6 +17,7 @@ import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategorie
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
 import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
+import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.constants.IntentConstants
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,7 +62,7 @@ class WorkSubCategoriesFragment : Fragment() {
 
         viewModel.requestJobRoles(args.jobCategory)
 
-        // set listener on next button
+        // set listener on next button/ Save button
         binding.tvNext.setOnClickListener {
             viewModel.jobRoles.value?.filter {
                 it.isChecked
@@ -106,7 +108,12 @@ class WorkSubCategoriesFragment : Fragment() {
 
         viewModel.updateJobRoles.observe(viewLifecycleOwner){
             showProgress(false)
-            showGetFirmDetailsDialog()
+            if(isFromHome){
+                requireActivity().setResult(AppCompatActivity.RESULT_OK)
+                requireActivity().finish()
+            }
+            else
+                showGetFirmDetailsDialog()
         }
 
         viewModel.updateFirmDetails.observe(viewLifecycleOwner){
@@ -123,9 +130,11 @@ class WorkSubCategoriesFragment : Fragment() {
     }
 
     private fun navigateToHome(){
+        appPreferences.saveUserType(AppConstants.USER_TYPE_PETTY_CONTRACTOR)
         Intent(context, MainActivity::class.java).apply {
             requireContext().startActivity(this)
         }
+        requireActivity().finish()
         requireActivity().overridePendingTransition(R.anim.enter_anim_activity, R.anim.exit_anim_activity)
     }
 

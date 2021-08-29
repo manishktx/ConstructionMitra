@@ -27,6 +27,19 @@ object BindingAdapters {
             .into(view)
     }
 
+    @BindingAdapter("profilePic")
+    @JvmStatic
+    fun profilePic(view: ImageView, imageUrl: String?) {
+        Glide.with(view.context).load(imageUrl).thumbnail(
+            Glide.with(view).load(imageUrl).apply(
+                RequestOptions().override(200)
+            )
+        ).placeholder(R.drawable.user_def)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(view)
+    }
+
     @BindingAdapter("app:loadResizedImage")
     @JvmStatic
     fun loadResizedImage(view: ImageView, imageUrl: String?) {

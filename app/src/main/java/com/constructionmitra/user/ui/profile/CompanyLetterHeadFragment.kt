@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.constructionmitra.user.R
@@ -52,11 +53,8 @@ class CompanyLetterHeadFragment : Fragment() {
     private val startActivityForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                showProgress(true)
-                viewModel.fetchProfileInfo(appPreferences.getUserId()!!, appPreferences.getToken()!!)
-                Timber.d("startActivityForResult called !")
-                result.data?.let {
-                }
+                requireActivity().setResult(AppCompatActivity.RESULT_OK)
+                requireActivity().finish()
             }
         }
 

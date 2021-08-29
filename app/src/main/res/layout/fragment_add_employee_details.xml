@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -45,7 +46,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:hint="@string/enter_company_name"
             android:inputType="textCapWords"
-            android:text="RDX tech"
+            tools:text="RDX tech"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +73,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:hint="@string/enter_contact_person_name"
             android:inputType="textCapWords"
-            android:text="Sumit mehra"
+            tools:text="Sumit mehra"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +99,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:hint="@string/enter_designation"
             android:inputType="textCapWords"
-            android:text="engineer"
+            tools:text="engineer"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +126,8 @@
             android:hint="@string/enter_mobile_number"
             android:inputType="number"
             android:maxLines="1"
-            android:text="8860436965"
+            android:maxLength="10"
+            tools:text="8860436965"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMobileNum" />
@@ -164,7 +166,7 @@
             android:hint="@string/enter_email_id"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:text="manishkumarj357@gmail.com"
+            tools:text="manishkumarj357@gmail.com"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
@@ -203,7 +205,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:hint="@string/enter_project_name"
             android:inputType="textCapWords"
-            android:text="Atam Nirbhar"
+            tools:text="Atam Nirbhar"
             android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

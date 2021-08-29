@@ -21,14 +21,14 @@ class CMitraRepository  @Inject constructor(
     private  val cMitraService: CMitraService
 ){
 
-    suspend fun  requestOtp(mobile: String, jobRole: String): Result<LoginResponse>{
+    suspend fun  requestOtp(mobile: String, jobRole: String, name: String): Result<LoginResponse>{
         return try {
             Success(cMitraService.requestOtp(
                 hashMapOf(
                     "user_role" to jobRole.toRequestBody("text/plain".toMediaTypeOrNull()),
                     "fcm_id" to  "ANDROIDKT".toRequestBody("text/plain".toMediaTypeOrNull()),
                     "phone_number" to mobile.toRequestBody("text/plain".toMediaTypeOrNull()),
-                    "full_name" to "Manish".toRequestBody("text/plain".toMediaTypeOrNull())
+                    "full_name" to name.toRequestBody("text/plain".toMediaTypeOrNull())
                 )
             ))
         }catch (exp: Exception){
@@ -64,6 +64,7 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
+
     suspend fun jobCategories(): Result<List<JobCategory>>{
         return try {
             val baseResponse = cMitraService.jobCategories()
@@ -78,6 +79,7 @@ class CMitraRepository  @Inject constructor(
             Failure(exp)
         }
     }
+
 
     suspend fun fetchProfile(userId: String, token: String): Result<BaseResponse<ProfileData>>{
         return try {
@@ -243,6 +245,19 @@ class CMitraRepository  @Inject constructor(
                 jobRoleId = jobRoleId,
                 numOfWorker =  numOfWorker.toInt(),
                 jobPostId = jobPostId.toInt()
+            ))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
+    suspend fun deleteJobWork(
+        jobWorkId: Int,
+    ): Result<BaseResponse<Any>>{
+        return try {
+            Success(cMitraService.deleteJobWork(
+                jobWorkId = jobWorkId
             ))
         }catch (exp: Exception){
             Timber.d("okhttp: ${exp.toString()}")

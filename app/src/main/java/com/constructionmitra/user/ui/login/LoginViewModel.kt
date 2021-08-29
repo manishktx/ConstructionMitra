@@ -5,10 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.constructionmitra.user.api.Failure
 import com.constructionmitra.user.api.Result
 import com.constructionmitra.user.api.Success
-import com.constructionmitra.user.data.BaseResponse
-import com.constructionmitra.user.data.JobRole
-import com.constructionmitra.user.data.LoginResponse
-import com.constructionmitra.user.data.VerifyOtpData
+import com.constructionmitra.user.data.*
 import com.constructionmitra.user.repository.CMitraRepository
 import com.constructionmitra.user.ui.base.BaseViewModel
 import com.constructionmitra.user.utilities.ServerConstants
@@ -36,9 +33,12 @@ class LoginViewModel @Inject constructor(
     private var _updateJobRoles  = MutableLiveData<BaseResponse<Any>>()
     val updateJobRoles = _updateJobRoles
 
-    fun requestOtp(mobile: String, jobRole: String) {
+    private var _jobCategories = MutableLiveData<List<JobCategory>>()
+    val jobCategories = _jobCategories
+
+    fun requestOtp(mobile: String, jobRole: String, name: String) {
         viewModelScope.launch {
-            when (val result: Result<LoginResponse> = repository.requestOtp(mobile, jobRole)){
+            when (val result: Result<LoginResponse> = repository.requestOtp(mobile, jobRole, name)){
                 is Success -> {
                     loginResponse.postValue(result.data)
                 }
@@ -122,6 +122,19 @@ class LoginViewModel @Inject constructor(
                     else{
                         onFailedResponse(Exception(result.data.message))
                     }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
+    fun jobCategories() {
+        viewModelScope.launch {
+            when (val result: Result<List<JobCategory>> = repository.jobCategories()) {
+                is Success -> {
+                    _jobCategories.postValue(result.data)
+                }
                 is Failure -> {
                     onFailedResponse(result.error as Exception)
                 }

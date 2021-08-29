@@ -3,6 +3,7 @@ package com.constructionmitra.user.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.constructionmitra.user.R
 import com.constructionmitra.user.data.PostedJob
 import com.constructionmitra.user.databinding.ItemPostedJobBinding
 
@@ -36,6 +37,7 @@ class PostedJobsAdapter(
             postedJob: PostedJob,
         ) {
             binding.data = postedJob
+            binding.tvRequestForWork.text = binding.root.context.getString(R.string.applied_by_formatter, postedJob.totalAppliedByUser)
             binding.executePendingBindings()
         }
     }

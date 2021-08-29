@@ -48,7 +48,8 @@ class RegistrationFragment : Fragment() {
                         ProfileType.NIRMAAN_SHRAMIK -> "3"
                         ProfileType.NIRMAAN_KARTA -> "4"
                         else -> "6"
-                    }
+                    },
+                    binding.etName.text.toString()
                 )
 //                RegistrationFragmentDirections.toOtpFragment().apply {
 //                    findNavController().navigate(this)

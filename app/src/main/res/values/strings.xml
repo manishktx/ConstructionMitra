@@ -2,7 +2,7 @@
     <string name="app_name">ConstructionMitra</string>
     <string name="title_home">होम</string>
     <string name="title_dashboard">नेटवर्क</string>
-    <string name="title_notifications">प्रोफ़ाइल</string>
+    <string name="title_notifications">प्रोफाइल </string>
     <string name="title_activity_login">LoginActivity</string>
 
     <!-- Messages -->
@@ -18,6 +18,7 @@
     <string name="enter_valid_email_address">Please Enter A Valid Email Id</string>
     <string name="enter_valid_name">Please enter your name</string>
     <string name="something_went_wrong">Something went wrong, please try again.</string>
+    <string name="mandatory_fields_error">please fill mandatory fields.</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login Fragment</string>
@@ -46,7 +47,7 @@
 
     <!-- Registration -->
     <string name="enter_your_mobile">अपना मोबाइल नंबर और नाम बतायें</string>
-    <string name="mobile_number">मोबाइल नंबरं</string>
+    <string name="mobile_number">मोबाइल नंबर</string>
     <string name="enter_10_digit_mobile">10 अंकों का मोबाइल नंबर डालें</string>
     <string name="otp_will_be_sent">हम आपको इस नंबर पर OTP भेजेंगे</string>
     <string name="name">नाम</string>
@@ -64,7 +65,7 @@
     <string name="specialized_agency">Specialised Agency</string>
     <string name="specialized_in">वाटर प्रूफिंग, फायर फाइटिंग इत्यादि काम करते हो तो यह विकल्प चुनें</string>
     <string name="engineer">Engineer/Supervisor</string>
-    <string name="engineer_in">इंजीनियर / कंस्ट्रक्शन साइट सुपरवाइजर करते हो तो यह विकल्प चुनें</string>
+    <string name="engineer_in">इंजीनियर / कंस्ट्रक्शन साइट सुपरवाइजर हो तो यह विकल्प चुनें</string>
     <string name="choose_work">अपने कौशल के अनुरूप काम का चुनाव करें।</string>
     <string name="choose_three_works">अधिकतम 3 काम चुने</string>
     <string-array name="work_options">
@@ -97,26 +98,26 @@
     <string name="about_yourself">अपने बारे में बताओ</string>
     <string name="change_about_details">व्यक्तिगत जानकारी बदले</string>
     <string name="profile">प्रोफ़ाइल</string>
-    <string name="catalog_heading">किए हुए कामों की तस्वीरें</string>
+    <string name="catalog_heading">किए हुए कामों की तस्वीरें डालें </string>
     <string name="your_name">अपना नाम बतायें</string>
     <string name="your_phone_number">अपना फोन नंबर बतायें</string>
-    <string name="profile_subheading">काम पाने के लिए अपनी जानकारी सही दे या प्रोफाइल को अपडेट रखें</string>
+    <string name="profile_subheading">काम पाने के लिए अपनी जानकारी सही दे और  प्रोफाइल को अपडेट रखें</string>
     <string name="about_your_work_priority">अपने काम की प्रथमिकता बतायें</string>
-    <string name="choose_your_work_location">अपने काम करने की जग का चुनाव करे</string>
+    <string name="choose_your_work_location">अपने काम करने की जगह का चुनाव करे</string>
     <string name="other_mobile_num">आपका अन्य मोबाइल नंबर</string>
     <string name="work">काम</string>
-    <string name="team_count_title">टीम की सांख्य</string>
+    <string name="team_count_title">टीम की संख्या</string>
     <string name="change_your_work">अपना चयनित कार्य बदलें</string>
     <string name="gender">लिंग</string>
     <string name="male">पुरुष</string>
-    <string name="female">इस्त्री</string>
+    <string name="female">स्त्री</string>
     <string name="other">अन्य</string>
     <string name="hint_your_age">अपनी आयु बताएँ</string>
     <string name="where_is_your_home">आपका घर कहां है</string>
     <string name="help_us_to_find_work_for_you">ये जानकारी हमें मदद करती है आपको आपके घर के पास काम दिलवाने में</string>
     <string name="upload_your_pic">Please upload your photo</string>
-    <string name="preferred_location">शहर की प्रथमिकता</string>
-    <string name="preferred_location_for_work">आप कोस शहर में काम करना चाहते हो</string>
+    <string name="preferred_location">शहर की प्रार्थमिकता</string>
+    <string name="preferred_location_for_work">आप किस शहर में काम करना चाहते हो</string>
     <string name="update_exp">जानकारी जोड़े</string>
     <string name="share_your_exp">अपना अनुभव साझा करें</string>
     <string name="work_exp">काम का अनुभव</string>
@@ -146,15 +147,16 @@
 
 
     <!-- work -->
-    <string name="request_for_work">अवेदन करे</string>
-    <string name="go_back_to_home">होम पेज पर जाय</string>
+    <string name="request_for_work">आवेदन  करें</string>
+    <string name="go_back_to_home">होम पेज पर जाएँ</string>
     <string name="no_work_available">No work available!</string>
     <string name="with_in_days">Within %s Days</string>
     <string name="when_u_needed_team">टीम कब चाहिए</string>
     <string name="phone_number">फ़ोन नंबर</string>
     <string name="do_contact">संपर्क करे</string>
-    <string name="hint_req_for_number">&lt;font color="#797979">नंबर पाने के लिए अभी&lt;font/> &lt;font color="#FF1D2A">अवेदन करे&lt;font/></string>
-    <string name="congratulation_msg_on_work_req">बधाई हो ! आपने इस काम के लिए सफलता पूर्वक आवेदन कर दिया है। कंपनी द्वारा आपकी रोफाइल देखने के बाद कॉल आएगा। अगर आप खुद कंपनी को सीधे कान पे बात करना चाहते है तो । &lt;font color="#FF1D2A">कांटेक्ट देखें&lt;font/>पर क्लिक करें</string>
+    <string name="call_kare">कॉल करे</string>
+    <string name="hint_req_for_number">&lt;font color="#797979">नंबर पाने के लिए अभी&lt;font/> &lt;font color="#FF1D2A">आवेदन करे&lt;font/></string>
+    <string name="congratulation_msg_on_work_req">बधाई हो ! आपने इस काम के लिए सफलता पूर्वक आवेदन कर दिया है। कंपनी द्वारा आपकी प्रोफाइल देखने के बाद कॉल आएगा। अगर आप खुद कंपनी को सीधे फ़ोन पे बात करना चाहते है तो । &lt;font color="#FF1D2A">कांटेक्ट देखें&lt;font/>पर क्लिक करें</string>
 
     <!-- Petty contractor job post -->
     <string name="select_work_heading">Please select work and no. of worker required.</string>
@@ -211,12 +213,31 @@
     <string name="select_your_job_role">Select Your Job Role</string>
     <string name="please_mention_details_about_the_work">Please mention details about the work.</string>
     <string name="posted_on">Posted: %s</string>
-    <string name="applied_by_formatter">Applied by: % People</string>
+    <string name="applied_by_formatter">Applied by: %s People</string>
     <string name="no_of_worker_formatter">%s Nos.</string>
+    <string name="selected_jobs">Selected Jobs</string>
+    <string name="no_of_workers">No. of workers</string>
+    <string name="max_job_work_limit_reached">Maximum 3 job works can be added.</string>
     <string-array name="job_categories">
         <item>Engineer/ Supervisor</item>
         <item>Petty Contractor</item>
         <item>Specialised Agency</item>
     </string-array>
+
+    <!-- Registration -->
+    <string name="change_catalog_images">तस्वीर बदलिये +</string>
+    <string name="edit_catalog_heading">किए हुए कामों की फोटो बदले</string>
+
+
+    <!-- work -->
+    <string name="not_applied_for_work">You haven\'t applied for any work!</string>
+    <string name="job_created_on_formatter">%s दिन पूर्</string>
+    <string name="job_created_today">आज के दिन</string>
+    <string name="apply_job">आवेदन करें</string>
+    <string name="applied_job">अवेदन कर दियां</string>
+
+    <!-- Petty contractor job post -->
+
+    <string name="workers_required_in_days">%s Days</string>
 
 </resources>

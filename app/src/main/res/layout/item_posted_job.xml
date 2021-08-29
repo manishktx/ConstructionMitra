@@ -48,7 +48,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvIsVerified"
-                    android:layout_width="@dimen/_50sdp"
+                    android:layout_width="@dimen/_55sdp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@color/blue_200"
@@ -59,7 +59,7 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:background="@drawable/bg_rectangle_blue_rounded_corners"
-                    android:text="Verified" />
+                    android:text="Pending" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvCompany"
@@ -143,6 +143,7 @@
                     android:gravity="start"
                     android:textColor="@color/greyed_text"
                     android:textStyle="bold"
+                    android:text="@{data.workDesc}"
                     android:textSize="@dimen/_10ssp"
                     android:layout_marginTop="@dimen/_7sdp"
                     app:layout_constraintStart_toStartOf="parent"

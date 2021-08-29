@@ -1,5 +1,6 @@
 package com.constructionmitra.user.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.constructionmitra.user.FragmentContainerActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.adapters.CatalogAdapter
 import com.constructionmitra.user.adapters.CatalogPreviewAdapter
@@ -16,6 +18,7 @@ import com.constructionmitra.user.databinding.FragmentCatalogBinding
 import com.constructionmitra.user.databinding.FragmentProfileBinding
 import com.constructionmitra.user.databinding.ItemProfileCard3Binding
 import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.ui.ShowImageFragment
 import com.constructionmitra.user.view.GridSpacingItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -63,15 +66,27 @@ class CatalogFragment : Fragment() {
 //                var newList: MutableList<WorkHistory> = it as MutableList<WorkHistory>
 //                newList = newList.asSequence().plus( it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0]).plus(it[0])
 //                    .toList() as MutableList<WorkHistory>
-                binding.rvCatalog.adapter  = CatalogAdapter(
+                binding.rvCatalog.adapter = CatalogAdapter(
                     it,
                     onItemClick = {
-
+                        navigateToShowImage(it.image)
                     }
                 )
                 binding.rvCatalog.addItemDecoration(GridSpacingItemDecoration(2, 30, true, 0))
             }
         }
+    }
+
+    private fun navigateToShowImage(imageUrl: String) {
+        Intent(requireContext(), FragmentContainerActivity::class.java).apply {
+            putExtra(FragmentContainerActivity.FRAGMENT_NAME, ShowImageFragment::class.java.name)
+            putExtra(FragmentContainerActivity.IMAGE_URL, imageUrl)
+            startActivity(this)
+        }
+        requireActivity().overridePendingTransition(
+            R.anim.enter_anim_activity,
+            R.anim.exit_anim_activity
+        )
     }
 
     private fun showProgress(show: Boolean) {

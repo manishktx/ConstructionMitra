@@ -164,29 +164,6 @@ class AboutFragment : Fragment() {
         )
     }
 
-    fun onRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            // Is the button now checked?
-            val checked = view.isChecked
-
-            // Check which radio button was clicked
-            when (view.getId()) {
-                R.id.rbMale ->
-                    if (checked) {
-                        // Pirates are the best
-                    }
-                R.id.rbFemale ->
-                    if (checked) {
-                        // Ninjas rule
-                    }
-
-                R.id.rbOther ->
-                    if (checked) {
-                        // Ninjas rule
-                    }
-            }
-        }
-    }
     private fun onError() {
         viewModel.errorMsg.observe(viewLifecycleOwner){
             showProgress(false)
@@ -206,11 +183,9 @@ class AboutFragment : Fragment() {
         }
 
         binding.etOtherPhoneNum.text?.let {
-            if(it.toString().trim().length < 10){
-                binding.root.showToast(getString(R.string.enter_valid_mobile_num))
-                return@getAboutData null
+            if(it.toString().trim().length == 10){
+               aboutData.phoneNum = it.toString()
             }
-            aboutData.phoneNum = it.toString()
         }
 
         if(binding.etName.text!!.isEmpty()){

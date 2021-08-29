@@ -47,5 +47,8 @@ data class PostedJob(
     @SerializedName("user_name")
     val userName: String,
     @SerializedName("work_id")
-    val workId: String
+    val workId: String,
+
+    @SerializedName("work_description")
+    val workDesc: String
 )

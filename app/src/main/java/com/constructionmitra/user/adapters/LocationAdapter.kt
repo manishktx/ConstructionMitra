@@ -36,6 +36,7 @@ class LocationAdapter(
             onItemClick: (location: Location) -> Unit,
             location: Location,
         ) {
+            binding.location = location
             binding.tvPlaceName.text = location.city
             binding.ivTick.visibility = if(location.isChecked) View.VISIBLE else View.GONE
             binding.root.setOnClickListener{
