@@ -134,8 +134,8 @@ class SelectWorkFragment : Fragment() {
                 jobPostId = it
                 // Add current job post to recycler view
                 showProgress(false)
-                selectWorkAdapter?.takeIf { true }?.addWork(currentWork(jobPostId?.jobPostId?.toInt()!!)) ?: run {
-                    initWorkAdapter()
+                selectWorkAdapter?.takeIf { true }?.addWork(currentWork(jobPostId?.jobWorkId?.toInt()!!)) ?: run {
+                    initWorkAdapter(jobPostId!!)
                 }
             }
         }
@@ -168,12 +168,12 @@ class SelectWorkFragment : Fragment() {
         }
     }
 
-    private fun initWorkAdapter() {
+    private fun initWorkAdapter(jobPostId: JobPostId) {
         with(binding) {
             addJobRolesLayout.layoutJobRolesContainer.visibility = View.VISIBLE
             addJobRolesLayout.rvJobRoles.itemAnimator = FadeInAnimator()
             addJobRolesLayout.rvJobRoles.adapter = SelectWorkAdapter(
-                mutableListOf(currentWork(0)),
+                mutableListOf(currentWork(jobPostId.jobWorkId)),
                 true
             ) {
                 // Delete Item

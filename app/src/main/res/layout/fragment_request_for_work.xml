@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:forceDarkAllowed="false"
     >
 
     <androidx.core.widget.NestedScrollView
@@ -190,6 +191,20 @@
         />
 
     <include layout="@layout/progress_bar"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivShare"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/selector_bg_circle_light_blue"
+        android:layout_marginTop="@dimen/_12sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_share_24"
+        app:tint="@color/blue_500"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

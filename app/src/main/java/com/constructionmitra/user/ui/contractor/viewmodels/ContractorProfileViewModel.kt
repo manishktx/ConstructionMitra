@@ -31,7 +31,7 @@ class ContractorProfileViewModel @Inject constructor(
     private var _galleryImageSaved = SingleLiveEvent<File>()
     val galleryImageSaved = _galleryImageSaved
 
-    private var _profileUpdated = SingleLiveEvent<Boolean>()
+    private var _profileUpdated = SingleLiveEvent<ProfileData>()
     val profileUpdated = _profileUpdated
 
     private var _profileDataWithPostedJob  = MutableLiveData<ProfileDataContractor>()
@@ -90,7 +90,7 @@ class ContractorProfileViewModel @Inject constructor(
             when(val result = repository.updateProfile(hashMap)){
                 is Success -> {
                     if(result.data.status == ServerConstants.STATUS_SUCCESS) {
-                        _profileUpdated.postValue(true)
+                        _profileUpdated.postValue(result.data.data!!)
                     }
                     else{
                         onFailedResponse(Exception(result.data.message))

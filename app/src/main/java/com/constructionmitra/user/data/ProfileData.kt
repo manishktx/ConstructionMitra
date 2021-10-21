@@ -25,10 +25,13 @@ data class ProfileData(
 
     @SerializedName("gender")
     val gender: String,
+
     @SerializedName("id")
     val id: String,
     @SerializedName("other_phone_number")
     val otherPhoneNumber: String,
+    @SerializedName("designation")
+    val designation: String,
     @SerializedName("phone_number")
     val phoneNumber: String,
     @SerializedName("preffered_location")

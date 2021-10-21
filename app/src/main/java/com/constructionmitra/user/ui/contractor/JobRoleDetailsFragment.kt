@@ -30,12 +30,6 @@ class JobRoleDetailsFragment : Fragment() {
     private var _binding: FragmentJobRoleDetailsBinding? = null
     private lateinit var progressBarBinding: ProgressBarBinding
 
-    private val jobPostViewModel: JobPostViewModel by lazy {
-        ViewModelProvider(
-            requireActivity()
-        ).get(JobPostViewModel::class.java)
-    }
-
     private val onItemSelectedListener: AdapterView.OnItemClickListener =
         AdapterView.OnItemClickListener {
                 parent, view, position, id -> selectedItem = position
@@ -77,7 +71,7 @@ class JobRoleDetailsFragment : Fragment() {
             val items = resources.getStringArray(R.array.work_options)
             val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, items)
             (textInput.editText as? AutoCompleteTextView)?.setAdapter(adapter)
-            jobPostViewModel.onFragmentSelected(0)
+            viewModel.onFragmentSelected(0)
         }
         // fetch project types
         showProgress(true)
@@ -90,7 +84,7 @@ class JobRoleDetailsFragment : Fragment() {
     }
 
     private fun registerObservers() {
-        jobPostViewModel.navigateToAddEmployeeDetails.observe(viewLifecycleOwner){
+        viewModel.navigateToAddEmployeeDetails.observe(viewLifecycleOwner){
             // save details and navigate to Employee details
             if(areDetailsValid() && selectedItem != null){
                 viewModel.saveJobRoleDetails(

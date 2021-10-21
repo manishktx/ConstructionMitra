@@ -13,19 +13,25 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.constructionmitra.user.R
+import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.data.EmployeeDetails
 import com.constructionmitra.user.databinding.FragmentAddEmployeeDetailsBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
 import com.constructionmitra.user.utilities.AppUtils
 import com.constructionmitra.user.utilities.showToast
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_request_for_work.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AddEmployeeDetailsFragment : Fragment() {
 
     private var selectedItem: Int? = null
     private var _binding: FragmentAddEmployeeDetailsBinding? = null
     private lateinit var progressBarBinding: ProgressBarBinding
+    @Inject
+    lateinit var appPreferences: AppPreferences
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -65,6 +71,10 @@ class AddEmployeeDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // set Data if profile has data
+        appPreferences.profile?.let {
+            binding.profileData = it
+        }
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             backPressedCallback

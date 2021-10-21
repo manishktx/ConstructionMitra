@@ -1,10 +1,12 @@
 package com.constructionmitra.user.ui.work
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
@@ -20,9 +22,10 @@ import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
 import com.constructionmitra.user.ui.dialogs.AlertDialogWith1ActionButton
 import com.constructionmitra.user.utilities.AppUtils
+import com.constructionmitra.user.utilities.BitmapUtils
+import com.constructionmitra.user.utilities.FileUtils
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.item_work.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -63,6 +66,21 @@ class WorkDetailsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentRequestForWorkBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
+            ivShare.setOnClickListener {
+                it.isClickable = false
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    BitmapUtils.takeScreenShot(root, activity = requireActivity() as AppCompatActivity){
+                        _bitmap ->
+                        FileUtils.shareImageFile(requireContext(), FileUtils.saveBitmapToFile(_bitmap, requireContext()))
+                    }
+                }
+                else{
+                    val bitmap = BitmapUtils.takeScreenShot(root)
+                    FileUtils.shareImageFile(requireContext(), BitmapUtils.saveBitmapToGallery(bitmap, requireContext()))
+                }
+
+                it.isClickable = true
+            }
         }
         return binding.root
     }
@@ -80,6 +98,7 @@ class WorkDetailsFragment : Fragment() {
                 tvActionButton.visibility = View.GONE
                 tvReqForContact.visibility = View.GONE
                 separator2.visibility = View.GONE
+                ivShare.visibility = View.GONE
             }
             // bind data with UI
             jobPostViewModel.jobPostRequest?.let {

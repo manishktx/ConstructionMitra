@@ -1,6 +1,7 @@
 package com.constructionmitra.user.data
 
 import android.content.SharedPreferences
+import com.google.gson.Gson
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -9,6 +10,15 @@ import javax.inject.Singleton
 class AppPreferences @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ){
+    val profile: ProfileData?
+    get() {
+        val profile = sharedPreferences.getString(PROFILE, "")
+        if(!profile.isNullOrEmpty()){
+            return Gson().fromJson(profile, ProfileData::class.java)
+        }
+        return null
+    }
+
     fun  saveUserDetails(
         userId: String,
         userRole: String,
@@ -39,12 +49,17 @@ class AppPreferences @Inject constructor(
 
     fun getUserRole() = sharedPreferences.getString(USER_ROLE, "")
 
+    fun saveProfile(profileData: ProfileData){
+        val profile = Gson().toJson(profileData)
+        sharedPreferences.edit().putString(PROFILE, profile).apply()
+    }
 
     companion object{
         const val USER_ID = "user_id"
         const val USER_ROLE = "user_role"
         const val TOKEN = "token"
         const val USER_TYPE = "user_type"
+        private const val PROFILE = "profile"
         const val IS_NEW_CONTRACTOR = "new_contractor"
     }
 }

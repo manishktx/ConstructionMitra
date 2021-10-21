@@ -37,7 +37,7 @@ interface CMitraService {
     @POST("api/v1/user/update_profile")
     suspend fun updateProfile(
         @FieldMap map: HashMap<String, String>
-    ): BaseResponse<Any>
+    ): BaseResponse<ProfileData>
 
     @FormUrlEncoded
     @POST("api/v1/user/update_profile")

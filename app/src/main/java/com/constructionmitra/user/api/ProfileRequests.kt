@@ -63,6 +63,6 @@ interface ProfileRequests {
         const val  MOBILE_NUMBER = PARAM_PHONE_NUM
         const val  COMPANY_ADDRESS = "address"
         const val  DESIGNATION = "designation"
-        const val  COMPANY_CITY = "designation"
+        const val  COMPANY_CITY = "current_residence"
     }
 }

@@ -1,10 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ConstructionMitra" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.ConstructionMitra" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/blue_200</item>
         <item name="colorOnPrimary">@color/blue_200</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="colorOnSurface">@color/black</item>
 
         <!-- Secondary brand color. -->

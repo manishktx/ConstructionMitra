@@ -111,6 +111,10 @@ class ContractorProfileFragment : Fragment() {
         }
 
         viewModel.profileUpdated.observe(viewLifecycleOwner){
+            showProgress(false)
+            it?.let {
+                appPreferences.saveProfile(it)
+            }
             binding.root.showToast("Profile Updated")
         }
 
@@ -119,8 +123,7 @@ class ContractorProfileFragment : Fragment() {
 
     private fun bindData(profileData: ProfileData) {
         with(binding){
-            etEmployeeName.setText(profileData.fullName)
-            etMobileNum.setText(profileData.phoneNumber)
+            this.profileData = profileData
             profileData.userDoc?.takeIf { !it.isNullOrEmpty() }?.let {
                 ivVerificationDocument.visibility = View.VISIBLE
                 BindingAdapters.loadResizedImage(ivVerificationDocument, it)

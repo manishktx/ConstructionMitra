@@ -93,7 +93,7 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
-    suspend fun updateProfile(hashMap: HashMap<String, String>): Result<BaseResponse<Any>>{
+    suspend fun updateProfile(hashMap: HashMap<String, String>): Result<BaseResponse<ProfileData>>{
         return try {
             Success(cMitraService.updateProfile(hashMap))
         }catch (exp: Exception){

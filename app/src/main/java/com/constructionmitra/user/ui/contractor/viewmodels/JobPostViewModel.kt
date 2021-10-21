@@ -214,9 +214,8 @@ class JobPostViewModel @Inject constructor(
         }
     }
 
-    public fun clearData() {
-        super.onCleared()
-        _jobPostRequest = null
+    fun clearData() {
+//        _jobPostRequest = null
     }
 
     companion object {
