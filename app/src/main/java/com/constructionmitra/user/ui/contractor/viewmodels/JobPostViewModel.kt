@@ -29,6 +29,9 @@ class JobPostViewModel @Inject constructor(
     private var _navigateToAddEmployeeDetails = SingleLiveEvent<Boolean>()
     val navigateToAddEmployeeDetails = _navigateToAddEmployeeDetails
 
+    private var _navigateToEngineetJobroleDetail = SingleLiveEvent<Boolean>()
+    val navigateToEngineetJobroleDetail = _navigateToEngineetJobroleDetail
+
     private var _tabSelected = SingleLiveEvent<Int>()
     val tabSelected = _tabSelected
 
@@ -71,6 +74,9 @@ class JobPostViewModel @Inject constructor(
 
     fun navigateToAddEmployeeDetails() {
         _navigateToAddEmployeeDetails.value = true
+    }
+    fun navigateToEngineetJobroleDetail() {
+        _navigateToEngineetJobroleDetail.value = true
     }
 
     fun navigateToReviewYourJob() {

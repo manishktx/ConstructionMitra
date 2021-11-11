@@ -100,7 +100,7 @@ class JobRoleDetailsFragment : Fragment() {
                         binding.etWorkDesc.text.toString()
                     )
                 )
-                JobRoleDetailsFragmentDirections.toAddEmployeeDetails().apply {
+                JobRoleDetailsFragmentDirections.toEngineerJobDetailsFragment().apply {
                     findNavController().navigate(this)
                 }
             }

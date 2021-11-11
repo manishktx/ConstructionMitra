@@ -34,6 +34,18 @@
         app:layout_constraintStart_toStartOf="parent"
         />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleOtpEnglish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_otp_english"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/greyed_text"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etOtp"

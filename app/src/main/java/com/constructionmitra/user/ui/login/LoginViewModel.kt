@@ -40,7 +40,7 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             when (val result: Result<LoginResponse> = repository.requestOtp(mobile, jobRole, name)){
                 is Success -> {
-                    loginResponse.postValue(result.data)
+                    _loginResponse.postValue(result.data)
                 }
                 is Failure -> {
                     onFailedResponse(result.error as Exception)
