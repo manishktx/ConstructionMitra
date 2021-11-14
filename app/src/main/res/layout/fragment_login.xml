@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Construction Mitra"
-        android:textSize="@dimen/_22ssp"
+        android:textSize="@dimen/_28ssp"
         android:gravity="center"
         android:layout_marginTop="@dimen/_40sdp"
         app:layout_constraintTop_toBottomOf="@+id/tvChangeLang"

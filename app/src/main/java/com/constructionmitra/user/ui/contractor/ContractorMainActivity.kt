@@ -70,6 +70,13 @@ class ContractorMainActivity : AppCompatActivity() {
 
                 }
             })
+            ivLogout.setOnClickListener {
+                // Safe data to pref
+                appPreferences.saveUserDetails(
+                    "0", "", ""
+                )
+                finish()
+            }
         }
 
         registerObservers()
@@ -86,5 +93,4 @@ class ContractorMainActivity : AppCompatActivity() {
             Timber.d("ConstructionMitraService =  $message")
         }
     }
-
 }

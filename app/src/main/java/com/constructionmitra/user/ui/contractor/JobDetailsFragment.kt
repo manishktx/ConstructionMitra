@@ -52,6 +52,7 @@ class JobDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
             tvContinue1.setOnClickListener {
+//                viewModel.navigateToEngineetJobroleDetail()
                 viewModel.navigateToAddEmployeeDetails()
             }
             tvBack.setOnClickListener {

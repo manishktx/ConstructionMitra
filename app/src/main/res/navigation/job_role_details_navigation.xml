@@ -16,6 +16,9 @@
             android:id="@+id/toAddEmployeeDetails"
             app:destination="@id/addEmployeeDetails"
             />
+        <action
+            android:id="@+id/toEngineerJobDetailsFragment"
+            app:destination="@id/engineerJobDetailsFragment" />
     </fragment>
 
     <fragment
@@ -39,6 +42,10 @@
         tools:layout="@layout/fragment_request_for_work">
 
     </fragment>
+    <fragment
+        android:id="@+id/engineerJobDetailsFragment"
+        android:name="com.constructionmitra.user.ui.contractor.EngineerJobDetailsFragment"
+        android:label="EngineerJobDetailsFragment" />
 
 
 </navigation>

@@ -49,13 +49,15 @@
     <string name="enter_your_mobile">अपना मोबाइल नंबर और नाम बतायें</string>
     <string name="mobile_number">मोबाइल नंबर</string>
     <string name="enter_10_digit_mobile">10 अंकों का मोबाइल नंबर डालें</string>
-    <string name="otp_will_be_sent">हम आपको इस नंबर पर OTP भेजेंगे</string>
+    <string name="otp_will_be_sent">हम आपको इस नंबर पर OTP भेजेंगे\n We Will send you otp</string>
     <string name="name">नाम</string>
-    <string name="enter_otp">OTP टाइप करे</string>
-    <string name="type_otp">OTP टाइप करें</string>
+    <string name="your_full_name">आपका पूरा नाम</string>
+    <string name="enter_otp">ओ. टी. पी. टाइप करे</string>
+    <string name="enter_otp_english">Enter OTP</string>
+    <string name="type_otp">ओ. टी. पी. टाइप करें</string>
     <string name="enter_4_digit_otp">अपना 4 अंको का OTP डालें</string>
-    <string name="send_otp_again">OTP दोबारा भेजें</string>
-    <string name="next">आगे बढ़ें/ Next</string>
+    <string name="send_otp_again">ओ. टी. पी. दोबारा भेजें</string>
+    <string name="next"> Next/ आगे बढ़ें</string>
     <string name="please_choose_one_option">किसी एक विकल्प को चुने</string>
     <string name="congratulations_mobile_verified">बधाई हो ! आपका मोबाइल नंबर वेरीफाई हो गया है</string>
     <string name="labour">निर्माण श्रमिक</string>
@@ -239,5 +241,15 @@
     <!-- Petty contractor job post -->
 
     <string name="workers_required_in_days">%s Days</string>
+    <string name="logout">Logout</string>
+    <string name="criteria_desc">Any criteria of minimum value or work done earlier</string>
+    <string name="enter_post">Enter post for which job is being offered</string>
+    <string name="select_qualification">Select Qualification</string>
+    <string name="minimum_experience_required">Minimum experience required</string>
+    <string name="minimum_qualification_required">Minimum qualification required</string>
+    <string name="select_experience">Select Experience</string>
+    <string name="number_of_post_openings">No. of Post / Openings</string>
+    <string name="additional_requirement">Additional Requirements</string>
+    <string name="desc_job">Please mention desc. about job</string>
 
 </resources>
