@@ -239,7 +239,6 @@
     <string name="applied_job">अवेदन कर दियां</string>
 
     <!-- Petty contractor job post -->
-
     <string name="workers_required_in_days">%s Days</string>
     <string name="logout">Logout</string>
     <string name="criteria_desc">Any criteria of minimum value or work done earlier</string>
@@ -251,5 +250,28 @@
     <string name="number_of_post_openings">No. of Post / Openings</string>
     <string name="additional_requirement">Additional Requirements</string>
     <string name="desc_job">Please mention desc. about job</string>
+
+    <!-- Employer/ Engineer, Supervisor -->
+    <string name="gender_preferences">Gender Preferences</string>
+    <string name="male_en">Male</string>
+    <string name="female_en">Female</string>
+    <string name="both">Both</string>
+    <string name="selected_job_role">Selected Job Role</string>
+    <string name="min_value_text">Any criteria of minimum value or work done earlier</string>
+    <string name="job_offered">Enter post for which job is being offered</string>
+    <string name="min_qualification_req">Minimum Qualification required</string>
+    <string name="min_exp_req">Minimum Experience required</string>
+    <string name="min_exp">Select experience</string>
+    <string name="gender_preference">Gender Preference</string>
+    <string name="no_of_post">No. of Post/Openings</string>
+    <string name="salary_per_annum">Salary / Per Annum</string>
+    <string name="salary_range">Please mention salary range</string>
+    <string name="additional_req">Additional requirement</string>
+    <string name="mention_details_about_the_job">Please mention details about the job....</string>
+    <string name="mention_salary_range">Please mention salary range</string>
+
+    <!-- Employer/ Specialised agency -->
+    <string name="select_work">Select Work</string>
+    <string name="type_of_work_done_earlier">Type of work done earlier</string>
 
 </resources>

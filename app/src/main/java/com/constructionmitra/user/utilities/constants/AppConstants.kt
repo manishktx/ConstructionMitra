@@ -10,4 +10,9 @@ object AppConstants {
 
     const val  USER_TYPE_CONTRACTOR = "user_type_contractor"
     const val  USER_TYPE_PETTY_CONTRACTOR = "user_type_petty_contractor"
+
+}
+
+enum class Role(val role: String){
+    ENGINEER_SUPERVISOR("engineer"), PETTY_CONTRACTOR("petty"), SPECIALISED_AGENCY("specialised")
 }

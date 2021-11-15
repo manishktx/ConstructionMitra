@@ -14,6 +14,7 @@ import com.constructionmitra.user.R
 import com.constructionmitra.user.databinding.FragmentSelectJobBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
+import com.constructionmitra.user.utilities.constants.Role
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_otp.*
@@ -57,15 +58,7 @@ class SelectJobFragment : Fragment() {
                 if(binding.textInput.editText?.text.toString() !=
                     getString(R.string.select_your_job_role)
                 ){
-                    selectedItem?.let {
-                        val selectedJob = viewModel.jobCategories.value?.get(it)!!
-                        viewModel.saveJobCategory(selectedJob.categoryId)
-                        SelectJobFragmentDirections.toSelectWorkFragment(
-                            selectedJob.categoryId.toInt()
-                        ).apply {
-                            findNavController().navigate(this)
-                        }
-                    }
+                    onNext(selectedItem)
                 }
                 else{
 
@@ -77,6 +70,28 @@ class SelectJobFragment : Fragment() {
         viewModel.jobCategories()
 
         registerObservers()
+    }
+
+    private fun onNext(selectedItem: Int?) {
+        selectedItem?.let {
+            val selectedJob = viewModel.jobCategories.value?.get(it)!!
+            with(selectedJob.category){
+                when{
+                    contains(Role.PETTY_CONTRACTOR.role, ignoreCase = false) -> {
+                        viewModel.saveJobCategory(selectedJob.categoryId)
+                        SelectJobFragmentDirections.toSelectWorkFragment(
+                            selectedJob.categoryId.toInt()
+                        ).apply {
+                            findNavController().navigate(this)
+                        }
+                    }
+                    contains(Role.SPECIALISED_AGENCY.role, ignoreCase = false) -> {
+
+                    }
+                    else -> {}
+                }
+            }
+        }
     }
 
     private fun registerObservers() {
