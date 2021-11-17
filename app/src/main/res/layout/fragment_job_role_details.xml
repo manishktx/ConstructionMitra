@@ -129,7 +129,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvWorkDesc"
             android:gravity="top|start"
             android:maxLines="3"
-            tools:text="From this project we gonna change the world, it's a new revolution."
             android:hint="@string/please_mention_details_about_the_work"
             />
 

@@ -34,7 +34,7 @@
             android:inputType="none"
             android:padding="@dimen/_10sdp"
             android:textColor="@color/greyed_text"
-            android:text="Select Your Job Role" />
+            android:text="@string/select_work" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +55,7 @@
         style="@style/App.Button.Blue"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
-        android:text="@string/add_job"
+        android:text="@string/add_more"
         android:padding="@dimen/_3sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
         style="@style/App.Button.Blue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/continue_text"
+        android:text="@string/next"
         android:padding="@dimen/_8sdp"
         android:layout_marginHorizontal="@dimen/_50sdp"
         app:layout_constraintStart_toStartOf="parent"
