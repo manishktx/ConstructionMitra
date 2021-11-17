@@ -5,7 +5,7 @@ import com.constructionmitra.user.data.JobPostRequest
 interface JobPostRequestMapper {
     fun toJostPostRequest(
         userId: String, jobPostRequest: JobPostRequest
-    ) : HashMap<String, String>
+    ) : HashMap<String, String?>
 
     companion object Params{
         const val  USER_ID =  ProfileRequests.USER_ID

@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.card_job_roles.view.*
 import kotlinx.android.synthetic.main.view_list_job_roles.view.*
 
 @AndroidEntryPoint
-class JobRoleDetailsFragment : Fragment() {
+class JobRoleDetailsPCFragment : Fragment() {
 
     private var selectedItem: Int? = null
     private var workersRequiredInDays: String? = null
@@ -94,7 +94,7 @@ class JobRoleDetailsFragment : Fragment() {
                         binding.etWorkDesc.text.toString()
                     )
                 )
-                JobRoleDetailsFragmentDirections.toEngineerJobDetailsFragment().apply {
+                JobRoleDetailsPCFragmentDirections.toAddEmployeeDetails().apply {
                     findNavController().navigate(this)
                 }
             }
@@ -109,7 +109,7 @@ class JobRoleDetailsFragment : Fragment() {
                     items ->
                 val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, items)
                 (binding.textInput.editText as? AutoCompleteTextView)?.apply {
-                    onItemClickListener = this@JobRoleDetailsFragment.onItemSelectedListener
+                    onItemClickListener = this@JobRoleDetailsPCFragment.onItemSelectedListener
                     setAdapter(adapter)
                 }
             } ?: run {

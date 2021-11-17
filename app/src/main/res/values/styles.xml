@@ -121,4 +121,9 @@
         <item name="cornerSize">10%</item>
     </style>
 
+    <style name="Dialog.Back" parent="">
+        <item name="android:windowEnterAnimation">@anim/slide_up_and_alpha</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+
 </resources>

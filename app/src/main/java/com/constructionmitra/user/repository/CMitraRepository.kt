@@ -20,6 +20,14 @@ import javax.inject.Singleton
 class CMitraRepository  @Inject constructor(
     private  val cMitraService: CMitraService
 ){
+    suspend fun appConfig(): Result<BaseResponse<ConfigData>>{
+        return try {
+            Success(cMitraService.appConfig())
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
 
     suspend fun  requestOtp(mobile: String, jobRole: String, name: String): Result<LoginResponse>{
         return try {
@@ -274,7 +282,7 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
-    suspend fun postAJob(hashMap: HashMap<String, String>): Result<BaseResponse<Any>>{
+    suspend fun postAJob(hashMap: HashMap<String, String?>): Result<BaseResponse<Any>>{
         return try {
             Success(cMitraService.postAJob(hashMap))
         }catch (exp: Exception){

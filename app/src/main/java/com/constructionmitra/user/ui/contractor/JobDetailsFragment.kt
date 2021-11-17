@@ -7,13 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.databinding.*
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
 import com.constructionmitra.user.utilities.constants.AppConstants
+import com.constructionmitra.user.utilities.constants.Role
+import com.constructionmitra.user.utilities.ext.setDestination
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -28,6 +30,8 @@ class JobDetailsFragment : Fragment() {
     private val viewModel: JobPostViewModel by lazy {
         ViewModelProvider(requireActivity()).get(JobPostViewModel::class.java)
     }
+
+    private val args: JobDetailsFragmentArgs by navArgs()
     @Inject
     lateinit var appPreferences: AppPreferences
     // to manage the indicator state
@@ -50,9 +54,29 @@ class JobDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        when(args.role){
+            Role.PETTY_CONTRACTOR -> {
+                setDestination(
+                    R.id.nav_host_fragment_content_winner,
+                    R.navigation.job_role_details_navigation, R.id.jobRoleDetails
+                )
+            }
+            Role.ENGINEER_SUPERVISOR -> {
+                setDestination(
+                    R.id.nav_host_fragment_content_winner,
+                    R.navigation.job_role_details_navigation, R.id.jobRoleDetailsESFragment
+                )
+            }
+            Role.SPECIALISED_AGENCY -> {
+                setDestination(
+                    R.id.nav_host_fragment_content_winner,
+                    R.navigation.job_role_details_navigation, R.id.jobRoleDetailsSAFragment
+                )
+            }
+        }
+
         with(binding){
             tvContinue1.setOnClickListener {
-//                viewModel.navigateToEngineetJobroleDetail()
                 viewModel.navigateToAddEmployeeDetails()
             }
             tvBack.setOnClickListener {
@@ -119,7 +143,7 @@ class JobDetailsFragment : Fragment() {
     private fun navigateToContractorProfile(){
         appPreferences.saveBoolean(AppPreferences.IS_NEW_CONTRACTOR, false)
         appPreferences.saveUserType(AppConstants.USER_TYPE_CONTRACTOR)
-        Intent(context, ContractorMainActivity::class.java).apply {
+        Intent(context, EmployerMainActivity::class.java).apply {
             requireContext().startActivity(this)
             requireActivity().finish()
         }

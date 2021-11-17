@@ -75,9 +75,10 @@ class SelectJobFragment : Fragment() {
     private fun onNext(selectedItem: Int?) {
         selectedItem?.let {
             val selectedJob = viewModel.jobCategories.value?.get(it)!!
+            viewModel.saveSelectedJob(selectedJob) // Save job for later
             with(selectedJob.category){
                 when{
-                    contains(Role.PETTY_CONTRACTOR.role, ignoreCase = false) -> {
+                    contains(Role.PETTY_CONTRACTOR.role, ignoreCase = true) -> {
                         viewModel.saveJobCategory(selectedJob.categoryId)
                         SelectJobFragmentDirections.toSelectWorkFragment(
                             selectedJob.categoryId.toInt()
@@ -85,9 +86,17 @@ class SelectJobFragment : Fragment() {
                             findNavController().navigate(this)
                         }
                     }
-                    contains(Role.SPECIALISED_AGENCY.role, ignoreCase = false) -> {
-
+                    contains(Role.SPECIALISED_AGENCY.role, ignoreCase = true) -> {
+                        findNavController().navigate(
+                            SelectJobFragmentDirections.toJobDetailsFragment(Role.SPECIALISED_AGENCY, selectedJob.categoryId.toInt() )
+                        )
                     }
+                    contains(Role.ENGINEER_SUPERVISOR.role, ignoreCase = true) -> {
+                        findNavController().navigate(
+                            SelectJobFragmentDirections.toJobDetailsFragment(Role.ENGINEER_SUPERVISOR, selectedJob.categoryId.toInt())
+                        )
+                    }
+
                     else -> {}
                 }
             }

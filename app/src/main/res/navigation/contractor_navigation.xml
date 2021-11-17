@@ -13,6 +13,7 @@
         <action android:id="@+id/toSelectJobFragment"
             app:destination="@id/selectJobFragment"
             />
+
     </fragment>
 
     <fragment
@@ -38,6 +39,12 @@
             app:destination="@id/selectWorkFragment"
             />
 
+        <action android:id="@+id/toJobDetailsFragment"
+            app:destination="@id/jobDetailsFragment"
+            app:enterAnim="@anim/enter_anim_slide"
+            app:exitAnim="@anim/exit_anim_slide"
+            />
+
     </fragment>
 
     <fragment
@@ -61,6 +68,14 @@
         android:name="com.constructionmitra.user.ui.contractor.JobDetailsFragment"
         android:label="@string/login_fragment_label"
         tools:layout="@layout/fragment_job_role_details">
+
+        <argument android:name="role"
+            app:argType="com.constructionmitra.user.utilities.constants.Role"
+            android:defaultValue="PETTY_CONTRACTOR"/>
+
+        <argument android:name="categoryId"
+            app:argType="integer"
+            />
 
     </fragment>
 

@@ -9,12 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.constructionmitra.user.MainActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.databinding.FragmentOtpBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
-import com.constructionmitra.user.ui.contractor.ContractorMainActivity
+import com.constructionmitra.user.ui.contractor.EmployerMainActivity
 import com.constructionmitra.user.utilities.showSnackBarShort
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -103,7 +102,7 @@ class OtpFragment : Fragment() {
 
     private fun navigateToContractorProfile(){
         appPreferences.saveBoolean(AppPreferences.IS_NEW_CONTRACTOR, true)
-        Intent(context, ContractorMainActivity::class.java).apply {
+        Intent(context, EmployerMainActivity::class.java).apply {
             requireContext().startActivity(this)
             requireActivity().finish()
         }

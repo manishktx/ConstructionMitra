@@ -100,7 +100,7 @@ class SelectWorkFragment : Fragment() {
                     selectWorkAdapter?.allWorkList()?.let {
                         viewModel.updateSelectedWorkList(it)
                     }
-                    SelectWorkFragmentDirections.toJobDetailsFragment().apply {
+                    SelectWorkFragmentDirections.toJobDetailsFragment(categoryId =  args.categoryId).apply {
                         findNavController().navigate(this)
                     }
                 } else

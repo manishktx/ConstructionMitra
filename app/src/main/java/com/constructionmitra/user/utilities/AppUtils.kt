@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.constructionmitra.user.api.FEMALE
 import com.constructionmitra.user.api.MALE
@@ -81,6 +82,11 @@ object AppUtils {
                 activity.currentFocus!!.windowToken, 0
             )
         }
+    }
+
+    fun preventTwoClick(view: View?) {
+        view?.isEnabled = false
+        view?.postDelayed({ view.isEnabled = true }, 500)
     }
 
     fun openDial(activity: Activity, number: String) {

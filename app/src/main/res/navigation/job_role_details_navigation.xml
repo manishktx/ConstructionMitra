@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/payment_form_nav_graph"
-    app:startDestination="@id/jobRoleDetails">
-
+    >
 
     <fragment
         android:id="@+id/jobRoleDetails"
-        android:name="com.constructionmitra.user.ui.contractor.JobRoleDetailsFragment"
+        android:name="com.constructionmitra.user.ui.contractor.JobRoleDetailsPCFragment"
         android:label="fragment_video_message_for"
         tools:layout="@layout/fragment_job_role_details">
 
@@ -16,10 +15,34 @@
             android:id="@+id/toAddEmployeeDetails"
             app:destination="@id/addEmployeeDetails"
             />
-        <action
-            android:id="@+id/toEngineerJobDetailsFragment"
-            app:destination="@id/engineerJobDetailsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/jobRoleDetailsESFragment"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.JobRoleDetailsESFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_job_role_details_es">
+
+        <action
+            android:id="@+id/toAddEmployeeDetails"
+            app:destination="@id/addEmployeeDetails"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/jobRoleDetailsSAFragment"
+        android:name="com.constructionmitra.user.ui.employer.specialised_agency.JobRoleDetailsSAFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_job_role_details_sa">
+
+        <action
+            android:id="@+id/toAddEmployeeDetails"
+            app:destination="@id/addEmployeeDetails"
+            />
+
+    </fragment>
+
+
 
     <fragment
         android:id="@+id/addEmployeeDetails"
@@ -42,10 +65,5 @@
         tools:layout="@layout/fragment_request_for_work">
 
     </fragment>
-    <fragment
-        android:id="@+id/engineerJobDetailsFragment"
-        android:name="com.constructionmitra.user.ui.contractor.EngineerJobDetailsFragment"
-        android:label="EngineerJobDetailsFragment" />
-
 
 </navigation>

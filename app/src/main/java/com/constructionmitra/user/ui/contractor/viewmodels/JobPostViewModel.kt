@@ -53,12 +53,18 @@ class JobPostViewModel @Inject constructor(
     private var _jobPostId = SingleLiveEvent<JobPostId>()
     val jobPostId = _jobPostId
 
+    private var _selectedJobCategory: JobCategory? = null
+    val selectedJobCategory
+        get() = _selectedJobCategory
+
+
     private var _selectedWorkList: MutableList<SelectWorkData>? = null
     val selectWorkDataList
         get() = _selectedWorkList
 
-    private var _jobPostRequest: JobPostRequest? = JobPostRequest()
-    val jobPostRequest = _jobPostRequest
+    private var _jobPostRequest: JobPostRequest = JobPostRequest()
+    val jobPostRequest
+    get() = _jobPostRequest
 
     private var _jobDeleted = SingleLiveEvent<Int>()
     val jobDeleted = _jobDeleted
@@ -85,22 +91,26 @@ class JobPostViewModel @Inject constructor(
 
     fun updateSelectedWorkList(list: MutableList<SelectWorkData>) {
         _selectedWorkList = list
-        jobPostRequest?.selectedWorkList = list
+        jobPostRequest.selectedWorkList = list
+    }
+
+    fun saveSelectedJob(jobCategory: JobCategory) {
+        _selectedJobCategory = jobCategory
     }
 
     fun saveJobCategory(categoryId: String){
         log("categoryId is saved = $categoryId")
-        _jobPostRequest?.jobCategoryId = categoryId
+        _jobPostRequest.jobCategoryId = categoryId
     }
 
     fun saveJobRoleDetails(jobRoleDetails: JobRoleDetails) {
         log("jobRoleDetails are saved = $jobRoleDetails")
-        _jobPostRequest?.jobRoleDetails = jobRoleDetails
+        _jobPostRequest.jobRoleDetails = jobRoleDetails
     }
 
     fun saveEmployeeDetails(employeeDetails: EmployeeDetails) {
         log("employee details are saved = $employeeDetails")
-        _jobPostRequest?.employeeDetails = employeeDetails
+        _jobPostRequest.employeeDetails = employeeDetails
     }
 
     fun onTabSelected(position: Int) {

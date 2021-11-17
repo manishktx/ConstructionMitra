@@ -122,7 +122,7 @@ class WorkDetailsFragment : Fragment() {
                 if(binding.tvActionButton.text == getString(R.string.go_back_to_home))
                     requireActivity().finish()
                 else
-                    viewModel.mapJob(appPreferences.getUserId()!!, _job.jobPostId)
+                    viewModel.mapJob(appPreferences.getUserId(), _job.jobPostId)
             }
         }
 

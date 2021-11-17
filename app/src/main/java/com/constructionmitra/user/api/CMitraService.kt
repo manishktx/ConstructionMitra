@@ -12,6 +12,10 @@ import retrofit2.http.*
 
 interface CMitraService {
 
+    @GET("api/v1/common/all")
+    suspend fun appConfig(
+    ): BaseResponse<ConfigData>
+
     @Multipart
     @POST("api/v1/user/login")
     suspend fun requestOtp(
@@ -141,7 +145,7 @@ interface CMitraService {
     @FormUrlEncoded
     @POST("api/v1/common/manage_job")
     suspend fun postAJob(
-        @FieldMap map: HashMap<String, String>
+        @FieldMap map: HashMap<String, String?>
     ): BaseResponse<Any>
 
     @FormUrlEncoded

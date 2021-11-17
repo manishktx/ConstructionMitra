@@ -15,6 +15,7 @@ import com.constructionmitra.user.databinding.ActivityContractorMainBinding
 import com.constructionmitra.user.databinding.ActivityLoginBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
 import com.constructionmitra.user.ui.contractor.viewmodels.UiViewModel
+import com.constructionmitra.user.ui.dialogs.LogoutDialog
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_contractor_main.*
@@ -23,7 +24,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ContractorMainActivity : AppCompatActivity() {
+class EmployerMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityContractorMainBinding
 
     @Inject lateinit var api: CMitraService
@@ -72,10 +73,15 @@ class ContractorMainActivity : AppCompatActivity() {
             })
             ivLogout.setOnClickListener {
                 // Safe data to pref
-                appPreferences.saveUserDetails(
-                    "0", "", ""
-                )
-                finish()
+                LogoutDialog.newInstance(context = this@EmployerMainActivity, {
+
+                }, {
+                    // Yes
+                    appPreferences.saveUserDetails(
+                        "0", "", ""
+                    )
+                    finish()
+                }).show()
             }
         }
 

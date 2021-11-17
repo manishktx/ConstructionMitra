@@ -63,6 +63,9 @@ class JobRoleDetailsESFragment : Fragment() {
     }
 
     private fun registerObservers() {
+        viewModel.navigateToAddEmployeeDetails.observe(viewLifecycleOwner){
+
+        }
     }
 
 

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -24,9 +25,8 @@
                 android:text="@string/app_title_english"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_15ssp"
-
+                tools:text="Construction Mitra"
                 android:textStyle="bold"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
@@ -36,8 +36,10 @@
                 android:layout_width="wrap_content"
                 android:layout_margin="@dimen/_5sdp"
                 android:layout_gravity="right"
-                android:src="@drawable/logout"
-                android:layout_height="wrap_content"></androidx.appcompat.widget.AppCompatImageView>
+                android:padding="@dimen/_5sdp"
+                android:tint="@color/blue_500"
+                android:src="@drawable/ic_baseline_logout_24"
+                android:layout_height="wrap_content"/>
         </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout

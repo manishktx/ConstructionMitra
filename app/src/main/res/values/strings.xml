@@ -4,6 +4,7 @@
     <string name="title_dashboard">नेटवर्क</string>
     <string name="title_notifications">प्रोफाइल </string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="logout_text">Are you sure you want to logout ?</string>
 
     <!-- Messages -->
     <string name="msg_select_your_category">Please choose your category</string>
@@ -196,7 +197,7 @@
     <string name="active_jobs">Active Jobs</string>
     <string name="applied_by">Applied By</string>
     <string name="contact_seen">Contact Seen</string>
-    <string name="title_contractor_home_screen">Find Construction workplace with&lt;br/>&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
+    <string name="title_contractor_home_screen">Find Construction workplace with&lt;br/>&lt;font color="#4883C1"> Construction &lt;font/> &lt;font color="#00B867">Mitra&lt;font/>&lt;br/>in just 3 steps</string>
     <string name="in_3_steps">in just 3 steps</string>
     <string name="post_a_job">Post A Job</string>
     <string name="provide_details_about_job">2.\nProvide\nDetails About\nThe Job</string>
@@ -238,9 +239,11 @@
     <string name="apply_job">आवेदन करें</string>
     <string name="applied_job">अवेदन कर दियां</string>
 
+    <!-- Employer -->
     <!-- Petty contractor job post -->
     <string name="workers_required_in_days">%s Days</string>
     <string name="logout">Logout</string>
+    <string name="edit_profile">Edit Profile</string>
     <string name="criteria_desc">Any criteria of minimum value or work done earlier</string>
     <string name="enter_post">Enter post for which job is being offered</string>
     <string name="select_qualification">Select Qualification</string>

@@ -47,6 +47,37 @@
             app:layout_constraintTop_toBottomOf="@id/tvName"
             tools:text="अपना मोबाइल नंबर और नाम बतायें" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProfileComplete"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:textColor="@color/greyed_text"
+            android:textSize="@dimen/_10sdp"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_2sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginTop="@dimen/_5sdp"
+            android:background="@drawable/bg_border_grey_with_rounded_corner"
+            android:text="10%"
+            tools:text="10%" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/text_small"
+            android:layout_marginTop="@dimen/_2sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfileComplete"
+            android:text="@string/edit_profile"
+            tools:text="@string/edit_profile" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
@@ -74,6 +105,8 @@
         android:text="@string/title_contractor_home_screen"
         app:layout_constraintStart_toStartOf="parent"
         android:gravity="center"
+        android:textColor="@color/black"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/separator2"
         android:textSize="@dimen/text_medium"

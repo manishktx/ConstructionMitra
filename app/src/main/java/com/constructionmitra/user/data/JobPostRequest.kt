@@ -16,22 +16,22 @@ data class JobPostRequest(
 
     fun toJob(): Job{
         return Job(
-            companyName = employeeDetails?.companyName!!,
-            contactPersonName = employeeDetails?.contactPerson!!,
-            dateTime = jobRoleDetails?.requiredDays!!,
-            designation = employeeDetails?.designation!!,
-            emailId = employeeDetails?.emailId!!,
+            companyName = employeeDetails?.companyName ?: "",
+            contactPersonName = employeeDetails?.contactPerson ?: "",
+            dateTime = jobRoleDetails?.requiredDays ?: "",
+            designation = employeeDetails?.designation ?: "",
+            emailId = employeeDetails?.emailId ?: "",
             isPublished = "false",
             isVerified = "false",
             jobPostId =  jobPostId?.jobPostId ?: "",
-            jobRole =  selectedWorkListString!!,
-            mobileNumber = employeeDetails?.mobileNumber!!,
-            jobValidTill = jobRoleDetails?.requiredDays!!,
-            projectLocation = employeeDetails?.projectLocation!!,
-            projectLocationHn = employeeDetails?.projectLocation!!,
-            projectType = employeeDetails?.projectName!!,
-            requiredDays = jobRoleDetails?.requiredDays!!,
-            workDescription = jobRoleDetails?.workDesc!!,
+            jobRole =  selectedWorkListString ?: "",
+            mobileNumber = employeeDetails?.mobileNumber ?: "",
+            jobValidTill = jobRoleDetails?.requiredDays ?: "",
+            projectLocation = employeeDetails?.projectLocation ?: "",
+            projectLocationHn = employeeDetails?.projectLocation ?: "",
+            projectType = employeeDetails?.projectName ?: "",
+            requiredDays = jobRoleDetails?.requiredDays ?: "",
+            workDescription = jobRoleDetails?.workDesc ?: "",
         )
     }
 }
