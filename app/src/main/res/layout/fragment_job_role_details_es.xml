@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="profileData"
+            type="com.constructionmitra.user.data.ProfileData" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:paddingBottom="@dimen/_20sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Text.SubHeading"
+                android:id="@+id/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/job_role_details"
+                android:textStyle="bold"
+                android:typeface="serif"
+                android:textSize="@dimen/text_medium"
+                android:padding="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- Company details -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSelectJobRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium"
+                android:text="@string/selected_job_role"
+                android:textColor="@color/greyed_text"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/heading" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/jobRoleInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSelectJobRole"
+                >
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:padding="@dimen/_8sdp"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/greyed_text"
+                    android:text="@string/select_your_job_role" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMinValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium"
+                android:text="@string/min_value_text"
+                android:textColor="@color/greyed_text"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/jobRoleInput" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etMinValue"
+                style="@style/App.Editable.Blue"
+                android:layout_width="0dp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:hint="@string/enter_post"
+                android:textSize="@dimen/_12ssp"
+                android:inputType="textCapWords"
+                android:text="@{profileData.fullName}"
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMinValue" />
+
+            <!-- Min Qualification -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMinQualification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium"
+                android:text="@string/min_qualification_req"
+                android:textColor="@color/greyed_text"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etMinValue" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputMinQualification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMinQualification"
+                >
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="@dimen/_12ssp"
+                    android:padding="@dimen/_8sdp"
+                    android:textColor="@color/greyed_text"
+                    android:text="@string/select_qualification" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Min Experience -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMinExp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium"
+                android:text="@string/min_exp_req"
+                android:textColor="@color/greyed_text"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputMinQualification" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputMinExp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMinExp"
+                >
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:padding="@dimen/_8sdp"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/greyed_text"
+                    android:text="@string/select_experience" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/genderContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/inputMinExp"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="@string/gender_preferences"
+                    android:textColor="@color/greyed_text"
+                    android:textSize="@dimen/medium"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <RadioGroup
+                    android:id="@+id/rgGender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGender">
+
+                    <RadioButton
+                        android:id="@+id/rbMale"
+                        android:buttonTint="@color/button_tint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/male_en"
+                        android:layout_weight="1"
+                        android:textColor="@color/greyed_text"
+                        android:textSize="@dimen/medium"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/rbFemale"
+                        android:buttonTint="@color/button_tint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:text="@string/female_en"
+                        android:layout_weight="1"
+                        android:textColor="@color/greyed_text"
+                        android:textSize="@dimen/medium" />
+
+                    <RadioButton
+                        android:id="@+id/rbOther"
+                        android:buttonTint="@color/button_tint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:text="@string/both"
+                        android:layout_weight="1"
+                        android:textColor="@color/greyed_text"
+                        android:textSize="@dimen/medium"
+                        />
+
+                </RadioGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headingPostOpening"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium"
+                android:text="@string/person_name_for_job"
+                android:textColor="@color/greyed_text"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/genderContainer" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etNumberOfPostOpening"
+                style="@style/App.Editable.Blue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:hint="@string/enter_contact_person_name"
+                android:inputType="number"
+                tools:text="01"
+                android:textSize="@dimen/_12ssp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:text="01"
+                android:gravity="center"
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headingPostOpening" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headingSalary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:text="@string/salary_per_annum"
+                android:textColor="@color/greyed_text"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNumberOfPostOpening" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSalary"
+                style="@style/App.Editable.Blue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:hint="@string/mention_salary_range"
+                android:inputType="textCapWords"
+                android:maxLines="1"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headingSalary" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headingAdditionalInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:textColor="@color/greyed_text"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etSalary"
+                android:text="@string/additional_req" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etAdditionalInfo"
+                style="@style/App.Editable.Blue"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headingAdditionalInfo"
+                android:gravity="top|start"
+                android:maxLines="3"
+                android:hint="@string/please_mention_details_about_the_work"
+                />
+
+            <include layout="@layout/progress_bar" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

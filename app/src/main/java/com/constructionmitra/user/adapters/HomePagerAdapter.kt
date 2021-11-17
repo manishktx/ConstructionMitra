@@ -12,7 +12,7 @@ class HomePagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
         MY_PAGE_INDEX to { AvailableWorkListFragment() },
-        PLANT_LIST_PAGE_INDEX to { AvailableWorkListFragment() }
+        PLANT_LIST_PAGE_INDEX to { AvailableWorkListFragment.withAppliedWork() }
     )
 
     override fun getItemCount() = tabFragmentsCreators.size

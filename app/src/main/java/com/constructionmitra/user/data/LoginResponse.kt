@@ -10,6 +10,6 @@ data class LoginResponse(
 }
 
 class  OtpData(
-    @SerializedName("id") val id: String,
+    @SerializedName("id", alternate = ["user_id"]) val id: String,
     @SerializedName("otp") val otp: String,
 )

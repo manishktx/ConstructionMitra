@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/contractorHomeFragment"
+        android:name="com.constructionmitra.user.ui.contractor.ContractorHomeFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/fragment_contractor_home">
+
+        <action android:id="@+id/toSelectJobFragment"
+            app:destination="@id/selectJobFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/contractorHomeContainerFragment"
+        android:label="Home Fragment"
+        android:name="com.constructionmitra.user.ui.contractor.ContractorHomeContainerFragment"
+        tools:layout="@layout/fragment_contractor_home_container">
+
+        <action android:id="@+id/toSelectJobFragment"
+            app:destination="@id/selectJobFragment"
+            />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/selectJobFragment"
+        android:name="com.constructionmitra.user.ui.contractor.SelectJobFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/fragment_select_job">
+
+        <action android:id="@+id/toSelectWorkFragment"
+            app:destination="@id/selectWorkFragment"
+            />
+
+        <action android:id="@+id/toJobDetailsFragment"
+            app:destination="@id/jobDetailsFragment"
+            app:enterAnim="@anim/enter_anim_slide"
+            app:exitAnim="@anim/exit_anim_slide"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/selectWorkFragment"
+        android:name="com.constructionmitra.user.ui.contractor.SelectWorkFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/fragment_select_work">
+
+        <action android:id="@+id/toJobDetailsFragment"
+            app:destination="@id/jobDetailsFragment"
+            />
+
+        <argument android:name="categoryId"
+            app:argType="integer"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/jobDetailsFragment"
+        android:name="com.constructionmitra.user.ui.contractor.JobDetailsFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/fragment_job_role_details">
+
+        <argument android:name="role"
+            app:argType="com.constructionmitra.user.utilities.constants.Role"
+            android:defaultValue="PETTY_CONTRACTOR"/>
+
+        <argument android:name="categoryId"
+            app:argType="integer"
+            />
+
+    </fragment>
+
+</navigation>

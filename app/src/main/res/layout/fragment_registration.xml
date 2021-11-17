@@ -44,23 +44,24 @@
         android:layout_marginStart="@dimen/_5sdp"
         android:padding="@dimen/_5sdp"
         />
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etMobileNum"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleMobileNum"
-        android:layout_marginTop="@dimen/_2sdp"
-        android:maxLines="1"
-        android:text="8130570505"
-        android:paddingStart="@dimen/_40sdp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_border_grey_with_rounded_corner"
+        android:hint="@string/enter_10_digit_mobile"
         android:inputType="phone"
         android:maxLength="10"
-        android:hint="@string/enter_10_digit_mobile"
+        android:maxLines="1"
+        android:padding="@dimen/_10sdp"
+        android:paddingStart="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/bg_border_grey_with_rounded_corner"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/titleMobileNum"
+        tools:text="8130570504" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/hintMobileNum"
@@ -87,23 +88,34 @@
         app:layout_constraintStart_toStartOf="parent"
         />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:background="@drawable/bg_circle_green"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleName"
+        app:srcCompat="@drawable/ic_person" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleName"
-        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_border_grey_with_rounded_corner"
+        android:hint="@string/your_full_name"
         android:inputType="textCapWords"
-        android:hint="@string/name"
-        android:text="Manish"
         android:maxLength="40"
         android:maxLines="1"
+        android:padding="@dimen/_10sdp"
+        android:paddingStart="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/bg_border_grey_with_rounded_corner"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/titleName"
+        tools:text="Manish" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvNext"

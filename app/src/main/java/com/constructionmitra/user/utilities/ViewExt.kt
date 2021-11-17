@@ -2,7 +2,6 @@ package com.constructionmitra.user.utilities
 
 import android.animation.Animator
 import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities

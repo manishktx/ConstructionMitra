@@ -2,11 +2,9 @@ package com.constructionmitra.user.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.constructionmitra.user.api.Failure
 import com.constructionmitra.user.api.Success
-import com.constructionmitra.user.data.LoginResponse
 import com.constructionmitra.user.data.ProfileData
 import com.constructionmitra.user.repository.CMitraRepository
 import com.constructionmitra.user.ui.base.BaseViewModel
@@ -50,24 +48,6 @@ class HomeViewModel @Inject constructor(
     fun updateProfile(hashMap: HashMap<String, String>){
         viewModelScope.launch {
             when(val result = repository.updateProfile(hashMap)){
-                is Success -> {
-                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
-
-                    }
-                    else{
-                        onFailedResponse(Exception(result.data.message))
-                    }
-                }
-                is Failure -> {
-
-                }
-            }
-        }
-    }
-
-    fun getAvailableWork(hashMap: HashMap<String, String>){
-        viewModelScope.launch {
-            when(val result = repository.getAvailableWork(hashMap)){
                 is Success -> {
                     if(result.data.status == ServerConstants.STATUS_SUCCESS) {
 

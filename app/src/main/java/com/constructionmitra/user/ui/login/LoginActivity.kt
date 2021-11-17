@@ -8,6 +8,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
 
+enum class ProfileType{
+    NIRMAAN_SHRAMIK, NIRMAAN_KARTA
+}
+
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding

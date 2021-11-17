@@ -7,14 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.constructionmitra.user.R
 import com.constructionmitra.user.databinding.FragmentRegistrationBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.utilities.ServerConstants
 import com.constructionmitra.user.utilities.showSnackBarShort
+import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_registration.*
-import kotlinx.android.synthetic.main.progress_bar.*
 
 @AndroidEntryPoint
 class RegistrationFragment : Fragment() {
@@ -22,6 +23,7 @@ class RegistrationFragment : Fragment() {
     private lateinit var progressBarBinding: ProgressBarBinding
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
+    private val args: RegistrationFragmentArgs by navArgs()
 
     private val viewModel: LoginViewModel by viewModels()
 
@@ -29,7 +31,6 @@ class RegistrationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentRegistrationBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
         }
@@ -42,7 +43,14 @@ class RegistrationFragment : Fragment() {
         binding.tvNext.setOnClickListener {
             if(validateDetails()) {
                 showProgress(true)
-                viewModel.requestOtp(binding.etMobileNum.text.toString())
+                viewModel.requestOtp(binding.etMobileNum.text.toString(),
+                    when(args.profileType){
+                        ProfileType.NIRMAAN_SHRAMIK -> "3"
+                        ProfileType.NIRMAAN_KARTA -> "4"
+                        else -> "6"
+                    },
+                    binding.etName.text.toString()
+                )
 //                RegistrationFragmentDirections.toOtpFragment().apply {
 //                    findNavController().navigate(this)
 //                }
@@ -62,13 +70,25 @@ class RegistrationFragment : Fragment() {
                 RegistrationFragmentDirections.toOtpFragment(
                     otp =  it.data.otp,
                     id = it.data.id,
-                    mobile = etMobileNum.text.toString()
+                    mobile = etMobileNum.text.toString(),
+                    profileType = args.profileType
                 ).apply {
                     findNavController().navigate(this)
                 }
             }
         }
+
+        onError()
+
     }
+
+    private fun onError() {
+        viewModel.errorMsg.observe(viewLifecycleOwner){
+            showProgress(false)
+            binding.root.showToast("You are already registered!")
+        }
+    }
+
 
     private fun validateDetails() =
         binding.etMobileNum.text.toString().trim().length == 10 || binding.etName.text.toString().trim().length >= 3

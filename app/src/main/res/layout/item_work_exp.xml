@@ -6,7 +6,7 @@
     <data>
         <variable
             name="exp"
-            type="String" />
+            type="com.constructionmitra.user.data.WorkExperience" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,9 +38,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@{exp}"
+                android:text="@{exp.experience}"
                 android:padding="@dimen/_15sdp"
                 tools:text="0 - 5 years"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivTick"
+                android:layout_width="@dimen/ic_done_size"
+                android:layout_height="@dimen/ic_done_size"
+                app:srcCompat="@drawable/ic_round_done"
+                android:tint="@color/blue_300"
+                android:layout_gravity="center_vertical|end"
+                android:layout_margin="@dimen/_10sdp"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
         </androidx.cardview.widget.CardView>
 

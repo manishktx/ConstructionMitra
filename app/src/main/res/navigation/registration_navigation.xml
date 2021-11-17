@@ -3,7 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashFragment">
+
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.constructionmitra.user.ui.login.SplashFragment"
+        android:label="Splash Screen"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/toLoginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
@@ -25,6 +37,10 @@
         <action
             android:id="@+id/to_otpFragment"
             app:destination="@id/otpFragment" />
+
+        <argument
+            android:name="profileType"
+            app:argType="com.constructionmitra.user.ui.login.ProfileType"/>
 
     </fragment>
 
@@ -51,6 +67,10 @@
             android:name="mobile"
             app:argType="string"/>
 
+        <argument
+            android:name="profileType"
+            app:argType="com.constructionmitra.user.ui.login.ProfileType"/>
+
     </fragment>
 
     <fragment
@@ -74,7 +94,8 @@
 
         <argument
             android:name="jobCategory"
-            app:argType="string"/>
+            app:argType="string"
+            android:defaultValue="2"/>
     </fragment>
 
 </navigation>

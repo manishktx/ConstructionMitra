@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/payment_form_nav_graph"
+    >
+
+    <fragment
+        android:id="@+id/jobRoleDetails"
+        android:name="com.constructionmitra.user.ui.contractor.JobRoleDetailsPCFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_job_role_details">
+
+        <action
+            android:id="@+id/toAddEmployeeDetails"
+            app:destination="@id/addEmployeeDetails"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/jobRoleDetailsESFragment"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.JobRoleDetailsESFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_job_role_details_es">
+
+        <action
+            android:id="@+id/toAddEmployeeDetails"
+            app:destination="@id/addEmployeeDetails"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/jobRoleDetailsSAFragment"
+        android:name="com.constructionmitra.user.ui.employer.specialised_agency.JobRoleDetailsSAFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_job_role_details_sa">
+
+        <action
+            android:id="@+id/toAddEmployeeDetails"
+            app:destination="@id/addEmployeeDetails"
+            />
+
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/addEmployeeDetails"
+        android:name="com.constructionmitra.user.ui.contractor.AddEmployeeDetailsFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_add_employee_details">
+
+        <action
+            android:id="@+id/toReviewYourJobFragment"
+            app:destination="@id/workDetailsFragment"
+            />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/workDetailsFragment"
+        android:name="com.constructionmitra.user.ui.work.WorkDetailsFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_request_for_work">
+
+    </fragment>
+
+</navigation>

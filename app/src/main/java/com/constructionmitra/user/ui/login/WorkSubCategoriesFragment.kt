@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.constructionmitra.user.FragmentContainerActivity
 import com.constructionmitra.user.MainActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
@@ -15,13 +17,17 @@ import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategorie
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
 import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
+import com.constructionmitra.user.utilities.constants.AppConstants
+import com.constructionmitra.user.utilities.constants.IntentConstants
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class WorkSubCategoriesFragment : Fragment() {
 
+    private var isFromHome: Boolean = false
     private lateinit var binding: FragmentChooseYourWorkSubCategoriesBinding
     private lateinit var progressBarBinding: ProgressBarBinding
 
@@ -51,14 +57,42 @@ class WorkSubCategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showProgress(true)
-        viewModel.requestJobRoles(args.jobCategory)
-//        binding.rvSubCategories.adapter = WorkCategoryAdapter(dummyListSubCategories, isSubCategory = true) {
-//            AppAlertDialog.newInstance {
-//                navigateToHome()
-//            }.show(childFragmentManager, "alert_dialog")
-//        }
+        // Check if navigation come from [@HomeFragment] if yes then update UI
+        checkIfCameFromHome()
 
+        viewModel.requestJobRoles(args.jobCategory)
+
+        // set listener on next button/ Save button
+        binding.tvNext.setOnClickListener {
+            viewModel.jobRoles.value?.filter {
+                it.isChecked
+            }?.takeIf {
+                !it.isNullOrEmpty()
+            }?.let {
+                Timber.d("checked ids are = ${viewModel.getCheckedItemsIds(it)}")
+
+                showProgress(true)
+                viewModel.updateJobRoles(
+                    appPreferences.getUserId()!!,
+                    appPreferences.getToken()!!,
+                    viewModel.getCheckedItemsIds(it)
+                )
+            } ?: run {
+                binding.root.showToast("Please Choose AtLeast 1 Job Role")
+            }
+        }
         registerObservers()
+    }
+
+    private fun checkIfCameFromHome() {
+        arguments?.getString(FragmentContainerActivity.PATH)?.let {
+            it.takeIf { it == IntentConstants.PATH_HOME }?.let {
+                _path ->
+                // change UI
+                isFromHome = true
+                binding.tvNext.text = getString(R.string.save)
+            }
+        }
     }
 
     private fun registerObservers() {
@@ -67,18 +101,19 @@ class WorkSubCategoriesFragment : Fragment() {
             it?.let {
                 binding.rvSubCategories.adapter =
                     WorkSubCategoryAdapter(it, isSubCategory = true) {
-                        // ask for firm details
-                        GetFirmDetailsDialog.newInstance {
-                            firmName, numOfWorkers ->
-                            // Update firm details
-                            showProgress(true)
-                            viewModel.updateFirmDetails(
-                                appPreferences.getUserId()!!, firmName, numOfWorkers, "TnNEOEQ1OXFvYXJRdkZyUWx6SWVlZz09"
-                            )
-//                            navigateToHome()
-                        }.show(childFragmentManager, "alert_dialog")
+
                     }
             }
+        }
+
+        viewModel.updateJobRoles.observe(viewLifecycleOwner){
+            showProgress(false)
+            if(isFromHome){
+                requireActivity().setResult(AppCompatActivity.RESULT_OK)
+                requireActivity().finish()
+            }
+            else
+                showGetFirmDetailsDialog()
         }
 
         viewModel.updateFirmDetails.observe(viewLifecycleOwner){
@@ -95,10 +130,24 @@ class WorkSubCategoriesFragment : Fragment() {
     }
 
     private fun navigateToHome(){
+        appPreferences.saveUserType(AppConstants.USER_TYPE_PETTY_CONTRACTOR)
         Intent(context, MainActivity::class.java).apply {
             requireContext().startActivity(this)
         }
+        requireActivity().finish()
         requireActivity().overridePendingTransition(R.anim.enter_anim_activity, R.anim.exit_anim_activity)
+    }
+
+    private fun showGetFirmDetailsDialog(){
+        GetFirmDetailsDialog.newInstance {
+                firmName, numOfWorkers ->
+            // Update firm details
+            showProgress(true)
+            viewModel.updateFirmDetails(
+                appPreferences.getUserId()!!, firmName, numOfWorkers, "TnNEOEQ1OXFvYXJRdkZyUWx6SWVlZz09"
+            )
+//                            navigateToHome()
+        }.show(childFragmentManager, "alert_dialog")
     }
 
     private fun showProgress(show: Boolean) {
@@ -109,7 +158,7 @@ class WorkSubCategoriesFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             WorkSubCategoriesFragment().apply {
                 arguments = Bundle().apply {
 

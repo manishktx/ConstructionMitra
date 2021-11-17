@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="workHistory"
+            type="com.constructionmitra.user.data.WorkHistory" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profileCardContainer"
+        android:layout_width="@dimen/work_detail_icon"
+        android:layout_height="@dimen/work_detail_icon"
+        android:background="@drawable/bg_rectangle_corners_blue">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivWork"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_margin="@dimen/_1sdp"
+            app:loadResizedImage="@{workHistory.image}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

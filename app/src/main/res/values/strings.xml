@@ -2,12 +2,24 @@
     <string name="app_name">ConstructionMitra</string>
     <string name="title_home">होम</string>
     <string name="title_dashboard">नेटवर्क</string>
-    <string name="title_notifications">प्रोफ़ाइल</string>
+    <string name="title_notifications">प्रोफाइल </string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="logout_text">Are you sure you want to logout ?</string>
+
+    <!-- Messages -->
+    <string name="msg_select_your_category">Please choose your category</string>
+    <string name="work_sample_added">Work Sample Added</string>
+    <string name="profile_picture_updated">Profile Picture Updated</string>
+    <string name="company_document_updated">Company Document Updated</string>
 
     <!--Errors -->
     <string name="enter_valid_details">Please Enter Valid Details</string>
     <string name="enter_valid_otp">Please Enter Valid OTP</string>
+    <string name="enter_valid_mobile_num">Please Enter A Valid Mobile Number</string>
+    <string name="enter_valid_email_address">Please Enter A Valid Email Id</string>
+    <string name="enter_valid_name">Please enter your name</string>
+    <string name="something_went_wrong">Something went wrong, please try again.</string>
+    <string name="mandatory_fields_error">please fill mandatory fields.</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login Fragment</string>
@@ -18,12 +30,14 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <!-- Buttons text -->
-
+    <string name="continue_text">Continue</string>
+    <string name="back">Back</string>
 
     <!-- Login Module -->
     <string name="login_title">&lt;font color="#4883C1"> कंस्ट्रक्शन &lt;font/> &lt;font color="#00B867">मित्रा&lt;font/></string>
+    <string name="app_title_english">&lt;font color="#4883C1"> Construction &lt;font/> &lt;font color="#00B867">Mitra&lt;font/></string>
     <string name="login_sub_heading">निर्माण स्थलों पर काम पाना हुआ अब आसान............</string>
-    <string name="labour_contractor">&lt;font color="#4883C1"> निर्माण श्रमिक, &lt;font/>  &lt;font color="#00B867">मित्रा&lt;font/></string>
+    <string name="labour_contractor">&lt;font color="#4883C1"> निर्माण श्रमिक, &lt;font/>  &lt;font color="#00B867">निर्माण कर्ता&lt;font/></string>
     <string name="get_together_here">दोनों मिलते है यहाँ</string>
     <string name="labour_type">इंजीनियर / सुपरवाइजर निर्माण एजेंसी, पेट्टी कॉन्ट्रैक्टर, निर्माण श्रमिक</string>
     <string name="contractor_type">निर्माण कर्ता</string>
@@ -34,15 +48,17 @@
 
     <!-- Registration -->
     <string name="enter_your_mobile">अपना मोबाइल नंबर और नाम बतायें</string>
-    <string name="mobile_number">मोबाइल नंबरं</string>
+    <string name="mobile_number">मोबाइल नंबर</string>
     <string name="enter_10_digit_mobile">10 अंकों का मोबाइल नंबर डालें</string>
-    <string name="otp_will_be_sent">हम आपको इस नंबर पर OTP भेजेंगे</string>
+    <string name="otp_will_be_sent">हम आपको इस नंबर पर OTP भेजेंगे\n We Will send you otp</string>
     <string name="name">नाम</string>
-    <string name="enter_otp">OTP टाइप करे</string>
-    <string name="type_otp">OTP टाइप करें</string>
+    <string name="your_full_name">आपका पूरा नाम</string>
+    <string name="enter_otp">ओ. टी. पी. टाइप करे</string>
+    <string name="enter_otp_english">Enter OTP</string>
+    <string name="type_otp">ओ. टी. पी. टाइप करें</string>
     <string name="enter_4_digit_otp">अपना 4 अंको का OTP डालें</string>
-    <string name="send_otp_again">OTP दोबारा भेजें</string>
-    <string name="next">आगे बढ़ें/ Next</string>
+    <string name="send_otp_again">ओ. टी. पी. दोबारा भेजें</string>
+    <string name="next"> Next/ आगे बढ़ें</string>
     <string name="please_choose_one_option">किसी एक विकल्प को चुने</string>
     <string name="congratulations_mobile_verified">बधाई हो ! आपका मोबाइल नंबर वेरीफाई हो गया है</string>
     <string name="labour">निर्माण श्रमिक</string>
@@ -52,7 +68,7 @@
     <string name="specialized_agency">Specialised Agency</string>
     <string name="specialized_in">वाटर प्रूफिंग, फायर फाइटिंग इत्यादि काम करते हो तो यह विकल्प चुनें</string>
     <string name="engineer">Engineer/Supervisor</string>
-    <string name="engineer_in">इंजीनियर / कंस्ट्रक्शन साइट सुपरवाइजर करते हो तो यह विकल्प चुनें</string>
+    <string name="engineer_in">इंजीनियर / कंस्ट्रक्शन साइट सुपरवाइजर हो तो यह विकल्प चुनें</string>
     <string name="choose_work">अपने कौशल के अनुरूप काम का चुनाव करें।</string>
     <string name="choose_three_works">अधिकतम 3 काम चुने</string>
     <string-array name="work_options">
@@ -83,23 +99,46 @@
 
     <!-- Profile -->
     <string name="about_yourself">अपने बारे में बताओ</string>
+    <string name="change_about_details">व्यक्तिगत जानकारी बदले</string>
     <string name="profile">प्रोफ़ाइल</string>
-    <string name="profile_subheading">काम पाने के लिए अपनी जानकारी सही दे या प्रोफाइल को अपडेट रखें</string>
+    <string name="catalog_heading">किए हुए कामों की तस्वीरें डालें </string>
+    <string name="your_name">अपना नाम बतायें</string>
+    <string name="your_phone_number">अपना फोन नंबर बतायें</string>
+    <string name="profile_subheading">काम पाने के लिए अपनी जानकारी सही दे और  प्रोफाइल को अपडेट रखें</string>
     <string name="about_your_work_priority">अपने काम की प्रथमिकता बतायें</string>
+    <string name="choose_your_work_location">अपने काम करने की जगह का चुनाव करे</string>
     <string name="other_mobile_num">आपका अन्य मोबाइल नंबर</string>
     <string name="work">काम</string>
-    <string name="team_count_title">टीम की सांख्य</string>
+    <string name="team_count_title">टीम की संख्या</string>
     <string name="change_your_work">अपना चयनित कार्य बदलें</string>
     <string name="gender">लिंग</string>
     <string name="male">पुरुष</string>
-    <string name="female">इस्त्री</string>
+    <string name="female">स्त्री</string>
     <string name="other">अन्य</string>
     <string name="hint_your_age">अपनी आयु बताएँ</string>
     <string name="where_is_your_home">आपका घर कहां है</string>
     <string name="help_us_to_find_work_for_you">ये जानकारी हमें मदद करती है आपको आपके घर के पास काम दिलवाने में</string>
     <string name="upload_your_pic">Please upload your photo</string>
+    <string name="preferred_location">शहर की प्रार्थमिकता</string>
+    <string name="preferred_location_for_work">आप किस शहर में काम करना चाहते हो</string>
     <string name="update_exp">जानकारी जोड़े</string>
     <string name="share_your_exp">अपना अनुभव साझा करें</string>
+    <string name="work_exp">काम का अनुभव</string>
+    <string name="work_exp_in_years">आपको अपने काम का कितने सालों का अनुभव है ?</string>
+    <string name="location_priority">शहर की प्रार्थमिकता</string>
+    <string name="which_location_you_want_to_work">आप कोनसे शहर में काम चाहते है</string>
+    <string name="selected_work">चयनित काम</string>
+    <string name="change_selected_work">चुने हुए काम को बदले</string>
+    <string name="contractor_verification_doc">कॉन्ट्रैक्टर सत्यापन डाक्यूमेंट</string>
+    <string name="upload_doc">डाक्यूमेंट अपलोड करें</string>
+    <string name="home_address_formatter">गृह नगरं - %s</string>
+    <string name="age_formatter">%s वर्ष</string>
+    <string name="current_address_formatter">वर्तमान निवास - %s</string>
+    <string name="view_all_formatter">%s images\nView all\nimages</string>
+    <string name="upload_work_history">अपने पुराने कामों की फोटो सेव कर सकते है , इससे काम जल्दी मिलने के संभावनाएं बढ़ती है</string>
+    <string name="upload_your_letter_head">वेरिफिकेशन के लिए अपना लेटर हेड \nअपलोड करें</string>
+    <string name="letter_head_instruction">आई.डी से आपकी प्रोफाइल की विश्वसनीयता की पहचान होती हैं</string>
+
     <string name="quality">कौशल: %s</string>
     <string-array name="work_exp_options">
         <item>कोई अनुभव नहीं है</item>
@@ -109,9 +148,133 @@
         <item>12 वर्शो से अधिकै</item>
     </string-array>
 
-    <!-- Apply work -->
-    <string name="request_for_work">अवेदन करे</string>
-    <string name="go_back_to_home">होम पर वापस जाए</string>
+
+    <!-- work -->
+    <string name="request_for_work">आवेदन  करें</string>
+    <string name="go_back_to_home">होम पेज पर जाएँ</string>
     <string name="no_work_available">No work available!</string>
+    <string name="with_in_days">Within %s Days</string>
+    <string name="when_u_needed_team">टीम कब चाहिए</string>
+    <string name="phone_number">फ़ोन नंबर</string>
+    <string name="do_contact">संपर्क करे</string>
+    <string name="call_kare">कॉल करे</string>
+    <string name="hint_req_for_number">&lt;font color="#797979">नंबर पाने के लिए अभी&lt;font/> &lt;font color="#FF1D2A">आवेदन करे&lt;font/></string>
+    <string name="congratulation_msg_on_work_req">बधाई हो ! आपने इस काम के लिए सफलता पूर्वक आवेदन कर दिया है। कंपनी द्वारा आपकी प्रोफाइल देखने के बाद कॉल आएगा। अगर आप खुद कंपनी को सीधे फ़ोन पे बात करना चाहते है तो । &lt;font color="#FF1D2A">कांटेक्ट देखें&lt;font/>पर क्लिक करें</string>
+
+    <!-- Petty contractor job post -->
+    <string name="select_work_heading">Please select work and no. of worker required.</string>
+    <string name="hint_enter_no_worker">Enter no. Of Worker Required</string>
+    <string name="add_job">Add Job +</string>
+    <string name="job_role_details">JOB ROLE DETAILS</string>
+    <string name="edit">Edit</string>
+    <string name="select_project_type">Select Type Of Project</string>
+    <string name="type_of_project">Type Of Project</string>
+    <string name="when_is_requirement_of_worker">When is the requirement of workers ?</string>
+    <string name="company_name">Company Name</string>
+    <string name="enter_mobile_number">Enter Mobile Number*</string>
+    <string name="company_address">Company Address</string>
+    <string name="enter_company_name">Enter Company Name*</string>
+    <string name="person_name_for_job">Name of the person posting job requirement</string>
+    <string name="enter_contact_person_name">Enter Contact Person Name*</string>
+    <string name="designation">Designation</string>
+    <string name="enter_designation">Enter your Designation</string>
+    <string name="contact_person_mobile_number">Contact Person Mobile number</string>
+    <string name="you_will_receive_notification">You will be receiving notification over this number</string>
+    <string name="email_id">Email-ID</string>
+    <string name="enter_email_id">Enter Email-Id*</string>
+    <string name="add_project_details">Add Project Detail</string>
+    <string name="name_of_project">Name of the Project</string>
+    <string name="enter_project_name">Please enter Project name</string>
+    <string name="work_desc">Work Description</string>
+    <string name="add_employee_details">Add Employee Details</string>
+    <string name="employee_name">Employee Name</string>
+    <string name="enter_project_location">Enter Project Location*</string>
+    <string name="project_location">Project Location</string>
+    <string name="enter_location">Enter Location*</string>
+    <string name="select_city">Select City</string>
+    <string name="select_city_hn">शहर चुनें</string>
+    <string name="posted_jobs">Posted Jobs</string>
+    <string name="active_jobs">Active Jobs</string>
+    <string name="applied_by">Applied By</string>
+    <string name="contact_seen">Contact Seen</string>
+    <string name="title_contractor_home_screen">Find Construction workplace with&lt;br/>&lt;font color="#4883C1"> Construction &lt;font/> &lt;font color="#00B867">Mitra&lt;font/>&lt;br/>in just 3 steps</string>
+    <string name="in_3_steps">in just 3 steps</string>
+    <string name="post_a_job">Post A Job</string>
+    <string name="provide_details_about_job">2.\nProvide\nDetails About\nThe Job</string>
+    <string name="review_and_post">3.\nReview and\nPost</string>
+    <string name="select_job_role">1.\nSelect Job\nRole</string>
+    <string name="save_and_update">Save and Update</string>
+    <string name="save">Save</string>
+    <string name="text_work">Work</string>
+    <string name="text_requirement">Requirement</string>
+    <string name="person_name_and_designation">Person name &amp; designation</string>
+    <string name="contact_person_mobile">Contact person mobile</string>
+    <string name="job_created_on">Job created on</string>
+    <string name="i_confirm_information">I confirm that the information provided is correct.</string>
+    <string name="text_terms_and_condition">By Posting job, I agree with terms and conditions of Construction Mitra</string>
+    <string name="complete_your_verification_inst">Complete your company verification by uploading company document for faster job approval</string>
+    <string name="select_your_job_role">Select Your Job Role</string>
+    <string name="please_mention_details_about_the_work">Please mention details about the work.</string>
+    <string name="posted_on">Posted: %s</string>
+    <string name="applied_by_formatter">Applied by: %s People</string>
+    <string name="no_of_worker_formatter">%s Nos.</string>
+    <string name="selected_jobs">Selected Jobs</string>
+    <string name="no_of_workers">No. of workers</string>
+    <string name="max_job_work_limit_reached">Maximum 3 job works can be added.</string>
+    <string-array name="job_categories">
+        <item>Engineer/ Supervisor</item>
+        <item>Petty Contractor</item>
+        <item>Specialised Agency</item>
+    </string-array>
+
+    <!-- Registration -->
+    <string name="change_catalog_images">तस्वीर बदलिये +</string>
+    <string name="edit_catalog_heading">किए हुए कामों की फोटो बदले</string>
+
+
+    <!-- work -->
+    <string name="not_applied_for_work">You haven\'t applied for any work!</string>
+    <string name="job_created_on_formatter">%s दिन पूर्</string>
+    <string name="job_created_today">आज के दिन</string>
+    <string name="apply_job">आवेदन करें</string>
+    <string name="applied_job">अवेदन कर दियां</string>
+
+    <!-- Employer -->
+    <!-- Petty contractor job post -->
+    <string name="workers_required_in_days">%s Days</string>
+    <string name="logout">Logout</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="criteria_desc">Any criteria of minimum value or work done earlier</string>
+    <string name="enter_post">Enter post for which job is being offered</string>
+    <string name="select_qualification">Select Qualification</string>
+    <string name="minimum_experience_required">Minimum experience required</string>
+    <string name="minimum_qualification_required">Minimum qualification required</string>
+    <string name="select_experience">Select Experience</string>
+    <string name="number_of_post_openings">No. of Post / Openings</string>
+    <string name="additional_requirement">Additional Requirements</string>
+    <string name="desc_job">Please mention desc. about job</string>
+
+    <!-- Employer/ Engineer, Supervisor -->
+    <string name="gender_preferences">Gender Preferences</string>
+    <string name="male_en">Male</string>
+    <string name="female_en">Female</string>
+    <string name="both">Both</string>
+    <string name="selected_job_role">Selected Job Role</string>
+    <string name="min_value_text">Any criteria of minimum value or work done earlier</string>
+    <string name="job_offered">Enter post for which job is being offered</string>
+    <string name="min_qualification_req">Minimum Qualification required</string>
+    <string name="min_exp_req">Minimum Experience required</string>
+    <string name="min_exp">Select experience</string>
+    <string name="gender_preference">Gender Preference</string>
+    <string name="no_of_post">No. of Post/Openings</string>
+    <string name="salary_per_annum">Salary / Per Annum</string>
+    <string name="salary_range">Please mention salary range</string>
+    <string name="additional_req">Additional requirement</string>
+    <string name="mention_details_about_the_job">Please mention details about the job....</string>
+    <string name="mention_salary_range">Please mention salary range</string>
+
+    <!-- Employer/ Specialised agency -->
+    <string name="select_work">Select Work</string>
+    <string name="type_of_work_done_earlier">Type of work done earlier</string>
 
 </resources>

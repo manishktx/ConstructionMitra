@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.constructionmitra.user.data.JobCategory
 import com.constructionmitra.user.data.WorkCategory
 import com.constructionmitra.user.databinding.ItemWorkOptionBinding
 
 
 class CategoryAdapter(
-    private val list: List<WorkCategory>,
+    private val list: List<JobCategory>,
     private val isSubCategory: Boolean = false,
-    private val onItemClick: (workCategory: WorkCategory) -> Unit
+    private val onItemClick: (jobCategory: JobCategory) -> Unit
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.ViewHolder {
@@ -35,18 +36,16 @@ class CategoryAdapter(
     inner class ViewHolder(val binding: ItemWorkOptionBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindData(
-            onItemClick: (workCategory: WorkCategory) -> Unit,
-            workCategory: WorkCategory,
+            onItemClick: (jobCategory: JobCategory) -> Unit,
+            jobCategory: JobCategory,
         ) {
-            binding.tvCategory.text = workCategory.name
-            binding.tvDesc.text = workCategory.desc
-            if(isSubCategory) {
-                binding.cardView.setCardBackgroundColor(Color.parseColor(workCategory.backgroundColor))
-                binding.tvDesc.visibility = View.GONE
+            binding.data = jobCategory
+            binding.tvCategory.text = jobCategory.category
+            jobCategory.workDesc?.takeIf { it.isNotEmpty() }?.let {
+                binding.tvDesc.text = it
             }
-
             binding.root.setOnClickListener{
-                onItemClick(workCategory)
+                onItemClick(jobCategory)
             }
         }
     }

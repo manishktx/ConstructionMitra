@@ -1,13 +1,11 @@
 package com.constructionmitra.user.ui.dialogs
 
-import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment
 import com.constructionmitra.user.R
-import com.constructionmitra.user.databinding.DialogAppAlertBinding
 import com.constructionmitra.user.databinding.DialogGetFirmDetailsBinding
 import com.constructionmitra.user.utilities.showToast
 
@@ -57,7 +55,7 @@ class GetFirmDetailsDialog(
     }
 
     private fun isDetailsAreValid() =
-        binding.etFirmName.text.toString().trim().length > 3 &&
+        binding.etFirmName.text.toString().trim().isNotEmpty() &&
                 binding.etTeamCount.text.toString().trim().isNotEmpty()
 
     companion object {

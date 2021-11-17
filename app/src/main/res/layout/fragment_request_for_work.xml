@@ -4,45 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:forceDarkAllowed="false"
     >
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivIcon"
-        android:layout_width="@dimen/work_detail_icon"
-        android:layout_height="@dimen/work_detail_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/_8sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_bag"
-        app:tint="@color/blue_300" />
-
-    <View
-        android:id="@+id/separator1"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        app:layout_constraintTop_toBottomOf="@+id/ivIcon"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:background="@color/grey_100"
-        />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/separator1"
-        app:layout_constraintBottom_toTopOf="@+id/separator2">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/viewTnC">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="@dimen/work_detail_icon"
+                android:layout_height="@dimen/work_detail_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_bag"
+                app:tint="@color/blue_300" />
+
             <include
                 android:id="@+id/viewWorkDetails"
                 layout="@layout/item_work_detail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:layout_constraintTop_toBottomOf="@+id/ivIcon"/>
 
             <include
                 android:id="@+id/viewTeamDetails"
@@ -65,19 +59,13 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/viewDuration" />
 
-            <include
-                android:id="@+id/viewWorkDesc"
-                layout="@layout/item_work_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/viewProjectDetails" />
 
             <include
                 android:id="@+id/companyName"
                 layout="@layout/item_work_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/viewWorkDesc" />
+                app:layout_constraintTop_toBottomOf="@+id/viewProjectDetails" />
 
             <include
                 android:id="@+id/workLocation"
@@ -94,8 +82,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/workLocation" />
 
             <include
-                android:id="@+id/phoneNumber"
-                layout="@layout/item_work_detail"
+                android:id="@+id/contactDetails"
+                layout="@layout/item_wd_contact_detail_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/contractorDetails" />
@@ -105,13 +93,62 @@
                 layout="@layout/item_work_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/contactDetails" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
+    <!-- Terms and conditions view -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewTnC"
+        app:layout_constraintBottom_toTopOf="@+id/separator2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/cbConfirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/_10sdp"
+            android:text="@string/i_confirm_information"
+            app:layout_constraintTop_toTopOf="@+id/cbConfirm"
+            app:layout_constraintBottom_toBottomOf="@+id/cbConfirm"
+            />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbAgreeTnC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cbConfirm"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/cbAgreeTnC"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/_10sdp"
+            android:text="@string/text_terms_and_condition"
+            app:layout_constraintTop_toTopOf="@+id/cbAgreeTnC"
+            app:layout_constraintBottom_toBottomOf="@+id/cbAgreeTnC"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <View
         android:id="@+id/separator2"
         android:layout_width="match_parent"
@@ -135,8 +172,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="@dimen/_60sdp"
         android:layout_marginEnd="@dimen/_60sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/tvReqForContact"
+        android:layout_marginBottom="@dimen/_5sdp"
         />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvReqForContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_otp"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/greyed_text"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_15sdp"
+        />
+
+    <include layout="@layout/progress_bar"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivShare"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:background="@drawable/selector_bg_circle_light_blue"
+        android:layout_marginTop="@dimen/_12sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_share_24"
+        app:tint="@color/blue_500"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

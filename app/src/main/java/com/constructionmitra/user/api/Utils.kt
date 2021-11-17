@@ -6,6 +6,11 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 
+sealed class  Gender(englishName: String, hindiName: String)
+data class  MALE (val englishName: String = "Male", val hindiName: String = "पुरुष") : Gender(englishName, hindiName)
+data class  FEMALE (val englishName: String = "Female", val hindiName: String = "इस्त्री") : Gender(englishName, hindiName)
+data class  OTHER (val englishName: String = "Other", val hindiName: String = "अन्य") : Gender(englishName, hindiName)
+
 class NetworkConnectionInterceptor(private val mContext: Context) :
     Interceptor {
     @Throws(IOException::class)

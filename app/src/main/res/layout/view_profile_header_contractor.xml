@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_5sdp">
+
+
+    <!-- Posted jobs-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewPostedJobs"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/profile_header_contractor_size"
+        android:padding="@dimen/_2sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/viewActiveJobs"
+        android:background="@color/blue_300">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPostedJobsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/posted_jobs"
+            android:textColor="@color/white"
+            android:typeface="serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_11sdp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPostedJobsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_25sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tvPostedJobsTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Active jobs-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewActiveJobs"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/profile_header_contractor_size"
+        android:padding="@dimen/_2sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/_3sdp"
+        app:layout_constraintStart_toEndOf="@+id/viewPostedJobs"
+        app:layout_constraintEnd_toStartOf="@id/viewAppliedJobs"
+        android:background="@color/blue_300">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitleActiveJobs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/active_jobs"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:typeface="serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_11sdp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvActiveJobsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_25sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleActiveJobs" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Applied jobs-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewAppliedJobs"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/profile_header_contractor_size"
+        android:padding="@dimen/_2sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/_3sdp"
+        app:layout_constraintStart_toEndOf="@+id/viewActiveJobs"
+        app:layout_constraintEnd_toStartOf="@id/viewContactSeen"
+        android:background="@color/blue_300">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitleAppliedJobs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/applied_by"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/white"
+            android:typeface="serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_11sdp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAppliedJobsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_25sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleAppliedJobs" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Applied jobs-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewContactSeen"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/profile_header_contractor_size"
+        android:padding="@dimen/_2sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/_3sdp"
+        app:layout_constraintStart_toEndOf="@+id/viewAppliedJobs"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/blue_300">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitleContactSeen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/contact_seen"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:typeface="serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_11sdp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvContactSeenCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_300"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_25sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleContactSeen" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
