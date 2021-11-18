@@ -39,14 +39,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium"
-                android:text="@string/selected_job_role"
+                android:text="@string/select_work"
                 android:textColor="@color/greyed_text"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/heading" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/jobRoleInput"
+                android:id="@+id/inputWork"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
                     android:padding="@dimen/_8sdp"
                     android:textSize="@dimen/_12ssp"
                     android:textColor="@color/greyed_text"
-                    android:text="@string/select_your_job_role" />
+                    android:text="@string/select_work" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +76,7 @@
                 android:textColor="@color/greyed_text"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/jobRoleInput" />
+                app:layout_constraintTop_toBottomOf="@+id/inputWork" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etMinValue"
@@ -230,7 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium"
-                android:text="@string/person_name_for_job"
+                android:text="@string/number_of_post_openings"
                 android:textColor="@color/greyed_text"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -242,12 +242,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:hint="@string/enter_contact_person_name"
+                android:hint="@string/number_of_post_openings"
                 android:inputType="number"
-                tools:text="01"
                 android:textSize="@dimen/_12ssp"
                 android:paddingVertical="@dimen/_8sdp"
-                android:text="01"
                 android:gravity="center"
                 android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"

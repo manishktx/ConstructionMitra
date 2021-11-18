@@ -1,5 +1,6 @@
 package com.constructionmitra.user.ui.contractor
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -39,7 +40,7 @@ class EmployerMainActivity : AppCompatActivity() {
         binding = ActivityContractorMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
             tvTitle.text = HtmlCompat.fromHtml(getString(R.string.app_title_english), HtmlCompat.FROM_HTML_MODE_LEGACY)
-
+            tvTitle.typeface = Typeface.SERIF
             // set destination for new or old user
             val navHostFragment = supportFragmentManager.findFragmentById(R.id.contractorNavHost) as NavHostFragment
             val graph = navHostFragment.navController.navInflater.inflate(R.navigation.contractor_navigation)

@@ -47,13 +47,17 @@
     <string name="login_button_text">मोबाइल से लॉगिन/ रजिस्टर करें</string>
 
     <!-- Registration -->
+    <string name="login_registration_page_heading">Enter your mobile number and name\nअपना मोबाइल नंबर और नाम बतायें</string>
     <string name="enter_your_mobile">अपना मोबाइल नंबर और नाम बतायें</string>
-    <string name="mobile_number">मोबाइल नंबर</string>
+    <string name="mobile_number_hn">मोबाइल नंबर</string>
+    <string name="mobile_number">Mobile Number</string>
     <string name="enter_10_digit_mobile">10 अंकों का मोबाइल नंबर डालें</string>
     <string name="otp_will_be_sent">हम आपको इस नंबर पर OTP भेजेंगे\n We Will send you otp</string>
-    <string name="name">नाम</string>
+    <string name="name">Name</string>
+    <string name="name_hn">नाम</string>
     <string name="your_full_name">आपका पूरा नाम</string>
-    <string name="enter_otp">ओ. टी. पी. टाइप करे</string>
+    <string name="enter_otp">ओ. टी. पी. टाइप करे\nEnter OTP</string>
+    <string name="enter_otp_text">ओ. टी. पी. टाइप करे</string>
     <string name="enter_otp_english">Enter OTP</string>
     <string name="type_otp">ओ. टी. पी. टाइप करें</string>
     <string name="enter_4_digit_otp">अपना 4 अंको का OTP डालें</string>

@@ -10,9 +10,10 @@
         android:id="@+id/tvHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enter_your_mobile"
-        android:textSize="@dimen/_16ssp"
+        android:text="@string/login_registration_page_heading"
+        android:textSize="@dimen/_13ssp"
         android:textStyle="bold"
+        android:typeface="serif"
         android:textColor="@color/greyed_text"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,12 +27,25 @@
         android:text="@string/mobile_number"
         android:textSize="@dimen/_11ssp"
         android:textStyle="bold"
-        android:textColor="@color/green_200"
+        android:typeface="serif"
+        android:textColor="@color/grey_100"
         android:layout_marginTop="@dimen/_40sdp"
         app:layout_constraintTop_toBottomOf="@+id/tvHeading"
         app:layout_constraintStart_toStartOf="parent"
         />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleMobileNum2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mobile_number_hn"
+        android:textSize="@dimen/_11ssp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
@@ -82,16 +96,30 @@
         android:text="@string/name"
         android:textStyle="bold"
         android:textSize="@dimen/_11ssp"
-        android:textColor="@color/green_200"
+        android:typeface="serif"
+        android:textColor="@color/grey_100"
         android:layout_marginTop="@dimen/_40sdp"
         app:layout_constraintTop_toBottomOf="@+id/hintMobileNum"
         app:layout_constraintStart_toStartOf="parent"
         />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name_hn"
+        android:textStyle="bold"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintTop_toBottomOf="@+id/hintMobileNum"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_9sdp"
         android:layout_marginLeft="@dimen/_5sdp"
         android:background="@drawable/bg_circle_green"
         android:padding="@dimen/_5sdp"
@@ -103,7 +131,7 @@
         android:id="@+id/etName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/bg_border_grey_with_rounded_corner"
         android:hint="@string/your_full_name"
         android:inputType="textCapWords"
