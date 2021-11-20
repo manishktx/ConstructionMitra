@@ -6,5 +6,6 @@ class VerifyOtpData(
     @SerializedName("user_id") val userId: String,
     @SerializedName("user_role") val userRole: String,
     @SerializedName("token") val token: String,
+    @SerializedName("name") val name: String,
 ) {
 }

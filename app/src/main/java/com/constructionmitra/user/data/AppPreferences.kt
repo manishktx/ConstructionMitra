@@ -23,11 +23,25 @@ class AppPreferences @Inject constructor(
         userId: String,
         userRole: String,
         token: String,
+        name: String,
+        mobile: String,
     ){
         sharedPreferences.edit().apply {
             putInt(USER_ID, userId.toInt())
             putString(USER_ROLE, userRole)
             putString(TOKEN, token)
+            putString(NAME, name)
+            putString(MOBILE, mobile)
+        }.apply()
+    }
+
+    fun  saveEmployerDetails(
+        companyName: String,
+        emailId: String,
+    ){
+        sharedPreferences.edit().apply {
+            putString(COMPANY_NAME, companyName)
+            putString(EMAIL_ID, emailId)
         }.apply()
     }
 
@@ -47,6 +61,14 @@ class AppPreferences @Inject constructor(
 
     fun getUserId() = sharedPreferences.getInt(USER_ID, 0).toString()
 
+    fun getUserName() = sharedPreferences.getString(NAME, "").toString()
+
+    fun getMobileNumber() = sharedPreferences.getString(MOBILE, "").toString()
+
+    fun getCompanyName() = sharedPreferences.getString(COMPANY_NAME, "").toString()
+
+    fun getEmailId() = sharedPreferences.getString(EMAIL_ID, "").toString()
+
     fun getUserRole() = sharedPreferences.getString(USER_ROLE, "")
 
     fun saveProfile(profileData: ProfileData){
@@ -58,7 +80,11 @@ class AppPreferences @Inject constructor(
         const val USER_ID = "user_id"
         const val USER_ROLE = "user_role"
         const val TOKEN = "token"
+        const val NAME = "_name"
+        const val MOBILE = "_mobile"
         const val USER_TYPE = "user_type"
+        const val COMPANY_NAME = "company_name"
+        const val EMAIL_ID = "email_id"
         private const val PROFILE = "profile"
         const val IS_NEW_CONTRACTOR = "new_contractor"
     }

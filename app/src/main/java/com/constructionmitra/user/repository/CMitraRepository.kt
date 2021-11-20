@@ -6,6 +6,7 @@ import com.constructionmitra.user.api.Result
 import com.constructionmitra.user.api.Success
 import com.constructionmitra.user.data.*
 import com.constructionmitra.user.utilities.ServerConstants
+import com.constructionmitra.user.utilities.constants.Role
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -282,9 +283,13 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
-    suspend fun postAJob(hashMap: HashMap<String, String?>): Result<BaseResponse<Any>>{
+    suspend fun postAJob(hashMap: HashMap<String, String?>, role: Role): Result<BaseResponse<Any>>{
         return try {
-            Success(cMitraService.postAJob(hashMap))
+            Success(when(role){
+                Role.PETTY_CONTRACTOR -> cMitraService.postAJob(hashMap)
+                Role.SPECIALISED_AGENCY -> cMitraService.postSAJob(hashMap)
+                Role.ENGINEER_SUPERVISOR -> cMitraService.postESJob(hashMap)
+            })
         }catch (exp: Exception){
             Timber.d("okhttp: ${exp.toString()}")
             Failure(exp)

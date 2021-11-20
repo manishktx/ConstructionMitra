@@ -13,7 +13,7 @@ class JobPostRequestImpl @Inject constructor(): JobPostRequestMapper {
         return hashMapOf<String, String?>(
             JobPostRequestMapper.USER_ID to userId,
             JobPostRequestMapper.JOB_CATEGORY_ID to jobPostRequest.jobCategoryId,
-            JobPostRequestMapper.JOB_POST_ID to jobPostRequest.jobPostId?.jobPostId,
+            JobPostRequestMapper.JOB_POST_ID to (jobPostRequest.jobPostId?.jobPostId ?: "0"),
             JobPostRequestMapper.REQUIRED_DAYS to jobPostRequest.jobRoleDetails?.requiredDays,
             JobPostRequestMapper.PROJECT_TYPE_ID to jobPostRequest.jobRoleDetails?.projectId,
             JobPostRequestMapper.WORK_DESC to jobPostRequest.jobRoleDetails?.workDesc,
@@ -25,6 +25,19 @@ class JobPostRequestImpl @Inject constructor(): JobPostRequestMapper {
             JobPostRequestMapper.PROJECT_NAME to jobPostRequest.employeeDetails?.projectName,
             JobPostRequestMapper.PROJECT_LOCATION_ID to jobPostRequest.employeeDetails?.projectLocationId,
             JobPostRequestMapper.IS_PUBLISHED to "0",
+            // Added for SA
+            JobPostRequestMapper.JOB_ROLE_ID to jobPostRequest.jobRoleDetails?.jobWorkId,
+            JobPostRequestMapper.JOB_ROLE_ID to jobPostRequest.jobRoleDetails?.jobWorkId,
+            JobPostRequestMapper.WORK_DONE_EARLIER to (jobPostRequest.jobRoleDetails?.workDoneEarlier),
+            JobPostRequestMapper.MIN_EXP_REQUIRED to (jobPostRequest.jobRoleDetails?.minExpId),
+            JobPostRequestMapper.MIN_QUALIFICATION_ID to (jobPostRequest.jobRoleDetails?.qualificationId),
+            JobPostRequestMapper.NO_OF_OPENINGS to (jobPostRequest.jobRoleDetails?.noOfOpenings),
+            JobPostRequestMapper.MIN_SALARY to (
+                    (jobPostRequest.jobRoleDetails?.salaryRange)?.value?.split("-")?.first() ?: "0"
+                    ),
+            JobPostRequestMapper.MAX_SALARY to (
+                    (jobPostRequest.jobRoleDetails?.salaryRange)?.value?.split("-")?.last() ?: "320000"
+                    ),
         )
     }
 }

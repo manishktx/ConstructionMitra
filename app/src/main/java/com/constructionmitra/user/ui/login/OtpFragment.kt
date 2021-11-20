@@ -73,7 +73,7 @@ class OtpFragment : Fragment() {
             it?.let {
                 // Safe data to pref
                 appPreferences.saveUserDetails(
-                    it.userId, it.userRole, it.token
+                    it.userId, it.userRole, it.token, it.name, args.mobile
                 )
                 when(args.profileType)
                 {

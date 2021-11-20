@@ -20,6 +20,7 @@
     <string name="enter_valid_name">Please enter your name</string>
     <string name="something_went_wrong">Something went wrong, please try again.</string>
     <string name="mandatory_fields_error">please fill mandatory fields.</string>
+    <string name="all_fields_are_mandatory">All fields are mandatory!</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login Fragment</string>
@@ -208,6 +209,7 @@
     <string name="provide_details_about_job">2.\nProvide\nDetails About\nThe Job</string>
     <string name="review_and_post">3.\nReview and\nPost</string>
     <string name="select_job_role">1.\nSelect Job\nRole</string>
+    <string name="select_job">Select Job</string>
     <string name="save_and_update">Save and Update</string>
     <string name="save">Save</string>
     <string name="text_work">Work</string>
@@ -219,7 +221,7 @@
     <string name="text_terms_and_condition">By Posting job, I agree with terms and conditions of Construction Mitra</string>
     <string name="complete_your_verification_inst">Complete your company verification by uploading company document for faster job approval</string>
     <string name="select_your_job_role">Select Your Job Role</string>
-    <string name="please_mention_details_about_the_work">Please mention details about the work.</string>
+    <string name="please_mention_details_about_the_work">Please mention details about the work.\nMinimum 10 words required.</string>
     <string name="posted_on">Posted: %s</string>
     <string name="applied_by_formatter">Applied by: %s People</string>
     <string name="no_of_worker_formatter">%s Nos.</string>
@@ -265,7 +267,7 @@
     <string name="female_en">Female</string>
     <string name="both">Both</string>
     <string name="selected_job_role">Selected Job Role</string>
-    <string name="min_value_text">Any criteria of minimum value or work done earlier</string>
+    <string name="enter_classification">Enter classification/job</string>
     <string name="job_offered">Enter post for which job is being offered</string>
     <string name="min_qualification_req">Minimum Qualification required</string>
     <string name="min_exp_req">Minimum Experience required</string>
@@ -280,6 +282,26 @@
 
     <!-- Employer/ Specialised agency -->
     <string name="select_work">Select Work</string>
+    <string name="min_value_of_work">Minimum value of work done earlier (in Lakhs)</string>
+    <string name="min_value_of_work_hint">Minimum value of work or type of work criteria</string>
     <string name="type_of_work_done_earlier">Type of work done earlier</string>
+    <string name="job_role_cat">Job Role:</string>
+    <string name="work_cat">Work:</string>
+    <string name="job_classification_cat">Job Classification:</string>
+    <string name="qualification_cat">Qualification:</string>
+    <string name="gender_cat">Gender:</string>
+    <string name="min_experience_cat">Min Experience:</string>
+    <string name="salary_cat">Salary:</string>
+    <string name="job_desc_cat">Job Description:</string>
+    <string name="job_location_cat">Job Location:</string>
+    <string name="company_name_cat">Company Name:</string>
+    <string name="person_and_designation_cat">Person name &amp;\nDesignation:</string>
+    <string name="contact_person_cat">Contact Person\nMobile:</string>
+    <string name="job_created_on_cat">Job created on:</string>
+    <string name="project_type_cat">Project Type:</string>
+    <string name="requirement_cat">Requirement:</string>
+    <string name="work_description_cat">Work Description:</string>
+    <string name="criteria_cat">Criteria:</string>
+    <string name="project_location_cat">Project Location:</string>
 
 </resources>

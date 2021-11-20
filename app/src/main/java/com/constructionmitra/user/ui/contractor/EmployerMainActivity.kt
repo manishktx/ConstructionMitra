@@ -79,7 +79,7 @@ class EmployerMainActivity : AppCompatActivity() {
                 }, {
                     // Yes
                     appPreferences.saveUserDetails(
-                        "0", "", ""
+                        "0", "", "", "",""
                     )
                     finish()
                 }).show()

@@ -94,6 +94,15 @@ object AppConstants {
             )
         )
     )
+
+    val  salaryRanges = listOf<Salary>(
+        Salary("0-320000", "0 - 3,20,000 P.A"),
+        Salary("320000-500000", "3,20,000 - 5,00,000 P.A"),
+        Salary("500000-750000", "5,00,000 - 7,50,000 P.A"),
+        Salary("750000-1000000","7,50,000 - 10,00,000 P.A"),
+        Salary("1000000-1500000","10,00,000 - 15,00,000 P.A"),
+        Salary("1500000-10000000","More than 15,00,000 P.A"),
+    )
 }
 
 enum class Role(val role: String){

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_8sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="@dimen/work_detail_icon"
+                android:layout_height="@dimen/work_detail_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_bag"
+                app:tint="@color/blue_300" />
+
+            <include
+                android:id="@+id/viewJobRole"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/ivIcon"/>
+
+            <include
+                android:id="@+id/viewCriteria"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/viewJobRole"/>
+
+            <include
+                android:id="@+id/viewClassification"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewCriteria" />
+
+            <include
+                android:id="@+id/viewQualification"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewClassification" />
+
+            <include
+                android:id="@+id/viewGender"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewQualification" />
+
+
+            <include
+                android:id="@+id/viewMinExp"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewGender" />
+
+            <include
+                android:id="@+id/viewRequirements"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewMinExp" />
+
+            <include
+                android:id="@+id/viewProjectType"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewRequirements" />
+
+            <include
+                android:id="@+id/viewSalaryRange"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewProjectType" />
+
+            <include
+                android:id="@+id/viewJobDesc"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewSalaryRange" />
+
+            <include
+                android:id="@+id/viewJobLocation"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewJobDesc" />
+
+            <include
+                android:id="@+id/viewCompanyName"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewJobLocation" />
+
+            <include
+                android:id="@+id/viewPersonDesignation"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewCompanyName" />
+
+
+            <include
+                android:id="@+id/viewContactDetails"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewPersonDesignation" />
+
+            <include
+                android:id="@+id/viewJobCreatedOn"
+                layout="@layout/item_work_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/viewContactDetails" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewTnC"
+                app:layout_constraintTop_toBottomOf="@id/viewJobCreatedOn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cbConfirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@+id/cbConfirm"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="@color/grey_500"
+                    android:textSize="@dimen/_10ssp"
+                    android:text="@string/i_confirm_information"
+                    app:layout_constraintTop_toTopOf="@+id/cbConfirm"
+                    app:layout_constraintBottom_toBottomOf="@+id/cbConfirm"
+                    />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/cbAgreeTnC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cbConfirm"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@+id/cbAgreeTnC"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="@color/grey_500"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/text_terms_and_condition"
+                    app:layout_constraintTop_toTopOf="@+id/cbAgreeTnC"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Terms and conditions view -->
+
+    <include layout="@layout/progress_bar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

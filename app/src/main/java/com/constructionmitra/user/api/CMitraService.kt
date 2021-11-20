@@ -149,6 +149,18 @@ interface CMitraService {
     ): BaseResponse<Any>
 
     @FormUrlEncoded
+    @POST("api/v1/common/manage_engineer_job")
+    suspend fun postESJob(
+        @FieldMap map: HashMap<String, String?>
+    ): BaseResponse<Any>
+
+    @FormUrlEncoded
+    @POST("api/v1/common/manage_specialised_job")
+    suspend fun postSAJob(
+        @FieldMap map: HashMap<String, String?>
+    ): BaseResponse<Any>
+
+    @FormUrlEncoded
     @POST("api/v1/common/total_job_post")
     suspend fun fetchProfileContractor(
         @Field("user_id") userId: String

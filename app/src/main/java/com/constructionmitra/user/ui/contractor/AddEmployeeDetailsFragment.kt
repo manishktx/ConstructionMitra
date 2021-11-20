@@ -19,6 +19,7 @@ import com.constructionmitra.user.databinding.FragmentAddEmployeeDetailsBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
 import com.constructionmitra.user.utilities.AppUtils
+import com.constructionmitra.user.utilities.constants.Role
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_request_for_work.*
@@ -60,6 +61,10 @@ class AddEmployeeDetailsFragment : Fragment() {
     ): View? {
         _binding = FragmentAddEmployeeDetailsBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
+            etContactPersonName.setText(appPreferences.getUserName())
+            etMobileNum.setText(appPreferences.getMobileNumber())
+            etCompanyName.setText(appPreferences.getCompanyName())
+            etEmail.setText(appPreferences.getEmailId())
         }
         lifecycleScope.launchWhenResumed {
             showProgress(true)
@@ -86,6 +91,7 @@ class AddEmployeeDetailsFragment : Fragment() {
         jobPostViewModel.navigateToReviewJob.observe(viewLifecycleOwner){
             // Save employee details and navigate to review jobPost Screen
             if(areDetailsValid()){
+                appPreferences.saveEmployerDetails(binding.etCompanyName.text.toString(), binding.etEmail.text.toString())
                 jobPostViewModel.saveEmployeeDetails(
                     employeeDetails =  EmployeeDetails(
                         companyName = binding.etCompanyName.text.toString(),
@@ -98,9 +104,11 @@ class AddEmployeeDetailsFragment : Fragment() {
                         designation = binding.etDesignation.text.toString(),
                     )
                 )
-                AddEmployeeDetailsFragmentDirections.toReviewYourJobFragment().apply {
-                    findNavController().navigate(this)
-                }
+                findNavController().navigate(
+                    AddEmployeeDetailsFragmentDirections.toReviewEmployerJobFragment(
+                        jobPostViewModel.role!!
+                    )
+                )
             }
             else{
                 binding.root.showToast(getString(R.string.mandatory_fields_error))

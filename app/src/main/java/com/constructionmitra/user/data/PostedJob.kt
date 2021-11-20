@@ -12,6 +12,8 @@ data class PostedJob(
     val companyName: String,
     @SerializedName("contact_person_name")
     val contactPersonName: String,
+    @SerializedName("location_name")
+    val locationName: String,
     @SerializedName("date_time")
     val dateTime: String,
     @SerializedName("designation")
