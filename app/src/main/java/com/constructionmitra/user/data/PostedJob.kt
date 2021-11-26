@@ -1,11 +1,14 @@
 package com.constructionmitra.user.data
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class PostedJob(
     @SerializedName("applicant_data")
-    val applicantData: List<Any>,
+    val applicantData: ArrayList<ApplicantData>,
     @SerializedName("category_name")
     val categoryName: String,
     @SerializedName("company_name")
@@ -50,7 +53,8 @@ data class PostedJob(
     val userName: String,
     @SerializedName("work_id")
     val workId: String,
-
     @SerializedName("work_description")
-    val workDesc: String
-)
+    val workDesc: String,
+    @SerializedName("Job_work_status")
+    val jobWorkStatus: String
+) : Parcelable

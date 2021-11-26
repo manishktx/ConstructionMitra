@@ -52,16 +52,17 @@
                     android:id="@+id/tvIsVerified"
                     android:layout_width="@dimen/_55sdp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="@{data.jobWorkStatus.equalsIgnoreCase(`Under Review`) ? @drawable/bg_rectangle_orange_rounded_corners : @drawable/bg_rectangle_blue_rounded_corners}"
                     android:gravity="center"
+                    android:padding="@dimen/_2sdp"
+                    android:text="@{data.jobWorkStatus}"
                     android:textColor="@color/blue_200"
                     android:textSize="@dimen/_9ssp"
+                    tools:background="@drawable/bg_rectangle_blue_rounded_corners"
                     app:layout_constraintStart_toEndOf="@+id/tvTitle"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:padding="@dimen/_2sdp"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:background="@drawable/bg_rectangle_blue_rounded_corners"
-                    android:text="Pending" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvCompany"
@@ -91,68 +92,78 @@
                     app:layout_constraintTop_toBottomOf="@id/tvCompany"
                     tools:text="साकेत, दिल्ली" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvNoOfPostOpenings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:gravity="center"
+                    android:textColor="@color/greyed_text"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvLocation"
+                    tools:text="20 NOS" />
+
+                <!-- Education + exp -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/detailsContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
                     app:layout_constraintTop_toBottomOf="@+id/tvLocation">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvRequiredWorker"
+                        android:id="@+id/tvMinEducation"
                         android:layout_width="wrap_content"
                         android:layout_height="15dp"
                         android:layout_marginTop="@dimen/_2sdp"
                         android:gravity="center"
-                        android:text="@{@string/no_of_worker_formatter(data.noOfWorkers)}"
                         android:textColor="@color/greyed_text"
-                        android:textSize="@dimen/_10ssp"
+                        android:textSize="@dimen/_11ssp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="20 NOS" />
+                        tools:text="b-tech or equivalent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvEstimatedTime"
+                        android:id="@+id/tvMinExp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textColor="@color/greyed_text"
-                        android:text="@{@string/with_in_days(data.totalDaysRequired)}"
-                        android:textSize="@dimen/_10ssp"
+                        android:textSize="@dimen/_11ssp"
+                        android:text="@{@string/min_exp_formatter(data.noOfWorkers)}"
                         android:layout_marginTop="@dimen/_2sdp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Within 15 - 30 Days" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvProject"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textColor="@color/greyed_text"
-                        android:text="@{data.projectName}"
-                        android:textSize="@dimen/_10ssp"
-                        android:layout_marginTop="@dimen/_2sdp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Residential Project" />
+                        tools:text="4 to 6 yrs" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvDesc"
+                    android:id="@+id/tvGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="start"
+                    android:gravity="center"
                     android:textColor="@color/greyed_text"
-                    android:textStyle="bold"
-                    android:text="@{data.workDesc}"
-                    android:textSize="@dimen/_10ssp"
-                    android:layout_marginTop="@dimen/_7sdp"
+                    android:textSize="@dimen/_11ssp"
+                    android:text="@{@string/gender_formatter(data.noOfWorkers)}"
+                    android:layout_marginTop="@dimen/_2sdp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detailsContainer"
-                    tools:text="काम का विवरण: कंस्ट्रक्शन साइट पे काम करने के लिए राज मिस्त्री चाहिए जो  की ब्रिक और ब्लॉक का काम जानता हो" />
+                    tools:text="Gender: Male" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSalary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/greyed_text"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    android:text="@{@string/gender_formatter(data.noOfWorkers)}"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGender"
+                    tools:text="30000 - 40000L" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvDuration"
@@ -164,7 +175,7 @@
                     android:layout_marginTop="@dimen/_7sdp"
                     android:padding="@dimen/_3sdp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSalary"
                     android:text="@{@string/posted_on(data.jobCreatedOn)}"
                     tools:text="@string/posted_on"/>
 
@@ -176,9 +187,11 @@
                     android:textColor="@color/blue_300"
                     android:textSize="@dimen/_10ssp"
                     android:layout_marginTop="@dimen/_7sdp"
-                    android:padding="@dimen/_3sdp"
+                    android:paddingVertical="@dimen/_3sdp"
+                    android:paddingHorizontal="@dimen/_8sdp"
+                    android:background="@drawable/bg_text_click_selector"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSalary"
                     android:text="@string/applied_by_formatter" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

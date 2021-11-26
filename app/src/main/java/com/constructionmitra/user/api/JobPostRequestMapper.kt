@@ -29,6 +29,7 @@ interface JobPostRequestMapper {
         const val  NO_OF_OPENINGS =  "number_of_openings"
         const val  MIN_SALARY =  "minimum_salary"
         const val  MAX_SALARY =  "maximum_salary"
+        const val  GENDER =  "gender"
 
     }
 }

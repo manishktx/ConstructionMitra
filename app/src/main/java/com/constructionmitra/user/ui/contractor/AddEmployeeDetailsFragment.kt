@@ -61,9 +61,11 @@ class AddEmployeeDetailsFragment : Fragment() {
     ): View? {
         _binding = FragmentAddEmployeeDetailsBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
+            // Load data from preferences
             etContactPersonName.setText(appPreferences.getUserName())
             etMobileNum.setText(appPreferences.getMobileNumber())
             etCompanyName.setText(appPreferences.getCompanyName())
+            etDesignation.setText(appPreferences.getDesignation())
             etEmail.setText(appPreferences.getEmailId())
         }
         lifecycleScope.launchWhenResumed {
@@ -123,7 +125,7 @@ class AddEmployeeDetailsFragment : Fragment() {
             showProgress(false)
             it?.takeIf { it.isNotEmpty() }?.let {
                     items ->
-                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, items)
+                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, items)
                 (binding.textInput.editText as? AutoCompleteTextView)?.apply {
                     onItemClickListener = this@AddEmployeeDetailsFragment.onItemSelectedListener
                     setAdapter(adapter)

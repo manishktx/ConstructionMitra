@@ -30,6 +30,9 @@ class JobPostViewModel @Inject constructor(
     private var _navigateToAddEmployeeDetails = SingleLiveEvent<Boolean>()
     val navigateToAddEmployeeDetails = _navigateToAddEmployeeDetails
 
+    private var _profileDataWithPostedJob  = MutableLiveData<ProfileDataContractor>()
+    val profileDataWithPostedJob = _profileDataWithPostedJob
+
     private var _tabSelected = SingleLiveEvent<Int>()
     val tabSelected = _tabSelected
 
@@ -121,6 +124,24 @@ class JobPostViewModel @Inject constructor(
 
     fun getJobRole(jobRoleId: String): String{
             return _jobRoles.value?.find { it.roleId == jobRoleId }?.jobRole ?: ""
+    }
+
+    fun getProfileWithPostedJobs(userId: String){
+        viewModelScope.launch {
+            when(val result = repository.fetchProfileContractor(userId)){
+                is Success -> {
+                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
+                        _profileDataWithPostedJob.postValue(result.data.data!!)
+                    }
+                    else{
+                        onFailedResponse(Exception(result.data.message))
+                    }
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
     }
 
     fun requestJobRoles(jobCategory: String) {

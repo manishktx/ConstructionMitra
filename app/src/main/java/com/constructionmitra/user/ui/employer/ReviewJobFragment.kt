@@ -198,7 +198,7 @@ class ReviewJobFragment : Fragment() {
             }
             viewPersonDesignation.apply {
                 tvTitle.text = getString(R.string.person_and_designation_cat)
-                tvDesc.text = employeeDetails.designation
+                "${employeeDetails.contactPerson}, ${employeeDetails.designation}".also { tvDesc.text = it }
             }
             viewContactDetails.apply {
                 tvTitle.text = getString(R.string.contact_person_cat)

@@ -10,7 +10,7 @@ class JobPostRequestImpl @Inject constructor(): JobPostRequestMapper {
         jobPostRequest.jobRoleDetails ?: throw  Exception("Job roles details can not be null")
         jobPostRequest.employeeDetails ?: throw  Exception("Employee details can not be null")
 
-        return hashMapOf<String, String?>(
+        val requestMap = hashMapOf<String, String?>(
             JobPostRequestMapper.USER_ID to userId,
             JobPostRequestMapper.JOB_CATEGORY_ID to jobPostRequest.jobCategoryId,
             JobPostRequestMapper.JOB_POST_ID to (jobPostRequest.jobPostId?.jobPostId ?: "0"),
@@ -39,5 +39,12 @@ class JobPostRequestImpl @Inject constructor(): JobPostRequestMapper {
                     (jobPostRequest.jobRoleDetails?.salaryRange)?.value?.split("-")?.last() ?: "320000"
                     ),
         )
+        jobPostRequest.jobRoleDetails?.let {  jobRoleDetails ->
+            if(!jobRoleDetails.gender.isNullOrEmpty()){
+                requestMap[JobPostRequestMapper.GENDER] = jobRoleDetails.gender
+            }
+        }
+
+        return requestMap
     }
 }

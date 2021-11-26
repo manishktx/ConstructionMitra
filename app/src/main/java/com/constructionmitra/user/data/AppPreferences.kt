@@ -36,12 +36,14 @@ class AppPreferences @Inject constructor(
     }
 
     fun  saveEmployerDetails(
-        companyName: String,
-        emailId: String,
+        companyName: String? = null,
+        emailId: String? = null,
     ){
         sharedPreferences.edit().apply {
-            putString(COMPANY_NAME, companyName)
-            putString(EMAIL_ID, emailId)
+            if(!companyName.isNullOrEmpty())
+                putString(COMPANY_NAME, companyName)
+            if(!emailId.isNullOrEmpty())
+                putString(EMAIL_ID, emailId)
         }.apply()
     }
 
@@ -59,6 +61,8 @@ class AppPreferences @Inject constructor(
 
     fun getToken() = sharedPreferences.getString(TOKEN, "")
 
+    fun getDesignation() = sharedPreferences.getString(DESIGNATION, "")
+
     fun getUserId() = sharedPreferences.getInt(USER_ID, 0).toString()
 
     fun getUserName() = sharedPreferences.getString(NAME, "").toString()
@@ -73,7 +77,35 @@ class AppPreferences @Inject constructor(
 
     fun saveProfile(profileData: ProfileData){
         val profile = Gson().toJson(profileData)
+        if(!profileData.firmName.isNullOrEmpty()){
+            saveEmployerDetails(companyName = profileData.firmName)
+        }
+
+        if(!profileData.email.isNullOrEmpty()){
+            saveEmployerDetails(emailId = profileData.email)
+        }
+        saveUserName(profileData.fullName)
+        saveMobileNumber(profileData.phoneNumber)
+        saveDesignation(profileData.designation)
         sharedPreferences.edit().putString(PROFILE, profile).apply()
+    }
+
+    private fun saveUserName(userName: String?){
+        if(!userName.isNullOrEmpty()){
+            sharedPreferences.edit().putString(NAME, userName).apply()
+        }
+    }
+
+    private fun saveDesignation(designation: String?){
+        if(!designation.isNullOrEmpty()){
+            sharedPreferences.edit().putString(DESIGNATION, designation).apply()
+        }
+    }
+
+    private fun saveMobileNumber(mobileNumber: String?){
+        if(!mobileNumber.isNullOrEmpty()){
+            sharedPreferences.edit().putString(MOBILE, mobileNumber).apply()
+        }
     }
 
     companion object{
@@ -83,6 +115,7 @@ class AppPreferences @Inject constructor(
         const val NAME = "_name"
         const val MOBILE = "_mobile"
         const val USER_TYPE = "user_type"
+        const val DESIGNATION = "designation"
         const val COMPANY_NAME = "company_name"
         const val EMAIL_ID = "email_id"
         private const val PROFILE = "profile"

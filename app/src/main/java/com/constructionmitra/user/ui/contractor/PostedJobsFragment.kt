@@ -13,6 +13,7 @@ import com.constructionmitra.user.databinding.FragmentPostedJobsBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.ContractorProfileViewModel
 import com.constructionmitra.user.ui.contractor.viewmodels.UiViewModel
+import com.constructionmitra.user.ui.dialogs.AppliedByDialog
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -62,9 +63,16 @@ class PostedJobsFragment : Fragment() {
             // setAdapter
             binding.headerProfile.tvPostedJobsCount.text = it.totalJobs.toString()
             binding.headerProfile.tvAppliedJobsCount.text = it.totalAppliedUser.toString()
-            binding.rvPostedJobs.adapter = PostedJobsAdapter(it.postedJobDataList){
-
-            }
+            binding.rvPostedJobs.adapter = PostedJobsAdapter(
+                it.postedJobDataList,
+                onAppliedJobsClick = { postedJob ->
+                    AppliedByDialog.newInstance(
+                        postedJob.jobRole,
+                        postedJob.applicantData, {}, {}
+                    ).show(parentFragmentManager, "applied_by_applicants")
+                },
+                onItemClick = {}
+            )
         }
         onError()
     }

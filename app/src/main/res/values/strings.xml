@@ -5,6 +5,8 @@
     <string name="title_notifications">प्रोफाइल </string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="logout_text">Are you sure you want to logout ?</string>
+    <string name="sr_no">Sr. No.</string>
+    <string name="contact_number">Contact No.</string>
 
     <!-- Messages -->
     <string name="msg_select_your_category">Please choose your category</string>
@@ -221,7 +223,7 @@
     <string name="text_terms_and_condition">By Posting job, I agree with terms and conditions of Construction Mitra</string>
     <string name="complete_your_verification_inst">Complete your company verification by uploading company document for faster job approval</string>
     <string name="select_your_job_role">Select Your Job Role</string>
-    <string name="please_mention_details_about_the_work">Please mention details about the work.\nMinimum 10 words required.</string>
+    <string name="please_mention_details_about_the_work">Please mention details about the work.\(min. 10 words description required)</string>
     <string name="posted_on">Posted: %s</string>
     <string name="applied_by_formatter">Applied by: %s People</string>
     <string name="no_of_worker_formatter">%s Nos.</string>
@@ -303,5 +305,9 @@
     <string name="work_description_cat">Work Description:</string>
     <string name="criteria_cat">Criteria:</string>
     <string name="project_location_cat">Project Location:</string>
+    <string name="agency_name">Agency Name</string>
+    <string name="view_contact">View Contact</string>
+    <string name="min_exp_formatter">Min. Exp.: %s</string>
+    <string name="gender_formatter">Gender: %s</string>
 
 </resources>
