@@ -23,7 +23,7 @@ data class PostedJob(
     val designation: String,
     @SerializedName("earlier_work")
     val earlierWork: String,
-    @SerializedName("gender")
+    @SerializedName("Gender")
     val gender: String,
     @SerializedName("job_created_on")
     val jobCreatedOn: String,
@@ -56,5 +56,11 @@ data class PostedJob(
     @SerializedName("work_description")
     val workDesc: String,
     @SerializedName("Job_work_status")
-    val jobWorkStatus: String
+    val jobWorkStatus: String,
+    @SerializedName("is_published")
+    val isPublished: Boolean = false,
+    @SerializedName("min_salary")
+    val minSalary: Int,
+    @SerializedName("max_salary")
+    val maxSalary: Int,
 ) : Parcelable

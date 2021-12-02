@@ -1,19 +1,26 @@
 package com.constructionmitra.user.ui.contractor
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.constructionmitra.user.FragmentContainerActivity
+import com.constructionmitra.user.R
 import com.constructionmitra.user.adapters.PostedJobsAdapter
 import com.constructionmitra.user.data.AppPreferences
+import com.constructionmitra.user.data.PostedJob
 import com.constructionmitra.user.databinding.FragmentPostedJobsBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.ContractorProfileViewModel
 import com.constructionmitra.user.ui.contractor.viewmodels.UiViewModel
 import com.constructionmitra.user.ui.dialogs.AppliedByDialog
+import com.constructionmitra.user.ui.employer.ViewJobDetailsFragment
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -71,10 +78,47 @@ class PostedJobsFragment : Fragment() {
                         postedJob.applicantData, {}, {}
                     ).show(parentFragmentManager, "applied_by_applicants")
                 },
-                onItemClick = {}
+                onMenuSelected = { view, postedJob ->
+                    showMenu(view, postedJob)
+                },
+                onItemClick = { postedJob ->
+                    navigateToJobDetails(postedJob)
+                }
             )
         }
         onError()
+    }
+
+    private fun navigateToJobDetails(postedJob: PostedJob) {
+        Intent(requireContext(), FragmentContainerActivity::class.java).apply {
+            putExtra(FragmentContainerActivity.FRAGMENT_NAME, ViewJobDetailsFragment::class.java.name)
+            putExtra(FragmentContainerActivity.PARCELABLE_KEY, postedJob)
+            startActivity(this)
+        }
+        requireActivity().overridePendingTransition(
+            R.anim.enter_anim_activity,
+            R.anim.exit_anim_activity
+        )
+    }
+
+    private fun showMenu(view: View, postedJob: PostedJob) {
+        val popup = PopupMenu(
+            requireContext(), view, Gravity.END, 0,
+            R.style.App_PopupMenu
+        )
+        popup.menuInflater.inflate(R.menu.posted_job_menu, popup.menu)
+        if(!postedJob.isPublished)
+            popup.menu.findItem(R.id.optionPublish).setVisible(false)
+
+        popup.apply {
+            setOnMenuItemClickListener { menu ->
+
+                true
+            }
+            setOnDismissListener {
+
+            }
+        }.show()
     }
 
     private fun onError() {

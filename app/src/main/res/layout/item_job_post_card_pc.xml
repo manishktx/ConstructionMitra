@@ -50,19 +50,31 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvIsVerified"
-                    android:layout_width="@dimen/_55sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:background="@{data.jobWorkStatus.equalsIgnoreCase(`Under Review`) ? @drawable/bg_rectangle_orange_rounded_corners : @drawable/bg_rectangle_blue_rounded_corners}"
+                    android:textColor="@{data.jobWorkStatus.equalsIgnoreCase(`Under Review`) ? @color/grey_500 : @color/blue_200}"
                     android:gravity="center"
-                    android:padding="@dimen/_2sdp"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
                     android:text="@{data.jobWorkStatus}"
-                    android:textColor="@color/blue_200"
                     android:textSize="@dimen/_9ssp"
                     tools:background="@drawable/bg_rectangle_blue_rounded_corners"
                     app:layout_constraintStart_toEndOf="@+id/tvTitle"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/ic_menu"
+                    android:tint="@color/grey_500"
+                    tools:text="L n  T Construction" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvCompany"

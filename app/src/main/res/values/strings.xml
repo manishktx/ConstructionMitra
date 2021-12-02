@@ -7,6 +7,8 @@
     <string name="logout_text">Are you sure you want to logout ?</string>
     <string name="sr_no">Sr. No.</string>
     <string name="contact_number">Contact No.</string>
+    <string name="posted_job_menu_option_1">Publish</string>
+    <string name="posted_job_menu_option_2">Delete</string>
 
     <!-- Messages -->
     <string name="msg_select_your_category">Please choose your category</string>
@@ -294,6 +296,7 @@
     <string name="gender_cat">Gender:</string>
     <string name="min_experience_cat">Min Experience:</string>
     <string name="salary_cat">Salary:</string>
+    <string name="salary_formatter">₹ %1$d - %2$d</string>
     <string name="job_desc_cat">Job Description:</string>
     <string name="job_location_cat">Job Location:</string>
     <string name="company_name_cat">Company Name:</string>

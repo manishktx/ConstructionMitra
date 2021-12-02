@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="App.Button.Green" parent="">
         <item name="android:textColor">@color/white</item>
@@ -151,6 +151,10 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowSoftInputMode">adjustResize|stateVisible</item>
+    </style>
+
+    <style name="App.PopupMenu" parent="Widget.AppCompat.Light.PopupMenu">
+        <item name="android:dropDownHorizontalOffset" tools:targetApi="n">@dimen/_10sdp</item>
     </style>
 
 </resources>

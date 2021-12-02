@@ -170,7 +170,6 @@ interface CMitraService {
     companion object {
         private const val BASE_URL = "http://creativemint.in/cmitra/"
 
-
         fun  create(): CMitraService{
             val interceptor =
                 HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
