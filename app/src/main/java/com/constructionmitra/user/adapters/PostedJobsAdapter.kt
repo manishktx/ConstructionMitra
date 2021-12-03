@@ -77,6 +77,9 @@ class PostedJobsAdapter(
             binding.ivMenu.setOnClickListener {
                 onMenuSelected(it, job)
             }
+            binding.root.setOnClickListener {
+                onItemClick(job)
+            }
         }
     }
 
@@ -95,6 +98,9 @@ class PostedJobsAdapter(
                 }
                 ivMenu.setOnClickListener {
                     onMenuSelected(it, job)
+                }
+                binding.root.setOnClickListener {
+                    onItemClick(job)
                 }
                 tvSalary.text = binding.root.context.getString(R.string.salary_formatter, job.minSalary, job.maxSalary)
             }

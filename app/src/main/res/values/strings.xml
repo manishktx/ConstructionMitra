@@ -312,5 +312,6 @@
     <string name="view_contact">View Contact</string>
     <string name="min_exp_formatter">Min. Exp.: %s</string>
     <string name="gender_formatter">Gender: %s</string>
+    <string name="no_of_openings_formatter">%s Nos</string>
 
 </resources>

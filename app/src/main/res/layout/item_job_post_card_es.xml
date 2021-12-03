@@ -112,6 +112,7 @@
                     android:gravity="center"
                     android:textColor="@color/greyed_text"
                     android:textSize="@dimen/_10ssp"
+                    android:text="@{@string/no_of_openings_formatter(data.noOfWorkers)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tvLocation"
                     tools:text="20 NOS" />
@@ -127,9 +128,10 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvMinEducation"
                         android:layout_width="wrap_content"
-                        android:layout_height="15dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_2sdp"
                         android:gravity="center"
+                        android:text="@{data.qualification}"
                         android:textColor="@color/greyed_text"
                         android:textSize="@dimen/_11ssp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +145,7 @@
                         android:gravity="center"
                         android:textColor="@color/greyed_text"
                         android:textSize="@dimen/_11ssp"
-                        android:text="@{@string/min_exp_formatter(data.noOfWorkers)}"
+                        android:text="@{@string/min_exp_formatter(data.experience)}"
                         android:layout_marginTop="@dimen/_2sdp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

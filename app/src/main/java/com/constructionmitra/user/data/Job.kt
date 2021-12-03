@@ -12,7 +12,7 @@ data class Job(
     @SerializedName("contact_person_name")
     val contactPersonName: String,
     @SerializedName("date_time")
-    val dateTime: String,
+    val dateTime: String?,
     @SerializedName("designation")
     val designation: String,
     @SerializedName("email_id")

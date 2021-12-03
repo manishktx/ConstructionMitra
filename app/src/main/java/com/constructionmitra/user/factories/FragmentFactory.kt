@@ -2,6 +2,7 @@ package com.constructionmitra.user.factories
 
 import androidx.fragment.app.Fragment
 import com.constructionmitra.user.ui.ShowImageFragment
+import com.constructionmitra.user.ui.employer.ViewJobDetailsFragment
 import com.constructionmitra.user.ui.login.WorkSubCategoriesFragment
 import com.constructionmitra.user.ui.profile.*
 import com.constructionmitra.user.ui.work.WorkDetailsFragment
@@ -57,6 +58,9 @@ class FragmentFactory @Inject constructor() {
 
                 CompanyLetterHeadFragment::class.java.name ->
                     CompanyLetterHeadFragment.newInstance()
+
+                ViewJobDetailsFragment::class.java.name ->
+                    ViewJobDetailsFragment.newInstance()
 
                 else ->
                     throw IllegalArgumentException("Unknown Fragment class $className")

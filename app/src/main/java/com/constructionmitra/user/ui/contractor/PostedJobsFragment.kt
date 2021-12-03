@@ -90,9 +90,9 @@ class PostedJobsFragment : Fragment() {
     }
 
     private fun navigateToJobDetails(postedJob: PostedJob) {
-        Intent(requireContext(), FragmentContainerActivity::class.java).apply {
+        Intent(requireActivity(), FragmentContainerActivity::class.java).apply {
             putExtra(FragmentContainerActivity.FRAGMENT_NAME, ViewJobDetailsFragment::class.java.name)
-            putExtra(FragmentContainerActivity.PARCELABLE_KEY, postedJob)
+            putExtra(FragmentContainerActivity.PARCELABLE_POSTED_JOB, postedJob)
             startActivity(this)
         }
         requireActivity().overridePendingTransition(
