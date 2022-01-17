@@ -7,6 +7,10 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+def keystorePropertiesFile = rootProject.file("app/keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdk 31
     buildToolsVersion "30.0.3"
@@ -14,16 +18,27 @@ android {
     defaultConfig {
         applicationId "com.constructionmitra.user"
         minSdk 21
-        targetSdk 30
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            keyAlias = keystoreProperties["keyAlias"]
+            keyPassword = keystoreProperties["keyPassword"]
+            storeFile = file(keystoreProperties["storeFile"])
+            storePassword = keystoreProperties["storePassword"]
+            storePassword = keystoreProperties["releaseKeyPassword"]
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig = signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -45,6 +60,9 @@ android {
             }
         }
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -53,6 +71,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+
+    // Extensions
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
@@ -74,7 +94,6 @@ dependencies {
 
     // Hilt
     implementation libraries
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt kapt_libraries
 
     // UI

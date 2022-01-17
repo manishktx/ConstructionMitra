@@ -12,7 +12,7 @@ import com.constructionmitra.user.utilities.constants.Role
 import timber.log.Timber
 
 class PostedJobsAdapter(
-    private val list: List<PostedJob>,
+    private val list: MutableList<PostedJob>,
     private val onItemClick: (postedJob: PostedJob) -> Unit,
     private val onMenuSelected: (view: View, postedJob: PostedJob) -> Unit,
     private val onAppliedJobsClick: (postedJob: PostedJob) -> Unit
@@ -62,6 +62,12 @@ class PostedJobsAdapter(
         holder.bind(list[position], onItemClick,)
     }
 
+    fun delete(postedJob: PostedJob){
+        list.indexOf(postedJob).also {
+            list.removeAt(it)
+            notifyItemRemoved(it)
+        }
+    }
 
     inner class ViewHolder(val binding: ItemJobPostCardPcBinding) :
         BaseViewHolder<PostedJob>(binding.root) {

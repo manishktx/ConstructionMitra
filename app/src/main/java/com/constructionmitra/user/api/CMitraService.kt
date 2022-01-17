@@ -117,7 +117,7 @@ interface CMitraService {
 
 
     /**
-     *  Contractor apis
+     * employer apis
      */
 
     @FormUrlEncoded
@@ -165,6 +165,16 @@ interface CMitraService {
     suspend fun fetchProfileContractor(
         @Field("user_id") userId: String
     ): BaseResponse<ProfileDataContractor>
+
+    @FormUrlEncoded
+    @POST("api/v1/common/job_status")
+    suspend fun updateJobStatus(
+        @Field("job_category_id") jobCategoryId: String,
+        @Field("user_id") userId: String,
+        @Field("job_role_id") jobRoleId: String,
+        @Field("job_post_id") jobPostId: String,
+        @Field("type") type: String,
+    ): BaseResponse<Any>
 
 
     companion object {

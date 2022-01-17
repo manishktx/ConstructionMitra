@@ -136,7 +136,7 @@ class JobRoleDetailsESFragment : Fragment()  {
                             AppConstants.salaryRanges[it1]
                         },
                         jobWorkId = viewModel.jobRoles.value?.get(selectedWorkItem!!)?.roleId,
-                        workDesc = binding.etAdditionalInfo.text.toString(),
+                        _jobDesc = binding.etAdditionalInfo.text.toString(),
                         _classification = binding.etMinValue.text.toString(),
                     )
                 )

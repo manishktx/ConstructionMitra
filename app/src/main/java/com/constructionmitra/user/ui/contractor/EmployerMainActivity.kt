@@ -94,6 +94,14 @@ class EmployerMainActivity : AppCompatActivity() {
             setDestination(it)
         }
 
+        viewModel.newUser.observe(this){
+            showProgress(false)
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.contractorNavHost) as NavHostFragment
+            val graph = navHostFragment.navController.navInflater.inflate(R.navigation.contractor_navigation)
+            val destination = R.id.contractorHomeFragment
+            graph.startDestination = destination
+            navHostFragment.navController.graph = graph
+        }
         onError()
     }
 

@@ -11,7 +11,7 @@ data class ProfileDataContractor(
     @SerializedName("total_jobs")
     val totalJobs: Int,
     @SerializedName("total_jobs_data")
-    val postedJobDataList: List<PostedJob>,
+    val postedJobDataList: ArrayList<PostedJob>,
     @SerializedName("total_seen")
     val totalSeen: Int
 )

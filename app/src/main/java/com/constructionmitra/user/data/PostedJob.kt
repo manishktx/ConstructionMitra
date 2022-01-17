@@ -30,7 +30,7 @@ data class PostedJob(
     @SerializedName("job_icon")
     val jobIcon: String?,
     @SerializedName("job_post_id")
-    val jobPostId: String = "",
+    val jobPostId: String,
     @SerializedName("job_role")
     val jobRole: String,
     @SerializedName("job_role_hn")
@@ -43,6 +43,8 @@ data class PostedJob(
     val numberOfOpenings: String?,
     @SerializedName("project_name")
     val projectName: String?,
+    @SerializedName("project_type")
+    val projectType: String?,
     @SerializedName("total_applied_by_user")
     val totalAppliedByUser: String,
     @SerializedName("total_days_required")
@@ -58,7 +60,7 @@ data class PostedJob(
     @SerializedName("Job_work_status")
     val jobWorkStatus: String,
     @SerializedName("is_published")
-    val isPublished: Boolean = false,
+    val isPublished: Int,
     @SerializedName("min_salary")
     val minSalary: Int?,
     @SerializedName("max_salary")
@@ -71,5 +73,16 @@ data class PostedJob(
     val mobileNumber: String,
     @SerializedName("job_creation_date")
     val jobCreatedDate: String = "",
+    @SerializedName("category_id")
+    val categoryId: String?,
+    @SerializedName("criteria")
+    val criteria: String?,
+    @SerializedName("classification")
+    val classification: String?,
+    @SerializedName("job_role_id")
+    val jobRoleId: String = "",
 
-    ) : Parcelable
+    ) : Parcelable {
+        val isPostPublished
+        get() = isPublished == 1
+    }

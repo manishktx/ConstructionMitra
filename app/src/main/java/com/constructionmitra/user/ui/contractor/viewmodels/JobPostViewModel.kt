@@ -30,6 +30,9 @@ class JobPostViewModel @Inject constructor(
     private var _navigateToAddEmployeeDetails = SingleLiveEvent<Boolean>()
     val navigateToAddEmployeeDetails = _navigateToAddEmployeeDetails
 
+    private var _newUser = SingleLiveEvent<Boolean>()
+    val newUser = _newUser
+
     private var _profileDataWithPostedJob  = MutableLiveData<ProfileDataContractor>()
     val profileDataWithPostedJob = _profileDataWithPostedJob
 
@@ -134,7 +137,7 @@ class JobPostViewModel @Inject constructor(
                         _profileDataWithPostedJob.postValue(result.data.data!!)
                     }
                     else{
-                        onFailedResponse(Exception(result.data.message))
+                        _newUser.postValue(true)
                     }
                 }
                 is Failure -> {
@@ -170,8 +173,9 @@ class JobPostViewModel @Inject constructor(
         }
     }
 
-    fun postJob(userId: String, role: Role) {
+    fun postJob(userId: String, role: Role, isPublished: Boolean) {
         viewModelScope.launch {
+            _jobPostRequest.isPublished = if(isPublished) 1 else 0
             val reqMap = jobPostRequestMapper.toJostPostRequest(userId, jobPostRequest = jobPostRequest)
             Timber.d("jobPostRequest -> $reqMap")
             when (val result: Result<BaseResponse<Any>> = repository.postAJob(reqMap, role)) {

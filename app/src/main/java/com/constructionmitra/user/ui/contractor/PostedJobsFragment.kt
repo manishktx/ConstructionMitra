@@ -21,6 +21,7 @@ import com.constructionmitra.user.ui.contractor.viewmodels.ContractorProfileView
 import com.constructionmitra.user.ui.contractor.viewmodels.UiViewModel
 import com.constructionmitra.user.ui.dialogs.AppliedByDialog
 import com.constructionmitra.user.ui.employer.ViewJobDetailsFragment
+import com.constructionmitra.user.utilities.UpdateJobPost
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -86,6 +87,19 @@ class PostedJobsFragment : Fragment() {
                 }
             )
         }
+        profileViewModel.jobDeleted.observe(viewLifecycleOwner){
+            showProgress(false)
+            it?.let { _postedJob ->
+                (binding.rvPostedJobs.adapter as PostedJobsAdapter).delete(_postedJob)
+            }
+        }
+        profileViewModel.jobPublished.observe(viewLifecycleOwner){
+            it?.let {
+                profileViewModel.getProfileWithPostedJobs(
+                    appPreferences.getUserId()
+                )
+            }
+        }
         onError()
     }
 
@@ -107,16 +121,28 @@ class PostedJobsFragment : Fragment() {
             R.style.App_PopupMenu
         )
         popup.menuInflater.inflate(R.menu.posted_job_menu, popup.menu)
-        if(!postedJob.isPublished)
+        if(postedJob.isPublished == 1)
             popup.menu.findItem(R.id.optionPublish).setVisible(false)
 
         popup.apply {
             setOnMenuItemClickListener { menu ->
-
+                when(menu.itemId){
+                    R.id.optionDelete -> {
+                        // delete item
+                        showProgress(true)
+                        profileViewModel.updateJobStatus(
+                            postedJob, appPreferences.getUserId(), UpdateJobPost.DELETE.param
+                        )
+                    }
+                    R.id.optionPublish -> {
+                        // delete item
+                        showProgress(true)
+                        profileViewModel.updateJobStatus(
+                            postedJob, appPreferences.getUserId(), UpdateJobPost.PUBLISHED.param, true
+                        )
+                    }
+                }
                 true
-            }
-            setOnDismissListener {
-
             }
         }.show()
     }

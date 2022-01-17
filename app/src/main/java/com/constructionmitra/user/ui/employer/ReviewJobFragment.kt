@@ -119,7 +119,8 @@ class ReviewJobFragment : Fragment() {
                     }
                     viewJobDesc.apply {
                         tvTitle.text = getString(R.string.job_desc_cat)
-                        tvDesc.text = jobRoleDetails.workDesc
+                        tvDesc.text = if(jobRoleDetails.workDesc.isNullOrEmpty())  jobRoleDetails.jobDescription
+                        else jobRoleDetails.workDesc
                     }
                     viewJobLocation.apply {
                         tvTitle.text = getString(R.string.job_location_cat)
@@ -139,7 +140,7 @@ class ReviewJobFragment : Fragment() {
                     }
                     viewCriteria.apply {
                         tvTitle.text = getString(R.string.criteria_cat)
-                        tvDesc.text = jobRoleDetails.classification
+                        tvDesc.text = jobRoleDetails.criteria
                     }
                     viewMinExp.apply {
                         tvTitle.text = getString(R.string.min_experience_cat)
@@ -147,7 +148,7 @@ class ReviewJobFragment : Fragment() {
                     }
                     viewRequirements.apply {
                         tvTitle.text = getString(R.string.requirement_cat)
-                        tvDesc.text = jobRoleDetails.requiredDays.plus(" Days")
+                        tvDesc.text = jobRoleDetails.noOfRequiredDays.plus(" Days")
                     }
                     viewProjectType.apply {
                         tvTitle.text = getString(R.string.project_type_cat)
@@ -168,6 +169,7 @@ class ReviewJobFragment : Fragment() {
                     viewGender.root.visibility = View.GONE
                     viewMinExp.root.visibility = View.GONE
                     viewCriteria.root.visibility = View.GONE
+                    viewSalaryRange.root.visibility = View.GONE
 
                     viewJobRole.apply {
                         tvTitle.text = getString(R.string.job_role_cat)

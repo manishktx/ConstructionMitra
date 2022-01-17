@@ -305,4 +305,19 @@ class CMitraRepository  @Inject constructor(
         }
     }
 
+    suspend fun updateJobStatus(
+        jobCategoryId: String,
+        userId: String,
+        jobRoleId: String,
+        jobPostId: String,
+        type: String,
+    ): Result<BaseResponse<Any>>{
+        return try {
+            Success(cMitraService.updateJobStatus(jobCategoryId, userId, jobRoleId, jobPostId, type))
+        }catch (exp: Exception){
+            Timber.d("okhttp: ${exp.toString()}")
+            Failure(exp)
+        }
+    }
+
 }

@@ -127,13 +127,13 @@ class JobRoleDetailsSAFragment : Fragment() {
                 // save job details to view model
                 viewModel.saveJobRoleDetails(
                     JobRoleDetails(
-                        requiredDays = workersRequiredInDays ?: "",
+                        _noOfRequiredDays = workersRequiredInDays!!,
                         jobWorkId = viewModel.jobRoles.value?.get(selectedWorkItem!!)?.roleId,
                         projectId = appDataConfig?.getProjectAt(selectedProjectItem!!)?.projectTypeId!!,
                         workDesc = binding.etWorkDesc.text.toString(),
                         _minExpId = appDataConfig?.getExperienceAt(selectedExpItem!!)?.experienceId!!,
                         _workDoneEarlier = binding.etTypeOfWork.text.toString(),
-                        _classification = binding.etMinValue.text.toString(),
+                        _criteria = binding.etMinValue.text.toString(),
                     )
                 )
                 JobRoleDetailsPCFragmentDirections.toAddEmployeeDetails().apply {

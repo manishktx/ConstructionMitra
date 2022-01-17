@@ -1,10 +1,12 @@
 package com.constructionmitra.user.ui.employer
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -45,6 +47,9 @@ class ViewJobDetailsFragment : Fragment() {
         binding = FragmentReviewJobEmployerBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
             viewTnC.visibility = View.GONE
+            appBar.visibility = View.VISIBLE
+            tvTitle.text = HtmlCompat.fromHtml(getString(R.string.app_title_english), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            tvTitle.typeface = Typeface.SERIF
         }
         return binding.root
     }
@@ -69,10 +74,10 @@ class ViewJobDetailsFragment : Fragment() {
                         tvTitle.text = getString(R.string.job_role_cat)
                         tvDesc.text = job.jobRole
                     }
-//                    viewClassification.apply {
-//                        tvTitle.text = getString(R.string.job_classification_cat)
-//                        tvDesc.text = jobRoleDetails.classification
-//                    }
+                    viewClassification.apply {
+                        tvTitle.text = getString(R.string.job_classification_cat)
+                        tvDesc.text = job.classification
+                    }
                     viewQualification.apply {
                         tvTitle.text = getString(R.string.qualification_cat)
                         tvDesc.text = job.qualification
@@ -92,6 +97,8 @@ class ViewJobDetailsFragment : Fragment() {
                     viewJobDesc.apply {
                         tvTitle.text = getString(R.string.job_desc_cat)
                         tvDesc.text = job.workDesc
+                        if(job.workDesc.isNullOrEmpty())
+                            tvDesc.text = "Not available"
                     }
                     viewJobLocation.apply {
                         tvTitle.text = getString(R.string.job_location_cat)
@@ -111,7 +118,7 @@ class ViewJobDetailsFragment : Fragment() {
                     }
                     viewCriteria.apply {
                         tvTitle.text = getString(R.string.criteria_cat)
-                        tvDesc.text = ""
+                        tvDesc.text = job.criteria
                     }
                     viewMinExp.apply {
                         tvTitle.text = getString(R.string.min_experience_cat)
@@ -123,7 +130,7 @@ class ViewJobDetailsFragment : Fragment() {
                     }
                     viewProjectType.apply {
                         tvTitle.text = getString(R.string.project_type_cat)
-                        tvDesc.text = job.projectName
+                        tvDesc.text = job.projectType
                     }
                     viewJobDesc.apply {
                         tvTitle.text = getString(R.string.work_description_cat)
@@ -139,6 +146,7 @@ class ViewJobDetailsFragment : Fragment() {
                     viewQualification.root.visibility = View.GONE
                     viewGender.root.visibility = View.GONE
                     viewMinExp.root.visibility = View.GONE
+                    viewSalaryRange.root.visibility = View.GONE
                     viewCriteria.root.visibility = View.GONE
 
                     viewJobRole.apply {
@@ -151,7 +159,7 @@ class ViewJobDetailsFragment : Fragment() {
                     }
                     viewProjectType.apply {
                         tvTitle.text = getString(R.string.project_type_cat)
-                        tvDesc.text = job.projectName
+                        tvDesc.text = job.projectType
                     }
                     viewJobDesc.apply {
                         tvTitle.text = getString(R.string.work_description_cat)

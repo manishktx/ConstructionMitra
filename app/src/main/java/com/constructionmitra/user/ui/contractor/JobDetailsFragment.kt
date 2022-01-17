@@ -89,12 +89,12 @@ class JobDetailsFragment : Fragment() {
             tvSave.setOnClickListener {
                 // Save post
                 showProgress(true)
-                viewModel.postJob(appPreferences.getUserId(), args.role)
+                viewModel.postJob(appPreferences.getUserId(), args.role, false)
             }
             tvPostAJob.setOnClickListener {
                 // Save post
                 showProgress(true)
-                viewModel.postJob(appPreferences.getUserId(), args.role)
+                viewModel.postJob(appPreferences.getUserId(), args.role, true)
             }
         }
         registerObservers()
