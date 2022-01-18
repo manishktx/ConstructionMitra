@@ -1,4 +1,5 @@
 <resources>
+    <!-- Employee -->
     <string name="app_name">ConstructionMitra</string>
     <string name="title_home">होम</string>
     <string name="title_dashboard">नेटवर्क</string>
@@ -79,7 +80,9 @@
     <string name="engineer">Engineer/Supervisor</string>
     <string name="engineer_in">इंजीनियर / कंस्ट्रक्शन साइट सुपरवाइजर हो तो यह विकल्प चुनें</string>
     <string name="choose_work">अपने कौशल के अनुरूप काम का चुनाव करें।</string>
+    <string name="choose_sub_cat_heading">आपके पास किन किन कामों के लिए टीम उपलब्ध है</string>
     <string name="choose_three_works">अधिकतम 3 काम चुने</string>
+    <string name="choose_three_works_eng">Maximum 3 work</string>
     <string-array name="work_options">
         <item>चुनाई मिस्त्री / राज मिस्त्री</item>
         <item>टाइल मिस्त्री</item>
@@ -94,17 +97,17 @@
         <item>P.O.P, वॉल पुट्टी</item>
         <item>पेंटिंग</item>
     </string-array>
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="heading">आपको वही काम दिखेंगे जिसमे 5 लोगों तक की \nजरुरत हो</string>
     <string name="sub_heading">क्या आप कांट्रेक्टर के रूप में काम करना चाहते है ?\n हाँ या ना का विकल्प चुनिए</string>
     <string name="yes">हाँ</string>
     <string name="no">ना</string>
     <string name="hint_firm_name">अपनी फर्म का नाम बतायें</string>
-    <string name="people_in_your_team">आपके पास कितने लोगो की टीम है</string>
+    <string name="people_in_your_team">अपनी फर्म का नाम बतायें आप किस नाम से काम करते हैं</string>
     <string name="team_count">कितने लोग</string>
     <string name="submit">Submit</string>
+    <string name="registration_cta_hint">हमारी &lt;font color="#FF1D2A">गोपनीयता निति&lt;font/> एवं &lt;font color="#4883C1">नियम और शातों&lt;font/> को सहमत करते हुए आगे बड़े</string>
+    <string name="resend_otp">ओ.टी.पी दोबारा भेजें/ Resend OTP</string>
+    <string name="num_verified">Congratulations! Your mobile is verified</string>
 
     <!-- Profile -->
     <string name="about_yourself">अपने बारे में बताओ</string>
@@ -170,7 +173,7 @@
     <string name="hint_req_for_number">&lt;font color="#797979">नंबर पाने के लिए अभी&lt;font/> &lt;font color="#FF1D2A">आवेदन करे&lt;font/></string>
     <string name="congratulation_msg_on_work_req">बधाई हो ! आपने इस काम के लिए सफलता पूर्वक आवेदन कर दिया है। कंपनी द्वारा आपकी प्रोफाइल देखने के बाद कॉल आएगा। अगर आप खुद कंपनी को सीधे फ़ोन पे बात करना चाहते है तो । &lt;font color="#FF1D2A">कांटेक्ट देखें&lt;font/>पर क्लिक करें</string>
 
-    <!-- Petty contractor job post -->
+    <!-- Employer/ Petty contractor job post -->
     <string name="select_work_heading">Please select work and no. of worker required.</string>
     <string name="hint_enter_no_worker">Enter no. Of Worker Required</string>
     <string name="add_job">Add Job +</string>

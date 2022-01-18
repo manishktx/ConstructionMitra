@@ -11,10 +11,11 @@
         android:id="@+id/tvHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/choose_work"
-        android:textSize="@dimen/text_medium"
+        android:text="@string/choose_sub_cat_heading"
+        android:textSize="@dimen/_13sdp"
         android:gravity="left"
         android:textColor="@color/greyed_text"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_15sdp"
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/choose_three_works"
-        android:textSize="@dimen/text_medium"
+        android:textSize="@dimen/_11sdp"
         android:gravity="center"
         android:textColor="@color/greyed_text"
         android:textStyle="bold"
@@ -34,6 +35,21 @@
         app:layout_constraintTop_toBottomOf="@+id/tvHeading"
         android:layout_marginTop="@dimen/_8sdp"
         app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOnlyOptionsEng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_three_works_eng"
+        android:textSize="@dimen/_11sdp"
+        android:gravity="center"
+        android:textColor="@color/greyed_text"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
     <View

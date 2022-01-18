@@ -27,7 +27,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class EmployeeHomeFragment : Fragment() {
 
     private lateinit var profileViewBinding: ItemProfileCardBinding
     private lateinit var homeViewModel: HomeViewModel
@@ -124,6 +124,7 @@ class HomeFragment : Fragment() {
             it?.let {
                 profileData ->
                 // Update UI
+                appPreferences.saveProfile(profileData)
                 updateUi(profileData)
             }
         }

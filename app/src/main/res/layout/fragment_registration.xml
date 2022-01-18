@@ -152,11 +152,27 @@
         android:layout_height="wrap_content"
         android:text="@string/next"
         android:layout_margin="@dimen/_5sdp"
+        android:drawableEnd="@drawable/ic_next"
+        android:drawableTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvCtaHint"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCtaHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/registration_cta_hint"
+        android:layout_margin="@dimen/_5sdp"
+        android:textColor="@color/grey_100"
+        android:textStyle="bold"
+        android:textSize="@dimen/_8sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
-
 
     <include layout="@layout/progress_bar"/>
 

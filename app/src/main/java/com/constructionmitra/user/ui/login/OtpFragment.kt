@@ -9,13 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.navGraphViewModels
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.databinding.FragmentOtpBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.EmployerMainActivity
+import com.constructionmitra.user.utilities.AppUtils
+import com.constructionmitra.user.utilities.ServerConstants
 import com.constructionmitra.user.utilities.showSnackBarShort
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_registration.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -43,6 +47,17 @@ class OtpFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentOtpBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
+            tvResendOtp.setOnClickListener {
+                showProgress(true)
+                viewModel.requestOtp(
+                    args.mobile,
+                    when(args.profileType){
+                        ProfileType.NIRMAAN_SHRAMIK -> "3"
+                        ProfileType.NIRMAAN_KARTA -> "4"
+                    },
+                    name = args.name
+                )
+            }
         }
         return binding.root
     }
@@ -68,6 +83,11 @@ class OtpFragment : Fragment() {
     }
 
     private fun registerObservers() {
+        viewModel.loginResponse.observe(viewLifecycleOwner){
+            showProgress(false)
+            binding.etOtp.setText(it.data.otp)
+        }
+
         viewModel.verifyOtpData.observe(viewLifecycleOwner){
             showProgress(false)
             it?.let {

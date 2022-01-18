@@ -68,6 +68,10 @@
             app:argType="string"/>
 
         <argument
+            android:name="name"
+            app:argType="string"/>
+
+        <argument
             android:name="profileType"
             app:argType="com.constructionmitra.user.ui.login.ProfileType"/>
 

@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.constructionmitra.user.FragmentContainerActivity
 import com.constructionmitra.user.MainActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
+import com.constructionmitra.user.data.JobRole
 import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategoriesBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
@@ -21,8 +23,12 @@ import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.constants.IntentConstants
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
+import kotlin.math.log
 
 @AndroidEntryPoint
 class WorkSubCategoriesFragment : Fragment() {
@@ -59,7 +65,6 @@ class WorkSubCategoriesFragment : Fragment() {
         showProgress(true)
         // Check if navigation come from [@HomeFragment] if yes then update UI
         checkIfCameFromHome()
-
         viewModel.requestJobRoles(args.jobCategory)
 
         // set listener on next button/ Save button
@@ -96,13 +101,22 @@ class WorkSubCategoriesFragment : Fragment() {
     }
 
     private fun registerObservers() {
-        viewModel.jobRoles.observe(viewLifecycleOwner) {
+        viewModel.jobRoles.observe(viewLifecycleOwner) { jobRoles ->
             showProgress(false)
-            it?.let {
-                binding.rvSubCategories.adapter =
-                    WorkSubCategoryAdapter(it, isSubCategory = true) {
-
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO){
+                appPreferences.profile?.let {  profileData ->
+                    jobRoles.apply {
+                        for(jobRole in this){
+                            jobRole.isChecked = profileData.jobRoles.contains(jobRole)
+                        }
                     }
+                }
+                withContext(Dispatchers.Main){
+                    binding.rvSubCategories.adapter =
+                        WorkSubCategoryAdapter(jobRoles, isSubCategory = true) {
+
+                        }
+                }
             }
         }
 
