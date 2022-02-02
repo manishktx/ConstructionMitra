@@ -157,4 +157,10 @@
         <item name="android:dropDownHorizontalOffset" tools:targetApi="n">@dimen/_10sdp</item>
     </style>
 
+    <style name="App.Component.Tab" parent="Widget.MaterialComponents.TabLayout.Colored">
+        <item name="tabBackground">@color/tab_color_selector</item>
+        <item name="tabIndicatorColor">@color/blue_300</item>
+        <item name="tabRippleColor">@color/mtrl_tabs_colored_ripple_color</item>
+    </style>
+
 </resources>

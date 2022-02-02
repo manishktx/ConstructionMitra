@@ -1,11 +1,12 @@
 package com.constructionmitra.user.data
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
+import com.constructionmitra.user.utilities.constants.UserType
 import com.google.gson.Gson
 import javax.inject.Inject
 import javax.inject.Singleton
 
-// todo: make it abstracted
 @Singleton
 class AppPreferences @Inject constructor(
     private val sharedPreferences: SharedPreferences
@@ -108,6 +109,22 @@ class AppPreferences @Inject constructor(
         }
     }
 
+    fun saveUserType(category: String, id: Int){
+        sharedPreferences.edit {
+            putString(USER_CATEGORY_NAME, category)
+            putInt(USER_CATEGORY_ID, id)
+        }
+    }
+
+    private fun getUserTypeId() = sharedPreferences.getInt(USER_CATEGORY_ID, 0)
+
+    fun userType(): UserType = when (getUserTypeId()) {
+        UserType.ENGINEER_SUPERVISOR.id -> UserType.ENGINEER_SUPERVISOR
+        UserType.PETTY_CONTRACTOR.id -> UserType.PETTY_CONTRACTOR
+        UserType.WORKER.id -> UserType.WORKER
+        else  -> UserType.SPECIALISED_AGENCY
+    }
+
     companion object{
         const val USER_ID = "user_id"
         const val USER_ROLE = "user_role"
@@ -118,6 +135,8 @@ class AppPreferences @Inject constructor(
         const val DESIGNATION = "designation"
         const val COMPANY_NAME = "company_name"
         const val EMAIL_ID = "email_id"
+        const val USER_CATEGORY_NAME = "user_category_name"
+        const val USER_CATEGORY_ID = "user_category_id"
         private const val PROFILE = "profile"
         const val IS_NEW_CONTRACTOR = "new_contractor"
     }

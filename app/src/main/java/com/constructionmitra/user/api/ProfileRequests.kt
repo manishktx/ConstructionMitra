@@ -1,6 +1,5 @@
 package com.constructionmitra.user.api
 
-import android.content.Context
 import com.constructionmitra.user.data.AboutData
 import com.constructionmitra.user.data.ContractorAboutData
 import com.constructionmitra.user.data.WorkExperience

@@ -1,5 +1,7 @@
 package com.constructionmitra.user.utilities.constants
 
+import com.constructionmitra.user.R
+import com.constructionmitra.user.adapters.Profile
 import com.constructionmitra.user.data.*
 
 object AppConstants {
@@ -92,6 +94,23 @@ object AppConstants {
                 projectTypeId = "7",
                 projectTypeName = "Others",
             )
+        ),
+        workPreferences = listOf(
+            WorkPreference(
+                workPreferenceId = "1",
+                workPreference = "construction site",
+                workPreferenceHn = "निर्माण स्थल",
+            ),
+            WorkPreference(
+                workPreferenceId = "2",
+                workPreference = "private builder",
+                workPreferenceHn = "निजी बिल्डर/ बिल्डर",
+            ),
+            WorkPreference(
+                workPreferenceId = "3",
+                workPreference = "wherever you work",
+                workPreferenceHn = "जहाँ  भी काम हो",
+            )
         )
     )
 
@@ -108,3 +127,43 @@ object AppConstants {
 enum class Role(val role: String){
     ENGINEER_SUPERVISOR("engineer"), PETTY_CONTRACTOR("petty"), SPECIALISED_AGENCY("specialized")
 }
+
+enum class UserType(val category: String, val id: Int){
+    WORKER("Construction worker", 1),
+    PETTY_CONTRACTOR("Petty Contractors", 2),
+    SPECIALISED_AGENCY("Specialized agency", 3),
+    ENGINEER_SUPERVISOR("Engineer", 4),
+}
+
+val  PROFILE_CARDS_WORKER = listOf(
+    ProfileItem(R.drawable.ic_person,
+        "अपने बारें में बताएं",
+        "जानकारी जोड़े",
+        Profile.ABOUT),
+    ProfileItem(
+        R.drawable.ic_bag,
+        "अपना अनुभव साझा करें",
+        "जानकारी जोड़े" ,
+        Profile.EXPERIENCE,
+    ),
+
+    ProfileItem(
+        R.drawable.ic_location,
+        "अपने काम करने की जगह",
+        "जानकारी जोड़े",
+        Profile.WORK_LOCATION,
+    ),
+
+    ProfileItem(
+        R.drawable.ic_location_city,
+        "अपने कार्य की प्रार्थमिकता",
+        "जानकारी जोड़े +",
+        Profile.WORK_PREFERENCE,
+    ),
+
+    ProfileItem(R.drawable.ic_camera_alt,
+        "फोटो और आईडी",
+        "जानकारी जोड़े",
+        Profile.PHOTO_AND_ID_BOTH
+    ),
+)

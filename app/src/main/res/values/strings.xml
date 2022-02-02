@@ -110,7 +110,7 @@
     <string name="num_verified">Congratulations! Your mobile is verified</string>
 
     <!-- Profile -->
-    <string name="about_yourself">अपने बारे में बताओ</string>
+    <string name="about_yourself">अपने बारें में बताएं</string>
     <string name="change_about_details">व्यक्तिगत जानकारी बदले</string>
     <string name="profile">प्रोफ़ाइल</string>
     <string name="catalog_heading">किए हुए कामों की तस्वीरें डालें </string>
@@ -122,6 +122,8 @@
     <string name="other_mobile_num">आपका अन्य मोबाइल नंबर</string>
     <string name="work">काम</string>
     <string name="team_count_title">टीम की संख्या</string>
+    <string name="you_can_more_than_once_city_hn">आप एक से ज्यादा जगह का चुनाव कर सकते है</string>
+    <string name="save_your_information_hn">जानकारी सेव करें</string>
     <string name="change_your_work">अपना चयनित कार्य बदलें</string>
     <string name="gender">लिंग</string>
     <string name="male">पुरुष</string>
@@ -131,6 +133,11 @@
     <string name="where_is_your_home">आपका घर कहां है</string>
     <string name="help_us_to_find_work_for_you">ये जानकारी हमें मदद करती है आपको आपके घर के पास काम दिलवाने में</string>
     <string name="upload_your_pic">Please upload your photo</string>
+    <string name="upload_your_one_photo_hn">अपनी एक फोटो अपलोड करे</string>
+    <string name="upload_your_id_hn">अपनी एक आई.डी अपलोड करें</string>
+    <string name="by_uploading_your_id_hn">आई.डी से आपकी प्रोफाइल की विश्वसनीयता की पहचान होती है</string>
+    <string name="work_preference_heading">अपने काम की प्रार्थमिकता बतायें</string>
+    <string name="please_select_work_preference">आप कहाँ काम करना चाहते है, ऊपर से एक विकल्प चुने</string>
     <string name="preferred_location">शहर की प्रार्थमिकता</string>
     <string name="preferred_location_for_work">आप किस शहर में काम करना चाहते हो</string>
     <string name="update_exp">जानकारी जोड़े</string>
@@ -166,7 +173,13 @@
     <string name="go_back_to_home">होम पेज पर जाएँ</string>
     <string name="no_work_available">No work available!</string>
     <string name="with_in_days">Within %s Days</string>
+    <string name="with_in_days_hn">%s दीनो में</string>
     <string name="when_u_needed_team">टीम कब चाहिए</string>
+    <string name="project_text_hn">प्रोजैक्ट</string>
+    <string name="job_desc_hn">कार्य विवरण</string>
+    <string name="company_name_hn">कंपनी का नाम</string>
+    <string name="project_location_hn">प्रोजेक्ट की जगह</string>
+    <string name="contact_details_hn">संपर्क करने वाले का नाम और पद</string>
     <string name="phone_number">फ़ोन नंबर</string>
     <string name="do_contact">संपर्क करे</string>
     <string name="call_kare">कॉल करे</string>

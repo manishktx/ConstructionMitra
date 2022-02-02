@@ -15,6 +15,8 @@ data class Job(
     val dateTime: String?,
     @SerializedName("designation")
     val designation: String,
+    @SerializedName("no_of_workers")
+    val noOfWorkers: String = "",
     @SerializedName("email_id")
     val emailId: String,
     @SerializedName("is_published")

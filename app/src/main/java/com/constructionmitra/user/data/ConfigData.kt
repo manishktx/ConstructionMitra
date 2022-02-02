@@ -11,7 +11,9 @@ data class ConfigData(
     @SerializedName("project_type")
     val projectType: List<ProjectType>,
     @SerializedName("qualifications")
-    val qualifications: List<Qualification>
+    val qualifications: List<Qualification>,
+    @SerializedName("work_preference")
+    val workPreferences: List<WorkPreference>
 ){
     fun getProjectAt(position: Int) = projectType[position]
     fun getExperienceAt(position: Int) = experiences[position]

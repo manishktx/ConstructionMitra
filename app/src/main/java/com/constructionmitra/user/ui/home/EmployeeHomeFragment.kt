@@ -19,7 +19,10 @@ import com.constructionmitra.user.databinding.ItemProfileCardBinding
 import com.constructionmitra.user.ui.login.WorkSubCategoriesFragment
 import com.constructionmitra.user.ui.profile.*
 import com.constructionmitra.user.utilities.BindingAdapters
+import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.constants.IntentConstants
+import com.constructionmitra.user.utilities.constants.PROFILE_CARDS_WORKER
+import com.constructionmitra.user.utilities.constants.UserType
 import com.constructionmitra.user.utilities.showSnackBarShort
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -73,8 +76,11 @@ class EmployeeHomeFragment : Fragment() {
         }
 
         // setUp profile banner
+        val profileCards = if (appPreferences.userType() == UserType.PETTY_CONTRACTOR) PROFILE_CARDS
+            else PROFILE_CARDS_WORKER
+
         binding.vpProfile.adapter = ProfilePagerAdapter(
-            PROFILE_CARDS,
+            profileCards,
         ){
             // onItemClickListener
             when(it.profile){
@@ -86,8 +92,12 @@ class EmployeeHomeFragment : Fragment() {
                     navigateTo(WorkPriorityFragment::class.java.name)
                 Profile.WORK_LOCATION ->
                     navigateTo(WorkLocationFragment::class.java.name)
-                Profile.PHOTO_AND_ID_CARD ->
+                Profile.WORK_PREFERENCE ->
+                    navigateTo(WorkPreferenceFragment::class.java.name)
+                Profile.LETTER_HEAD ->
                     navigateTo(CompanyLetterHeadFragment::class.java.name)
+                Profile.PHOTO_AND_ID_BOTH ->
+                    navigateTo(UploadPhotoAndIdFragment::class.java.name)
             }
         }
         binding.dotsIndicator.setViewPager(binding.vpProfile)

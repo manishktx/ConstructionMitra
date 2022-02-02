@@ -21,6 +21,7 @@ import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
 import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
 import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.constants.IntentConstants
+import com.constructionmitra.user.utilities.constants.UserType
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -126,8 +127,15 @@ class WorkSubCategoriesFragment : Fragment() {
                 requireActivity().setResult(AppCompatActivity.RESULT_OK)
                 requireActivity().finish()
             }
-            else
-                showGetFirmDetailsDialog()
+            else {
+                when(appPreferences.userType()){
+                    UserType.PETTY_CONTRACTOR -> showGetFirmDetailsDialog()
+                    UserType.WORKER -> {
+                        navigateToHome()
+                    }
+                }
+
+            }
         }
 
         viewModel.updateFirmDetails.observe(viewLifecycleOwner){

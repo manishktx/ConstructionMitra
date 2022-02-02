@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/_20sdp"
         android:paddingBottom="@dimen/_12sdp"
-        android:text="@string/choose_your_work_location"
+        android:text="@string/work_preference_heading"
         android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvWorkLocations"
+        android:id="@+id/rvWorkPreferences"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -35,16 +35,15 @@
         tools:listitem="@layout/item_work_location" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvSubHeading"
-        style="@style/App.Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_12sdp"
-        app:layout_constraintTop_toBottomOf="@+id/rvWorkLocations"
-        android:text="@string/you_can_more_than_once_city_hn"
+        android:text="@string/please_select_work_preference"
         android:textSize="@dimen/_10ssp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/greyed_text"
+        android:layout_marginTop="@dimen/_8sdp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvWorkPreferences"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -59,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:visibility="visible"/>
 
     <include layout="@layout/progress_bar" />
