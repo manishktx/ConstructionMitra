@@ -109,6 +109,23 @@ class AppPreferences @Inject constructor(
         }
     }
 
+    fun updateWorkPreference(workPreference: WorkPreference){
+        val workPreferenceString: String = Gson().toJson(workPreference)
+        sharedPreferences.edit{
+            putString(WORK_PREFERENCE, workPreferenceString)
+        }
+    }
+
+    fun workPreference(): WorkPreference? {
+        val workPreference = sharedPreferences.getString(WORK_PREFERENCE, "")
+        return if(workPreference.isNullOrEmpty())
+            null
+        else {
+            Gson().fromJson(workPreference, WorkPreference::class.java)
+        }
+    }
+
+
     fun saveUserType(category: String, id: Int){
         sharedPreferences.edit {
             putString(USER_CATEGORY_NAME, category)
@@ -139,5 +156,6 @@ class AppPreferences @Inject constructor(
         const val USER_CATEGORY_ID = "user_category_id"
         private const val PROFILE = "profile"
         const val IS_NEW_CONTRACTOR = "new_contractor"
+        const val WORK_PREFERENCE = "work_preference"
     }
 }

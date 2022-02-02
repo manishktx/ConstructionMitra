@@ -43,7 +43,9 @@ data class ProfileData(
     @SerializedName("profile_pic")
     val profilePic: String,
     @SerializedName("user_doc")
-    val userDoc: String
+    val userDoc: String,
+    @SerializedName("work_preference")
+    val workPreferences: List<WorkPreference>,
 )
 
 data class AboutData(

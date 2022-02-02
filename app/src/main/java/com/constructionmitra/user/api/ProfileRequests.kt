@@ -3,6 +3,7 @@ package com.constructionmitra.user.api
 import com.constructionmitra.user.data.AboutData
 import com.constructionmitra.user.data.ContractorAboutData
 import com.constructionmitra.user.data.WorkExperience
+import com.constructionmitra.user.data.WorkPreference
 
 interface ProfileRequests {
 
@@ -23,6 +24,12 @@ interface ProfileRequests {
         token: String,
         userId: String,
         exp: WorkExperience
+    ) : HashMap<String, String>
+
+    fun updateWorkPreference(
+        token: String,
+        userId: String,
+        workPreference: WorkPreference
     ) : HashMap<String, String>
 
     fun updateAbout(
@@ -51,6 +58,7 @@ interface ProfileRequests {
         const val  TOKEN = "token"
         const val  PREFERRED_WORK_LOCATIONS = "preffered_location"
         const val  EXPERIENCE = "experience"
+        const val  WORK_PREFERENCE_ID = "work_preference_id"
         const val  PARAM_IMAGE = "image"
         const val  PROFILE_PIC = "profile_pic"
         const val  LETTER_HEAD = "user_doc"

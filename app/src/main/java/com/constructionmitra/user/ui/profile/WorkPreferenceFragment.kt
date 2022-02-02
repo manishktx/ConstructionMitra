@@ -9,6 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.constructionmitra.user.R
 import com.constructionmitra.user.adapters.LocationAdapter
 import com.constructionmitra.user.api.ProfileRequests
 import com.constructionmitra.user.data.AppPreferences
@@ -19,6 +20,7 @@ import com.constructionmitra.user.utilities.StringUtils
 import com.constructionmitra.user.utilities.ext.app
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -61,8 +63,13 @@ class WorkPreferenceFragment : Fragment() {
             progressBarBinding = ProgressBarBinding.bind(root)
             tvSave.setOnClickListener {
                 with(rvWorkPreferences.adapter as WorkPreferenceAdapter){
-                    if(currentSelection != -1){
-
+                    selectedWork()?.let { workPreference ->
+                        showProgress(true)
+                        viewModel.updateProfileData(profileRequests.updateWorkPreference(
+                            userId =  appPreferences.getUserId(),
+                            token = appPreferences.getToken() ?: "",
+                            workPreference = workPreference
+                        ))
                     }
                 }
             }
@@ -76,17 +83,22 @@ class WorkPreferenceFragment : Fragment() {
         appDataConfig?.let {
             binding.rvWorkPreferences.adapter = WorkPreferenceAdapter(it.workPreferences){ workPreference ->
 
+            }.apply {
+                appPreferences.workPreference()?.let { workPreference ->
+                    setSelection(workPreference)
+                }
             }
         }
         registerObserver()
     }
 
     private fun registerObserver(){
-        viewModel.profileUpdated.observe(viewLifecycleOwner){
+        viewModel.profileDataUpdated.observe(viewLifecycleOwner) {
             showProgress(false)
-            if(it){
-                isUpdated = true
-                binding.root.showToast("Your work preferences updated!")
+            binding.root.showToast(getString(R.string.profile_updated_hn))
+            it.takeIf { it.workPreferences.isNotEmpty() }?.let {  profileData ->
+                log("Work Preference updated: ${profileData.workPreferences[0]}")
+                appPreferences.updateWorkPreference(profileData.workPreferences[0])
             }
         }
     }
@@ -104,6 +116,10 @@ class WorkPreferenceFragment : Fragment() {
 
                 }
             }
+
+        fun log(msg: String){
+            Timber.d("cmitra: WorkPreferenceFragment: $msg")
+        }
     }
 }
 
@@ -112,7 +128,7 @@ class WorkPreferenceAdapter(
     private val onItemClick: (workPreference: WorkPreference) -> Unit
 ): RecyclerView.Adapter<WorkPreferenceAdapter.WorkPreferenceViewHolder>() {
     private var _currentSelection = -1
-    val currentSelection
+    private val currentSelection
         get() = _currentSelection
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkPreferenceViewHolder {
@@ -122,6 +138,15 @@ class WorkPreferenceAdapter(
             false
         )
         return WorkPreferenceViewHolder(binding)
+    }
+
+    fun selectedWork(): WorkPreference? = if(currentSelection == -1 ) null else list[currentSelection]
+
+    fun setSelection(workPreference: WorkPreference){
+        for (i in list.indices){
+            if(list[i].workPreferenceId == workPreference.workPreferenceId)
+                _currentSelection = i
+        }
     }
 
     override fun getItemCount() = list.size

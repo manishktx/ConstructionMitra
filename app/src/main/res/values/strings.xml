@@ -157,6 +157,7 @@
     <string name="upload_work_history">अपने पुराने कामों की फोटो सेव कर सकते है , इससे काम जल्दी मिलने के संभावनाएं बढ़ती है</string>
     <string name="upload_your_letter_head">वेरिफिकेशन के लिए अपना लेटर हेड \nअपलोड करें</string>
     <string name="letter_head_instruction">आई.डी से आपकी प्रोफाइल की विश्वसनीयता की पहचान होती हैं</string>
+    <string name="profile_updated_hn">प्रोफ़ाइल अपडेट हो गई है</string>
 
     <string name="quality">कौशल: %s</string>
     <string-array name="work_exp_options">
