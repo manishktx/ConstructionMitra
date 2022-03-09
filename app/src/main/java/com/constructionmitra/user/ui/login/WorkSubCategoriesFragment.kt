@@ -14,9 +14,9 @@ import com.constructionmitra.user.FragmentContainerActivity
 import com.constructionmitra.user.MainActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
-import com.constructionmitra.user.data.JobRole
 import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategoriesBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.ui.dialogs.GetAgencyDetailsDialog
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
 import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
 import com.constructionmitra.user.utilities.constants.AppConstants
@@ -29,7 +29,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
-import kotlin.math.log
 
 @AndroidEntryPoint
 class WorkSubCategoriesFragment : Fragment() {
@@ -129,10 +128,9 @@ class WorkSubCategoriesFragment : Fragment() {
             }
             else {
                 when(appPreferences.userType()){
+                    UserType.SPECIALISED_AGENCY -> showAgencyDetailsDialog()
                     UserType.PETTY_CONTRACTOR -> showGetFirmDetailsDialog()
-                    UserType.WORKER -> {
-                        navigateToHome()
-                    }
+                    UserType.WORKER -> navigateToHome()
                 }
 
             }
@@ -167,6 +165,18 @@ class WorkSubCategoriesFragment : Fragment() {
             showProgress(true)
             viewModel.updateFirmDetails(
                 appPreferences.getUserId()!!, firmName, numOfWorkers, "TnNEOEQ1OXFvYXJRdkZyUWx6SWVlZz09"
+            )
+//                            navigateToHome()
+        }.show(childFragmentManager, "alert_dialog")
+    }
+
+    private fun showAgencyDetailsDialog(){
+        GetAgencyDetailsDialog.newInstance {
+                firmName, desc ->
+            // Update firm details
+            showProgress(true)
+            viewModel.updateFirmDetails(
+                appPreferences.getUserId(), firmName, desc, "TnNEOEQ1OXFvYXJRdkZyUWx6SWVlZz09"
             )
 //                            navigateToHome()
         }.show(childFragmentManager, "alert_dialog")

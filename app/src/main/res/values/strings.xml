@@ -102,12 +102,14 @@
     <string name="yes">हाँ</string>
     <string name="no">ना</string>
     <string name="hint_firm_name">अपनी फर्म का नाम बतायें</string>
+    <string name="agency_or_firm_name">Agency/Firm Name</string>
     <string name="people_in_your_team">अपनी फर्म का नाम बतायें आप किस नाम से काम करते हैं</string>
     <string name="team_count">कितने लोग</string>
     <string name="submit">Submit</string>
     <string name="registration_cta_hint">हमारी &lt;font color="#FF1D2A">गोपनीयता निति&lt;font/> एवं &lt;font color="#4883C1">नियम और शातों&lt;font/> को सहमत करते हुए आगे बड़े</string>
     <string name="resend_otp">ओ.टी.पी दोबारा भेजें/ Resend OTP</string>
     <string name="num_verified">Congratulations! Your mobile is verified</string>
+    <string name="agency_detail_heading">Please mention your Agency/Firm Name</string>
 
     <!-- Profile -->
     <string name="about_yourself">अपने बारें में बताएं</string>

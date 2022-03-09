@@ -8,7 +8,7 @@ data class WorkPreference(
     val workPreference: String,
     @SerializedName("work_preference_hn")
     val workPreferenceHn: String,
-    @SerializedName("work_preference_id")
+    @SerializedName("work_preference_id", alternate = ["id"])
     val workPreferenceId: String
 ) {
     override fun toString(): String {
