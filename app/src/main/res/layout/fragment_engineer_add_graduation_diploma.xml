@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.employer.engineer_supervisor.EngineerExperienceDetailFragment"
+    android:background="@color/white_smoke">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_5sdp"
+        android:clipToPadding="false"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="@dimen/_3sdp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="@dimen/_5sdp"
+        tools:cardBackgroundColor="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeading"
+                style="@style/App.Text.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Graduation/Diploma detail"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.02" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layEducation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf ="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvHeading"
+                android:layout_margin="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/txtEducation"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:text="Education"
+                    app:layout_constraintBottom_toTopOf="@id/spnEducation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/spnEducation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf ="@id/txtEducation"
+                    android:paddingRight="@dimen/_5sdp">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:textColor="@color/greyed_text"
+                        android:text="Select qualification"
+                        android:padding="@dimen/_5sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layBranch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf ="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layEducation"
+                app:layout_constraintBottom_toTopOf="@id/layFullPart"
+                android:layout_margin="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/txtBranch"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:text="Branch Name"
+                    app:layout_constraintBottom_toTopOf="@id/spnBranch"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/spnBranch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf ="@id/txtBranch"
+                    android:paddingRight="@dimen/_5sdp">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:textColor="@color/greyed_text"
+                        android:text="Select branch name"
+                        android:padding="@dimen/_5sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layFullPart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf ="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layBranch"
+                android:layout_margin="@dimen/_10sdp">
+
+                <RadioGroup
+                    android:id="@+id/rdGrpFullPart"
+                    android:checkedButton="@+id/radio_button_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <RadioButton
+                        android:id="@+id/radio_button_1"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Full time" />
+                    <RadioButton
+                        android:id="@+id/radio_button_2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Part time"/>
+                </RadioGroup>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layInstitute"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf ="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rdGrpFullPart"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/txtInstitute"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:text="Unversity/Institute"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter University/Institute name"
+                        android:textSize="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtInstitute"
+                        style="@style/App.Editable.Blue"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layPassYr"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf ="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layInstitute"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/txtPassYr"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:text="Passing Year"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Passing Year"
+                        android:textSize="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtPassYr"
+                        style="@style/App.Editable.Blue"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layPassPerc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf ="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layPassYr"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/txtPassPerc"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="@dimen/_20sdp"
+                        android:text="Passing Percentage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Passing Percentage"
+                        android:textSize="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtPassPerc"
+                        style="@style/App.Editable.Blue"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layFooter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf ="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layPassPerc"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCancel"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#1E90FF"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:text="Cancel"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSave"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#1E90FF"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:text="Save"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

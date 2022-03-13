@@ -277,4 +277,11 @@
     <string name="select_work">Select Work</string>
     <string name="type_of_work_done_earlier">Type of work done earlier</string>
 
+    <!-- Engineer/ Supervisor -->
+    <string name="app_title_english_engineer">&lt;font color="#4883C1"> Construction &lt;font/> &lt;font color="#00B867">Mitra Network&lt;font/></string>
+    <string name="create_profile">Create a Profile</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="upload_profile_description">Resume is very important document which helps recruiters/companies in identifying suitable candidate</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
 </resources>
