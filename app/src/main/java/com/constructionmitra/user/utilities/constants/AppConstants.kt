@@ -14,6 +14,7 @@ object AppConstants {
 
     const val  USER_TYPE_CONTRACTOR = "user_type_contractor"
     const val  USER_TYPE_PETTY_CONTRACTOR = "user_type_petty_contractor"
+    const val  USER_TYPE_ENGINEER = "user_type_engineer"
 
     val defaultAppConfig = ConfigData(
         activeLocations =  listOf(

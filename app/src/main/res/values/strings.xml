@@ -333,5 +333,14 @@
     <string name="gender_formatter">Gender: %s</string>
     <string name="no_of_openings_formatter">%s Nos</string>
     <string name="not_published">Not published</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="nav_header_desc">Nav Header</string>
+    <string name="nav_header_title">nav_header_title</string>
+    <string name="nav_header_subtitle">nav_header_subtitle</string>
+    <string name="jobs">Jobs</string>
+    <string name="upload_resume">Upload Resume</string>
+    <string name="add_experience_details">Add Experience Details</string>
+    <string name="add_education_details">Add Education Details</string>
+    <string name="add_personal_details">Add Personal Details</string>
 
 </resources>
