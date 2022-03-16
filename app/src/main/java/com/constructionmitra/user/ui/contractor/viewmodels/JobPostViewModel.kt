@@ -12,6 +12,7 @@ import com.constructionmitra.user.ui.base.BaseViewModel
 import com.constructionmitra.user.utilities.ServerConstants
 import com.constructionmitra.user.utilities.SingleLiveEvent
 import com.constructionmitra.user.utilities.constants.AppConstants
+import com.constructionmitra.user.utilities.constants.Role
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -29,8 +30,11 @@ class JobPostViewModel @Inject constructor(
     private var _navigateToAddEmployeeDetails = SingleLiveEvent<Boolean>()
     val navigateToAddEmployeeDetails = _navigateToAddEmployeeDetails
 
-    private var _navigateToEngineetJobroleDetail = SingleLiveEvent<Boolean>()
-    val navigateToEngineetJobroleDetail = _navigateToEngineetJobroleDetail
+    private var _newUser = SingleLiveEvent<Boolean>()
+    val newUser = _newUser
+
+    private var _profileDataWithPostedJob  = MutableLiveData<ProfileDataContractor>()
+    val profileDataWithPostedJob = _profileDataWithPostedJob
 
     private var _tabSelected = SingleLiveEvent<Int>()
     val tabSelected = _tabSelected
@@ -57,6 +61,9 @@ class JobPostViewModel @Inject constructor(
     val selectedJobCategory
         get() = _selectedJobCategory
 
+    private var _role: Role? = null
+    val role
+        get() = _role
 
     private var _selectedWorkList: MutableList<SelectWorkData>? = null
     val selectWorkDataList
@@ -81,9 +88,6 @@ class JobPostViewModel @Inject constructor(
     fun navigateToAddEmployeeDetails() {
         _navigateToAddEmployeeDetails.value = true
     }
-    fun navigateToEngineetJobroleDetail() {
-        _navigateToEngineetJobroleDetail.value = true
-    }
 
     fun navigateToReviewYourJob() {
         _navigateToReviewJob.value = true
@@ -92,6 +96,10 @@ class JobPostViewModel @Inject constructor(
     fun updateSelectedWorkList(list: MutableList<SelectWorkData>) {
         _selectedWorkList = list
         jobPostRequest.selectedWorkList = list
+    }
+
+    fun setJobRole(role: Role){
+        _role = role
     }
 
     fun saveSelectedJob(jobCategory: JobCategory) {
@@ -115,6 +123,28 @@ class JobPostViewModel @Inject constructor(
 
     fun onTabSelected(position: Int) {
         _tabSelected.value = position
+    }
+
+    fun getJobRole(jobRoleId: String): String{
+            return _jobRoles.value?.find { it.roleId == jobRoleId }?.jobRole ?: ""
+    }
+
+    fun getProfileWithPostedJobs(userId: String){
+        viewModelScope.launch {
+            when(val result = repository.fetchProfileContractor(userId)){
+                is Success -> {
+                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
+                        _profileDataWithPostedJob.postValue(result.data.data!!)
+                    }
+                    else{
+                        _newUser.postValue(true)
+                    }
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
     }
 
     fun requestJobRoles(jobCategory: String) {
@@ -143,11 +173,12 @@ class JobPostViewModel @Inject constructor(
         }
     }
 
-    fun postJob(userId: String) {
-        jobPostRequest ?: throw  NullPointerException("JobPostRequest can not be null")
+    fun postJob(userId: String, role: Role, isPublished: Boolean) {
         viewModelScope.launch {
+            _jobPostRequest.isPublished = if(isPublished) 1 else 0
             val reqMap = jobPostRequestMapper.toJostPostRequest(userId, jobPostRequest = jobPostRequest)
-            when (val result: Result<BaseResponse<Any>> = repository.postAJob(reqMap)) {
+            Timber.d("jobPostRequest -> $reqMap")
+            when (val result: Result<BaseResponse<Any>> = repository.postAJob(reqMap, role)) {
                 is Success -> {
                     _jobPosted.postValue(result.data.status == ServerConstants.STATUS_SUCCESS)
                 }

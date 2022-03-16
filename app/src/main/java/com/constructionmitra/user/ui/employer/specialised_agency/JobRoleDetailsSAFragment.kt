@@ -93,13 +93,13 @@ class JobRoleDetailsSAFragment : Fragment() {
 
     private fun bindDataWithUi() {
         app().appConfigData?.let { configData ->
-            val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, configData.experiences)
+            val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, configData.experiences)
             (binding.inputMinExp.editText as? AutoCompleteTextView)?.apply {
                 onItemClickListener = this@JobRoleDetailsSAFragment.onExpItemSelectedListener
                 setAdapter(adapter)
             }
 
-            val projectTypesAdapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, configData.projectType)
+            val projectTypesAdapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, configData.projectType)
             (binding.projectTypesInput.editText as? AutoCompleteTextView)?.apply {
                 onItemClickListener = this@JobRoleDetailsSAFragment.onProjectTypeItemSelectedListener
                 setAdapter(projectTypesAdapter)
@@ -111,7 +111,7 @@ class JobRoleDetailsSAFragment : Fragment() {
         viewModel.jobRoles.observe(viewLifecycleOwner) {
             showProgress(false)
             it?.takeIf { it.isNotEmpty() }?.let { items ->
-                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, items)
+                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, items)
                 (binding.jobRoleInput.editText as? AutoCompleteTextView)?.apply {
                     onItemClickListener = this@JobRoleDetailsSAFragment.onWorkTypeItemSelectedListener
                     setAdapter(adapter)
@@ -127,9 +127,13 @@ class JobRoleDetailsSAFragment : Fragment() {
                 // save job details to view model
                 viewModel.saveJobRoleDetails(
                     JobRoleDetails(
-                        workersRequiredInDays!!,
-                        appDataConfig?.getProjectAt(selectedProjectItem!!)?.projectTypeId!!,
-                        binding.etWorkDesc.text.toString()
+                        _noOfRequiredDays = workersRequiredInDays!!,
+                        jobWorkId = viewModel.jobRoles.value?.get(selectedWorkItem!!)?.roleId,
+                        projectId = appDataConfig?.getProjectAt(selectedProjectItem!!)?.projectTypeId!!,
+                        workDesc = binding.etWorkDesc.text.toString(),
+                        _minExpId = appDataConfig?.getExperienceAt(selectedExpItem!!)?.experienceId!!,
+                        _workDoneEarlier = binding.etTypeOfWork.text.toString(),
+                        _criteria = binding.etMinValue.text.toString(),
                     )
                 )
                 JobRoleDetailsPCFragmentDirections.toAddEmployeeDetails().apply {
@@ -137,7 +141,7 @@ class JobRoleDetailsSAFragment : Fragment() {
                 }
             }
             else {
-                _binding?.root?.showToast("Please enter required details.")
+                _binding?.root?.showToast(getString(R.string.all_fields_are_mandatory))
             }
         }
     }
@@ -154,7 +158,11 @@ class JobRoleDetailsSAFragment : Fragment() {
 
     private fun isValidToProceed()  = selectedWorkItem != null
             && selectedProjectItem != null
+            && selectedExpItem != null
             && workersRequiredInDays != null
+            && binding.etMinValue.text.toString().trim().isNotBlank()
+            && binding.etWorkDesc.text.toString().trim().isNotBlank()
+            && binding.etTypeOfWork.text.toString().trim().isNotBlank()
 
     private fun showProgress(show: Boolean) {
         progressBarBinding.progressBar.visibility = if (show) View.VISIBLE else View.GONE

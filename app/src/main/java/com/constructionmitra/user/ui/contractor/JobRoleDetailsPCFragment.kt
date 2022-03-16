@@ -89,9 +89,9 @@ class JobRoleDetailsPCFragment : Fragment() {
             if(areDetailsValid() && selectedItem != null){
                 viewModel.saveJobRoleDetails(
                     JobRoleDetails(
-                        workersRequiredInDays!!,
-                        viewModel.projectTypes.value?.get(selectedItem!!)?.projectTypeId!!,
-                        binding.etWorkDesc.text.toString()
+                        requiredDays = workersRequiredInDays!!,
+                        projectId = viewModel.projectTypes.value?.get(selectedItem!!)?.projectTypeId!!,
+                        workDesc = binding.etWorkDesc.text.toString()
                     )
                 )
                 JobRoleDetailsPCFragmentDirections.toAddEmployeeDetails().apply {
@@ -107,7 +107,7 @@ class JobRoleDetailsPCFragment : Fragment() {
             showProgress(false)
             it?.takeIf { it.isNotEmpty() }?.let {
                     items ->
-                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, items)
+                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, items)
                 (binding.textInput.editText as? AutoCompleteTextView)?.apply {
                     onItemClickListener = this@JobRoleDetailsPCFragment.onItemSelectedListener
                     setAdapter(adapter)

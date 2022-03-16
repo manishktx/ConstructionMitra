@@ -133,6 +133,7 @@ class PreviewImageFragment : Fragment() {
         private const val  FILE_PATH = "file_path"
         const val  SAVE_WHERE = "save_where"
         const val  PROFILE_IMAGE = "profile_image"
+        const val  USER_ID = "user_id"
         const val  IN_WORK_CATALOGUE = "work_category"
         const val  IN_COMPANY_DOCUMENTS = "company_docs"
 

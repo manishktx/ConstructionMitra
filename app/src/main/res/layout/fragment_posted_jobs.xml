@@ -25,6 +25,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:itemCount="2"
         tools:layout_editor_absoluteX="0dp"
+        android:visibility="visible"
         tools:listitem="@layout/item_work" />
 
     <androidx.appcompat.widget.AppCompatTextView

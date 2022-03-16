@@ -8,20 +8,24 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.constructionmitra.user.FragmentContainerActivity
-import com.constructionmitra.user.MainActivity
-import com.constructionmitra.user.R
+import com.constructionmitra.user.*
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategoriesBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
+import com.constructionmitra.user.ui.dialogs.GetAgencyDetailsDialog
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
 import com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerMainActivity
 import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
 import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.constants.IntentConstants
+import com.constructionmitra.user.utilities.constants.UserType
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -60,7 +64,6 @@ class WorkSubCategoriesFragment : Fragment() {
         showProgress(true)
         // Check if navigation come from [@HomeFragment] if yes then update UI
         checkIfCameFromHome()
-
         viewModel.requestJobRoles(args.jobCategory)
 
         // set listener on next button/ Save button
@@ -97,13 +100,22 @@ class WorkSubCategoriesFragment : Fragment() {
     }
 
     private fun registerObservers() {
-        viewModel.jobRoles.observe(viewLifecycleOwner) {
+        viewModel.jobRoles.observe(viewLifecycleOwner) { jobRoles ->
             showProgress(false)
-            it?.let {
-                binding.rvSubCategories.adapter =
-                    WorkSubCategoryAdapter(it, isSubCategory = true) {
-
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO){
+                appPreferences.profile?.let {  profileData ->
+                    jobRoles.apply {
+                        for(jobRole in this){
+                            jobRole.isChecked = profileData.jobRoles.contains(jobRole)
+                        }
                     }
+                }
+                withContext(Dispatchers.Main){
+                    binding.rvSubCategories.adapter =
+                        WorkSubCategoryAdapter(jobRoles, isSubCategory = true) {
+
+                        }
+                }
             }
         }
 
@@ -113,8 +125,15 @@ class WorkSubCategoriesFragment : Fragment() {
                 requireActivity().setResult(AppCompatActivity.RESULT_OK)
                 requireActivity().finish()
             }
-            else
-                showGetFirmDetailsDialog()
+            else {
+                when(appPreferences.userType()){
+                    UserType.SPECIALISED_AGENCY -> showAgencyDetailsDialog()
+                    UserType.PETTY_CONTRACTOR -> showGetFirmDetailsDialog()
+                    UserType.WORKER -> navigateToHome()
+                    UserType.ENGINEER_SUPERVISOR -> navigateToEngineer()
+                }
+
+            }
         }
 
         viewModel.updateFirmDetails.observe(viewLifecycleOwner){
@@ -130,6 +149,14 @@ class WorkSubCategoriesFragment : Fragment() {
         }
     }
 
+    private fun navigateToEngineer(){
+        appPreferences.saveUserType(AppConstants.USER_TYPE_ENGINEER)
+        Intent(context, EngineerEmpActivity::class.java).apply {
+            requireContext().startActivity(this)
+        }
+        requireActivity().finish()
+        requireActivity().overridePendingTransition(R.anim.enter_anim_activity, R.anim.exit_anim_activity)
+    }
     private fun navigateToHome(){
         appPreferences.saveUserType(AppConstants.USER_TYPE_PETTY_CONTRACTOR)
 
@@ -152,6 +179,18 @@ class WorkSubCategoriesFragment : Fragment() {
             showProgress(true)
             viewModel.updateFirmDetails(
                 appPreferences.getUserId()!!, firmName, numOfWorkers, "TnNEOEQ1OXFvYXJRdkZyUWx6SWVlZz09"
+            )
+//                            navigateToHome()
+        }.show(childFragmentManager, "alert_dialog")
+    }
+
+    private fun showAgencyDetailsDialog(){
+        GetAgencyDetailsDialog.newInstance {
+                firmName, desc ->
+            // Update firm details
+            showProgress(true)
+            viewModel.updateFirmDetails(
+                appPreferences.getUserId(), firmName, desc, "TnNEOEQ1OXFvYXJRdkZyUWx6SWVlZz09"
             )
 //                            navigateToHome()
         }.show(childFragmentManager, "alert_dialog")

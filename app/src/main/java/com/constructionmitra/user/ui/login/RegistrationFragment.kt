@@ -1,9 +1,11 @@
 package com.constructionmitra.user.ui.login
 
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -33,6 +35,7 @@ class RegistrationFragment : Fragment() {
     ): View? {
         _binding = FragmentRegistrationBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
+            tvCtaHint.text = HtmlCompat.fromHtml(getString(R.string.registration_cta_hint), HtmlCompat.FROM_HTML_MODE_LEGACY)
         }
         return binding.root
 
@@ -47,7 +50,6 @@ class RegistrationFragment : Fragment() {
                     when(args.profileType){
                         ProfileType.NIRMAAN_SHRAMIK -> "3"
                         ProfileType.NIRMAAN_KARTA -> "4"
-                        else -> "6"
                     },
                     binding.etName.text.toString()
                 )
@@ -71,7 +73,8 @@ class RegistrationFragment : Fragment() {
                     otp =  it.data.otp,
                     id = it.data.id,
                     mobile = etMobileNum.text.toString(),
-                    profileType = args.profileType
+                    profileType = args.profileType,
+                    name = binding.etName.text.toString()
                 ).apply {
                     findNavController().navigate(this)
                 }

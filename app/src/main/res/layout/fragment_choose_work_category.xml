@@ -23,14 +23,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/congratulations_mobile_verified"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_12ssp"
         android:gravity="center"
         android:textColor="@color/greyed_text"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivVerify"
         />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvHeadingEnglish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/num_verified"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/greyed_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        />
+
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvMobileNumb"
@@ -39,12 +56,16 @@
         android:text="+"
         android:textSize="@dimen/_14ssp"
         android:gravity="center"
-        android:textColor="@color/green_200"
+        android:textColor="@color/grey_200"
+        android:layout_marginTop="@dimen/_10sdp"
         android:textStyle="bold"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:drawableEnd="@drawable/ic_round_done"
+        android:drawableTint="@color/green_200"
+        android:drawablePadding="@dimen/_5sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeadingEnglish"
+        tools:text="9188605432"
         />
 
     <androidx.appcompat.widget.AppCompatTextView

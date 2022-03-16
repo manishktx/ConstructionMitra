@@ -10,4 +10,8 @@ data class Qualification(
     val qualificationHn: String,
     @SerializedName("qualification_id")
     val qualificationId: String
-)
+){
+    override fun toString(): String {
+        return qualification
+    }
+}
