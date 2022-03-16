@@ -24,7 +24,16 @@
         android:id="@+id/engineerEducationLanding"
         android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerEducationLandingFragment"
         android:label="fragment_engineer_education_landing"
-        tools:layout="@layout/fragment_engineer_education_landing" />
+        tools:layout="@layout/fragment_engineer_education_landing">
+        <action android:id="@+id/toEngineerAddGraduation"
+            app:destination="@id/engineerAddGraduationDiploma" />
+        <action android:id="@+id/toEngineerAddPostGraduation"
+            app:destination="@id/toEngineerAddPostGraduation" />
+        <action android:id="@+id/toEngineerAddTwelth"
+            app:destination="@id/toEngineerAddTwelth" />
+        <action android:id="@+id/toEngineerAddTenth"
+            app:destination="@id/toEngineerAddTenth" />
+    </fragment>
     <fragment
         android:id="@+id/engineerAddGraduationDiploma"
         android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddGraduationDiplomaFragment"
@@ -45,4 +54,9 @@
         android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddTenthDetailFragment"
         android:label="fragment_engineer_add_tenth_detail"
         tools:layout="@layout/fragment_engineer_add_tenth_detail" />
+    <fragment
+        android:id="@+id/engineerPersonalDetail"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerPersonalDetailFragment"
+        android:label="fragment_engineer_personal_detail"
+        tools:layout="@layout/fragment_engineer_personal_detail" />
 </navigation>

@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.constructionmitra.user.R
+import com.constructionmitra.user.databinding.FragmentEngineerAddTenthDetailBinding
+import com.constructionmitra.user.databinding.ProgressBarBinding
 import kotlinx.android.synthetic.main.fragment_engineer_home.*
 
 
 class EngineerAddTenthDetailFragment : Fragment() {
 
-
+    private var _binding : FragmentEngineerAddTenthDetailBinding?=null
+    private lateinit var progressBarBinding: ProgressBarBinding
+    private  val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +27,13 @@ class EngineerAddTenthDetailFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_engineer_home, container, false)
+        _binding  = FragmentEngineerAddTenthDetailBinding.inflate(inflater,container,false).apply {
+            progressBarBinding  = ProgressBarBinding.bind(root)
+        }
+        return binding.root
     }
-
-
 }

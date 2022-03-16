@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.constructionmitra.user.R
+import com.constructionmitra.user.databinding.FragmentEngineerAddGraduationDiplomaBinding
+import com.constructionmitra.user.databinding.ProgressBarBinding
 import kotlinx.android.synthetic.main.fragment_engineer_home.*
 
 
 class EngineerAddGraduationDiplomaFragment : Fragment() {
 
-
+    private var _binding :  FragmentEngineerAddGraduationDiplomaBinding ?=null
+    private lateinit var progressBarBinding: ProgressBarBinding
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,15 +26,16 @@ class EngineerAddGraduationDiplomaFragment : Fragment() {
         }
     }
 
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_engineer_home, container, false)
+        _binding= FragmentEngineerAddGraduationDiplomaBinding.inflate(inflater,container,false).apply {
+            progressBarBinding = ProgressBarBinding.bind(root)
+        }
+        return binding.root
     }
-
-
 }
