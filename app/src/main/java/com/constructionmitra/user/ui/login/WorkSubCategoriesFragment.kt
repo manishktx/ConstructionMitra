@@ -10,9 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.constructionmitra.user.FragmentContainerActivity
-import com.constructionmitra.user.MainActivity
-import com.constructionmitra.user.R
+import com.constructionmitra.user.*
 import com.constructionmitra.user.data.AppPreferences
 import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategoriesBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
@@ -131,6 +129,7 @@ class WorkSubCategoriesFragment : Fragment() {
                     UserType.SPECIALISED_AGENCY -> showAgencyDetailsDialog()
                     UserType.PETTY_CONTRACTOR -> showGetFirmDetailsDialog()
                     UserType.WORKER -> navigateToHome()
+                    UserType.ENGINEER_SUPERVISOR -> navigateToEngineer()
                 }
 
             }
@@ -149,6 +148,14 @@ class WorkSubCategoriesFragment : Fragment() {
         }
     }
 
+    private fun navigateToEngineer(){
+        appPreferences.saveUserType(AppConstants.USER_TYPE_ENGINEER)
+        Intent(context, EngineerEmpActivity::class.java).apply {
+            requireContext().startActivity(this)
+        }
+        requireActivity().finish()
+        requireActivity().overridePendingTransition(R.anim.enter_anim_activity, R.anim.exit_anim_activity)
+    }
     private fun navigateToHome(){
         appPreferences.saveUserType(AppConstants.USER_TYPE_PETTY_CONTRACTOR)
         Intent(context, MainActivity::class.java).apply {
