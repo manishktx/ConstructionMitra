@@ -145,7 +145,7 @@ class AvailableWorkListFragment : Fragment() {
     }
 
     companion object{
-        private const val DEFAULT_LIMIT = 10;
+        private const val DEFAULT_LIMIT = 200;
         private const val DEFAULT_OFFSET = 0;
         private const val SHOW_APPLIED_WORK  = "key_show_applied_work"
 

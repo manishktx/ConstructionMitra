@@ -3,6 +3,7 @@ package com.constructionmitra.user.api
 import com.constructionmitra.user.data.AboutData
 import com.constructionmitra.user.data.ContractorAboutData
 import com.constructionmitra.user.data.WorkExperience
+import com.constructionmitra.user.data.WorkPreference
 import javax.inject.Inject
 
 class ProfileRequestsImpl @Inject constructor() : ProfileRequests{
@@ -68,6 +69,18 @@ class ProfileRequestsImpl @Inject constructor() : ProfileRequests{
             ProfileRequests.PARAM_HOME_ADDRESS to aboutData.homeAddress,
             ProfileRequests.PARAM_CURRENT_ADDRESS to aboutData.currentAddress,
         )
+    }
+
+    override fun updateWorkPreference(
+        token: String,
+        userId: String,
+        workPreference: WorkPreference
+    ): HashMap<String, String> {
+        return HashMap<String, String>().apply {
+            put(ProfileRequests.USER_ID, userId)
+            put(ProfileRequests.TOKEN, token)
+            put(ProfileRequests.WORK_PREFERENCE_ID, workPreference.workPreferenceId)
+        }
     }
 
     override fun updateContractorProfile(

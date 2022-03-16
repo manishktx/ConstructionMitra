@@ -1,5 +1,7 @@
 package com.constructionmitra.user.utilities.constants
 
+import com.constructionmitra.user.R
+import com.constructionmitra.user.adapters.Profile
 import com.constructionmitra.user.data.*
 
 object AppConstants {
@@ -12,6 +14,7 @@ object AppConstants {
 
     const val  USER_TYPE_CONTRACTOR = "user_type_contractor"
     const val  USER_TYPE_PETTY_CONTRACTOR = "user_type_petty_contractor"
+    const val  USER_TYPE_ENGINEER = "user_type_engineer"
 
     val defaultAppConfig = ConfigData(
         activeLocations =  listOf(
@@ -92,10 +95,76 @@ object AppConstants {
                 projectTypeId = "7",
                 projectTypeName = "Others",
             )
+        ),
+        workPreferences = listOf(
+            WorkPreference(
+                workPreferenceId = "1",
+                workPreference = "construction site",
+                workPreferenceHn = "निर्माण स्थल",
+            ),
+            WorkPreference(
+                workPreferenceId = "2",
+                workPreference = "private builder",
+                workPreferenceHn = "निजी बिल्डर/ बिल्डर",
+            ),
+            WorkPreference(
+                workPreferenceId = "3",
+                workPreference = "wherever you work",
+                workPreferenceHn = "जहाँ  भी काम हो",
+            )
         )
+    )
+
+    val  salaryRanges = listOf<Salary>(
+        Salary("0-240000", "Upto ₹ 2.4 Lacs P.A."),
+        Salary("120000-320000", "₹ 1.2 – 3.2 Lacs P.A."),
+        Salary("320000-500000", "₹ 3.2 – 5.0 Lacs P.A."),
+        Salary("500000-750000","₹ 5.0 – 7.5 Lacs P.A."),
+        Salary("750000-1000000","₹ 7.5 – 10.0 Lacs P.A."),
+        Salary("1000000-10000000","More than ₹ 10 Lacs P.A."),
     )
 }
 
 enum class Role(val role: String){
     ENGINEER_SUPERVISOR("engineer"), PETTY_CONTRACTOR("petty"), SPECIALISED_AGENCY("specialized")
 }
+
+enum class UserType(val category: String, val id: Int){
+    WORKER("Construction worker", 1),
+    PETTY_CONTRACTOR("Petty Contractors", 2),
+    SPECIALISED_AGENCY("Specialized agency", 3),
+    ENGINEER_SUPERVISOR("Engineer", 4),
+}
+
+val  PROFILE_CARDS_WORKER = listOf(
+    ProfileItem(R.drawable.ic_person,
+        "अपने बारें में बताएं",
+        "जानकारी जोड़े",
+        Profile.ABOUT),
+    ProfileItem(
+        R.drawable.ic_bag,
+        "अपना अनुभव साझा करें",
+        "जानकारी जोड़े" ,
+        Profile.EXPERIENCE,
+    ),
+
+    ProfileItem(
+        R.drawable.ic_location,
+        "अपने काम करने की जगह",
+        "जानकारी जोड़े",
+        Profile.WORK_LOCATION,
+    ),
+
+    ProfileItem(
+        R.drawable.ic_location_city,
+        "अपने कार्य की प्रार्थमिकता",
+        "जानकारी जोड़े +",
+        Profile.WORK_PREFERENCE,
+    ),
+
+    ProfileItem(R.drawable.ic_camera_alt,
+        "फोटो और आईडी",
+        "जानकारी जोड़े",
+        Profile.PHOTO_AND_ID_BOTH
+    ),
+)

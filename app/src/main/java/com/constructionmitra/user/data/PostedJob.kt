@@ -1,54 +1,88 @@
 package com.constructionmitra.user.data
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class PostedJob(
     @SerializedName("applicant_data")
-    val applicantData: List<Any>,
+    val applicantData: ArrayList<ApplicantData>,
     @SerializedName("category_name")
     val categoryName: String,
     @SerializedName("company_name")
     val companyName: String,
     @SerializedName("contact_person_name")
     val contactPersonName: String,
+    @SerializedName("location_name")
+    val locationName: String,
     @SerializedName("date_time")
-    val dateTime: String,
+    val dateTime: String?,
     @SerializedName("designation")
     val designation: String,
     @SerializedName("earlier_work")
-    val earlierWork: String,
-    @SerializedName("gender")
-    val gender: String,
+    val earlierWork: String?,
+    @SerializedName("Gender")
+    val gender: String?,
     @SerializedName("job_created_on")
     val jobCreatedOn: String,
     @SerializedName("job_icon")
-    val jobIcon: String,
+    val jobIcon: String?,
     @SerializedName("job_post_id")
     val jobPostId: String,
     @SerializedName("job_role")
     val jobRole: String,
     @SerializedName("job_role_hn")
-    val jobRoleHn: String,
+    val jobRoleHn: String?,
     @SerializedName("job_varify_status")
-    val jobVarifyStatus: String,
+    val jobVarifyStatus: String?,
     @SerializedName("no_of_workers")
-    val noOfWorkers: String,
+    val noOfWorkers: String = "",
     @SerializedName("number_of_openings")
-    val numberOfOpenings: String,
+    val numberOfOpenings: String?,
     @SerializedName("project_name")
-    val projectName: String,
+    val projectName: String?,
+    @SerializedName("project_type")
+    val projectType: String?,
     @SerializedName("total_applied_by_user")
     val totalAppliedByUser: String,
     @SerializedName("total_days_required")
     val totalDaysRequired: String,
     @SerializedName("user_id")
-    val userId: String,
+    val userId: String?,
     @SerializedName("user_name")
-    val userName: String,
+    val userName: String?,
     @SerializedName("work_id")
-    val workId: String,
-
+    val workId: String?,
     @SerializedName("work_description")
-    val workDesc: String
-)
+    val workDesc: String,
+    @SerializedName("Job_work_status")
+    val jobWorkStatus: String,
+    @SerializedName("is_published")
+    val isPublished: Int,
+    @SerializedName("min_salary")
+    val minSalary: Int?,
+    @SerializedName("max_salary")
+    val maxSalary: Int?,
+    @SerializedName("qualification")
+    val qualification: String?,
+    @SerializedName("experience")
+    val experience: String?,
+    @SerializedName("mobile_number")
+    val mobileNumber: String,
+    @SerializedName("job_creation_date")
+    val jobCreatedDate: String = "",
+    @SerializedName("category_id")
+    val categoryId: String?,
+    @SerializedName("criteria")
+    val criteria: String?,
+    @SerializedName("classification")
+    val classification: String?,
+    @SerializedName("job_role_id")
+    val jobRoleId: String = "",
+
+    ) : Parcelable {
+        val isPostPublished
+        get() = isPublished == 1
+    }

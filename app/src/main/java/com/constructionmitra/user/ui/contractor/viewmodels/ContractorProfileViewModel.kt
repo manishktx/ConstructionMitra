@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.constructionmitra.user.api.Failure
 import com.constructionmitra.user.api.Success
+import com.constructionmitra.user.data.PostedJob
 import com.constructionmitra.user.data.ProfileData
 import com.constructionmitra.user.data.ProfileDataContractor
 import com.constructionmitra.user.repository.CMitraRepository
@@ -33,6 +34,12 @@ class ContractorProfileViewModel @Inject constructor(
 
     private var _profileUpdated = SingleLiveEvent<ProfileData>()
     val profileUpdated = _profileUpdated
+
+    private var _jobDeleted = SingleLiveEvent<PostedJob>()
+    val jobDeleted = _jobDeleted
+
+    private var _jobPublished = SingleLiveEvent<PostedJob>()
+    val jobPublished = _jobPublished
 
     private var _profileDataWithPostedJob  = MutableLiveData<ProfileDataContractor>()
     val profileDataWithPostedJob = _profileDataWithPostedJob
@@ -91,6 +98,34 @@ class ContractorProfileViewModel @Inject constructor(
                 is Success -> {
                     if(result.data.status == ServerConstants.STATUS_SUCCESS) {
                         _profileUpdated.postValue(result.data.data!!)
+                    }
+                    else{
+                        onFailedResponse(Exception(result.data.message))
+                    }
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
+    fun updateJobStatus(
+        postedJob: PostedJob,
+        userId: String,
+        type: String,
+        isToPublished: Boolean = false
+    ){
+        viewModelScope.launch {
+            when(val result = repository.updateJobStatus(
+                postedJob.categoryId!!, userId, postedJob.jobRoleId, postedJob.jobPostId, type )
+            ){
+                is Success -> {
+                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
+                        if(isToPublished)
+                            _jobPublished.postValue(postedJob)
+                        else
+                            _jobDeleted.postValue(postedJob)
                     }
                     else{
                         onFailedResponse(Exception(result.data.message))

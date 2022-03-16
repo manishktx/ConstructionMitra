@@ -8,6 +8,7 @@ import java.io.IOException
 
 sealed class  Gender(englishName: String, hindiName: String)
 data class  MALE (val englishName: String = "Male", val hindiName: String = "पुरुष") : Gender(englishName, hindiName)
+data class  BOTH (val englishName: String = "Both", val hindiName: String = "Both") : Gender(englishName, hindiName)
 data class  FEMALE (val englishName: String = "Female", val hindiName: String = "इस्त्री") : Gender(englishName, hindiName)
 data class  OTHER (val englishName: String = "Other", val hindiName: String = "अन्य") : Gender(englishName, hindiName)
 

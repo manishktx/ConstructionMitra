@@ -98,11 +98,10 @@
             >
 
             <AutoCompleteTextView
+                style="@style/App.DropDown"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
                 android:padding="@dimen/_10sdp"
-                android:textColor="@color/greyed_text"
                 android:text="@string/select_project_type" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -129,7 +128,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvWorkDesc"
             android:gravity="top|start"
             android:maxLines="3"
-            tools:text="From this project we gonna change the world, it's a new revolution."
             android:hint="@string/please_mention_details_about_the_work"
             />
 

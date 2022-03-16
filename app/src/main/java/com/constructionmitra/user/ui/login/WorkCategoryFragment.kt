@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.constructionmitra.user.data.AppPreferences
-import com.constructionmitra.user.data.dummyList
 import com.constructionmitra.user.databinding.FragmentChooseWorkCategoryBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.login.adapters.CategoryAdapter
@@ -58,6 +57,7 @@ class WorkCategoryFragment : Fragment() {
             it?.let {
                 _categories ->
                 binding.rvCategories.adapter = CategoryAdapter(_categories) {
+                    appPreferences.saveUserType(it.category, it.categoryId.toInt())
                     WorkCategoryFragmentDirections.toWorkSubCategories(it.categoryId).apply {
                         findNavController().navigate(this)
                     }

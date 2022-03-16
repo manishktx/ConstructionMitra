@@ -8,9 +8,10 @@ data class JobPostRequest(
     var jobRoleDetails: JobRoleDetails? = null,
     var jobCategoryId: String? = null,
     var employeeDetails: EmployeeDetails? = null,
+    var isPublished: Int = 1
 )
 {
-    private val selectedWorkListString: String?
+    val selectedWorkListString: String?
         get() = if(selectedWorkList == null) "" else
         AppUtils.getSelectedWorkString(selectedWorkList!!)
 
@@ -37,10 +38,43 @@ data class JobPostRequest(
 }
 
 data class  JobRoleDetails(
-    val requiredDays: String,
-    val projectId: String,
-    val workDesc: String,
-)
+    val requiredDays: String? = "",
+    val projectId: String? = "",
+    val workDesc: String? = "",
+    var _noOfRequiredDays: String? = null,
+    var _minExpId: String? = null,
+    var _jobDesc: String? = null,
+    var jobWorkId: String? = "",
+    var _workDoneEarlier: String? = null,
+    var minWorkValue: String? = null,
+    var _gender: String? = null,
+    var _minQualificationId: String? = null,
+    var _noOfOpenings: String? = null,
+    var _salaryRange: Salary? = null,
+    var _classification: String? = null,
+    private var _criteria: String? = null,
+){
+    val  workDoneEarlier
+    get() = _workDoneEarlier ?: ""
+    val  noOfRequiredDays
+        get() = _noOfRequiredDays ?: ""
+    val  minExpId
+        get() = _minExpId ?: ""
+    val  qualificationId
+        get() = _minQualificationId ?: ""
+    val  gender
+        get() = _gender ?: ""
+    val  jobDescription
+        get() = _jobDesc ?: ""
+    val  noOfOpenings
+        get() = _noOfOpenings ?: "0"
+    val  salaryRange
+        get() = _salaryRange ?: Salary("0-3.2", "")
+    val  classification
+        get() = _classification ?: ""
+    val  criteria
+        get() = _criteria ?: ""
+}
 
 data class  EmployeeDetails(
     val companyName: String,

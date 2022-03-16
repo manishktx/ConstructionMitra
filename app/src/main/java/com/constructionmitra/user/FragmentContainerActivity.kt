@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.constructionmitra.user.data.Job
+import com.constructionmitra.user.data.PostedJob
 import com.constructionmitra.user.databinding.FragmentContainerActivityBinding
 import com.constructionmitra.user.factories.FragmentFactory
 import com.constructionmitra.user.ui.ShowImageFragment
@@ -23,6 +24,7 @@ class FragmentContainerActivity : AppCompatActivity() {
             this@FragmentContainerActivity.setContentView(it.root)
 
             val job = intent.getParcelableExtra<Job>(PARCELABLE_KEY)
+            val postedJob = intent.getParcelableExtra<PostedJob>(PARCELABLE_POSTED_JOB)
             val path = intent.getStringExtra(PATH)
             val imageUrl = intent.getStringExtra(IMAGE_URL)
 
@@ -37,6 +39,12 @@ class FragmentContainerActivity : AppCompatActivity() {
                             job?.let {
                                 arguments?.apply {
                                     putParcelable(PARCELABLE_KEY, job)
+                                    putString(PATH, path)
+                                }
+                            }
+                            postedJob?.let {
+                                arguments?.apply {
+                                    putParcelable(PARCELABLE_POSTED_JOB, postedJob)
                                     putString(PATH, path)
                                 }
                             }
@@ -65,5 +73,6 @@ class FragmentContainerActivity : AppCompatActivity() {
         const val  PATH = "from"
         const val  IMAGE_URL = "image_url"
         const val  PARCELABLE_KEY = "key_parcelable"
+        const val  PARCELABLE_POSTED_JOB = "key_parcelable_posted_job"
     }
 }

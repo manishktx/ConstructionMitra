@@ -232,7 +232,7 @@ class AboutFragment : Fragment() {
             if(profileData.age.isNotEmpty())
                 (textAge.editText as AutoCompleteTextView).setText(profileData.age)
 
-            val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, AppConstants.ages)
+            val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, AppConstants.ages)
             (textAge.editText as? AutoCompleteTextView)?.setAdapter(adapter)
             if(profileData.gender.isNotEmpty())
             {

@@ -3,7 +3,6 @@ package com.constructionmitra.user.adapters
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.constructionmitra.user.ui.home.AvailableWorkListFragment
-import com.constructionmitra.user.ui.home.HomeFragment
 
 const val MY_PAGE_INDEX = 0
 const val PLANT_LIST_PAGE_INDEX = 1

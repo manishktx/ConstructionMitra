@@ -24,7 +24,7 @@
                 style="@style/Text.SubHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large"
+                android:layout_marginTop="@dimen/text_medium"
                 android:text="@string/add_employee_details"
                 android:textColor="@color/blue_300"
                 android:typeface="serif"
@@ -51,8 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:hint="@string/enter_company_name"
-                android:inputType="textCapWords"
-                android:text="@{profileData.firmName}"
+                android:inputType="textPersonName"
                 tools:text="RDX tech"
                 android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +79,6 @@
                 android:hint="@string/enter_contact_person_name"
                 android:inputType="textCapWords"
                 tools:text="Sumit mehra"
-                android:text="@{profileData.fullName}"
                 android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +104,6 @@
                 android:hint="@string/enter_designation"
                 android:inputType="textCapWords"
                 tools:text="engineer"
-                android:text="@{profileData.designation}"
                 android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +130,6 @@
                 android:inputType="number"
                 android:maxLines="1"
                 android:maxLength="10"
-                android:text="@{profileData.phoneNumber}"
                 tools:text="8860436965"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +142,6 @@
                 android:layout_marginTop="@dimen/_2sdp"
                 android:text="@string/you_will_receive_notification"
                 android:textColor="@color/greyed_text"
-
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etMobileNum" />
@@ -171,7 +166,6 @@
                 android:hint="@string/enter_email_id"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:text="@{profileData.email}"
                 tools:text="manishkumarj357@gmail.com"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -225,10 +219,9 @@
                 android:layout_marginTop="@dimen/_10sdp">
 
                 <AutoCompleteTextView
+                    style="@style/App.DropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:padding="@dimen/_10sdp"
                     android:textColor="@color/greyed_text"
                     android:text="Select Your project location*" />
 

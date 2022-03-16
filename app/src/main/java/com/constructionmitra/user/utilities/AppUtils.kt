@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.constructionmitra.user.api.BOTH
 import com.constructionmitra.user.api.FEMALE
 import com.constructionmitra.user.api.MALE
 import com.constructionmitra.user.api.OTHER
@@ -28,6 +29,9 @@ object AppUtils {
 
         FEMALE().hindiName, FEMALE().englishName -> {
             FEMALE().englishName
+        }
+        BOTH().hindiName, BOTH().englishName -> {
+            BOTH().englishName
         }
         else -> OTHER().englishName
     }

@@ -1,10 +1,15 @@
 <resources>
+    <!-- Employee -->
     <string name="app_name">ConstructionMitra</string>
     <string name="title_home">होम</string>
     <string name="title_dashboard">नेटवर्क</string>
     <string name="title_notifications">प्रोफाइल </string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="logout_text">Are you sure you want to logout ?</string>
+    <string name="sr_no">Sr. No.</string>
+    <string name="contact_number">Contact No.</string>
+    <string name="posted_job_menu_option_1">Publish</string>
+    <string name="posted_job_menu_option_2">Delete</string>
 
     <!-- Messages -->
     <string name="msg_select_your_category">Please choose your category</string>
@@ -20,6 +25,7 @@
     <string name="enter_valid_name">Please enter your name</string>
     <string name="something_went_wrong">Something went wrong, please try again.</string>
     <string name="mandatory_fields_error">please fill mandatory fields.</string>
+    <string name="all_fields_are_mandatory">All fields are mandatory!</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="login_fragment_label">Login Fragment</string>
@@ -47,18 +53,22 @@
     <string name="login_button_text">मोबाइल से लॉगिन/ रजिस्टर करें</string>
 
     <!-- Registration -->
+    <string name="login_registration_page_heading">Enter your mobile number and name\nअपना मोबाइल नंबर और नाम बतायें</string>
     <string name="enter_your_mobile">अपना मोबाइल नंबर और नाम बतायें</string>
-    <string name="mobile_number">मोबाइल नंबर</string>
+    <string name="mobile_number_hn">मोबाइल नंबर</string>
+    <string name="mobile_number">Mobile Number</string>
     <string name="enter_10_digit_mobile">10 अंकों का मोबाइल नंबर डालें</string>
     <string name="otp_will_be_sent">हम आपको इस नंबर पर OTP भेजेंगे\n We Will send you otp</string>
-    <string name="name">नाम</string>
+    <string name="name">Name</string>
+    <string name="name_hn">नाम</string>
     <string name="your_full_name">आपका पूरा नाम</string>
-    <string name="enter_otp">ओ. टी. पी. टाइप करे</string>
+    <string name="enter_otp">ओ. टी. पी. टाइप करे\nEnter OTP</string>
+    <string name="enter_otp_text">ओ. टी. पी. टाइप करे</string>
     <string name="enter_otp_english">Enter OTP</string>
     <string name="type_otp">ओ. टी. पी. टाइप करें</string>
     <string name="enter_4_digit_otp">अपना 4 अंको का OTP डालें</string>
     <string name="send_otp_again">ओ. टी. पी. दोबारा भेजें</string>
-    <string name="next"> Next/ आगे बढ़ें</string>
+    <string name="next">Next/ आगे बढ़ें</string>
     <string name="please_choose_one_option">किसी एक विकल्प को चुने</string>
     <string name="congratulations_mobile_verified">बधाई हो ! आपका मोबाइल नंबर वेरीफाई हो गया है</string>
     <string name="labour">निर्माण श्रमिक</string>
@@ -70,7 +80,9 @@
     <string name="engineer">Engineer/Supervisor</string>
     <string name="engineer_in">इंजीनियर / कंस्ट्रक्शन साइट सुपरवाइजर हो तो यह विकल्प चुनें</string>
     <string name="choose_work">अपने कौशल के अनुरूप काम का चुनाव करें।</string>
+    <string name="choose_sub_cat_heading">आपके पास किन किन कामों के लिए टीम उपलब्ध है</string>
     <string name="choose_three_works">अधिकतम 3 काम चुने</string>
+    <string name="choose_three_works_eng">Maximum 3 work</string>
     <string-array name="work_options">
         <item>चुनाई मिस्त्री / राज मिस्त्री</item>
         <item>टाइल मिस्त्री</item>
@@ -85,20 +97,22 @@
         <item>P.O.P, वॉल पुट्टी</item>
         <item>पेंटिंग</item>
     </string-array>
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="heading">आपको वही काम दिखेंगे जिसमे 5 लोगों तक की \nजरुरत हो</string>
     <string name="sub_heading">क्या आप कांट्रेक्टर के रूप में काम करना चाहते है ?\n हाँ या ना का विकल्प चुनिए</string>
     <string name="yes">हाँ</string>
     <string name="no">ना</string>
     <string name="hint_firm_name">अपनी फर्म का नाम बतायें</string>
-    <string name="people_in_your_team">आपके पास कितने लोगो की टीम है</string>
+    <string name="agency_or_firm_name">Agency/Firm Name</string>
+    <string name="people_in_your_team">अपनी फर्म का नाम बतायें आप किस नाम से काम करते हैं</string>
     <string name="team_count">कितने लोग</string>
     <string name="submit">Submit</string>
+    <string name="registration_cta_hint">हमारी &lt;font color="#FF1D2A">गोपनीयता निति&lt;font/> एवं &lt;font color="#4883C1">नियम और शातों&lt;font/> को सहमत करते हुए आगे बड़े</string>
+    <string name="resend_otp">ओ.टी.पी दोबारा भेजें/ Resend OTP</string>
+    <string name="num_verified">Congratulations! Your mobile is verified</string>
+    <string name="agency_detail_heading">Please mention your Agency/Firm Name</string>
 
     <!-- Profile -->
-    <string name="about_yourself">अपने बारे में बताओ</string>
+    <string name="about_yourself">अपने बारें में बताएं</string>
     <string name="change_about_details">व्यक्तिगत जानकारी बदले</string>
     <string name="profile">प्रोफ़ाइल</string>
     <string name="catalog_heading">किए हुए कामों की तस्वीरें डालें </string>
@@ -110,6 +124,8 @@
     <string name="other_mobile_num">आपका अन्य मोबाइल नंबर</string>
     <string name="work">काम</string>
     <string name="team_count_title">टीम की संख्या</string>
+    <string name="you_can_more_than_once_city_hn">आप एक से ज्यादा जगह का चुनाव कर सकते है</string>
+    <string name="save_your_information_hn">जानकारी सेव करें</string>
     <string name="change_your_work">अपना चयनित कार्य बदलें</string>
     <string name="gender">लिंग</string>
     <string name="male">पुरुष</string>
@@ -119,6 +135,11 @@
     <string name="where_is_your_home">आपका घर कहां है</string>
     <string name="help_us_to_find_work_for_you">ये जानकारी हमें मदद करती है आपको आपके घर के पास काम दिलवाने में</string>
     <string name="upload_your_pic">Please upload your photo</string>
+    <string name="upload_your_one_photo_hn">अपनी एक फोटो अपलोड करे</string>
+    <string name="upload_your_id_hn">अपनी एक आई.डी अपलोड करें</string>
+    <string name="by_uploading_your_id_hn">आई.डी से आपकी प्रोफाइल की विश्वसनीयता की पहचान होती है</string>
+    <string name="work_preference_heading">अपने काम की प्रार्थमिकता बतायें</string>
+    <string name="please_select_work_preference">आप कहाँ काम करना चाहते है, ऊपर से एक विकल्प चुने</string>
     <string name="preferred_location">शहर की प्रार्थमिकता</string>
     <string name="preferred_location_for_work">आप किस शहर में काम करना चाहते हो</string>
     <string name="update_exp">जानकारी जोड़े</string>
@@ -138,6 +159,7 @@
     <string name="upload_work_history">अपने पुराने कामों की फोटो सेव कर सकते है , इससे काम जल्दी मिलने के संभावनाएं बढ़ती है</string>
     <string name="upload_your_letter_head">वेरिफिकेशन के लिए अपना लेटर हेड \nअपलोड करें</string>
     <string name="letter_head_instruction">आई.डी से आपकी प्रोफाइल की विश्वसनीयता की पहचान होती हैं</string>
+    <string name="profile_updated_hn">प्रोफ़ाइल अपडेट हो गई है</string>
 
     <string name="quality">कौशल: %s</string>
     <string-array name="work_exp_options">
@@ -154,17 +176,24 @@
     <string name="go_back_to_home">होम पेज पर जाएँ</string>
     <string name="no_work_available">No work available!</string>
     <string name="with_in_days">Within %s Days</string>
+    <string name="with_in_days_hn">%s दीनो में</string>
     <string name="when_u_needed_team">टीम कब चाहिए</string>
+    <string name="project_text_hn">प्रोजैक्ट</string>
+    <string name="job_desc_hn">कार्य विवरण</string>
+    <string name="company_name_hn">कंपनी का नाम</string>
+    <string name="project_location_hn">प्रोजेक्ट की जगह</string>
+    <string name="contact_details_hn">संपर्क करने वाले का नाम और पद</string>
     <string name="phone_number">फ़ोन नंबर</string>
     <string name="do_contact">संपर्क करे</string>
     <string name="call_kare">कॉल करे</string>
     <string name="hint_req_for_number">&lt;font color="#797979">नंबर पाने के लिए अभी&lt;font/> &lt;font color="#FF1D2A">आवेदन करे&lt;font/></string>
     <string name="congratulation_msg_on_work_req">बधाई हो ! आपने इस काम के लिए सफलता पूर्वक आवेदन कर दिया है। कंपनी द्वारा आपकी प्रोफाइल देखने के बाद कॉल आएगा। अगर आप खुद कंपनी को सीधे फ़ोन पे बात करना चाहते है तो । &lt;font color="#FF1D2A">कांटेक्ट देखें&lt;font/>पर क्लिक करें</string>
 
-    <!-- Petty contractor job post -->
+    <!-- Employer/ Petty contractor job post -->
     <string name="select_work_heading">Please select work and no. of worker required.</string>
     <string name="hint_enter_no_worker">Enter no. Of Worker Required</string>
     <string name="add_job">Add Job +</string>
+    <string name="add_more">Add more +</string>
     <string name="job_role_details">JOB ROLE DETAILS</string>
     <string name="edit">Edit</string>
     <string name="select_project_type">Select Type Of Project</string>
@@ -203,6 +232,7 @@
     <string name="provide_details_about_job">2.\nProvide\nDetails About\nThe Job</string>
     <string name="review_and_post">3.\nReview and\nPost</string>
     <string name="select_job_role">1.\nSelect Job\nRole</string>
+    <string name="select_job">Select Job</string>
     <string name="save_and_update">Save and Update</string>
     <string name="save">Save</string>
     <string name="text_work">Work</string>
@@ -214,7 +244,7 @@
     <string name="text_terms_and_condition">By Posting job, I agree with terms and conditions of Construction Mitra</string>
     <string name="complete_your_verification_inst">Complete your company verification by uploading company document for faster job approval</string>
     <string name="select_your_job_role">Select Your Job Role</string>
-    <string name="please_mention_details_about_the_work">Please mention details about the work.</string>
+    <string name="please_mention_details_about_the_work">Please mention details about the work.\(min. 10 words description required)</string>
     <string name="posted_on">Posted: %s</string>
     <string name="applied_by_formatter">Applied by: %s People</string>
     <string name="no_of_worker_formatter">%s Nos.</string>
@@ -260,7 +290,7 @@
     <string name="female_en">Female</string>
     <string name="both">Both</string>
     <string name="selected_job_role">Selected Job Role</string>
-    <string name="min_value_text">Any criteria of minimum value or work done earlier</string>
+    <string name="enter_classification">Enter classification/job</string>
     <string name="job_offered">Enter post for which job is being offered</string>
     <string name="min_qualification_req">Minimum Qualification required</string>
     <string name="min_exp_req">Minimum Experience required</string>
@@ -275,7 +305,43 @@
 
     <!-- Employer/ Specialised agency -->
     <string name="select_work">Select Work</string>
+    <string name="min_value_of_work">Minimum value of work done earlier (in Lakhs)</string>
+    <string name="min_value_of_work_hint">Minimum value of work or type of work criteria</string>
     <string name="type_of_work_done_earlier">Type of work done earlier</string>
+    <string name="job_role_cat">Job Role:</string>
+    <string name="work_cat">Work:</string>
+    <string name="job_classification_cat">Job Classification:</string>
+    <string name="qualification_cat">Qualification:</string>
+    <string name="gender_cat">Gender:</string>
+    <string name="min_experience_cat">Min Experience:</string>
+    <string name="salary_cat">Salary:</string>
+    <string name="salary_formatter">₹ %1$d - %2$d</string>
+    <string name="job_desc_cat">Job Description:</string>
+    <string name="job_location_cat">Job Location:</string>
+    <string name="company_name_cat">Company Name:</string>
+    <string name="person_and_designation_cat">Person name &amp;\nDesignation:</string>
+    <string name="contact_person_cat">Contact Person\nMobile:</string>
+    <string name="job_created_on_cat">Job created on:</string>
+    <string name="project_type_cat">Project Type:</string>
+    <string name="requirement_cat">Requirement:</string>
+    <string name="work_description_cat">Work Description:</string>
+    <string name="criteria_cat">Criteria:</string>
+    <string name="project_location_cat">Project Location:</string>
+    <string name="agency_name">Agency Name</string>
+    <string name="view_contact">View Contact</string>
+    <string name="min_exp_formatter">Min. Exp.: %s</string>
+    <string name="gender_formatter">Gender: %s</string>
+    <string name="no_of_openings_formatter">%s Nos</string>
+    <string name="not_published">Not published</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="nav_header_desc">Nav Header</string>
+    <string name="nav_header_title">nav_header_title</string>
+    <string name="nav_header_subtitle">nav_header_subtitle</string>
+    <string name="jobs">Jobs</string>
+    <string name="upload_resume">Upload Resume</string>
+    <string name="add_experience_details">Add Experience Details</string>
+    <string name="add_education_details">Add Education Details</string>
+    <string name="add_personal_details">Add Personal Details</string>
 
     <!-- Engineer/ Supervisor -->
     <string name="app_title_english_engineer">&lt;font color="#4883C1"> Construction &lt;font/> &lt;font color="#00B867">Mitra Network&lt;font/></string>
