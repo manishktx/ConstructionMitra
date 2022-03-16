@@ -16,6 +16,7 @@ import com.constructionmitra.user.databinding.FragmentChooseYourWorkSubCategorie
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.dialogs.GetAgencyDetailsDialog
 import com.constructionmitra.user.ui.dialogs.GetFirmDetailsDialog
+import com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerMainActivity
 import com.constructionmitra.user.ui.login.adapters.WorkSubCategoryAdapter
 import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.constants.IntentConstants
@@ -158,7 +159,13 @@ class WorkSubCategoriesFragment : Fragment() {
     }
     private fun navigateToHome(){
         appPreferences.saveUserType(AppConstants.USER_TYPE_PETTY_CONTRACTOR)
-        Intent(context, MainActivity::class.java).apply {
+
+        //Comment By Rattan
+        /*Intent(context, MainActivity::class.java).apply {
+            requireContext().startActivity(this)
+        }*/
+        //Edit By Rattan
+        Intent(context, EngineerMainActivity::class.java).apply {
             requireContext().startActivity(this)
         }
         requireActivity().finish()

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.employer.engineer_supervisor.EngineerHomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tvCreateProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:chipBackgroundColor="@color/blue_100"
+        app:chipIconTint="@color/grey_100"
+        app:chipIcon="@drawable/ic_bag"
+        android:text="Create a profile"
+        android:gravity="center"
+        android:padding="@dimen/_3sdp"
+        android:textSize="@dimen/_9ssp"
+        app:layout_constraintEnd_toStartOf="@id/tvJoinNetwork"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tvJoinNetwork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:chipBackgroundColor="@color/blue_100"
+        app:chipIconTint="@color/grey_100"
+        app:chipIcon="@drawable/ic_bag"
+        android:text="Join mitra network"
+        android:gravity="center"
+        android:padding="@dimen/_3sdp"
+        android:textSize="@dimen/_9ssp"
+        app:layout_constraintStart_toEndOf="@id/tvCreateProfile"
+        app:layout_constraintEnd_toStartOf="@id/tvFindJob"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/tvFindJob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:chipBackgroundColor="@color/blue_100"
+        app:chipIconTint="@color/grey_100"
+        app:chipIcon="@drawable/ic_bag"
+        android:text="Find a job"
+        android:gravity="center"
+        android:padding="@dimen/_3sdp"
+        android:textSize="@dimen/_9ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvJoinNetwork"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf ="@id/tvCreateProfile"
+        app:layout_constraintEnd_toEndOf="@id/tvFindJob"
+        app:layout_constraintTop_toBottomOf="@id/tvCreateProfile"
+        android:layout_marginTop="@dimen/_20sdp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layDOB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf ="@id/edtName"
+            app:layout_constraintEnd_toEndOf="@id/edtName"
+            app:layout_constraintTop_toBottomOf="@id/edtName"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <TextView
+                android:id="@+id/txtDOB"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:text="Date of birth"
+                app:layout_constraintBottom_toTopOf="@id/spnDay"
+                app:layout_constraintEnd_toStartOf="@id/spnMonth"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spnDay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/spnMonth"
+                app:layout_constraintTop_toBottomOf ="@id/txtDOB"
+                android:paddingRight="@dimen/_5sdp">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textColor="@color/greyed_text"
+                    android:text="Day"
+                    android:padding="@dimen/_5sdp"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spnMonth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf ="@id/spnDay"
+                app:layout_constraintEnd_toStartOf="@id/spnYear"
+                app:layout_constraintTop_toBottomOf="@id/txtDOB">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textColor="@color/greyed_text"
+                    android:text="Month"
+                    android:paddingLeft="@dimen/_5sdp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spnYear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/spnMonth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtDOB"
+                android:paddingLeft="@dimen/_5sdp">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textColor="@color/greyed_text"
+                    android:text="Year"
+                    android:paddingLeft="@dimen/_5sdp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf ="@id/edtName"
+            app:layout_constraintEnd_toEndOf="@id/edtName"
+            app:layout_constraintTop_toBottomOf="@id/layDOB"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <TextView
+                android:id="@+id/txtGender"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:text="Gender"
+                app:layout_constraintBottom_toTopOf="@id/btnGrpGender"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/btnGrpGender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf ="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtGender">
+                <Button
+                    android:id="@+id/btnMale"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:drawableLeft="@drawable/ic_person"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+                <Button
+                    android:id="@+id/btnFemale"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:drawableLeft="@drawable/ic_person"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf ="@id/edtName"
+            app:layout_constraintEnd_toEndOf="@id/edtName"
+            app:layout_constraintTop_toBottomOf="@id/layGender"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <TextView
+                android:id="@+id/txtLoaction"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:text="Select current city"
+                app:layout_constraintBottom_toTopOf="@id/btnCity1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btnCity1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipBackgroundColor="@color/blue_100"
+                app:chipIconTint="@color/grey_100"
+                app:chipIcon="@drawable/ic_bag"
+                android:text="Delhi"
+                android:gravity="center"
+                android:padding="@dimen/_3sdp"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtLoaction" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btnCity2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipBackgroundColor="@color/blue_100"
+                app:chipIconTint="@color/grey_100"
+                app:chipIcon="@drawable/ic_bag"
+                android:text="Gurugram"
+                android:gravity="center"
+                android:padding="@dimen/_3sdp"
+                android:textSize="@dimen/_9ssp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/btnCity1"
+                app:layout_constraintTop_toBottomOf="@id/txtLoaction" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnCreateProfile"
+        style="@style/App.Button.Blue"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_8sdp"
+        android:text="@string/create_profile"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_20sdp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
