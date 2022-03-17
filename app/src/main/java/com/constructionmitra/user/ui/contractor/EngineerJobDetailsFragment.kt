@@ -1,22 +1,16 @@
 package com.constructionmitra.user.ui.contractor
 
-import android.content.Intent
-import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
-import com.constructionmitra.user.databinding.*
+import com.constructionmitra.user.databinding.FragmentEngineerJobRoleDetailsBinding
+import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.contractor.viewmodels.JobPostViewModel
-import com.constructionmitra.user.utilities.constants.AppConstants
-import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint

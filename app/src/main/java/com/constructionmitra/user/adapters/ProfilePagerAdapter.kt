@@ -11,12 +11,12 @@ import com.constructionmitra.user.data.ProfileItem
 import com.constructionmitra.user.databinding.ItemProfileBinding
 
 enum class Profile{
-    ABOUT, EXPERIENCE, WORK_LOCATION, WORK_PRIORITY, PHOTO_AND_ID_CARD
+    ABOUT, EXPERIENCE, WORK_LOCATION, WORK_PRIORITY, WORK_PREFERENCE, LETTER_HEAD, PHOTO_AND_ID_BOTH
 }
 
-val  PROFILE_CARDS = listOf<ProfileItem>(
+val  PROFILE_CARDS = listOf(
     ProfileItem(R.drawable.ic_person,
-        "अपने बारे में बताओ",
+        "अपने बारें में बताएं",
         "जानकारी जोड़े",
         Profile.ABOUT),
     ProfileItem(R.drawable.ic_bag,
@@ -26,21 +26,15 @@ val  PROFILE_CARDS = listOf<ProfileItem>(
     ),
 
     ProfileItem(R.drawable.ic_location,
-        "अपने काम करने की जगों",
+        "अपने काम करने की जगह",
         "जानकारी जोड़े",
         Profile.WORK_LOCATION,
     ),
 
-//    ProfileItem(R.drawable.ic_bag,
-//        "अपने काम की प्रथमिकता",
-//        "जानकारी जोड़े",
-//        Profile.WORK_PRIORITY,
-//    ),
-
     ProfileItem(R.drawable.ic_camera_alt,
         "फोटो और आईडी",
         "जानकारी जोड़े",
-        Profile.PHOTO_AND_ID_CARD
+        Profile.LETTER_HEAD
     ),
 )
 

@@ -117,7 +117,7 @@ class SelectWorkFragment : Fragment() {
         viewModel.jobRoles.observe(viewLifecycleOwner) {
             showProgress(false)
             it?.takeIf { it.isNotEmpty() }?.let { items ->
-                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down_center, items)
+                val adapter = ArrayAdapter(requireContext(), R.layout.item_drop_down, items)
                 (binding.textInput.editText as? AutoCompleteTextView)?.apply {
                     onItemClickListener = this@SelectWorkFragment.onItemSelectedListener
                     setAdapter(adapter)

@@ -39,14 +39,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium"
-                android:text="@string/selected_job_role"
+                android:text="@string/select_job"
                 android:textColor="@color/greyed_text"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/heading" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/jobRoleInput"
+                android:id="@+id/inputWork"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -56,13 +56,10 @@
                 >
 
                 <AutoCompleteTextView
+                    style="@style/App.DropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:padding="@dimen/_8sdp"
-                    android:textSize="@dimen/_12ssp"
-                    android:textColor="@color/greyed_text"
-                    android:text="@string/select_your_job_role" />
+                    android:text="@string/select_job" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,11 +69,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium"
-                android:text="@string/min_value_text"
+                android:text="@string/enter_classification"
                 android:textColor="@color/greyed_text"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/jobRoleInput" />
+                app:layout_constraintTop_toBottomOf="@+id/inputWork" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etMinValue"
@@ -116,12 +113,9 @@
                 >
 
                 <AutoCompleteTextView
+                    style="@style/App.DropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:textSize="@dimen/_12ssp"
-                    android:padding="@dimen/_8sdp"
-                    android:textColor="@color/greyed_text"
                     android:text="@string/select_qualification" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -148,11 +142,10 @@
                 >
 
                 <AutoCompleteTextView
+                    style="@style/App.DropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
                     android:padding="@dimen/_8sdp"
-                    android:textSize="@dimen/_12ssp"
                     android:textColor="@color/greyed_text"
                     android:text="@string/select_experience" />
 
@@ -216,6 +209,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:text="@string/both"
+                        android:checked="true"
                         android:layout_weight="1"
                         android:textColor="@color/greyed_text"
                         android:textSize="@dimen/medium"
@@ -230,7 +224,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium"
-                android:text="@string/person_name_for_job"
+                android:text="@string/number_of_post_openings"
                 android:textColor="@color/greyed_text"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -242,12 +236,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:hint="@string/enter_contact_person_name"
+                android:hint="@string/number_of_post_openings"
                 android:inputType="number"
-                tools:text="01"
                 android:textSize="@dimen/_12ssp"
                 android:paddingVertical="@dimen/_8sdp"
-                android:text="01"
                 android:gravity="center"
                 android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -265,19 +257,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etNumberOfPostOpening" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etSalary"
-                style="@style/App.Editable.Blue"
-                android:layout_width="0dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputSalary"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:hint="@string/mention_salary_range"
-                android:inputType="textCapWords"
-                android:maxLines="1"
-                android:textSize="@dimen/_12ssp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/headingSalary" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/headingSalary"
+                >
+
+                <AutoCompleteTextView
+                    style="@style/App.DropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/greyed_text"
+                    android:text="@string/mention_salary_range" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/headingAdditionalInfo"
@@ -287,7 +285,7 @@
                 android:textColor="@color/greyed_text"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etSalary"
+                app:layout_constraintTop_toBottomOf="@id/inputSalary"
                 android:text="@string/additional_req" />
 
             <androidx.appcompat.widget.AppCompatEditText

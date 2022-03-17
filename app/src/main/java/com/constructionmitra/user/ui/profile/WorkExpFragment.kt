@@ -21,10 +21,12 @@ import com.constructionmitra.user.databinding.ItemWorkExpBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
 import com.constructionmitra.user.ui.PreviewImageActivity
 import com.constructionmitra.user.ui.PreviewImageFragment
+import com.constructionmitra.user.utilities.BindingAdapters
 import com.constructionmitra.user.utilities.BitmapConfig
 import com.constructionmitra.user.utilities.CMBitmapConfig
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_about_work_exp.*
 import timber.log.Timber
 import java.io.File
 import javax.inject.Inject
@@ -72,6 +74,7 @@ class WorkExpFragment : Fragment() {
                 viewModel.fetchProfileInfo(appPreferences.getUserId()!!, appPreferences.getToken()!!)
                 Timber.d("startActivityForResult called !")
                 result.data?.let {
+
                 }
             }
         }
@@ -139,7 +142,17 @@ class WorkExpFragment : Fragment() {
             }
         }
 
+        viewModel.profileData.observe(viewLifecycleOwner){
+            showProgress(false)
+            it?.let { profileData ->
+                profileData.userDoc.takeIf { it.isNotEmpty() } ?.let { userDock ->
+                    BindingAdapters.loadImage(icCamera, userDock)
+                }
+            }
+        }
+
         viewModel.galleryImageSaved.observe(viewLifecycleOwner){
+            showProgress(false)
             it?.let {
                 navigateToPreview(it)
             }

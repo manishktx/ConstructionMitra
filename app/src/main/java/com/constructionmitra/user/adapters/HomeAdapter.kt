@@ -58,6 +58,10 @@ class HomeAdapter(
                 if(isAvailableJob)
                     onItemClick(job)
             }
+            binding.cardView.setOnClickListener {
+                if(isAvailableJob)
+                    onItemClick(job)
+            }
         }
     }
 }

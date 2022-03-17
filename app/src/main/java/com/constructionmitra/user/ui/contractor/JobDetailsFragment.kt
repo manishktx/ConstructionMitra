@@ -28,7 +28,7 @@ class JobDetailsFragment : Fragment() {
     private lateinit var progressBarBinding: ProgressBarBinding
 
     private val viewModel: JobPostViewModel by lazy {
-        ViewModelProvider(requireActivity()).get(JobPostViewModel::class.java)
+        ViewModelProvider(requireActivity())[JobPostViewModel::class.java]
     }
 
     private val args: JobDetailsFragmentArgs by navArgs()
@@ -47,6 +47,7 @@ class JobDetailsFragment : Fragment() {
     ): View? {
         _binding = FragmentJobDetailsBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
+            viewModel.setJobRole(args.role)
         }
         return binding.root
 
@@ -88,12 +89,12 @@ class JobDetailsFragment : Fragment() {
             tvSave.setOnClickListener {
                 // Save post
                 showProgress(true)
-                viewModel.postJob(appPreferences.getUserId())
+                viewModel.postJob(appPreferences.getUserId(), args.role, false)
             }
             tvPostAJob.setOnClickListener {
                 // Save post
                 showProgress(true)
-                viewModel.postJob(appPreferences.getUserId())
+                viewModel.postJob(appPreferences.getUserId(), args.role, true)
             }
         }
         registerObservers()

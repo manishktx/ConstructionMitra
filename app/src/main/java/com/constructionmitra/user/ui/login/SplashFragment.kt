@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.constructionmitra.user.EngineerEmpActivity
 import com.constructionmitra.user.MainActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.data.AppPreferences
@@ -70,15 +71,20 @@ class SplashFragment : Fragment() {
     }
 
     private fun navigateToHome() {
-        Intent(context, if (appPreferences.getUserType() == AppConstants.USER_TYPE_PETTY_CONTRACTOR)
-            MainActivity::class.java
-        else
-            EmployerMainActivity::class.java).apply {
-            requireContext().startActivity(this)
+        if (appPreferences.getUserType() == AppConstants.USER_TYPE_PETTY_CONTRACTOR){
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
+        }else if( appPreferences.getUserType() == AppConstants.USER_TYPE_ENGINEER){
+            val intent = Intent(context, EngineerEmpActivity::class.java)
+            startActivity(intent)
+        }else{
+            val intent = Intent(context, EmployerMainActivity::class.java)
+            startActivity(intent)
             requireActivity().finish()
         }
         requireActivity().overridePendingTransition(R.anim.enter_anim_activity,
             R.anim.exit_anim_activity)
+
     }
 
     companion object {

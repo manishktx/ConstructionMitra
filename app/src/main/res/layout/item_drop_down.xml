@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/title"
-    android:layout_width="match_parent"
+    android:layout_width="@dimen/_200sdp"
     android:layout_height="wrap_content"
-    android:padding="@dimen/_14sdp"
+    android:padding="@dimen/_8sdp"
     android:text="Hello"
     android:textColor="@color/black"
+    android:gravity="right"
     android:ellipsize="end"
     android:textAppearance="?attr/textAppearanceSubtitle1"
     >

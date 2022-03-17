@@ -55,6 +55,11 @@
             app:destination="@id/workDetailsFragment"
             />
 
+        <action
+            android:id="@+id/toReviewEmployerJobFragment"
+            app:destination="@id/reviewEmployerJobFragment"
+            />
+
     </fragment>
 
 
@@ -63,6 +68,18 @@
         android:name="com.constructionmitra.user.ui.work.WorkDetailsFragment"
         android:label="fragment_video_message_for"
         tools:layout="@layout/fragment_request_for_work">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/reviewEmployerJobFragment"
+        android:name="com.constructionmitra.user.ui.employer.ReviewJobFragment"
+        android:label="fragment_video_message_for"
+        tools:layout="@layout/fragment_review_job_employer">
+
+        <argument android:name="role"
+            app:argType="com.constructionmitra.user.utilities.constants.Role"
+            android:defaultValue="PETTY_CONTRACTOR"/>
 
     </fragment>
 

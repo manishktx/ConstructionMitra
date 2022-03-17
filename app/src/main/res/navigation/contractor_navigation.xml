@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/contractorHomeContainerFragment"
         android:label="Home Fragment"
-        android:name="com.constructionmitra.user.ui.contractor.ContractorHomeContainerFragment"
+        android:name="com.constructionmitra.user.ui.contractor.EmployerHomeFragment"
         tools:layout="@layout/fragment_contractor_home_container">
 
         <action android:id="@+id/toSelectJobFragment"

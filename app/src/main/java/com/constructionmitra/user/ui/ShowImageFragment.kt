@@ -58,12 +58,7 @@ class ShowImageFragment : Fragment() {
         const val  IMAGE_URL = "image_url"
 
         @JvmStatic
-        fun newInstance() =
-            ShowImageFragment().apply {
-                    arguments = Bundle().apply {
-
-                    }
-            }
+        fun newInstance() = ShowImageFragment()
     }
 
 }

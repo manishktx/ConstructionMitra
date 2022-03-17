@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/engineer_navigation"
+    app:startDestination="@id/engineerExperianceDetail">
+
+    <fragment
+        android:id="@+id/engineerHomeFragment"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerHomeFragment"
+        android:label="fragment_engineer_home"
+        tools:layout="@layout/fragment_engineer_home" />
+    <fragment
+        android:id="@+id/engineerUploadResume"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerUploadResumeFragment"
+        android:label="fragment_engineer_upload_resume"
+        tools:layout="@layout/fragment_engineer_upload_resume" />
+    <fragment
+        android:id="@+id/engineerExperianceDetail"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerExperienceDetailFragment"
+        android:label="fragment_engineer_experiance_details"
+        tools:layout="@layout/fragment_engineer_experiance_details" />
+    <fragment
+        android:id="@+id/engineerEducationLanding"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerEducationLandingFragment"
+        android:label="fragment_engineer_education_landing"
+        tools:layout="@layout/fragment_engineer_education_landing" />
+    <fragment
+        android:id="@+id/engineerAddGraduationDiploma"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddGraduationDiplomaFragment"
+        android:label="fragment_engineer_add_graduation_diploma"
+        tools:layout="@layout/fragment_engineer_add_graduation_diploma" />
+    <fragment
+        android:id="@+id/engineerAddPostGraduation"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddPostGraduationFragment"
+        android:label="fragment_engineer_add_post_graduation"
+        tools:layout="@layout/fragment_engineer_add_post_graduation" />
+    <fragment
+        android:id="@+id/engineerAddTwelthDetail"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddTwelthDetailFragment"
+        android:label="fragment_engineer_add_twelth_detail"
+        tools:layout="@layout/fragment_engineer_add_twelth_detail" />
+    <fragment
+        android:id="@+id/engineerAddTenthDetail"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddTenthDetailFragment"
+        android:label="fragment_engineer_add_tenth_detail"
+        tools:layout="@layout/fragment_engineer_add_tenth_detail" />
+</navigation>

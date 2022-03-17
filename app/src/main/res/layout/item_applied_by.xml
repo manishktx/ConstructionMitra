@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="position"
+            type="String" />
+
+        <variable
+            name="data"
+            type="com.constructionmitra.user.data.ApplicantData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/text_medium"
+            android:text="@{position}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="01" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/jobTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textSize="@dimen/text_medium"
+            android:text="@{data.fullName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvSNo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="xyn name" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvViewContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_button_blue"
+            android:textColor="@color/white"
+            android:paddingVertical="@dimen/_2sdp"
+            android:paddingHorizontal="@dimen/_5sdp"
+            tools:text="view contact" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

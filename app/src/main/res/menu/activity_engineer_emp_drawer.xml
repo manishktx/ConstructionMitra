@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_jobs"
+            android:title="@string/jobs" />
+
+        <item
+            android:id="@+id/nav_upload_resume"
+            android:title="@string/upload_resume" />
+
+        <item
+            android:id="@+id/nav_experience_details"
+            android:title="@string/add_experience_details" />
+
+        <item
+            android:id="@+id/nav_education_details"
+            android:title="@string/add_education_details" />
+
+        <item
+            android:id="@+id/nav_personal_details"
+            android:title="@string/add_personal_details" />
+
+    </group>
+</menu>
