@@ -35,7 +35,7 @@ class EngineerEmpActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
-            setOf(  R.id.nav_jobs ), drawerLayout
+            setOf(  R.id.nav_jobs, R.id.nav_upload_resume,R.id.nav_experience_details,R.id.nav_education_details,), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

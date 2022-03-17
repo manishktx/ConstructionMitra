@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.fragment_engineer_home.*
 class EngineerHomeFragment : Fragment() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
