@@ -14,7 +14,7 @@
         android:paddingTop="@dimen/_20sdp"
         android:paddingBottom="@dimen/_12sdp"
         android:text="@string/choose_your_work_location"
-        android:textSize="@dimen/text_large"
+        android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,6 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/tvSave"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_5sdp"
@@ -35,6 +34,18 @@
         tools:itemCount="4"
         tools:listitem="@layout/item_work_location" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubHeading"
+        style="@style/App.Text.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@+id/rvWorkLocations"
+        android:text="@string/you_can_more_than_once_city_hn"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSave"
@@ -44,7 +55,7 @@
         android:layout_margin="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:text="अपनी जानकारी सहेजें"
+        android:text="@string/save_your_information_hn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

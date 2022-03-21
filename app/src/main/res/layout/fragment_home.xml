@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.EmployeeHomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -23,7 +23,8 @@
            <androidx.constraintlayout.widget.ConstraintLayout
                android:id="@+id/topBar"
                android:layout_width="match_parent"
-               android:layout_height="wrap_content">
+               android:layout_height="wrap_content"
+               android:paddingBottom="@dimen/_3sdp">
 
                <include
                    layout="@layout/item_profile_card"/>
@@ -61,14 +62,14 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
+<!--        style="@style/Widget.MaterialComponents.TabLayout.Colored"-->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
-            style="@style/Widget.MaterialComponents.TabLayout.Colored"
+            style="@style/App.Component.Tab"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_30sdp"
             app:tabTextColor="@color/greyed_text"
-            android:layout_marginTop="@dimen/_5sdp"
-            app:tabSelectedTextColor="@color/blue_200"
+            app:tabSelectedTextColor="@color/white"
             />
 
     </com.google.android.material.appbar.AppBarLayout>

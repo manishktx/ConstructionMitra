@@ -95,4 +95,7 @@ object TimeUtils {
     val formattedTime = SimpleDateFormat("d hh:mm a", Locale.ENGLISH)
         .format(Date().time).toString()
 
+    val formattedTime2 = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+        .format(Date().time).toString()
+
 }

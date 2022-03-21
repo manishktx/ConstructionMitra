@@ -26,6 +26,9 @@ import com.constructionmitra.user.utilities.BitmapUtils
 import com.constructionmitra.user.utilities.FileUtils
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_review_job_employer.*
+import kotlinx.android.synthetic.main.item_profile.*
+import kotlinx.android.synthetic.main.item_work.view.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -43,7 +46,7 @@ class WorkDetailsFragment : Fragment() {
     private val jobPostViewModel: JobPostViewModel by lazy {
         ViewModelProvider(
             requireActivity()
-        ).get(JobPostViewModel::class.java)
+        )[JobPostViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,9 +117,8 @@ class WorkDetailsFragment : Fragment() {
         job?.let {
             _job ->
             Timber.d("Job details are = $_job")
-            bindTitles(_job)
+            bindEmployeeData(_job)
 //            bindData(_job)
-            binding.viewTnC.visibility = View.GONE
             binding.tvActionButton.setOnClickListener {
                 showProgress(true)
                 if(binding.tvActionButton.text == getString(R.string.go_back_to_home))
@@ -151,21 +153,51 @@ class WorkDetailsFragment : Fragment() {
         }
     }
 
-    private fun bindTitles(job: Job){
+    private fun bindEmployeeData(job: Job){
         with(binding){
             // set work type and details
-            viewWorkDetails.tvTitle.text = getString(R.string.work).plus(":")
-            // set team and details
-            viewTeamDetails.tvTitle.text = getString(R.string.team_count_title).plus(":")
-            viewTeamDetails.tvDesc.text =  "15"
-            // set duration
-            viewDuration.tvTitle.text = getString(R.string.when_u_needed_team).plus(":")
-            // set job details
-            viewProjectDetails.tvTitle.text = "कार्य विवरण".plus(":")
-            // set job details
-            companyName.tvTitle.text = "कंपनी का नाम".plus(":")
-            // Work location
-            workLocation.tvTitle.text = "परियोजना स्थल".plus(":")
+            viewWorkDetails.apply {
+                tvTitle.text = getString(R.string.work).plus(":")
+                tvDesc.text = job.jobRole
+            }
+
+            viewTeamDetails.apply {
+                tvTitle.text = getString(R.string.team_count_title).plus(":")
+                tvDesc.text = job.noOfWorkers
+            }
+
+            viewDuration.apply {
+                tvTitle.text = getString(R.string.when_u_needed_team).plus(":")
+                tvDesc.text = getString(R.string.with_in_days_hn, job.requiredDays)
+            }
+
+            viewProjectName.apply {
+                tvTitle.text = getString(R.string.project_text_hn).plus(":")
+                tvDesc.text = job.projectType
+            }
+
+            viewJobDes.apply {
+                tvTitle.text = getString(R.string.job_desc_hn).plus(":")
+                tvDesc.text = job.workDescription
+            }
+
+            viewCompanyName.apply {
+                tvTitle.text = getString(R.string.company_name_hn).plus(":")
+                tvDesc.text = job.companyName
+            }
+
+            viewJobLocation.apply {
+                tvTitle.text = getString(R.string.project_location_hn).plus(":")
+                tvDesc.text = job.projectLocation
+            }
+
+            viewContractorDetails.apply {
+                tvTitle.text = getString(R.string.contact_details_hn).plus(":")
+                if(job.contactPersonName.isNullOrEmpty() && job.designation.isNullOrEmpty())
+                    root.visibility = View.GONE
+                tvDesc.text = job.contactPersonName.plus(",").plus(job.designation)
+            }
+
             // Contact details
             contactDetails.tvTitle.text = getString(R.string.do_contact).plus(":")
             contactDetails.tvDesc.text =  ""
@@ -180,62 +212,13 @@ class WorkDetailsFragment : Fragment() {
                     }
                 }
             }
-            // Contractor details
-            contractorDetails.tvTitle.text = "संपर्क करने वाले का नाम और पता".plus(":")
             // request max duration
             requestMaxDuration.tvTitle.text = getString(R.string.request_for_work).plus(":")
-            bindData(job)
         }
     }
 
     private fun bindTitlesForContractor(job: Job){
-        with(binding){
-            // set work type and details
-            viewWorkDetails.tvTitle.text = getString(R.string.text_work).plus(":")
-            // set team and details
-            viewTeamDetails.workDetailSectionContainer.visibility = View.GONE
-            viewTeamDetails.tvTitle.text = getString(R.string.team_count_title).plus(":")
-            viewTeamDetails.tvDesc.text =  "15"
-            // set duration
-            viewDuration.tvTitle.text = getString(R.string.text_requirement).plus(":")
-            // set PROJECT details
-            viewProjectDetails.tvTitle.text = getString(R.string.work_desc).plus(":")
-            // set company details
-            companyName.tvTitle.text = getString(R.string.company_name).plus(":")
-            // Work location
-            workLocation.tvTitle.text = getString(R.string.project_location).plus(":")
-            // Contact details
-            contactDetails.tvTitle.text = getString(R.string.contact_person_mobile).plus(":")
-            contactDetails.tvDesc.text = job.mobileNumber
-            contactDetails.tvShowPhoneNum.visibility = View.GONE
-            // Contractor details
-            contractorDetails.tvTitle.text = getString(R.string.person_name_and_designation)
-            // request max duration
-            requestMaxDuration.workDetailSectionContainer.visibility = View.GONE
-            bindData(job)
-        }
-    }
 
-    private fun bindData(job: Job) {
-        with(binding){
-            // set work type and details
-            viewWorkDetails.tvDesc.text = job.projectType
-            // set team and details
-            viewTeamDetails.tvDesc.text =  job.workDescription
-            // set duration
-            viewDuration.tvDesc.text =  getString(R.string.with_in_days, job.requiredDays)
-            // set job details
-            viewProjectDetails.tvDesc.text =  job.workDescription
-            // set job details
-            companyName.tvDesc.text =  job.companyName
-            // Work location
-            workLocation.tvDesc.text =  job.projectLocation
-            // Contractor details
-            contractorDetails.tvDesc.text =  job.contactPersonName.plus(", ").plus(job.designation)
-
-            // request max duration
-            requestMaxDuration.tvDesc.text =  job.jobValidTill
-        }
     }
 
     private fun showProgress(show: Boolean) {

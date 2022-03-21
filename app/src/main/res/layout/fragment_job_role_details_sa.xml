@@ -56,12 +56,9 @@
                 >
 
                 <AutoCompleteTextView
+                    style="@style/App.DropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:padding="@dimen/_8sdp"
-                    android:textSize="@dimen/_12ssp"
-                    android:textColor="@color/greyed_text"
                     android:text="@string/select_work" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -72,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium"
-                android:text="@string/min_value_text"
+                android:text="@string/min_value_of_work"
                 android:textColor="@color/greyed_text"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -85,10 +82,9 @@
                 android:paddingVertical="@dimen/_8sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:hint="@string/enter_post"
+                android:hint="@string/min_value_of_work_hint"
                 android:textSize="@dimen/_12ssp"
-                android:inputType="textCapWords"
-                android:text="@{profileData.fullName}"
+                android:inputType="text"
                 android:maxLines="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -134,20 +130,20 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputMinExp"
+                style="@style/Widget.App.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/select_work"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvMinExp"
                 >
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:padding="@dimen/_8sdp"
-                    android:textSize="@dimen/_12ssp"
-                    android:textColor="@color/greyed_text"
+                    style="@style/App.DropDown"
+                    android:ellipsize="end"
                     android:text="@string/select_experience" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -215,12 +211,9 @@
                 >
 
                 <AutoCompleteTextView
+                    style="@style/App.DropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:padding="@dimen/_8sdp"
-                    android:textSize="@dimen/_12ssp"
-                    android:textColor="@color/greyed_text"
                     android:text="@string/select_project_type" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -247,7 +240,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvWorkDesc"
                 android:gravity="top|start"
                 android:maxLines="3"
-                tools:text="From this project we gonna change the world, it's a new revolution."
                 android:hint="@string/please_mention_details_about_the_work"
                 />
 

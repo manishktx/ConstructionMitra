@@ -2,6 +2,8 @@ package com.constructionmitra.user.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.constructionmitra.user.data.AppPreferences
+import com.constructionmitra.user.utilities.constants.UserType
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

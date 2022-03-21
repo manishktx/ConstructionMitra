@@ -45,6 +45,9 @@ class ProfileViewModel @Inject constructor(
     private var _profileUpdated  = SingleLiveEvent<Boolean>()
     val profileUpdated = _profileUpdated
 
+    private var _profileDataUpdated  = SingleLiveEvent<ProfileData>()
+    val profileDataUpdated = _profileDataUpdated
+
     private var _workSampleAdded  = SingleLiveEvent<Boolean>()
     val workSampleAdded = _workSampleAdded
 
@@ -179,6 +182,25 @@ class ProfileViewModel @Inject constructor(
             }
         }
     }
+
+    fun updateProfileData(hashMap: HashMap<String, String>){
+        viewModelScope.launch {
+            when(val result = repository.updateProfile(hashMap)){
+                is Success -> {
+                    if(result.data.status == ServerConstants.STATUS_SUCCESS) {
+                        _profileDataUpdated.postValue(result.data.data!!)
+                    }
+                    else{
+                        onFailedResponse(Exception(result.data.message))
+                    }
+                }
+                is Failure -> {
+                    onFailedResponse(result.error as Exception)
+                }
+            }
+        }
+    }
+
 
     fun addWork(userId: String, file: File){
         viewModelScope.launch {

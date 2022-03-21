@@ -117,7 +117,7 @@ interface CMitraService {
 
 
     /**
-     *  Contractor apis
+     * employer apis
      */
 
     @FormUrlEncoded
@@ -149,15 +149,36 @@ interface CMitraService {
     ): BaseResponse<Any>
 
     @FormUrlEncoded
+    @POST("api/v1/common/manage_engineer_job")
+    suspend fun postESJob(
+        @FieldMap map: HashMap<String, String?>
+    ): BaseResponse<Any>
+
+    @FormUrlEncoded
+    @POST("api/v1/common/manage_specialised_job")
+    suspend fun postSAJob(
+        @FieldMap map: HashMap<String, String?>
+    ): BaseResponse<Any>
+
+    @FormUrlEncoded
     @POST("api/v1/common/total_job_post")
     suspend fun fetchProfileContractor(
         @Field("user_id") userId: String
     ): BaseResponse<ProfileDataContractor>
 
+    @FormUrlEncoded
+    @POST("api/v1/common/job_status")
+    suspend fun updateJobStatus(
+        @Field("job_category_id") jobCategoryId: String,
+        @Field("user_id") userId: String,
+        @Field("job_role_id") jobRoleId: String,
+        @Field("job_post_id") jobPostId: String,
+        @Field("type") type: String,
+    ): BaseResponse<Any>
+
 
     companion object {
         private const val BASE_URL = "http://creativemint.in/cmitra/"
-
 
         fun  create(): CMitraService{
             val interceptor =

@@ -76,10 +76,10 @@ class SelectJobFragment : Fragment() {
         selectedItem?.let {
             val selectedJob = viewModel.jobCategories.value?.get(it)!!
             viewModel.saveSelectedJob(selectedJob) // Save job for later
+            viewModel.saveJobCategory(selectedJob.categoryId)
             with(selectedJob.category){
                 when{
                     contains(Role.PETTY_CONTRACTOR.role, ignoreCase = true) -> {
-                        viewModel.saveJobCategory(selectedJob.categoryId)
                         SelectJobFragmentDirections.toSelectWorkFragment(
                             selectedJob.categoryId.toInt()
                         ).apply {

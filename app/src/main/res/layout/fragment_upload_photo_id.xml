@@ -10,61 +10,80 @@
         style="@style/App.Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_yourself"
+        android:text="@string/upload_your_one_photo_hn"
         android:textStyle="normal"
         android:layout_marginTop="@dimen/_40sdp"
+        android:textColor="@color/grey_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivCamera1"
-        android:layout_width="@dimen/_55sdp"
-        android:layout_height="@dimen/_55sdp"
-        app:srcCompat="@drawable/ic_camera_alt"
-        app:tint="@color/blue_300"
+    <FrameLayout
+        android:id="@+id/container1"
+        android:layout_width="@dimen/frame_size"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        android:background="@drawable/bg_border_blue_with_rounded_corner">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCamera1"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_camera_alt"
+            app:tint="@color/blue_300" />
+    </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvHeading2"
         style="@style/App.Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_yourself"
+        android:text="@string/upload_your_id_hn"
         android:textStyle="normal"
+        android:textColor="@color/grey_500"
         android:layout_marginTop="@dimen/_100sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivCamera1"/>
+        app:layout_constraintTop_toBottomOf="@id/container1"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivCamera2"
-        android:layout_width="@dimen/_55sdp"
-        android:layout_height="@dimen/_55sdp"
-        app:srcCompat="@drawable/ic_camera_alt"
-        app:tint="@color/blue_300"
+    <FrameLayout
+        android:id="@+id/container2"
+        android:layout_width="@dimen/frame_size"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeading2"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_border_blue_with_rounded_corner"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading2">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCamera2"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_camera_alt"
+            app:tint="@color/blue_300" />
+    </FrameLayout>
 
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvRecommendationText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/help_us_to_find_work_for_you"
+        android:text="@string/by_uploading_your_id_hn"
         android:textSize="@dimen/_10ssp"
         android:textColor="@color/greyed_text"
         android:layout_marginTop="@dimen/_5sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivCamera2"
+        app:layout_constraintTop_toBottomOf="@id/container2"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -73,7 +92,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="अपनी जानकारी सहेजें"
-        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_25sdp"
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_40sdp"
         app:layout_constraintStart_toStartOf="parent"
