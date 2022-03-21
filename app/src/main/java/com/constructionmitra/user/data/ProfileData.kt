@@ -48,6 +48,18 @@ data class ProfileData(
     val workPreferences: List<WorkPreference>,
 )
 
+data class EngineerAboutData(
+    var current_resposibility : String = "",
+    var working_from: String= "",
+    var working_till: String= "",
+    var present_employer : String= "",
+    var present_designation  : String= "",
+    var salary_range   : String= "",
+    var previous_company   : String= "",
+    var previous_time_period   : String= "",
+    var previous_designation   : String= "",
+)
+
 data class AboutData(
     var name: String = "",
     var phoneNum: String = "",

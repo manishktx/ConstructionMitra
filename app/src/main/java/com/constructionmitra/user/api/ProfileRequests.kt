@@ -1,9 +1,6 @@
 package com.constructionmitra.user.api
 
-import com.constructionmitra.user.data.AboutData
-import com.constructionmitra.user.data.ContractorAboutData
-import com.constructionmitra.user.data.WorkExperience
-import com.constructionmitra.user.data.WorkPreference
+import com.constructionmitra.user.data.*
 
 interface ProfileRequests {
 
@@ -36,6 +33,12 @@ interface ProfileRequests {
         userId: String,
         token: String,
         aboutData: AboutData
+    ) : HashMap<String, String>
+
+    fun updateExpEngineer(
+        userId: String,
+        token: String,
+        aboutData: EngineerAboutData
     ) : HashMap<String, String>
 
     fun updateContractorProfile(

@@ -12,8 +12,23 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_upload_resume"
-        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerEducationLandingFragment"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerUploadResumeFragment"
         android:label="@string/upload_resume"
         tools:layout="@layout/fragment_engineer_education_landing" />
+    <fragment
+        android:id="@+id/nav_experience_details"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerExperienceDetailFragment"
+        android:label="@string/add_experience_details"
+        tools:layout="@layout/fragment_engineer_education_landing" />
+    <fragment
+        android:id="@+id/nav_education_details"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerEducationLandingFragment"
+        android:label="@string/add_education_details"
+        tools:layout="@layout/fragment_engineer_education_landing" />
+    <fragment
+        android:id="@+id/nav_personal_details"
+        android:name="com.constructionmitra.user.ui.profile.AboutFragment"
+        android:label="@string/add_education_details"
+        tools:layout="@layout/fragment_about" />
 
 </navigation>
