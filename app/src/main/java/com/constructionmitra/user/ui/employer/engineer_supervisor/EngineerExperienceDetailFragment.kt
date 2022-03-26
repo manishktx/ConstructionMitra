@@ -69,7 +69,7 @@ class EngineerExperienceDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
         binding = FragmentEngineerExperianceDetailsBinding.inflate(inflater, container, false).apply {
-            progressBarBinding = ProgressBarBinding.bind(root)
+//            progressBarBinding = ProgressBarBinding.bind(root)
         }
         return binding.root
     }

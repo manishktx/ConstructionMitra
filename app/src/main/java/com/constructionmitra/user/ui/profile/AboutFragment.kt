@@ -30,6 +30,7 @@ import com.constructionmitra.user.utilities.CMBitmapConfig
 import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_about.*
 import kotlinx.android.synthetic.main.fragment_request_for_work.*
 import timber.log.Timber
 import java.io.File

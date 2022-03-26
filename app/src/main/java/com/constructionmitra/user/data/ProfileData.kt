@@ -60,6 +60,7 @@ data class EngineerAboutData(
     var previous_designation   : String= "",
 )
 
+
 data class AboutData(
     var name: String = "",
     var phoneNum: String = "",
