@@ -1,9 +1,6 @@
 package com.constructionmitra.user.api
 
-import com.constructionmitra.user.data.AboutData
-import com.constructionmitra.user.data.ContractorAboutData
-import com.constructionmitra.user.data.WorkExperience
-import com.constructionmitra.user.data.WorkPreference
+import com.constructionmitra.user.data.*
 import javax.inject.Inject
 
 class ProfileRequestsImpl @Inject constructor() : ProfileRequests{
@@ -69,6 +66,14 @@ class ProfileRequestsImpl @Inject constructor() : ProfileRequests{
             ProfileRequests.PARAM_HOME_ADDRESS to aboutData.homeAddress,
             ProfileRequests.PARAM_CURRENT_ADDRESS to aboutData.currentAddress,
         )
+    }
+
+    override fun updateExpEngineer(
+        userId: String,
+        token: String,
+        aboutData: EngineerAboutData
+    ): HashMap<String, String> {
+        TODO("Not yet implemented")
     }
 
     override fun updateWorkPreference(

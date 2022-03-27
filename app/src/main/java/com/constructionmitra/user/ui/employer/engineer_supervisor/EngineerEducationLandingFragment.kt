@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.constructionmitra.user.R
 import com.constructionmitra.user.databinding.FragmentEngineerEducationLandingBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
@@ -25,15 +27,30 @@ class EngineerEducationLandingFragment : Fragment() {
 
         }
     }
-
+    private val backPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+//            if(isProfileUpdated)
+//                requireActivity().setResult(AppCompatActivity.RESULT_OK)
+            requireActivity().finish()
+        }
+    }
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding= FragmentEngineerEducationLandingBinding.inflate(inflater,container,false).apply {
             progressBarBinding= ProgressBarBinding.bind(root)
         }
         return binding.root
+        // Inflate the layout for this fragment
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
+        binding = FragmentEngineerEducationLandingBinding.inflate(inflater, container, false).apply {
+//            progressBarBinding = ProgressBarBinding.bind(root)
+        }
+        return binding.root
     }
+
+
+
+
 }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.employer.engineer_supervisor.EngineerExperienceDetailFragment"
     android:background="@color/white_smoke">
 
     <androidx.cardview.widget.CardView
@@ -173,6 +172,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtUniversity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter University/Institute name"
@@ -205,6 +205,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPassingYr"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Passing Year"
@@ -237,6 +238,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPercent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Passing Percentage"

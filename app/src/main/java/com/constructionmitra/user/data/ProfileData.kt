@@ -48,6 +48,18 @@ data class ProfileData(
     val workPreferences: List<WorkPreference>,
 )
 
+data class EngineerAboutData(
+    var current_resposibility : String = "",
+    var working_from: String= "",
+    var working_till: String= "",
+    var present_employer : String= "",
+    var present_designation  : String= "",
+    var salary_range   : String= "",
+    var previous_company   : String= "",
+    var previous_time_period   : String= "",
+    var previous_designation   : String= "",
+)
+
 data class AboutData(
     var name: String = "",
     var phoneNum: String = "",
@@ -66,4 +78,27 @@ data class ContractorAboutData(
     var companyName: String = "",
     var companyAddress: String = "",
     var city: String = "",
+)
+
+data class EngineerEducation(
+    var education_id : String = "",
+    var board: String= "",
+    var branch: String= "",
+    var education_type : String= "",
+    var university  : String= "",
+    var passing_year   : String= "",
+    var result_percentage   : String= "",
+    var medium   : String= "",
+)
+
+data class EngineerPersonDetails(
+    var full_name : String = "",
+    var dob: String= "",
+    var gender: String= "",
+    var current_city : String= "",
+    var current_residence  : String= "",
+    var permanenet_residence   : String= "",
+    var marital_status   : String= "",
+    var language_known   : String= "",
+    var email   : String= "",
 )

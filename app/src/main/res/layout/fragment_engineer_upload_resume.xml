@@ -90,9 +90,10 @@
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:backgroundTint="@color/green_200"
                 android:textColor="@color/white"/>
-
+            <include layout="@layout/progress_bar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -173,6 +173,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtUniversity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter University/Institute name"
@@ -205,6 +206,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPassingYr"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Passing Year"
@@ -237,6 +239,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPassPercent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Passing Percentage"
