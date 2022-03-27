@@ -24,11 +24,40 @@
         android:id="@+id/nav_education_details"
         android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerEducationLandingFragment"
         android:label="@string/add_education_details"
-        tools:layout="@layout/fragment_engineer_education_landing" />
+        tools:layout="@layout/fragment_engineer_education_landing" >
+        <action
+            android:id="@+id/action_nav_education_details_to_engineerAddTenthDetailFragment"
+            app:destination="@id/engineerAddTenthDetailFragment" />
+        <action
+            android:id="@+id/action_nav_education_details_to_engineerAddTwelthDetailFragment"
+            app:destination="@id/engineerAddTwelthDetailFragment" />
+        <action
+            android:id="@+id/action_nav_education_details_to_engineerAddPostGraduationFragment"
+            app:destination="@id/engineerAddPostGraduationFragment" />
+        <action
+            android:id="@+id/action_nav_education_details_to_engineerAddGraduationDiplomaFragment"
+            app:destination="@id/engineerAddGraduationDiplomaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_personal_details"
         android:name="com.constructionmitra.user.ui.profile.AboutFragment"
         android:label="@string/add_education_details"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/engineerAddTenthDetailFragment"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddTenthDetailFragment"
+        android:label="Add Tenth " />
+    <fragment
+        android:id="@+id/engineerAddTwelthDetailFragment"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddTwelthDetailFragment"
+        android:label="Add Twelth " />
+    <fragment
+        android:id="@+id/engineerAddPostGraduationFragment"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddPostGraduationFragment"
+        android:label="Post Graduation" />
+    <fragment
+        android:id="@+id/engineerAddGraduationDiplomaFragment"
+        android:name="com.constructionmitra.user.ui.employer.engineer_supervisor.EngineerAddGraduationDiplomaFragment"
+        android:label="Graduation" />
 
 </navigation>

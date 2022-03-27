@@ -29,7 +29,7 @@ class EngineerAddTwelthDetailFragment : Fragment() {
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_engineer_home, container, false)
+        return inflater.inflate(R.layout.fragment_engineer_add_twelth_detail, container, false)
     }
 
 

@@ -29,7 +29,7 @@ class EngineerAddTenthDetailFragment : Fragment() {
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_engineer_home, container, false)
+        return inflater.inflate(R.layout.fragment_engineer_add_tenth_detail, container, false)
     }
 
 

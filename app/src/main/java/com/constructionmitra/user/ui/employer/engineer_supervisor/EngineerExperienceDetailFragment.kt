@@ -16,15 +16,8 @@ import androidx.lifecycle.lifecycleScope
 import com.constructionmitra.user.R
 import com.constructionmitra.user.api.ProfileRequests
 import com.constructionmitra.user.data.*
-import com.constructionmitra.user.databinding.FragmentAboutBinding
-import com.constructionmitra.user.databinding.FragmentEngineerExperianceDetailsBinding
 import com.constructionmitra.user.databinding.ProgressBarBinding
-import com.constructionmitra.user.ui.PreviewImageActivity
-import com.constructionmitra.user.ui.PreviewImageFragment
-import com.constructionmitra.user.ui.profile.AboutFragment
 import com.constructionmitra.user.ui.profile.ProfileViewModel
-import com.constructionmitra.user.utilities.AppUtils
-import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_engineer_home.*
@@ -35,8 +28,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class EngineerExperienceDetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentEngineerExperianceDetailsBinding
-    private lateinit var progressBarBinding: ProgressBarBinding
+    private lateinit var binding: com.constructionmitra.user.databinding.FragmentEngineerExperianceDetailsBinding
+    private lateinit var progressBarBinding: com.constructionmitra.user.databinding.ProgressBarBinding
     @Inject
     lateinit var appPreferences: AppPreferences
     @Inject
@@ -69,7 +62,7 @@ class EngineerExperienceDetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
-        binding = FragmentEngineerExperianceDetailsBinding.inflate(inflater, container, false).apply {
+        binding = com.constructionmitra.user.databinding.FragmentEngineerExperianceDetailsBinding.inflate(inflater, container, false).apply {
             progressBarBinding = ProgressBarBinding.bind(root)
         }
         return binding.root
