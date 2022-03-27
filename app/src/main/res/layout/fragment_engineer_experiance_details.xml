@@ -367,6 +367,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+    <include layout="@layout/progress_bar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

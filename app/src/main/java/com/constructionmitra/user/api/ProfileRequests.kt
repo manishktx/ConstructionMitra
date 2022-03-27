@@ -74,5 +74,19 @@ interface ProfileRequests {
         const val  COMPANY_ADDRESS = "address"
         const val  DESIGNATION = "designation"
         const val  COMPANY_CITY = "current_residence"
+
+        // Contractor profile
+        const val  CURRENT_RESPONSIBILITY = "current_resposibility"
+        const val  WORK_FROM = "working_from"
+        const val  WORKING_TILL = "working_till"
+        const val  PRESENT_EMPLOYER = "present_employer"
+        const val  PRESENT_DESTINATION = "present_designation"
+        const val  SALARY_RANGE = "salary_range"
+        const val  PREVIOUS_COMPANY = "previous_company"
+        const val  PREVIOUS_TIME_PERIOD = "previous_time_period"
+        const val  PREVIOUS_DESIGNATION = "previous_designation"
+
+
+
     }
 }

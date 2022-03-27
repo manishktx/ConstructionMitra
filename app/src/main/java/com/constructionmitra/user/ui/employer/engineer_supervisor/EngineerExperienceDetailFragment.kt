@@ -26,12 +26,13 @@ import com.constructionmitra.user.ui.profile.ProfileViewModel
 import com.constructionmitra.user.utilities.AppUtils
 import com.constructionmitra.user.utilities.constants.AppConstants
 import com.constructionmitra.user.utilities.showToast
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_engineer_home.*
 import timber.log.Timber
 import java.io.File
 import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class EngineerExperienceDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentEngineerExperianceDetailsBinding
@@ -69,7 +70,7 @@ class EngineerExperienceDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
         binding = FragmentEngineerExperianceDetailsBinding.inflate(inflater, container, false).apply {
-//            progressBarBinding = ProgressBarBinding.bind(root)
+            progressBarBinding = ProgressBarBinding.bind(root)
         }
         return binding.root
     }

@@ -73,7 +73,18 @@ class ProfileRequestsImpl @Inject constructor() : ProfileRequests{
         token: String,
         aboutData: EngineerAboutData
     ): HashMap<String, String> {
-        TODO("Not yet implemented")
+        return HashMap<String, String>().apply {
+            put(ProfileRequests.USER_ID, userId)
+            put(ProfileRequests.TOKEN, token)
+            put(ProfileRequests.CURRENT_RESPONSIBILITY, aboutData.current_resposibility)
+            put(ProfileRequests.PRESENT_EMPLOYER, aboutData.present_employer)
+            put(ProfileRequests.PREVIOUS_COMPANY, aboutData.previous_company)
+            put(ProfileRequests.PREVIOUS_DESIGNATION, aboutData.previous_designation)
+            put(ProfileRequests.PREVIOUS_TIME_PERIOD, aboutData.previous_time_period)
+            put(ProfileRequests.SALARY_RANGE, aboutData.salary_range)
+            put(ProfileRequests.WORK_FROM, aboutData.working_from)
+            put(ProfileRequests.WORKING_TILL, aboutData.working_till)
+        }
     }
 
     override fun updateWorkPreference(
