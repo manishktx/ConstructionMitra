@@ -102,7 +102,6 @@ class EngineerExperienceDetailFragment : Fragment() {
             }
         }
 
-
         registerObservers(); onError()
     }
 
