@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<selector xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:enterFadeDuration="200"-->
+<!--android:exitFadeDuration="200">-->
+<!--<item android:state_pressed="true">-->
+<!--    <shape android:shape="rectangle">-->
+<!--        <corners android:radius="@dimen/_5sdp"/>-->
+<!--        <solid android:color="@color/blue_200" />-->
+<!--    </shape>-->
+<!--</item>-->
+<!--<item android:state_pressed="false">-->
+<!--    <shape android:shape="rectangle">-->
+<!--        <corners android:radius="@dimen/_5sdp"/>-->
+<!--        <solid android:color="@color/blue_300" />-->
+<!--    </shape>-->
+<!--</item>-->
+
+<!--</selector>-->
+
 <selector xmlns:android="http://schemas.android.com/apk/res/android"
-android:enterFadeDuration="200"
-android:exitFadeDuration="200">
-<item android:state_pressed="true">
-    <shape android:shape="rectangle">
-        <corners android:radius="@dimen/_5sdp"/>
-        <solid android:color="@color/blue_200" />
-    </shape>
-</item>
-<item android:state_pressed="false">
-    <shape android:shape="rectangle">
-        <corners android:radius="@dimen/_5sdp"/>
-        <solid android:color="@color/blue_300" />
-    </shape>
-</item>
+    android:enterFadeDuration="200"
+    android:exitFadeDuration="200">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/_5sdp"/>
+            <solid android:color="@color/saffron" />
+        </shape>
+    </item>
+    <item android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/_5sdp"/>
+            <solid android:color="@color/saffron" />
+        </shape>
+    </item>
 
 </selector>
